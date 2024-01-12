@@ -6,7 +6,7 @@ import net.glasslauncher.mods.api.gcapi.api.ConfigName;
 
 public class Config {
     public static class GeneralConfig {
-        @ConfigName(value = "TESTOS PABLOS")
+        @ConfigName(value = "General Config Value")
         public Integer test2 = 0;
     }
 

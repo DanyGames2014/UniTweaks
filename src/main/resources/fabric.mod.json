@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "unitweaks",
   "version": "${version}",
-
   "name": "UniTweaks",
   "description": "An attempt at an all-in-one fixes and tweaks package for Beta 1.7.3",
   "authors": [
@@ -18,6 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
+      "net.danygames2014.unitweaks.recipe.RecipeListener"
     ],
     "stationapi:event_bus_client": [
     ],
