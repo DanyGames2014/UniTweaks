@@ -57,6 +57,8 @@ public class Config {
         public static class TweakedRecipesConfig {
             @ConfigName("Shapeless Jack o' Lantern")
             public Boolean shapelessJackOLantern = true;
+            @ConfigName("Stairs per Craft")
+            public Integer stairsPerCraft = 4;
         }
 
         public static class ObtainableRecipesConfig {

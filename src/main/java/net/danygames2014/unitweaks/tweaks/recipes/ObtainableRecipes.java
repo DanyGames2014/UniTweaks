@@ -1,7 +1,6 @@
 package net.danygames2014.unitweaks.tweaks.recipes;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.danygames2014.unitweaks.util.CraftingHelper;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -9,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
+@SuppressWarnings("unused")
 public class ObtainableRecipes {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {

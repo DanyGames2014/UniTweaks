@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
+@SuppressWarnings("unused")
 public class ModernRecipes {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
