@@ -6,11 +6,14 @@ import net.glasslauncher.mods.api.gcapi.api.ConfigName;
 
 public class Config {
     public static class GeneralConfig {
-        @ConfigName(value = "General Config Value")
-        public Integer test2 = 0;
+        @ConfigName(value = "Show Quit Button")
+        public Boolean showQuitButton = true;
     }
 
     public static class BugfixesConfig {
+        @ConfigName("Bit Depth Fix")
+        @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
+        public Boolean bitDepthFix = true;
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
         public Boolean enableSlimeSplitFix = true;

@@ -9,6 +9,8 @@
   "server": [
   ],
   "client": [
+    "bugfixes.bitdepthfix.MinecraftMixin",
+    "tweaks.quitbutton.MinecraftAppletMixin"
   ],
   "injectors": {
     "defaultRequire": 1
