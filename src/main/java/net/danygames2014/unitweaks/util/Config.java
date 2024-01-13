@@ -23,6 +23,10 @@ public class Config {
         @Comment("Options here require restart to take effect")
         public TweakedRecipesConfig tweaked = new TweakedRecipesConfig();
 
+        @ConfigCategory("Obtainable")
+        @Comment("Options here require restart to take effect")
+        public ObtainableRecipesConfig obtainable = new ObtainableRecipesConfig();
+
         public static class ModernRecipesConfig {
             @ConfigName("Shapeless Flint and Steel")
             public Boolean shapelessFlintAndSteel = true;
@@ -53,6 +57,25 @@ public class Config {
         public static class TweakedRecipesConfig {
             @ConfigName("Shapeless Jack o' Lantern")
             public Boolean shapelessJackOLantern = true;
+        }
+
+        public static class ObtainableRecipesConfig {
+            @ConfigName("Craftable Grass Blocks")
+            public Boolean craftableGrassBlocks = true;
+            @ConfigName("Craftable Cobwebs")
+            public Boolean craftableCobwebs = true;
+            @ConfigName("Craftable Fire")
+            public Boolean craftableFire = true;
+            @ConfigName("Craftable Coal Ore (8 Coal around a Stone)")
+            public Boolean craftableCoalOre = true;
+            @ConfigName("Craftable Iron Ore (8 Iron Ingots around a Stone)")
+            public Boolean craftableIronOre = true;
+            @ConfigName("Craftable Gold Ore (8 Gold Ingots around a Stone)")
+            public Boolean craftableGoldOre = true;
+            @ConfigName("Craftable Lapis Lazuli Ore (8 Lapis Lazuli around a Stone)")
+            public Boolean craftableLapisOre = true;
+            @ConfigName("Craftable Diamond Ore (8 Diamonds around a Stone)")
+            public Boolean craftableDiamondOre = true;
         }
     }
 }

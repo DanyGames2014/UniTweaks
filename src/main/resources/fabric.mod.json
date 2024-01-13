@@ -19,7 +19,8 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes"
+      "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
+      "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes"
     ],
     "stationapi:event_bus_client": [
     ],

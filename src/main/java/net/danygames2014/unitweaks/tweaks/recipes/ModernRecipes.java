@@ -10,7 +10,6 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
 public class ModernRecipes {
-    @SuppressWarnings("DuplicateBranchesInSwitch")
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
         if (UniTweaks.RECIPES_CONFIG.enableRecipes) {
