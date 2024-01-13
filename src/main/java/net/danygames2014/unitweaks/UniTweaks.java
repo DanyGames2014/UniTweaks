@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks;
 
+import net.danygames2014.unitweaks.util.Config;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
 
 public class UniTweaks {
