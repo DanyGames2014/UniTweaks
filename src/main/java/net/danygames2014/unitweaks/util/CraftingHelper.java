@@ -7,21 +7,29 @@ import net.minecraft.recipe.CraftingRecipeManager;
 import java.util.List;
 
 public class CraftingHelper {
-    @SuppressWarnings({"SuspiciousListRemoveInLoop", "unchecked"})
-    public static void removeRecipe(Item item, boolean onlyRemoveFirst){
+    @SuppressWarnings({"unchecked"})
+    public static void removeRecipe(Item item, int meta, boolean onlyRemoveFirst) {
         List<CraftingRecipe> recipes = CraftingRecipeManager.getInstance().getRecipes();
         for (int i = 0; i < recipes.size(); i++) {
             CraftingRecipe recipe = recipes.get(i);
-            if(recipe.getOutput().itemId == item.id){
-                recipes.remove(i);
-                if(onlyRemoveFirst){
-                    return;
+            if (recipe.getOutput().itemId == item.id) {
+                //noinspection SimplifiableConditionalExpression
+                if((meta == -1) ? true : (recipe.getOutput().getDamage() == meta)){
+                    recipes.remove(i);
+                    i--;
+                    if (onlyRemoveFirst) {
+                        return;
+                    }
                 }
             }
         }
     }
 
-    public static void removeRecipe(Item item){
-        removeRecipe(item, false);
+    public static void removeRecipe(Item item, boolean onlyRemoveFirst) {
+        removeRecipe(item, -1, onlyRemoveFirst);
+    }
+
+    public static void removeRecipe(Item item) {
+        removeRecipe(item, -1, false);
     }
 }
