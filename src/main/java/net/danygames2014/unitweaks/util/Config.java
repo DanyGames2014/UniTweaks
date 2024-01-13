@@ -10,6 +10,12 @@ public class Config {
         public Integer test2 = 0;
     }
 
+    public static class BugfixesConfig {
+        @ConfigName("Slime Split Fix")
+        @Comment("Fixes slimes not splitting when their health is below zero after dying")
+        public Boolean enableSlimeSplitFix = true;
+    }
+
     public static class RecipesConfig {
         @ConfigName("Enable Recipe Tweaks")
         @Comment("Acts as a master switch for all recipe tweaks")

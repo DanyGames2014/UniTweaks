@@ -10,4 +10,7 @@ public class UniTweaks {
     @GConfig(value = "recipes", visibleName = "Recipes")
     public static final Config.RecipesConfig RECIPES_CONFIG = new Config.RecipesConfig();
 
+    @GConfig(value = "bugfixes", visibleName = "Bugfixes")
+    public static final Config.BugfixesConfig BUGFIXES_CONFIG = new Config.BugfixesConfig();
+
 }
