@@ -19,6 +19,14 @@ public class Config {
         public Boolean enableSlimeSplitFix = true;
     }
 
+    public static class OldFeaturesConfig {
+        @ConfigName("Disable Dead Bush Generation")
+        public Boolean disableDeadBushGeneration = true;
+
+        @ConfigName("Disable Tall Grass Generation")
+        public Boolean disableTallGrassGeneration = true;
+    }
+
     public static class RecipesConfig {
         @ConfigName("Enable Recipe Tweaks")
         @Comment("Acts as a master switch for all recipe tweaks")

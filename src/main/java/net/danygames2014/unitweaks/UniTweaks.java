@@ -13,4 +13,7 @@ public class UniTweaks {
     @GConfig(value = "bugfixes", visibleName = "Bugfixes")
     public static final Config.BugfixesConfig BUGFIXES_CONFIG = new Config.BugfixesConfig();
 
+    @GConfig(value = "oldfeatures", visibleName = "Old Features")
+    public static final Config.OldFeaturesConfig OLD_FEATURES_CONFIG = new Config.OldFeaturesConfig();
+
 }

@@ -4,7 +4,9 @@
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "bugfixes.slimefix.SlimeEntityMixin"
+    "bugfixes.slimefix.SlimeEntityMixin",
+    "tweaks.disabledeadbush.DeadbushFeatureMixin",
+    "tweaks.disabletallgrass.GrassPatchFeatureMixin"
   ],
   "server": [
   ],
