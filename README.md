@@ -10,6 +10,9 @@
 ### General
 * Show Quit Button on the Main Menu
 
+### Gameplay
+* No Food Wastage - Prevents you from eating when your health is already full
+
 ### Old Features
 * Disable Dead Bush Generation
 * Disable Tall Grass Generation
