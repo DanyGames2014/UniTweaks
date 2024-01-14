@@ -13,6 +13,10 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "tweaks.fov.class555Mixin",
+    "tweaks.fov.GameOptionsMixin",
+    "tweaks.fov.OptionMixin",
+    "tweaks.fov.OptionsScreenMixin",
     "tweaks.quitbutton.MinecraftAppletMixin"
   ],
   "injectors": {
