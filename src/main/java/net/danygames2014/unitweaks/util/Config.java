@@ -23,6 +23,9 @@ public class Config {
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
         public Boolean enableSlimeSplitFix = true;
+        @ConfigName("Boat Dismount Fix")
+        @Comment("Fixes sometimes falling through the boat when dismounting it")
+        public Boolean boatDismountFix = true;
     }
 
     public static class OldFeaturesConfig {

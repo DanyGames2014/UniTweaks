@@ -4,6 +4,7 @@
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
@@ -13,6 +14,10 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "tweaks.fogdensity.class555Mixin",
+    "tweaks.fogdensity.GameOptionsMixin",
+    "tweaks.fogdensity.OptionMixin",
+    "tweaks.fogdensity.VideoOptionsScreenMixin",
     "tweaks.fov.class555Mixin",
     "tweaks.fov.GameOptionsMixin",
     "tweaks.fov.OptionMixin",

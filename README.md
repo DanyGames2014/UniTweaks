@@ -5,6 +5,7 @@
 ### General
 * Show Quit Button on the Main Menu
 * FOV Slider with proper hand adjustment
+* Fog Density Slider
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
