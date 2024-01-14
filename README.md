@@ -1,5 +1,10 @@
 # UniTweaks
 
+## Bugfixes
+#### **All Bugfixes can be toggled unless specified**
+* BitDepthFix - Fixes Z-Fighting on AMD graphic cards
+* SlimeSplitFix - Fixes slimes not splitting when their health is below zero after dying
+
 ## Tweaks
 #### **All Tweaks can be toggled unless specified**
 ### General
@@ -37,8 +42,3 @@
 * Craftable Gold Ore
 * Craftable Lapis Ore
 * Craftable Diamond Ore
-
-## Bugfixes
-#### **All Bugfixes can be toggled unless specified**
-* BitDepthFix - Fixes Z-Fighting on AMD graphic cards
-* SlimeSplitFix - Fixes slimes not splitting when their health is below zero after dying
