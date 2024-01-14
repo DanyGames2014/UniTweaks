@@ -10,6 +10,12 @@ public class Config {
         public Boolean showQuitButton = true;
     }
 
+    public static class GameplayConfig {
+        @ConfigName("No Food Wastage")
+        @Comment("Prevents you from eating when your health is full")
+        public Boolean noFoodWastage = true;
+    }
+
     public static class BugfixesConfig {
         @ConfigName("Bit Depth Fix")
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")

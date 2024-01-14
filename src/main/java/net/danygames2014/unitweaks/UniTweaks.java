@@ -16,4 +16,7 @@ public class UniTweaks {
     @GConfig(value = "oldfeatures", visibleName = "Old Features")
     public static final Config.OldFeaturesConfig OLD_FEATURES_CONFIG = new Config.OldFeaturesConfig();
 
+    @GConfig(value = "gameplay", visibleName = "Gameplay")
+    public static final Config.GameplayConfig GAMEPLAY_CONFIG = new Config.GameplayConfig();
+
 }

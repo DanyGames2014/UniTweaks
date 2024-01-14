@@ -6,7 +6,8 @@
   "mixins": [
     "bugfixes.slimefix.SlimeEntityMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
-    "tweaks.disabletallgrass.GrassPatchFeatureMixin"
+    "tweaks.disabletallgrass.GrassPatchFeatureMixin",
+    "tweaks.nofoodwastage.FoodItemMixin"
   ],
   "server": [
   ],
