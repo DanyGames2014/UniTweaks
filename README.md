@@ -9,6 +9,7 @@
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
+* Step Assist - Allows you to step up one block
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -54,5 +55,7 @@
 
 ## Bugfixes
 #### **All Bugfixes can be toggled unless specified**
-* BitDepthFix - Fixes Z-Fighting on AMD graphic cards
-* SlimeSplitFix - Fixes slimes not splitting when their health is below zero after dying
+* Bit Depth Fix - Fixes Z-Fighting on AMD graphic cards
+* Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
+* Stairs Drop Fix - Stairs now drop themselves
+* Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it

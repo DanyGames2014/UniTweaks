@@ -14,6 +14,9 @@ public class Config {
         @ConfigName("No Food Wastage")
         @Comment("Prevents you from eating when your health is full")
         public Boolean noFoodWastage = true;
+        @ConfigName("Step Assist")
+        @Comment("Allows you to step up one block")
+        public Boolean stepAssist = true;
     }
 
     public static class BugfixesConfig {
@@ -26,6 +29,9 @@ public class Config {
         @ConfigName("Boat Dismount Fix")
         @Comment("Fixes sometimes falling through the boat when dismounting it")
         public Boolean boatDismountFix = true;
+        @ConfigName("Stairs Drop Fix")
+        @Comment("Stairs will drop themselves instead of the base block")
+        public Boolean stairsDropFix = true;
     }
 
     public static class OldFeaturesConfig {

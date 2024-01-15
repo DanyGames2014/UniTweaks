@@ -6,9 +6,11 @@
   "mixins": [
     "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
+    "bugfixes.stairsdropfix.StairsBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
-    "tweaks.nofoodwastage.FoodItemMixin"
+    "tweaks.nofoodwastage.FoodItemMixin",
+    "tweaks.stepassist.PlayerEntityMixin"
   ],
   "server": [
   ],
