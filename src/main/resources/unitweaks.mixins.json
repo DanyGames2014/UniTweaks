@@ -27,6 +27,7 @@
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
     "options.GameOptionsMixin",
+    "options.OpenExperimentalControls",
     "options.OptionMixin",
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
