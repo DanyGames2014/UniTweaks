@@ -14,7 +14,8 @@
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
-    "tweaks.stepassist.PlayerEntityMixin"
+    "tweaks.stepassist.PlayerEntityMixin",
+    "tweaks.sugarcaneonsand.SugarCaneBlockMixin"
   ],
   "server": [
   ],

@@ -22,6 +22,12 @@ public class Config {
         public Boolean stepAssist = true;
     }
 
+    public static class BackportConfig {
+        @ConfigName("Allow placing sugar cane on sand")
+        @Comment("Backported from Beta 1.8")
+        public Boolean sugarCaneOnSand = true;
+    }
+
     public static class BugfixesConfig {
         @ConfigName("Bit Depth Fix")
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
