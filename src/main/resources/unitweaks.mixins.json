@@ -7,6 +7,7 @@
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
+    "bugfixes.pigdropsaddlefix.PigEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",

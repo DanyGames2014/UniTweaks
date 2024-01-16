@@ -45,6 +45,10 @@ public class Config {
         @ConfigName("Block Effectiveness Fix")
         @Comment("Fixes axes and pickaxes not being effective on various blocks")
         public Boolean blockEffectivenessFix = true;
+
+        @ConfigName("Pig Saddle Drop Fix")
+        @Comment("Fixes pigs not dropping saddle on death")
+        public Boolean pigSaddleDropFix = true;
     }
 
     public static class OldFeaturesConfig {
