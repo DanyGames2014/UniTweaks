@@ -1,7 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
 import net.danygames2014.unitweaks.tweaks.fov.FovData;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,8 +1,6 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.slimefix;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.danygames2014.unitweaks.util.Config;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.SlimeEntity;
 import net.minecraft.world.World;

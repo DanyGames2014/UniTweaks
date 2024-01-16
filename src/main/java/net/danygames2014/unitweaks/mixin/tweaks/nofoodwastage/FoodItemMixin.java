@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FoodItem.class)
 public class FoodItemMixin {
     @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
-    public void preventEatingWithFullHealth(ItemStack stack, World world, PlayerEntity player, CallbackInfoReturnable<ItemStack> cir){
-        if(UniTweaks.GAMEPLAY_CONFIG.noFoodWastage && (player.health >= 20)){
+    public void preventEatingWithFullHealth(ItemStack stack, World world, PlayerEntity player, CallbackInfoReturnable<ItemStack> cir) {
+        if (UniTweaks.GAMEPLAY_CONFIG.noFoodWastage && (player.health >= 20)) {
             cir.setReturnValue(stack);
         }
     }

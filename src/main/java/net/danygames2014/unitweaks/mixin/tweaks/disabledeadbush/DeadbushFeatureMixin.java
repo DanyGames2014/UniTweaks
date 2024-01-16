@@ -13,8 +13,8 @@ import java.util.Random;
 @Mixin(class_246.class)
 public class DeadbushFeatureMixin {
     @Inject(method = "method_1142", at = @At(value = "HEAD"), cancellable = true)
-    public void disableGeneration(World random, Random i, int j, int k, int par5, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.OLD_FEATURES_CONFIG.disableDeadBushGeneration){
+    public void disableGeneration(World random, Random i, int j, int k, int par5, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.OLD_FEATURES_CONFIG.disableDeadBushGeneration) {
             cir.cancel();
         }
     }

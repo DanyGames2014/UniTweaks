@@ -21,7 +21,8 @@ public class class555Mixin {
     @Shadow
     private Minecraft field_2349;
 
-    @Shadow private float field_2350;
+    @Shadow
+    private float field_2350;
 
     @Unique
     public float getFovMultiplier(float f, boolean isHand) {
@@ -62,7 +63,7 @@ public class class555Mixin {
     }
 
     @Inject(method = "method_1845", at = @At(value = "HEAD"))
-    public void adjustHandFov(float f, int i, CallbackInfo ci){
+    public void adjustHandFov(float f, int i, CallbackInfo ci) {
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
         GLU.gluPerspective(getFovMultiplier(f, true), (float) field_2349.displayWidth / (float) field_2349.displayHeight, 0.05F, field_2350 * 2.0F);

@@ -1,7 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fogdensity;
 
 import net.danygames2014.unitweaks.tweaks.fogdensity.FogDensityData;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +16,8 @@ import java.io.PrintWriter;
 
 @Mixin(GameOptions.class)
 public abstract class GameOptionsMixin {
-    @Shadow protected abstract float parseFloat(String string);
+    @Shadow
+    protected abstract float parseFloat(String string);
 
     @Inject(method = {"setFloat"}, at = {@At(value = "HEAD")})
     public void setFloat(Option option, float value, CallbackInfo ci) {
@@ -44,20 +44,20 @@ public abstract class GameOptionsMixin {
             } else if (value == 0.5F) {
                 cir.setReturnValue("Fog : Normal");
             } else {
-                cir.setReturnValue("Fog: " + FogDensityData.getDisplayValue()*2F +"x");
+                cir.setReturnValue("Fog: " + FogDensityData.getDisplayValue() * 2F + "x");
             }
         }
     }
 
-    @Inject(method={"load"}, at={@At(value="INVOKE", target="Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;")}, locals=LocalCapture.CAPTURE_FAILHARD)
+    @Inject(method = {"load"}, at = {@At(value = "INVOKE", target = "Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void load(CallbackInfo ci, BufferedReader bufferedReader, String string) {
         String[] stringArray = string.split(":");
         if (stringArray[0].equals("fog_density")) {
-           FogDensityData.fogDensityValue = this.parseFloat(stringArray[1]);
+            FogDensityData.fogDensityValue = this.parseFloat(stringArray[1]);
         }
     }
 
-    @Inject(method={"save"}, at={@At(value="INVOKE", target="Ljava/io/PrintWriter;close()V")}, locals= LocalCapture.CAPTURE_FAILHARD)
+    @Inject(method = {"save"}, at = {@At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
         printWriter.println("fog_density:" + FogDensityData.fogDensityValue);
     }

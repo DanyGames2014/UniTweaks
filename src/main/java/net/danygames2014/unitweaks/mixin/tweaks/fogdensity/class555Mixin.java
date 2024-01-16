@@ -11,12 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(class_555.class)
 public class class555Mixin {
-    @Shadow private float field_2350;
+    @Shadow
+    private float field_2350;
 
-    @Shadow private Minecraft field_2349;
+    @Shadow
+    private Minecraft field_2349;
 
     @Inject(method = "method_1842", at = @At(value = "HEAD"))
-    public void overriceFogDensity(int f, float par2, CallbackInfo ci){
+    public void overriceFogDensity(int f, float par2, CallbackInfo ci) {
         this.field_2350 = (256 >> this.field_2349.options.viewDistance) * FogDensityData.getFogMultiplier();
     }
 }

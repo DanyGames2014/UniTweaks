@@ -44,7 +44,7 @@ public class ObtainableRecipes {
 
                     // Craftable Coal Ore
                     if (UniTweaks.RECIPES_CONFIG.obtainable.craftableLapisOre) {
-                        CraftingRegistry.addShapedRecipe(new ItemStack(Block.LAPIS_ORE.asItem(), 1), "RRR", "RSR", "RRR", 'R', new ItemStack(Item.DYE,1, 4), 'S', new ItemStack(Block.STONE.asItem()));
+                        CraftingRegistry.addShapedRecipe(new ItemStack(Block.LAPIS_ORE.asItem(), 1), "RRR", "RSR", "RRR", 'R', new ItemStack(Item.DYE, 1, 4), 'S', new ItemStack(Block.STONE.asItem()));
                     }
                 }
 

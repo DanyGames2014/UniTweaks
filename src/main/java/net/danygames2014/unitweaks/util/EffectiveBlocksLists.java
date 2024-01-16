@@ -1,7 +1,5 @@
 package net.danygames2014.unitweaks.util;
 
-import net.glasslauncher.mods.api.gcapi.api.ConfigName;
-
 public class EffectiveBlocksLists {
     //This will be moved into config when config stops crashing rendering this list
     //@ConfigName("Pickaxe Effective Blocks")

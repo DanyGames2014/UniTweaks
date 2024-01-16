@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.PickaxeItem;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.modificationstation.stationapi.api.util.Namespace;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,11 +14,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
-
 @Mixin(PickaxeItem.class)
 public class PickaxeItemMixin {
-    @Shadow private static Block[] pickaxeEffectiveBlocks;
+    @Shadow
+    private static Block[] pickaxeEffectiveBlocks;
 
     @Inject(
             method = "<clinit>",
@@ -31,7 +29,7 @@ public class PickaxeItemMixin {
             )
     )
     private static void addEffectiveBlocks(CallbackInfo ci) {
-        if(!UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix){
+        if (!UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
             return;
         }
 

@@ -5,7 +5,6 @@ import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,7 +16,8 @@ import java.io.PrintWriter;
 
 @Mixin(GameOptions.class)
 public abstract class GameOptionsMixin {
-    @Shadow protected abstract float parseFloat(String string);
+    @Shadow
+    protected abstract float parseFloat(String string);
 
     @Inject(method = {"setFloat"}, at = {@At(value = "HEAD")})
     public void setFloat(Option option, float value, CallbackInfo ci) {
@@ -47,7 +47,7 @@ public abstract class GameOptionsMixin {
         }
     }
 
-    @Inject(method={"load"}, at={@At(value="INVOKE", target="Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;")}, locals=LocalCapture.CAPTURE_FAILHARD)
+    @Inject(method = {"load"}, at = {@At(value = "INVOKE", target = "Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void load(CallbackInfo ci, BufferedReader bufferedReader, String string) {
         String[] stringArray = string.split(":");
         if (stringArray[0].equals("fov")) {
@@ -55,7 +55,7 @@ public abstract class GameOptionsMixin {
         }
     }
 
-    @Inject(method={"save"}, at={@At(value="INVOKE", target="Ljava/io/PrintWriter;close()V")}, locals= LocalCapture.CAPTURE_FAILHARD)
+    @Inject(method = {"save"}, at = {@At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
         printWriter.println("fov:" + FovData.fovValue);
     }

@@ -14,15 +14,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Random;
-
 @Mixin(SheepEntity.class)
-public abstract class SheepEntityMixin extends Entity{
-    @Shadow public abstract boolean method_2048();
+public abstract class SheepEntityMixin extends Entity {
+    @Shadow
+    public abstract boolean method_2048();
 
-    @Shadow public abstract void method_2045(boolean bl);
+    @Shadow
+    public abstract void method_2045(boolean bl);
 
-    @Shadow public abstract int method_2047();
+    @Shadow
+    public abstract int method_2047();
 
     public SheepEntityMixin(World world) {
         super(world);
@@ -30,7 +31,7 @@ public abstract class SheepEntityMixin extends Entity{
 
     @Inject(method = "damage", at = @At(value = "HEAD"))
     public void dropWoolOnHit(Entity attacker, int amount, CallbackInfoReturnable<Boolean> cir) {
-        if(UniTweaks.OLD_FEATURES_CONFIG.punchSheepForWool){
+        if (UniTweaks.OLD_FEATURES_CONFIG.punchSheepForWool) {
             if ((attacker instanceof PlayerEntity player) && !player.world.isRemote) {
                 if (!method_2048()) { // getSheared()
                     this.method_2045(true); // setSheared(true)

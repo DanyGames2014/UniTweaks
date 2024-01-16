@@ -2,7 +2,10 @@ package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
 import net.danygames2014.unitweaks.tweaks.fov.FovData;
 import net.minecraft.client.option.Option;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,13 +21,13 @@ public abstract class OptionMixin {
     @Mutable
     private static Option[] field_1113;
 
-    @Invoker(value="<init>")
+    @Invoker(value = "<init>")
     private static Option newOption(String internalName, int internalId, String translationKey, boolean slider, boolean toggle) {
         throw new AssertionError();
     }
 
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = 179, target = "Lnet/minecraft/client/option/Option;field_1113:[Lnet/minecraft/client/option/Option;", shift = At.Shift.AFTER))
-    private static void addFovOption(CallbackInfo ci){
+    private static void addFovOption(CallbackInfo ci) {
         Option FOV;
         ArrayList<Option> options = new ArrayList<Option>(Arrays.asList(field_1113));
         Option last = options.get(options.size() - 1);

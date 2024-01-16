@@ -14,7 +14,7 @@ public class CraftingHelper {
             CraftingRecipe recipe = recipes.get(i);
             if (recipe.getOutput().itemId == item.id) {
                 //noinspection SimplifiableConditionalExpression
-                if((meta == -1) ? true : (recipe.getOutput().getDamage() == meta)){
+                if ((meta == -1) ? true : (recipe.getOutput().getDamage() == meta)) {
                     recipes.remove(i);
                     i--;
                     if (onlyRemoveFirst) {

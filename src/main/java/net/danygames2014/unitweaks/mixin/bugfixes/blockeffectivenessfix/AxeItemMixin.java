@@ -18,7 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AxeItem.class)
 public class AxeItemMixin extends ToolItem {
-    @Shadow private static Block[] axeEffectiveBlocks;
+    @Shadow
+    private static Block[] axeEffectiveBlocks;
 
     public AxeItemMixin(int id, int damageBoost, ToolMaterial toolMaterial, Block[] effectiveOn) {
         super(id, damageBoost, toolMaterial, effectiveOn);
@@ -34,7 +35,7 @@ public class AxeItemMixin extends ToolItem {
             )
     )
     private static void addEffectiveBlocks(CallbackInfo ci) {
-        if(!UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix){
+        if (!UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
             return;
         }
 

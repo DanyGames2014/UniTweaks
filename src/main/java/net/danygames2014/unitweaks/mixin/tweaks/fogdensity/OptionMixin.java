@@ -1,7 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fogdensity;
 
 import net.danygames2014.unitweaks.tweaks.fogdensity.FogDensityData;
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,13 +21,13 @@ public abstract class OptionMixin {
     @Mutable
     private static Option[] field_1113;
 
-    @Invoker(value="<init>")
+    @Invoker(value = "<init>")
     private static Option newOption(String internalName, int internalId, String translationKey, boolean slider, boolean toggle) {
         throw new AssertionError();
     }
 
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = 179, target = "Lnet/minecraft/client/option/Option;field_1113:[Lnet/minecraft/client/option/Option;", shift = At.Shift.AFTER))
-    private static void addFogDensityOption(CallbackInfo ci){
+    private static void addFogDensityOption(CallbackInfo ci) {
         Option FOG_DENSITY;
         ArrayList<Option> options = new ArrayList<Option>(Arrays.asList(field_1113));
         Option last = options.get(options.size() - 1);

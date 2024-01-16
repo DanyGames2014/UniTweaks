@@ -13,8 +13,8 @@ import java.util.Random;
 @Mixin(class_623.class)
 public class GrassPatchFeatureMixin {
     @Inject(method = "method_1142", at = @At(value = "HEAD"), cancellable = true)
-    public void disableGeneration(World random, Random i, int j, int k, int par5, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.OLD_FEATURES_CONFIG.disableTallGrassGeneration){
+    public void disableGeneration(World random, Random i, int j, int k, int par5, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.OLD_FEATURES_CONFIG.disableTallGrassGeneration) {
             cir.cancel();
         }
     }

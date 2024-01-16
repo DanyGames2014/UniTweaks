@@ -1,8 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fogdensity;
 
-import net.danygames2014.unitweaks.mixin.tweaks.fov.OptionsScreenMixin;
 import net.danygames2014.unitweaks.tweaks.fogdensity.FogDensityData;
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
 import net.minecraft.client.gui.screen.option.VideoOptionsScreen;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;
