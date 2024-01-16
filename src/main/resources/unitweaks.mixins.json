@@ -13,6 +13,7 @@
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
+    "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.stepassist.PlayerEntityMixin"
   ],
   "server": [
