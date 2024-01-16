@@ -15,7 +15,7 @@
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
     "tweaks.packetspeedup.Connection$4Mixin",
-    "tweaks.packetspeedup.EntityMixin",
+    "bugfixes.mpentityphysicsfix.EntityMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.stepassist.PlayerEntityMixin",

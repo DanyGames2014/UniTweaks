@@ -1,4 +1,4 @@
-package net.danygames2014.unitweaks.mixin.tweaks.packetspeedup;
+package net.danygames2014.unitweaks.mixin.bugfixes.mpentityphysicsfix;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

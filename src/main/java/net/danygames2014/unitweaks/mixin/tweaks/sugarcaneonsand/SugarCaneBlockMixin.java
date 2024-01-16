@@ -18,7 +18,7 @@ public class SugarCaneBlockMixin {
             )
     )
     public int canPlaceAt(World world, int x, int y, int z) {
-        if (UniTweaks.BACKPORT_CONFIG.sugarCaneOnSand) {
+        if (UniTweaks.TWEAKS_CONFIG.sugarCaneOnSand) {
             if (world.getBlockId(x, y, z) == Block.SAND.id) {
                 return Block.DIRT.id;
             }

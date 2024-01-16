@@ -7,6 +7,7 @@ import net.glasslauncher.mods.api.gcapi.api.ConfigName;
 public class Config {
     public static class GeneralConfig {
         @ConfigName(value = "Show Quit Button")
+        @Comment("Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
     }
 
@@ -19,7 +20,7 @@ public class Config {
         public Boolean stepAssist = true;
     }
 
-    public static class BackportConfig {
+    public static class TweaksConfig {
         @ConfigName("Allow placing sugar cane on sand")
         @Comment("Backported from Beta 1.8")
         public Boolean sugarCaneOnSand = true;
