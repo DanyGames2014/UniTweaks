@@ -11,9 +11,14 @@
 * No Food Wastage - Prevents you from eating when your health is already full
 * Step Assist - Allows you to step up one block
 
+### Backport
+* Sugar Cane can be placed on sand (Beta 1.8)
+
 ### Old Features
 * Disable Dead Bush Generation
 * Disable Tall Grass Generation
+* Punch TNT to light it
+* Punch Sheep for wool
 
 ### Recipes
 <details>
@@ -59,3 +64,6 @@
 * Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
 * Stairs Drop Fix - Stairs now drop themselves
 * Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
+* Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
+  * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern, Wooden Pressure Plate, Jukebox and Noteblock
+  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner 
