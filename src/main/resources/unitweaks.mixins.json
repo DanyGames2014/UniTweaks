@@ -22,6 +22,7 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "tweaks.cloudstoggle.WorldRendererMixin",
     "tweaks.fogdensity.class555Mixin",
     "tweaks.fogdensity.GameOptionsMixin",
     "tweaks.fogdensity.OptionMixin",
