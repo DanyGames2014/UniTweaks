@@ -14,7 +14,8 @@ public class VideoOptionsScreenMixin {
     private static Option[] field_2003;
 
     static {
-        field_2003 = Arrays.copyOf(field_2003, field_2003.length + 1);
-        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 1] = ModOptions.fogDensityOption;
+        field_2003 = Arrays.copyOf(field_2003, field_2003.length + 2);
+        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 2] = ModOptions.fogDensityOption;
+        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 1] = ModOptions.cloudsOption;
     }
 }
