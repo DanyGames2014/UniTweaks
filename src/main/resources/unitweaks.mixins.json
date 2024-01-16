@@ -4,6 +4,8 @@
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "bugfixes.blockeffectivenessfix.AxeItemMixin",
+    "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",

@@ -3,6 +3,9 @@ package net.danygames2014.unitweaks.util;
 import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
 import net.glasslauncher.mods.api.gcapi.api.ConfigName;
+import net.minecraft.block.Block;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.Namespace;
 
 public class Config {
     public static class GeneralConfig {
@@ -32,6 +35,9 @@ public class Config {
         @ConfigName("Stairs Drop Fix")
         @Comment("Stairs will drop themselves instead of the base block")
         public Boolean stairsDropFix = true;
+        @ConfigName("Block Effectiveness Fix")
+        @Comment("Fixes axes and pickaxes not being effective on various blocks")
+        public Boolean blockEffectivenessFix = true;
     }
 
     public static class OldFeaturesConfig {
