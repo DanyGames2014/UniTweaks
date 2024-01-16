@@ -1,6 +1,7 @@
-package net.danygames2014.unitweaks.mixin.tweaks.fov;
+package net.danygames2014.unitweaks.mixin.options;
 
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
+import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,28 +22,49 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = {"setFloat"}, at = {@At(value = "HEAD")})
     public void setFloat(Option option, float value, CallbackInfo ci) {
-        if (option == FovData.fovOption) {
-            FovData.fovValue = value;
+        if (option == ModOptions.fovOption) {
+            ModOptions.fov = value;
+        }
+
+        if (option == ModOptions.fogDensityOption) {
+            ModOptions.fogDensity = value;
         }
     }
 
     @Inject(method = {"getFloat"}, at = {@At(value = "HEAD")}, cancellable = true)
     public void getFloat(Option option, CallbackInfoReturnable<Float> cir) {
-        if (option == FovData.fovOption) {
-            cir.setReturnValue(FovData.fovValue);
+        if (option == ModOptions.fovOption) {
+            cir.setReturnValue(ModOptions.fov);
+        }
+
+        if (option == ModOptions.fogDensityOption) {
+            cir.setReturnValue(ModOptions.fogDensity);
         }
     }
 
     @Inject(method = {"method_1234"}, at = {@At(value = "HEAD")}, cancellable = true)
     public void getTranslatedValue(Option option, CallbackInfoReturnable<String> cir) {
-        if (option == FovData.fovOption) {
-            float value = FovData.fovValue;
+        if (option == ModOptions.fovOption) {
+            float value = ModOptions.fov;
             if (value == 0.0f) {
                 cir.setReturnValue("FOV: Normal");
             } else if (value == 1.0f) {
                 cir.setReturnValue("FOV: Quake Pro");
             } else {
-                cir.setReturnValue("FOV: " + FovData.getRealFov());
+                cir.setReturnValue("FOV: " + ModOptions.getFovInDegrees());
+            }
+        }
+
+        if (option == ModOptions.fogDensityOption) {
+            float value = ModOptions.getFogDisplayValue();
+            if (value == 0.0F) {
+                cir.setReturnValue("Fog : Disabled");
+            } else if (value == 1.0F) {
+                cir.setReturnValue("Fog : Silent Hill");
+            } else if (value == 0.5F) {
+                cir.setReturnValue("Fog : Normal");
+            } else {
+                cir.setReturnValue("Fog: " + ModOptions.getFogDisplayValue() * 2F + "x");
             }
         }
     }
@@ -50,14 +72,19 @@ public abstract class GameOptionsMixin {
     @Inject(method = {"load"}, at = {@At(value = "INVOKE", target = "Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void load(CallbackInfo ci, BufferedReader bufferedReader, String string) {
         String[] stringArray = string.split(":");
+
         if (stringArray[0].equals("fov")) {
-            FovData.fovValue = this.parseFloat(stringArray[1]);
+            ModOptions.fov = this.parseFloat(stringArray[1]);
+        }
+
+        if (stringArray[0].equals("fog_density")) {
+            ModOptions.fogDensity = this.parseFloat(stringArray[1]);
         }
     }
 
     @Inject(method = {"save"}, at = {@At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V")}, locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
-        printWriter.println("fov:" + FovData.fovValue);
+        printWriter.println("fov:" + ModOptions.fov);
+        printWriter.println("fog_density:" + ModOptions.fogDensity);
     }
-
 }

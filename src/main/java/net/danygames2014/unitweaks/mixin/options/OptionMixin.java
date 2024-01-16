@@ -1,6 +1,6 @@
-package net.danygames2014.unitweaks.mixin.tweaks.fov;
+package net.danygames2014.unitweaks.mixin.options;
 
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,12 +27,22 @@ public abstract class OptionMixin {
     }
 
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = 179, target = "Lnet/minecraft/client/option/Option;field_1113:[Lnet/minecraft/client/option/Option;", shift = At.Shift.AFTER))
-    private static void addFovOption(CallbackInfo ci) {
-        Option FOV;
+    private static void addOptions(CallbackInfo ci) {
         ArrayList<Option> options = new ArrayList<Option>(Arrays.asList(field_1113));
         Option last = options.get(options.size() - 1);
-        FovData.fovOption = FOV = OptionMixin.newOption("FOV", last.ordinal(), "option.fov", true, false);
+
+        Option FOV;
+        ModOptions.fovOption = FOV = OptionMixin.newOption("FOV", last.ordinal(), "option.fov", true, false);
         options.add(FOV);
+
+        Option FOG_DENSITY;
+        ModOptions.fogDensityOption = FOG_DENSITY = OptionMixin.newOption("FOG_DENSITY", last.ordinal()+1, "option.fog_density", true, false);
+        options.add(FOG_DENSITY);
+
+        Option CLOUDS;
+        ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal()+2, "option.clouds", false, true);
+        options.add(CLOUDS);
+
         field_1113 = options.toArray(new Option[0]);
     }
 }

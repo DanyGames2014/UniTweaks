@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks;
 
 import net.danygames2014.unitweaks.util.Config;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
 
 @SuppressWarnings("InstantiationOfUtilityClass")

@@ -24,13 +24,11 @@
     "bugfixes.bitdepthfix.MinecraftMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
     "tweaks.fogdensity.class555Mixin",
-    "tweaks.fogdensity.GameOptionsMixin",
-    "tweaks.fogdensity.OptionMixin",
-    "tweaks.fogdensity.VideoOptionsScreenMixin",
+    "options.GameOptionsMixin",
+    "options.OptionMixin",
+    "options.VideoOptionsScreenMixin",
     "tweaks.fov.class555Mixin",
-    "tweaks.fov.GameOptionsMixin",
-    "tweaks.fov.OptionMixin",
-    "tweaks.fov.OptionsScreenMixin",
+    "options.OptionsScreenMixin",
     "tweaks.quitbutton.MinecraftAppletMixin"
   ],
   "injectors": {

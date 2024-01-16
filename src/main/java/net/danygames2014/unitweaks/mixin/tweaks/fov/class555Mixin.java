@@ -1,6 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.block.Material;
 import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
@@ -27,7 +27,7 @@ public class class555Mixin {
     @Unique
     public float getFovMultiplier(float f, boolean isHand) {
         LivingEntity entity = this.field_2349.field_2807;
-        float fov = FovData.getRealFov();
+        float fov = ModOptions.getFovInDegrees();
 
         if (isHand) {
             fov = 70F;

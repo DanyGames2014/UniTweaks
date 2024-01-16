@@ -1,6 +1,6 @@
-package net.danygames2014.unitweaks.mixin.tweaks.fov;
+package net.danygames2014.unitweaks.mixin.options;
 
-import net.danygames2014.unitweaks.tweaks.fov.FovData;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.option.Option;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +16,6 @@ public abstract class OptionsScreenMixin {
 
     static {
         field_2764 = Arrays.copyOf(field_2764, field_2764.length + 1);
-        OptionsScreenMixin.field_2764[OptionsScreenMixin.field_2764.length - 1] = FovData.fovOption;
+        OptionsScreenMixin.field_2764[OptionsScreenMixin.field_2764.length - 1] = ModOptions.fovOption;
     }
 }
