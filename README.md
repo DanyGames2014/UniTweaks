@@ -6,13 +6,15 @@
 * Show Quit Button on the Main Menu
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
+* Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and receiving a response) ***non-configurable***
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
 * Step Assist - Allows you to step up one block
 
-### Backport
-* Sugar Cane can be placed on sand (Beta 1.8)
+### Tweaks
+* Sugar Cane can be placed on sand (from Beta 1.8)
+* Boats drop themselves
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -68,3 +70,4 @@
   * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern, Wooden Pressure Plate, Jukebox and Noteblock
   * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner
 * Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
+* Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation ***non-configurable***

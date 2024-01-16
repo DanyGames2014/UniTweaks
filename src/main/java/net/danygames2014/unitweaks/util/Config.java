@@ -3,6 +3,7 @@ package net.danygames2014.unitweaks.util;
 import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
 import net.glasslauncher.mods.api.gcapi.api.ConfigName;
+import org.checkerframework.checker.units.qual.C;
 
 public class Config {
     public static class GeneralConfig {
@@ -24,6 +25,8 @@ public class Config {
         @ConfigName("Allow placing sugar cane on sand")
         @Comment("Backported from Beta 1.8")
         public Boolean sugarCaneOnSand = true;
+        @ConfigName("Boats drop themselves")
+        public Boolean boatsDropThemselves = true;
     }
 
     public static class BugfixesConfig {
