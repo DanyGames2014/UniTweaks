@@ -12,6 +12,7 @@
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
+    "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.stepassist.PlayerEntityMixin"
   ],
   "server": [

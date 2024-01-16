@@ -26,15 +26,19 @@ public class Config {
         @ConfigName("Bit Depth Fix")
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
+
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
         public Boolean enableSlimeSplitFix = true;
+
         @ConfigName("Boat Dismount Fix")
         @Comment("Fixes sometimes falling through the boat when dismounting it")
         public Boolean boatDismountFix = true;
+
         @ConfigName("Stairs Drop Fix")
         @Comment("Stairs will drop themselves instead of the base block")
         public Boolean stairsDropFix = true;
+
         @ConfigName("Block Effectiveness Fix")
         @Comment("Fixes axes and pickaxes not being effective on various blocks")
         public Boolean blockEffectivenessFix = true;
@@ -46,6 +50,12 @@ public class Config {
 
         @ConfigName("Disable Tall Grass Generation")
         public Boolean disableTallGrassGeneration = true;
+
+        @ConfigName("Punch Sheep for Wool")
+        public Boolean punchSheepForWool = true;
+
+        @ConfigName("Punch TNT to Ignite")
+        public Boolean punchTntToIgnite = true;
     }
 
     public static class RecipesConfig {
