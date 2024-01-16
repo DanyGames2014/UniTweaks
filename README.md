@@ -66,4 +66,5 @@
 * Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
 * Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
   * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern, Wooden Pressure Plate, Jukebox and Noteblock
-  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner 
+  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner
+* Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
