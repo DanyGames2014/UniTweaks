@@ -16,10 +16,12 @@ public class TntBlockMixin extends Block {
 
     @Override
     public void onBreak(World world, int x, int y, int z) {
-        if (UniTweaks.OLD_FEATURES_CONFIG.punchTntToIgnite) {
-            TntEntity tntEntity = new TntEntity(world, (float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-            world.method_210(tntEntity);
-            world.playSound(tntEntity, "random.fuse", 1.0F, 1.0F);
+        if(!world.isRemote){
+            if (UniTweaks.OLD_FEATURES_CONFIG.punchTntToIgnite) {
+                TntEntity tntEntity = new TntEntity(world, (float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+                world.method_210(tntEntity);
+                world.playSound(tntEntity, "random.fuse", 1.0F, 1.0F);
+            }
         }
     }
 }

@@ -13,6 +13,9 @@
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
+    "tweaks.packetspeedup.Connection$1Mixin",
+    "tweaks.packetspeedup.Connection$4Mixin",
+    "tweaks.packetspeedup.EntityMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.stepassist.PlayerEntityMixin",
@@ -22,13 +25,13 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
-    "tweaks.cloudstoggle.WorldRendererMixin",
-    "tweaks.fogdensity.class555Mixin",
     "options.GameOptionsMixin",
     "options.OptionMixin",
-    "options.VideoOptionsScreenMixin",
-    "tweaks.fov.class555Mixin",
     "options.OptionsScreenMixin",
+    "options.VideoOptionsScreenMixin",
+    "tweaks.cloudstoggle.WorldRendererMixin",
+    "tweaks.fogdensity.class555Mixin",
+    "tweaks.fov.class555Mixin",
     "tweaks.quitbutton.MinecraftAppletMixin"
   ],
   "injectors": {
