@@ -8,7 +8,7 @@ public class ModOptions {
     public static Option fovOption;
 
     // Clouds
-    public static boolean clouds;
+    public static boolean clouds = true;
 
     // FOV
     public static float fov;
