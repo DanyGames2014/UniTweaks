@@ -23,6 +23,9 @@ public class ControlsScreen extends Screen {
     public TextFieldWidget searchTextField;
     public ButtonWidget doneButton;
 
+    // Selected
+    ButtonWidget selectedButton;
+
     public ControlsScreen(Screen parent, GameOptions gameOptions) {
         this.parent = parent;
         this.options = gameOptions;
@@ -32,15 +35,17 @@ public class ControlsScreen extends Screen {
     public void init() {
         this.keybindListWidget = new KeybindListWidget(this, minecraft, options);
 
-        searchTextField = new TextFieldWidget(this, textRenderer, (this.width / 2) - 110, this.height-30, 100, 20, "");
+        searchTextField = new TextFieldWidget(this, textRenderer, (this.width / 2) - 110, this.height - 30, 100, 20, "");
         searchTextField.setMaxLength(32);
 
-        doneButton = new ButtonWidget(1000, (this.width / 2)+10, this.height-30, 100, 20, "Done");
+        doneButton = new ButtonWidget(1000, (this.width / 2) + 10, this.height - 30, 100, 20, "Done");
         this.buttons.add(doneButton);
 
         for (int i = 0; i < options.allKeys.length; i++) {
             KeyBinding item = options.allKeys[i];
-            keybindListWidget.keybinds.put(item, new KeybindListWidget.KeybindEntry(new ButtonWidget(i, -1, -1, 100, 20, Keyboard.getKeyName(item.code)), item));
+            ButtonWidget button = new ButtonWidget(i, -1, -1, 100, 20, Keyboard.getKeyName(item.code));
+            keybindListWidget.keybinds.put(item, new KeybindListWidget.KeybindEntry(button, item));
+            this.buttons.add(button);
         }
     }
 
@@ -48,6 +53,23 @@ public class ControlsScreen extends Screen {
     protected void keyPressed(char character, int keyCode) {
         if (searchTextField.focused) {
             searchTextField.keyPressed(character, keyCode);
+        }
+
+        for (var item : keybindListWidget.keybinds.entrySet()) {
+            if (item.getValue().getKeyButton() == selectedButton) {
+                item.getKey().code = keyCode;
+
+                refreshKeys();
+                options.save();
+            }
+        }
+    }
+
+    public void refreshKeys(){
+        for (int i = 0; i < options.allKeys.length; i++) {
+            KeyBinding item = options.allKeys[i];
+            KeybindListWidget.KeybindEntry a = keybindListWidget.keybinds.get(item);
+            a.getKeyButton().text = Keyboard.getKeyName(item.code);
         }
     }
 
@@ -59,9 +81,16 @@ public class ControlsScreen extends Screen {
 
     @Override
     protected void buttonClicked(ButtonWidget button) {
-        System.out.println(button.id);
-        if(button.id == 1000){
+        refreshKeys();
+
+        if (button.id == 1000) {
             minecraft.setScreen(this.parent);
+        } else {
+//            if (selectedButton != null) {
+//                selectedButton.text = selectedButton.text.substring(2, selectedButton.text.length() - 2);
+//            }
+            selectedButton = button;
+            button.text = "> " + button.text + " <";
         }
     }
 
