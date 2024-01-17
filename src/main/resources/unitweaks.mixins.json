@@ -14,6 +14,7 @@
     "tweaks.boatsdropthemselves.BoatEntityMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
+    "tweaks.fenceplacement.FenceBlockMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
     "tweaks.packetspeedup.Connection$4Mixin",

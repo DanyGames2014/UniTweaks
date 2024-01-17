@@ -15,6 +15,7 @@
 ### Tweaks
 * Sugar Cane can be placed on sand (from Beta 1.8)
 * Boats drop themselves
+* Fences placeable like normal (lifted restrictions on the block below having to be solid or fence)
 
 ### Old Features
 * Disable Dead Bush Generation
