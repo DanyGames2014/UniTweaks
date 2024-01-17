@@ -30,6 +30,8 @@ public class Config {
 
         @ConfigName("Fences placeable like normal")
         public Boolean fencesPlaceableLikeNormal = true;
+        @ConfigName("Fences Connect to Blocks")
+        public Boolean fencesConnectBlocks = true;
     }
 
     public static class BugfixesConfig {
@@ -56,6 +58,10 @@ public class Config {
         @ConfigName("Pig Saddle Drop Fix")
         @Comment("Fixes pigs not dropping saddle on death")
         public Boolean pigSaddleDropFix = true;
+
+        @ConfigName("Fence Bounding Box Fix")
+        @Comment("")
+        public Boolean fenceBoundingBoxFix = true;
     }
 
     public static class OldFeaturesConfig {

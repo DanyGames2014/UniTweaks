@@ -7,6 +7,7 @@
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
+    "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
     "bugfixes.pigdropsaddlefix.PigEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
@@ -27,6 +28,7 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "options.GameOptionsMixin",
     "options.OpenExperimentalControls",
     "options.OptionMixin",
