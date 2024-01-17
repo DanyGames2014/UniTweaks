@@ -1,4 +1,11 @@
 # UniTweaks
+[![wakatime](https://wakatime.com/badge/user/38aa5505-b4f7-4c8d-849e-7c33caecee59/project/018cfcb9-ebf8-4fea-b92d-62b38b8ed951.svg)](https://wakatime.com/badge/user/38aa5505-b4f7-4c8d-849e-7c33caecee59/project/018cfcb9-ebf8-4fea-b92d-62b38b8ed951)
+
+![modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)
+![java17](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/java17_vector.svg)
+![fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg)
+![risugamis-modloader](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/risugamis-modloader_vector.svg)
+
 
 ## Tweaks
 #### **All Tweaks can be toggled unless specified**
