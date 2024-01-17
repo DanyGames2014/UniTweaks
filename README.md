@@ -15,7 +15,9 @@
 ### Tweaks
 * Sugar Cane can be placed on sand (from Beta 1.8)
 * Boats drop themselves
-* Fences placeable like normal (lifted restrictions on the block below having to be solid or fence)
+* Fences placeable like normal - lifted restrictions on the block below having to be solid or fence
+* Fences connect to blocks
+* Bookshelves drop 3 books
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -72,3 +74,4 @@
   * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner
 * Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
 * Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation ***non-configurable***
+* Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape

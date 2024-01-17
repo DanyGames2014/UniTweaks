@@ -13,6 +13,7 @@
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
     "tweaks.boatsdropthemselves.BoatEntityMixin",
+    "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
     "tweaks.fenceplacement.FenceBlockMixin",

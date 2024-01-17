@@ -25,13 +25,18 @@ public class Config {
         @ConfigName("Allow placing sugar cane on sand")
         @Comment("Backported from Beta 1.8")
         public Boolean sugarCaneOnSand = true;
+
         @ConfigName("Boats drop themselves")
         public Boolean boatsDropThemselves = true;
 
         @ConfigName("Fences placeable like normal")
         public Boolean fencesPlaceableLikeNormal = true;
+
         @ConfigName("Fences Connect to Blocks")
         public Boolean fencesConnectBlocks = true;
+
+        @ConfigName("Bookshelves Drop 3 Books")
+        public Boolean bookshelvesDropBooks = true;
     }
 
     public static class BugfixesConfig {
