@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fenceplacement;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.Material;
@@ -17,6 +18,8 @@ public class FenceBlockMixin extends Block {
 
     @Inject(method = "canPlaceAt", at = @At("HEAD"), cancellable = true)
     public void liftPlacementRestrictions(World world, int x, int y, int z, CallbackInfoReturnable<Boolean> cir){
-        cir.setReturnValue(super.canPlaceAt(world, x, y, z));
+        if(UniTweaks.TWEAKS_CONFIG.fencesPlaceableLikeNormal){
+            cir.setReturnValue(super.canPlaceAt(world, x, y, z));
+        }
     }
 }

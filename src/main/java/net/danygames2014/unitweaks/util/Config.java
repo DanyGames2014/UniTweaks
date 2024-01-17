@@ -27,6 +27,9 @@ public class Config {
         public Boolean sugarCaneOnSand = true;
         @ConfigName("Boats drop themselves")
         public Boolean boatsDropThemselves = true;
+
+        @ConfigName("Fences placeable like normal")
+        public Boolean fencesPlaceableLikeNormal = true;
     }
 
     public static class BugfixesConfig {
