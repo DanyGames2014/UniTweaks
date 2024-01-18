@@ -16,6 +16,7 @@
     "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
+    "tweaks.fasterboats.BoatEntityMixin",
     "tweaks.fenceplacement.FenceBlockMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",

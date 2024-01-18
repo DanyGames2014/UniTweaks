@@ -27,7 +27,7 @@ public class Config {
         @ConfigName("Allow placing sugar cane on sand")
         public Boolean sugarCaneOnSand = true;
 
-        @ConfigName("Boats drop themselves")
+        @ConfigName("Boats drop themselves when broken by a player")
         public Boolean boatsDropThemselves = true;
 
         @ConfigName("Fences placeable like normal")

@@ -22,7 +22,7 @@
 
 ### Tweaks
 * Sugar Cane can be placed on sand (from Beta 1.8)
-* Boats drop themselves
+* Boats drop themselves when broken by a player 
 * Fences placeable like normal - lifted restrictions on the block below having to be solid or fence
 * Fences connect to blocks
 * Bookshelves drop 3 books
