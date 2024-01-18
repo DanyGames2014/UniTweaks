@@ -20,6 +20,8 @@
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
     "tweaks.packetspeedup.Connection$4Mixin",
+    "tweaks.pickblockfrominventory.PlayerInventoryMixin",
+    "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.stepassist.PlayerEntityMixin",
@@ -30,6 +32,7 @@
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
+    "bugfixes.pickblockfix.MinecraftMixin",
     "options.GameOptionsMixin",
     "options.OpenExperimentalControls",
     "options.OptionMixin",

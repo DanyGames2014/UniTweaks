@@ -19,11 +19,12 @@ public class Config {
         @ConfigName("Step Assist")
         @Comment("Allows you to step up one block")
         public Boolean stepAssist = true;
+        @ConfigName("Pick Block from Inventory")
+        public Boolean pickBlockFromInventory = true;
     }
 
     public static class TweaksConfig {
         @ConfigName("Allow placing sugar cane on sand")
-        @Comment("Backported from Beta 1.8")
         public Boolean sugarCaneOnSand = true;
 
         @ConfigName("Boats drop themselves")
@@ -37,6 +38,9 @@ public class Config {
 
         @ConfigName("Bookshelves Drop 3 Books")
         public Boolean bookshelvesDropBooks = true;
+
+        @ConfigName("Pressure Plates on Fences")
+        public Boolean pressurePlatesOnFences = true;
     }
 
     public static class BugfixesConfig {
@@ -65,8 +69,12 @@ public class Config {
         public Boolean pigSaddleDropFix = true;
 
         @ConfigName("Fence Bounding Box Fix")
-        @Comment("")
+        @Comment("Fixes fence bounding box not reflecting the fence state")
         public Boolean fenceBoundingBoxFix = true;
+
+        @ConfigName("Pick Block Fix")
+        @Comment("Fixes some blocks not being pickable using Pick Block")
+        public Boolean pickBlockFix = true;
     }
 
     public static class OldFeaturesConfig {
