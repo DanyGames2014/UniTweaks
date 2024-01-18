@@ -22,20 +22,6 @@ public class KeybindListWidget extends EntryListWidget {
     private final ControlsScreen parent;
     private final TranslationStorage translations;
 
-    public static class KeybindEntry {
-        private final ButtonWidget keyButton;
-        public KeyBinding keyBinding;
-
-        public KeybindEntry(ButtonWidget keyButton, KeyBinding keyBinding) {
-            this.keyButton = keyButton;
-            this.keyBinding = keyBinding;
-        }
-
-        public ButtonWidget getKeyButton() {
-            return keyButton;
-        }
-    }
-
     public KeybindListWidget(ControlsScreen parent, Minecraft minecraft, GameOptions options) {
         super(minecraft, parent.width, parent.height, 40, parent.height - 40, 20);
         this.minecraft = minecraft;
@@ -102,5 +88,19 @@ public class KeybindListWidget extends EntryListWidget {
         keyButton.x = x + 100;
         keyButton.y = y;
         keyButton.render(minecraft, mouseX, mouseY);
+    }
+
+    public static class KeybindEntry {
+        private final ButtonWidget keyButton;
+        public KeyBinding keyBinding;
+
+        public KeybindEntry(ButtonWidget keyButton, KeyBinding keyBinding) {
+            this.keyButton = keyButton;
+            this.keyBinding = keyBinding;
+        }
+
+        public ButtonWidget getKeyButton() {
+            return keyButton;
+        }
     }
 }

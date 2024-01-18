@@ -49,6 +49,14 @@ public class ControlsScreen extends Screen {
         }
     }
 
+    public void refreshKeys(){
+        for (int i = 0; i < options.allKeys.length; i++) {
+            KeyBinding item = options.allKeys[i];
+            KeybindListWidget.KeybindEntry a = keybindListWidget.keybinds.get(item);
+            a.getKeyButton().text = Keyboard.getKeyName(item.code);
+        }
+    }
+
     @Override
     protected void keyPressed(char character, int keyCode) {
         if (searchTextField.focused) {
@@ -62,14 +70,6 @@ public class ControlsScreen extends Screen {
                 refreshKeys();
                 options.save();
             }
-        }
-    }
-
-    public void refreshKeys(){
-        for (int i = 0; i < options.allKeys.length; i++) {
-            KeyBinding item = options.allKeys[i];
-            KeybindListWidget.KeybindEntry a = keybindListWidget.keybinds.get(item);
-            a.getKeyButton().text = Keyboard.getKeyName(item.code);
         }
     }
 
