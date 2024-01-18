@@ -105,7 +105,7 @@ public abstract class GameOptionsMixin {
             ModOptions.fogDensity = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("fog_density")) {
+        if (stringArray[0].equals("clouds")) {
             ModOptions.clouds = stringArray[1].equals("true");
         }
     }
