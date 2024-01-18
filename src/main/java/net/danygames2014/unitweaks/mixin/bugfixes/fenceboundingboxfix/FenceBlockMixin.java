@@ -29,14 +29,14 @@ public class FenceBlockMixin extends Block {
         boolean connectNegX;
         boolean connectPosZ;
         boolean connectNegZ;
+        int fenceId = Block.FENCE.id;
 
         if(UniTweaks.TWEAKS_CONFIG.fencesConnectBlocks){
-            connectPosX = world.method_1779(x + 1, y, z).method_905();
-            connectNegX = world.method_1779(x - 1, y, z).method_905();
-            connectPosZ = world.method_1779(x, y, z + 1).method_905();
-            connectNegZ = world.method_1779(x, y, z - 1).method_905();
+            connectPosX = world.method_1780(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId;
+            connectNegX = world.method_1780(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId;
+            connectNegZ = world.method_1780(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId;
+            connectPosZ = world.method_1780(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId;
         }else{
-            int fenceId = Block.FENCE.id;
             connectPosX = world.getBlockId(x + 1, y, z) == fenceId;
             connectNegX = world.getBlockId(x - 1, y, z) == fenceId;
             connectPosZ = world.getBlockId(x, y, z + 1) == fenceId;
