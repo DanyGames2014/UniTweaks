@@ -1,6 +1,8 @@
 package net.danygames2014.unitweaks.mixin.tweaks.pickblockfrominventory;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -23,6 +25,7 @@ public class PlayerInventoryMixin {
     @Shadow
     public int selectedSlot;
 
+    @Environment(EnvType.CLIENT)
     @Inject(method = "method_691", at = @At("HEAD"), cancellable = true)
     public void setSelectedItem(int itemId, boolean bl, CallbackInfo ci) {
         if (UniTweaks.GAMEPLAY_CONFIG.pickBlockFromInventory) {
@@ -43,12 +46,9 @@ public class PlayerInventoryMixin {
                 return;
             }
 
-            if (slotWithItemIndex < 9) {
-                // The item is in hotbar, select the slot
+            if (slotWithItemIndex < 9) { // The item is in hotbar, select the slot
                 selectedSlot = slotWithItemIndex;
-            } else {
-                // Item is not in in hotbar
-
+            } else { // Item is not in in hotbar
                 // Find a hotbar slot to put the item into
                 if (player.inventory.getSelectedItem() == null) {
                     // Selected hotbar slot is empty, put it there
@@ -58,16 +58,19 @@ public class PlayerInventoryMixin {
                     hotbarSlotIndex = getEmptyHotbarSlot();
                 }
 
-                if (hotbarSlotIndex != -1) {
-                    // hotbarSlot isn't -1, therefore a free hotbar slot has been found
-                    selectedSlot = hotbarSlotIndex;
-                    main[hotbarSlotIndex] = main[slotWithItemIndex];
-                    main[slotWithItemIndex] = null;
-                } else {
-                    // hotbarSlot = -1 means that no hotbar slot is free
-                    ItemStack tempItem = player.getHand();
-                    main[selectedSlot] = main[slotWithItemIndex];
-                    main[slotWithItemIndex] = tempItem;
+                // Handle putting the item in hand
+                if (!player.world.isRemote) { // SINGLEPLAYER
+                    if (hotbarSlotIndex != -1) { // hotbarSlot isn't -1, therefore a free hotbar slot has been found
+                        selectedSlot = hotbarSlotIndex;
+                        main[hotbarSlotIndex] = main[slotWithItemIndex];
+                        main[slotWithItemIndex] = null;
+                    } else { // hotbarSlot = -1 means that no hotbar slot is free
+                        ItemStack tempItem = player.getHand();
+                        main[selectedSlot] = main[slotWithItemIndex];
+                        main[slotWithItemIndex] = tempItem;
+                    }
+                } else { // MULTIPLAYER
+
                 }
             }
         }

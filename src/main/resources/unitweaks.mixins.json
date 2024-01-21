@@ -31,6 +31,7 @@
   "server": [
   ],
   "client": [
+    "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "bugfixes.bitdepthfix.MinecraftMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
