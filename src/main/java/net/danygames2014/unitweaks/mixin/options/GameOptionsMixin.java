@@ -30,6 +30,10 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.fogDensityOption) {
             ModOptions.fogDensity = value;
         }
+
+        if (option == ModOptions.cloudHeightOption) {
+            ModOptions.cloudHeight = value;
+        }
     }
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
@@ -48,6 +52,10 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.fogDensityOption) {
             cir.setReturnValue(ModOptions.fogDensity);
+        }
+
+        if (option == ModOptions.cloudHeightOption) {
+            cir.setReturnValue(ModOptions.cloudHeight);
         }
     }
 
@@ -87,7 +95,13 @@ public abstract class GameOptionsMixin {
             }
         }
 
-        if (option == ModOptions.cloudsOption){
+        if (option == ModOptions.cloudHeightOption){
+            float value = ModOptions.cloudHeight;
+            String optionName = "Cloud Height : " + ModOptions.getCloudHeight();
+            cir.setReturnValue(optionName);
+        }
+
+        if (option == ModOptions.cloudsOption) {
             String optionName = translations.get("options.unitweaks:clouds") + ": " + (ModOptions.clouds ? translations.get("options.on") : translations.get("options.off"));
             cir.setReturnValue(optionName);
         }
@@ -108,6 +122,10 @@ public abstract class GameOptionsMixin {
         if (stringArray[0].equals("clouds")) {
             ModOptions.clouds = stringArray[1].equals("true");
         }
+
+        if (stringArray[0].equals("cloud_height")) {
+            ModOptions.cloudHeight = this.parseFloat(stringArray[1]);
+        }
     }
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -115,5 +133,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("fov:" + ModOptions.fov);
         printWriter.println("fog_density:" + ModOptions.fogDensity);
         printWriter.println("clouds:" + ModOptions.clouds);
+        printWriter.println("cloud_height:" + ModOptions.cloudHeight);
     }
 }

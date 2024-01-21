@@ -43,6 +43,10 @@ public abstract class OptionMixin {
         ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal()+2, "options.clouds", false, true);
         options.add(CLOUDS);
 
+        Option CLOUD_HEIGHT;
+        ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal()+3, "options.cloud_height", true, false);
+        options.add(CLOUD_HEIGHT);
+
         field_1113 = options.toArray(new Option[0]);
     }
 }

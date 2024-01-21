@@ -6,18 +6,26 @@ public class ModOptions {
     public static Option fogDensityOption;
     public static Option cloudsOption;
     public static Option fovOption;
+    public static Option cloudHeightOption;
 
     // Clouds
     public static boolean clouds = true;
+    public static float cloudHeight;
+
+    public static float getCloudHeight() {
+        return Math.round(108 + cloudHeight * 148);
+    }
 
     // FOV
     public static float fov;
+
     public static int getFovInDegrees() {
         return Math.round(70.0f + fov * 40.0f);
     }
 
     // Fog Density
     public static float fogDensity = 0.5F;
+
     public static float getFogMultiplier() {
         if (fogDensity == 0F) {
             return 100F;
