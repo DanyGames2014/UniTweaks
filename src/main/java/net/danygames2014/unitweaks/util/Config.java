@@ -3,6 +3,7 @@ package net.danygames2014.unitweaks.util;
 import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
 import net.glasslauncher.mods.api.gcapi.api.ConfigName;
+import net.glasslauncher.mods.api.gcapi.api.MultiplayerSynced;
 import org.checkerframework.checker.units.qual.C;
 
 public class Config {
@@ -24,23 +25,33 @@ public class Config {
     }
 
     public static class TweaksConfig {
+        @MultiplayerSynced
         @ConfigName("Allow placing sugar cane on sand")
         public Boolean sugarCaneOnSand = true;
 
+        @MultiplayerSynced
         @ConfigName("Boats drop themselves when broken by a player")
         public Boolean boatsDropThemselves = true;
 
+        @MultiplayerSynced
         @ConfigName("Fences placeable like normal")
         public Boolean fencesPlaceableLikeNormal = true;
 
+        @MultiplayerSynced
         @ConfigName("Fences Connect to Blocks")
         public Boolean fencesConnectBlocks = true;
 
+        @MultiplayerSynced
         @ConfigName("Bookshelves Drop 3 Books")
         public Boolean bookshelvesDropBooks = true;
 
+        @MultiplayerSynced
         @ConfigName("Pressure Plates on Fences")
         public Boolean pressurePlatesOnFences = true;
+
+        @MultiplayerSynced
+        @ConfigName("Better Boat handling (rn just quicker)")
+        public Boolean betterBoats = true;
     }
 
     public static class BugfixesConfig {
@@ -48,26 +59,32 @@ public class Config {
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
         public Boolean enableSlimeSplitFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Boat Dismount Fix")
         @Comment("Fixes sometimes falling through the boat when dismounting it")
         public Boolean boatDismountFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Stairs Drop Fix")
         @Comment("Stairs will drop themselves instead of the base block")
         public Boolean stairsDropFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Block Effectiveness Fix")
         @Comment("Fixes axes and pickaxes not being effective on various blocks")
         public Boolean blockEffectivenessFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Pig Saddle Drop Fix")
         @Comment("Fixes pigs not dropping saddle on death")
         public Boolean pigSaddleDropFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Fence Bounding Box Fix")
         @Comment("Fixes fence bounding box not reflecting the fence state")
         public Boolean fenceBoundingBoxFix = true;
@@ -78,15 +95,19 @@ public class Config {
     }
 
     public static class OldFeaturesConfig {
+        @MultiplayerSynced
         @ConfigName("Disable Dead Bush Generation")
         public Boolean disableDeadBushGeneration = true;
 
+        @MultiplayerSynced
         @ConfigName("Disable Tall Grass Generation")
         public Boolean disableTallGrassGeneration = true;
 
+        @MultiplayerSynced
         @ConfigName("Punch Sheep for Wool")
         public Boolean punchSheepForWool = true;
 
+        @MultiplayerSynced
         @ConfigName("Punch TNT to Ignite")
         public Boolean punchTntToIgnite = true;
     }
