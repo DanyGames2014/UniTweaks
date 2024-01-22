@@ -161,13 +161,8 @@ public class ControlsScreen extends Screen {
         refreshKeyLabels();
 
         searchTextField.mouseClicked(mouseX, mouseY, button);
-
-        // Might make this into a mixin later for any text field
-        if(searchTextField.enabled && mouseX >= searchX && mouseX < searchX + searchWidth && mouseY >= searchY && mouseY < searchY + searchHeight){
-            if(button == 1){
-                searchTextField.setText("");
-                filterKeybinds();
-            }
+        if(button == 1){
+            filterKeybinds();
         }
 
         mouseClickedKeybind(mouseX, mouseY, button);
