@@ -21,7 +21,9 @@
       "net.danygames2014.unitweaks.UniTweaks",
       "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",
       "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes"
+      "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes",
+      "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipes",
+      "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes"
     ],
     "stationapi:event_bus_client": [
     ],

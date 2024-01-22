@@ -117,6 +117,12 @@ public class Config {
         @Comment("Acts as a master switch for all recipe tweaks")
         public Boolean enableRecipes = true;
 
+        @ConfigName("Make more wooden items burnable")
+        public Boolean furnaceFuels = true;
+
+        @ConfigName("Allow tool repair in crafting grid")
+        public Boolean toolRepair = true;
+
         @ConfigCategory("Modern")
         @Comment("Options here require restart to take effect")
         public ModernRecipesConfig modern = new ModernRecipesConfig();
@@ -128,6 +134,7 @@ public class Config {
         @ConfigCategory("Obtainable")
         @Comment("Options here require restart to take effect")
         public ObtainableRecipesConfig obtainable = new ObtainableRecipesConfig();
+
 
         public static class ModernRecipesConfig {
             @ConfigName("Shapeless Flint and Steel")
