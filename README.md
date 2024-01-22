@@ -13,6 +13,7 @@
 * Show Quit Button on the Main Menu
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
+* Improved Controls Menu
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and receiving a response) ***non-configurable***
 
 ### Gameplay
@@ -27,6 +28,7 @@
 * Fences connect to blocks
 * Bookshelves drop 3 books
 * Allow placing pressure plates on fences
+* Better boat handling
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -35,6 +37,8 @@
 * Punch Sheep for wool
 
 ### Recipes
+* Tool Repair recipes
+* More Furnace Fuels
 <details>
     <summary>Modern Recipes</summary>
 
@@ -85,3 +89,4 @@
 * Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation ***non-configurable***
 * Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape
 * Pick Block Fix - Fixes some blocks not being pickable using Pick Block
+* Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
