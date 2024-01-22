@@ -11,6 +11,7 @@
     "bugfixes.mpentityphysicsfix.EntityMixin",
     "bugfixes.pigdropsaddlefix.PigEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
+    "bugfixes.springpropagationfix.FlowingLiquidBlock",
     "bugfixes.stairsdropfix.StairsBlockMixin",
     "tweaks.boatsdropthemselves.BoatEntityMixin",
     "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
@@ -31,7 +32,6 @@
   "server": [
   ],
   "client": [
-    "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "bugfixes.bitdepthfix.MinecraftMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
@@ -43,6 +43,7 @@
     "tweaks.cloudstoggle.WorldRendererMixin",
     "tweaks.fogdensity.class555Mixin",
     "tweaks.fov.class555Mixin",
+    "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin"
   ],
   "injectors": {

@@ -92,6 +92,10 @@ public class Config {
         @ConfigName("Pick Block Fix")
         @Comment("Fixes some blocks not being pickable using Pick Block")
         public Boolean pickBlockFix = true;
+
+        @ConfigName("Spring propagation fix")
+        @Comment("Fixes water source blocks not forming when a block below is water")
+        public Boolean springPropagationFix = true;
     }
 
     public static class OldFeaturesConfig {
