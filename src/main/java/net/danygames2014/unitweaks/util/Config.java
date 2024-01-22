@@ -8,9 +8,12 @@ import org.checkerframework.checker.units.qual.C;
 
 public class Config {
     public static class GeneralConfig {
-        @ConfigName(value = "Show Quit Button")
+        @ConfigName("Show Quit Button")
         @Comment("Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
+
+        @ConfigName("Improved Controls Menu")
+        public Boolean improvedControlsMenu = true;
     }
 
     public static class GameplayConfig {

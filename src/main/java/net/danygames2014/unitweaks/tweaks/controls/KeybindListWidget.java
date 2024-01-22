@@ -1,56 +1,30 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
 import net.danygames2014.unitweaks.mixin.tweaks.improvedcontrols.EntryListWidgetAccessor;
+import net.danygames2014.unitweaks.tweaks.controls.ControlsScreen.KeybindEntry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.EntryListWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.resource.language.TranslationStorage;
-import org.lwjgl.input.Mouse;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Random;
 
 public class KeybindListWidget extends EntryListWidget {
     private final Minecraft minecraft;
-    private final GameOptions options;
     private final ControlsScreen parent;
-    private final TranslationStorage translations;
 
     public KeybindListWidget(ControlsScreen parent, Minecraft minecraft, GameOptions options) {
         super(minecraft, parent.width, parent.height, 40, parent.height - 40, 20);
         this.minecraft = minecraft;
-        this.options = options;
         this.parent = parent;
-        this.translations = TranslationStorage.getInstance();
     }
-
-    public final HashMap<KeyBinding, KeybindEntry> keybinds = new HashMap<>();
-    public ArrayList<KeybindEntry> filteredKeybinds = new ArrayList<>();
 
     @Override
     protected int getEntryCount() {
-        return filteredKeybinds.size();
+        return parent.filteredKeybinds.size();
     }
-
-    public void filter() {
-        filteredKeybinds.clear();
-
-        String searchTerm = parent.searchTextField.getText().toLowerCase();
-
-        for (var item : keybinds.entrySet()) {
-            if(translations.get(item.getKey().translationKey).toLowerCase().contains(searchTerm)){
-                filteredKeybinds.add(item.getValue());
-            }
-        }
-    }
-
 
     /**
      * @author calmilamsy
@@ -82,35 +56,20 @@ public class KeybindListWidget extends EntryListWidget {
         this.mouseX = mouseX;
         this.mouseY = mouseY;
 
-        filter();
+//        parent.filter();
 
         super.render(mouseX, mouseY, delta);
     }
 
     @Override
     protected void renderEntry(int index, int x, int y, int l, Tessellator tesselator) {
-        KeyBinding keyBinding = filteredKeybinds.get(index).keyBinding;
-        KeybindEntry keybindEntry = filteredKeybinds.get(index);
+        KeybindEntry keybindEntry = parent.filteredKeybinds.get(index);
 
-        minecraft.textRenderer.drawWithShadow(translations.get(filteredKeybinds.get(index).keyBinding.translationKey), x, y + 5, Color.white.getRGB());
+        minecraft.textRenderer.drawWithShadow(parent.translations.get(parent.filteredKeybinds.get(index).keyBinding.translationKey), x, y + 5, Color.white.getRGB());
 
         ButtonWidget keyButton = keybindEntry.keyButton;
         keyButton.x = x + 100;
         keyButton.y = y;
         keyButton.render(minecraft, mouseX, mouseY);
-    }
-
-    public static class KeybindEntry {
-        private final ButtonWidget keyButton;
-        public KeyBinding keyBinding;
-
-        public KeybindEntry(ButtonWidget keyButton, KeyBinding keyBinding) {
-            this.keyButton = keyButton;
-            this.keyBinding = keyBinding;
-        }
-
-        public ButtonWidget getKeyButton() {
-            return keyButton;
-        }
     }
 }
