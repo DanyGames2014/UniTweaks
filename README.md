@@ -15,6 +15,7 @@
 * Fog Density Slider
 * Improved Controls Menu
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and receiving a response) ***non-configurable***
+* Text field clearing with Right Mouse Button
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
@@ -22,6 +23,7 @@
 * Pick Block from Inventory -- Allow picking blocks from inventory
 
 ### Tweaks
+* Fast Leaf Decay
 * Sugar Cane can be placed on sand (from Beta 1.8)
 * Boats drop themselves when broken by a player 
 * Fences placeable like normal - lifted restrictions on the block below having to be solid or fence

@@ -55,6 +55,20 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Better Boat handling (rn just quicker)")
         public Boolean betterBoats = true;
+
+        @ConfigCategory("Fast Leaf Decay")
+        public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
+
+        public static class FastLeafDecayConfig {
+            @ConfigName("Enable Fast Leaf Decay")
+            public Boolean enableFastLeafDecay = true;
+
+            @ConfigName("Minimum Decay Time")
+            public Integer minimumDecayTime = 10;
+
+            @ConfigName("Maximum Decay Time")
+            public Integer maximumDecayTime = 25;
+        }
     }
 
     public static class BugfixesConfig {
