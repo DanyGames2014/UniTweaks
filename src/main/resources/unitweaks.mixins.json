@@ -31,6 +31,7 @@
     "tweaks.sugarcaneonsand.SugarCaneBlockMixin"
   ],
   "server": [
+    "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
@@ -47,7 +48,8 @@
     "tweaks.fov.class555Mixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
-    "tweaks.quitbutton.MinecraftAppletMixin"
+    "tweaks.quitbutton.MinecraftAppletMixin",
+    "tweaks.shiftplacing.InteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -20,11 +20,16 @@ public class Config {
         @ConfigName("No Food Wastage")
         @Comment("Prevents you from eating when your health is full")
         public Boolean noFoodWastage = true;
+        @MultiplayerSynced
         @ConfigName("Step Assist")
         @Comment("Allows you to step up one block")
         public Boolean stepAssist = true;
         @ConfigName("Pick Block from Inventory")
         public Boolean pickBlockFromInventory = true;
+        @MultiplayerSynced
+        @ConfigName("Shift Placing")
+        @Comment("Ignores block actions allowing you to place blocks when crouching")
+        public Boolean shiftPlacing = true;
     }
 
     public static class TweaksConfig {
