@@ -15,14 +15,4 @@ public class WorldRendererMixin {
             ci.cancel();
         }
     }
-
-    @Redirect(method = "method_1552", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float changeCloudHeight(Dimension dimension){
-        return ModOptions.getCloudHeight();
-    }
-
-    @Redirect(method = "method_1556", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float ChangeFancyCloudHeight(Dimension dimension){
-        return ModOptions.getCloudHeight();
-    }
 }

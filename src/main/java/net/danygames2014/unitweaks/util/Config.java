@@ -61,6 +61,9 @@ public class Config {
         @ConfigName("Better Boat handling (rn just quicker)")
         public Boolean betterBoats = true;
 
+        @ConfigName("Harvestable Cobwebs")
+        public Boolean harvestableCobwebs = true;
+
         @ConfigCategory("Fast Leaf Decay")
         public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
 
