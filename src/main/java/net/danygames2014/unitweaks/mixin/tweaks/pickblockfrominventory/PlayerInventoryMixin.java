@@ -6,6 +6,8 @@ import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
+import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -15,6 +17,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerInventory.class)
 public class PlayerInventoryMixin {
+
+    @Unique
+    private static final int[] slotIndexToClickSlotIndex = new int[]{
+            36, 37, 38, 39, 40, 41, 42, 43, 44, // Hotbar / 4th row
+            27, 28, 29, 30, 31, 32, 33, 34, 35, // 3rd row
+            18, 19, 20, 21, 22, 23, 24, 25, 26, // 2nd row
+             9, 10, 11, 12, 13, 14, 15, 16, 17 // 1st row
+    };
+
+    @Unique
+    private static short actionTypeCounter = 0;
 
     @Shadow
     public PlayerEntity player;
@@ -70,10 +83,24 @@ public class PlayerInventoryMixin {
                         main[slotWithItemIndex] = tempItem;
                     }
                 } else { // MULTIPLAYER
+                    if (hotbarSlotIndex != -1) { // free slot found
+                        selectedSlot = hotbarSlotIndex;
 
+                        // WELL, there was an attempt, just realized no scren is open an di kinda want ot go to sleep
+//                        sendClickPacket(slotWithItemIndex, main[slotWithItemIndex]);
+//                        sendClickPacket(hotbarSlotIndex, main[slotWithItemIndex]);
+                    } else { // no free slot
+
+                    }
                 }
             }
         }
+    }
+
+    @Unique
+    public void sendClickPacket(int slot, ItemStack stack){
+        ClickSlotC2SPacket packet = new ClickSlotC2SPacket(0, slotIndexToClickSlotIndex[slot], 0, false, stack, actionTypeCounter);
+        actionTypeCounter++;
     }
 
     @Unique
