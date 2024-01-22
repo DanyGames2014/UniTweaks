@@ -8,6 +8,7 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class ControlsScreen extends Screen {
         }
     }
 
-    public void refreshKeys(){
+    public void refreshKeys() {
         for (int i = 0; i < options.allKeys.length; i++) {
             KeyBinding item = options.allKeys[i];
             KeybindListWidget.KeybindEntry a = keybindListWidget.keybinds.get(item);
@@ -65,32 +66,62 @@ public class ControlsScreen extends Screen {
 
         for (var item : keybindListWidget.keybinds.entrySet()) {
             if (item.getValue().getKeyButton() == selectedButton) {
-                item.getKey().code = keyCode;
+                if (keyCode == Keyboard.KEY_ESCAPE) {
+                    item.getKey().code = Keyboard.KEY_NONE;
+                } else {
+                    item.getKey().code = keyCode;
+                }
 
+                selectedButton = null;
                 refreshKeys();
                 options.save();
+                return;
             }
         }
     }
 
+    /**
+     * @author calmilamsy
+     */
+    @Override
+    public void onMouseEvent() {
+        super.onMouseEvent();
+        float dWheel = Mouse.getDWheel();
+        if (dWheel != 0) {
+            keybindListWidget.scroll(-(dWheel / 10));
+        }
+    }
+
+    boolean outOfKeybindArea = false;
+
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int button) {
+//        System.out.println("X : " + mouseX + " | Y : " + mouseY + " | Button : " + button);
+
+        refreshKeys();
+        selectedButton = null;
+
+        if (mouseY <= 40 || mouseY >= this.height - 40) {
+            outOfKeybindArea = true;
+        }
         super.mouseClicked(mouseX, mouseY, button);
         searchTextField.mouseClicked(mouseX, mouseY, button);
     }
 
     @Override
     protected void buttonClicked(ButtonWidget button) {
-        refreshKeys();
+//        System.out.println("OOB : " + outOfKeybindArea + " | ID : " + button.id);
 
         if (button.id == 1000) {
             minecraft.setScreen(this.parent);
         } else {
-//            if (selectedButton != null) {
-//                selectedButton.text = selectedButton.text.substring(2, selectedButton.text.length() - 2);
-//            }
-            selectedButton = button;
-            button.text = "> " + button.text + " <";
+            if (outOfKeybindArea) {
+//                System.out.println("Action Blocked!");
+                outOfKeybindArea = false;
+            } else {
+                selectedButton = button;
+                button.text = "> " + button.text + " <";
+            }
         }
     }
 

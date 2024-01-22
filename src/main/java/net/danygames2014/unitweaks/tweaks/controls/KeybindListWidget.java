@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
+import net.danygames2014.unitweaks.mixin.tweaks.improvedcontrols.EntryListWidgetAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -48,6 +49,15 @@ public class KeybindListWidget extends EntryListWidget {
                 filteredKeybinds.add(item.getValue());
             }
         }
+    }
+
+
+    /**
+     * @author calmilamsy
+     */
+    public void scroll(float value) {
+        EntryListWidgetAccessor baseAccessor = ((EntryListWidgetAccessor) this);
+        baseAccessor.setScrollAmount(baseAccessor.getScrollAmount() + value);
     }
 
     @Override
