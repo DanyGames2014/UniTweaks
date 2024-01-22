@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(net.minecraft.block.FlowingLiquidBlock.class)
-public class FlowingLiquidBlock {
+public class FlowingLiquidBlockMixin {
     @Redirect(
             method = "onTick",
             at = @At(

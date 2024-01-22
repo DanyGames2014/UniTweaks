@@ -118,6 +118,10 @@ public class Config {
         @ConfigName("Spring propagation fix")
         @Comment("Fixes water source blocks not forming when a block below is water")
         public Boolean springPropagationFix = true;
+
+        @ConfigName("Lava Without Source Fix")
+        @Comment("Fixes lava not dissapearing without a source block")
+        public Boolean lavaWithoutSourceFix = true;
     }
 
     public static class OldFeaturesConfig {
