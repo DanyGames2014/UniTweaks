@@ -64,6 +64,10 @@ public class Config {
         @ConfigName("Harvestable Cobwebs")
         public Boolean harvestableCobwebs = true;
 
+        @ConfigName("Expand Chicken Hitbox")
+        @Comment("Expands chicken hitbox to it's modern size")
+        public Boolean expandChickenHitbox = true;
+
         @ConfigCategory("Fast Leaf Decay")
         public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
 

@@ -14,6 +14,7 @@
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
+    "tweaks.biggerchickenhitbox.ChickenEntityMixin",
     "tweaks.boatsdropthemselves.BoatEntityMixin",
     "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
