@@ -35,7 +35,7 @@ public class ToolRepairRecipes {
                 for (var item : Item.ITEMS) {
                     // If the item is a tool, add a shapeless recipe to it
                     if (item instanceof ToolItem || item instanceof SwordItem || item instanceof ArmorItem || item instanceof FishingRodItem || item instanceof ShearsItem || item instanceof FlintAndSteel) {
-                        System.out.println(item.getTranslatedName());
+//                        System.out.println(item.getTranslatedName());
                         CraftingRegistry.addShapelessRecipe(
                                 new ItemStack(item.id, 1, item.getMaxDamage()),
                                 new ItemStack(item.id, 1, -1),
