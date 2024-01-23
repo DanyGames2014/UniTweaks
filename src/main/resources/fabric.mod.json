@@ -48,11 +48,14 @@
   },
 
   "conflicts": {
-    "annoyancefix": "*",
     "finalbeta": "*",
     "smallcraftingtweaks": "*",
-    "mostlymodernrecipes": "*",
     "nowobtainablerecipes": "*",
     "betatweaks": "*"
+  },
+
+  "breaks": {
+    "annoyancefix": "*",
+    "mostlymodernrecipes": "*"
   }
 }
