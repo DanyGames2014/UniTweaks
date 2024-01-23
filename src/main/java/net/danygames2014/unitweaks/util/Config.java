@@ -3,6 +3,7 @@ package net.danygames2014.unitweaks.util;
 import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
 import net.glasslauncher.mods.api.gcapi.api.ConfigName;
+import net.glasslauncher.mods.api.gcapi.api.MaxLength;
 import net.glasslauncher.mods.api.gcapi.api.MultiplayerSynced;
 
 public class Config {
@@ -31,6 +32,48 @@ public class Config {
         @ConfigName("Shift Placing")
         @Comment("Ignores block actions allowing you to place blocks when crouching")
         public Boolean shiftPlacing = true;
+    }
+
+    public static class FeaturesConfig {
+        @ConfigCategory("Fast Leaf Decay")
+        public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
+
+        @ConfigCategory("Better Burning")
+        public BetterBurningConfig betterBurning = new BetterBurningConfig();
+
+        public static class FastLeafDecayConfig {
+            @MultiplayerSynced
+            @ConfigName("Enable Fast Leaf Decay")
+            public Boolean enableFastLeafDecay = true;
+
+            @ConfigName("Minimum Decay Time")
+            public Integer minimumDecayTime = 10;
+
+            @ConfigName("Maximum Decay Time")
+            public Integer maximumDecayTime = 25;
+        }
+
+        public static class BetterBurningConfig {
+            @MultiplayerSynced
+            @ConfigName("Enable Better Burning")
+            @Comment("Master switch for all features here")
+            public Boolean enableBetterBurning = true;
+
+            @ConfigName("Skeletons on Fire shoot flaming arrows")
+            public Boolean skeletonsBurningArrows = true;
+
+            @ConfigName("Skeletons on Fire flaming arrow chance (0-100)")
+            public Integer skeletonBurningArrowChance = 70;
+
+            @ConfigName("Burning arrows set entities on fire")
+            public Boolean burningArrowsSetOnFire = true;
+
+            @ConfigName("Burning entities spread fire to others")
+            public Boolean burningEntitySpread = true;
+
+            @ConfigName("Burning entities spread fire chance (0-100)")
+            public Integer burningEntitySpreadChance = 30;
+        }
     }
 
     public static class TweaksConfig {
@@ -74,21 +117,6 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Don't Damage Flint And Steel on failed ignite")
         public Boolean modernFlintAndSteel = true;
-
-        @ConfigCategory("Fast Leaf Decay")
-        public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
-
-        public static class FastLeafDecayConfig {
-            @MultiplayerSynced
-            @ConfigName("Enable Fast Leaf Decay")
-            public Boolean enableFastLeafDecay = true;
-
-            @ConfigName("Minimum Decay Time")
-            public Integer minimumDecayTime = 10;
-
-            @ConfigName("Maximum Decay Time")
-            public Integer maximumDecayTime = 25;
-        }
     }
 
     public static class BugfixesConfig {
