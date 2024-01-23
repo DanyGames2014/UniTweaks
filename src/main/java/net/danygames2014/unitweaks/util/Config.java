@@ -109,7 +109,7 @@ public class Config {
 
         @MultiplayerSynced
         @ConfigName("Better Boat handling (rn just quicker)")
-        public Boolean betterBoats = true;
+        public Boolean betterBoats = false;
 
         @MultiplayerSynced
         @ConfigName("Harvestable Cobwebs")
@@ -122,14 +122,14 @@ public class Config {
 
         @MultiplayerSynced
         @ConfigName("Don't Damage Flint And Steel on failed ignite")
-        public Boolean modernFlintAndSteel = true;
+        public Boolean modernFlintAndSteel = false;
 
         @MultiplayerSynced
         @ConfigName("Disable sleeping but retain respawning")
-        public Boolean disableSleeping = true;
+        public Boolean disableSleeping = false;
 
         @ConfigName("Disable spawning mobs when you sleep")
-        public Boolean disableSleepSpawning = true;
+        public Boolean disableSleepSpawning = false;
     }
 
     public static class BugfixesConfig {
@@ -185,19 +185,19 @@ public class Config {
     public static class OldFeaturesConfig {
         @MultiplayerSynced
         @ConfigName("Disable Dead Bush Generation")
-        public Boolean disableDeadBushGeneration = true;
+        public Boolean disableDeadBushGeneration = false;
 
         @MultiplayerSynced
         @ConfigName("Disable Tall Grass Generation")
-        public Boolean disableTallGrassGeneration = true;
+        public Boolean disableTallGrassGeneration = false;
 
         @MultiplayerSynced
         @ConfigName("Punch Sheep for Wool")
-        public Boolean punchSheepForWool = true;
+        public Boolean punchSheepForWool = false;
 
         @MultiplayerSynced
         @ConfigName("Punch TNT to Ignite")
-        public Boolean punchTntToIgnite = true;
+        public Boolean punchTntToIgnite = false;
     }
 
     public static class RecipesConfig {
@@ -236,19 +236,19 @@ public class Config {
             @ConfigName("Shapeless Sticky Pistons")
             public Boolean shapelessStickyPistons = true;
             @ConfigName("Books Require Leather")
-            public Boolean booksRequireLeather = true;
+            public Boolean booksRequireLeather = false;
             @ConfigName("Wool Redyeing")
             public Boolean woolRedyeing = true;
             @ConfigName("6 Slabs per Craft")
-            public Boolean sixSlabsPerCraft = true;
+            public Boolean sixSlabsPerCraft = false;
             @ConfigName("Button Requires 1 Stone")
             public Boolean oneStonePerButton = true;
             @ConfigName("Modern Fence Recipe (4 Planks,2 Sticks)")
-            public Boolean modernFenceRecipe = true;
+            public Boolean modernFenceRecipe = false;
             @ConfigName("Snow Layer Recipe")
             public Boolean snowLayerRecipe = true;
             @ConfigName("3 Laders per Craft")
-            public Boolean threeLadersPerCraft = true;
+            public Boolean threeLadersPerCraft = false;
         }
 
         public static class TweakedRecipesConfig {
@@ -260,21 +260,21 @@ public class Config {
 
         public static class ObtainableRecipesConfig {
             @ConfigName("Craftable Grass Blocks")
-            public Boolean craftableGrassBlocks = true;
+            public Boolean craftableGrassBlocks = false;
             @ConfigName("Craftable Cobwebs")
-            public Boolean craftableCobwebs = true;
+            public Boolean craftableCobwebs = false;
             @ConfigName("Craftable Fire")
-            public Boolean craftableFire = true;
+            public Boolean craftableFire = false;
             @ConfigName("Craftable Coal Ore (8 Coal around a Stone)")
-            public Boolean craftableCoalOre = true;
+            public Boolean craftableCoalOre = false;
             @ConfigName("Craftable Iron Ore (8 Iron Ingots around a Stone)")
-            public Boolean craftableIronOre = true;
+            public Boolean craftableIronOre = false;
             @ConfigName("Craftable Gold Ore (8 Gold Ingots around a Stone)")
-            public Boolean craftableGoldOre = true;
+            public Boolean craftableGoldOre = false;
             @ConfigName("Craftable Lapis Lazuli Ore (8 Lapis Lazuli around a Stone)")
-            public Boolean craftableLapisOre = true;
+            public Boolean craftableLapisOre = false;
             @ConfigName("Craftable Diamond Ore (8 Diamonds around a Stone)")
-            public Boolean craftableDiamondOre = true;
+            public Boolean craftableDiamondOre = false;
         }
     }
 }
