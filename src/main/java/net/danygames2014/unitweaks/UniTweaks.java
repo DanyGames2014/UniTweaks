@@ -16,6 +16,9 @@ public class UniTweaks {
     @GConfig(value = "gameplay", visibleName = "Gameplay")
     public static final Config.GameplayConfig GAMEPLAY_CONFIG = new Config.GameplayConfig();
 
+    @GConfig(value = "features", visibleName = "Features")
+    public static final Config.FeaturesConfig FEATURES_CONFIG = new Config.FeaturesConfig();
+
     @GConfig(value = "tweaks", visibleName = "Tweaks")
     public static final Config.TweaksConfig TWEAKS_CONFIG = new Config.TweaksConfig();
 
