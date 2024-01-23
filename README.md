@@ -6,31 +6,42 @@
 ![fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg)
 ![risugamis-modloader](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/risugamis-modloader_vector.svg)
 
-
 ## Tweaks
-#### **All Tweaks can be toggled unless specified**
 ### General
 * Show Quit Button on the Main Menu
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
 * Improved Controls Menu
-* Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and receiving a response) ***non-configurable***
+* Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and
+  receiving a response) ***non-configurable***
 * Text field clearing with Right Mouse Button
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
 * Step Assist - Allows you to step up one block
 * Pick Block from Inventory -- Allow picking blocks from inventory
+* Shift Placing - Bypassing use actions on blocks when crouching
+* Right Click Armor Equip - Equip/Swap armor by right-clicking it
+
+### Features
+* Fast Leaf Decay
+* Better Burning
+    * Burning Skeletons have a 70% chance of shooting a burning arrow
+    * Burning Arrows ignite entities
+    * Mobs on fire attacking player have a 30% chance to spread that fire onto the player
 
 ### Tweaks
-* Fast Leaf Decay
 * Sugar Cane can be placed on sand (from Beta 1.8)
-* Boats drop themselves when broken by a player 
+* Boats drop themselves when broken by a player
 * Fences placeable like normal - lifted restrictions on the block below having to be solid or fence
 * Fences connect to blocks
 * Bookshelves drop 3 books
 * Allow placing pressure plates on fences
-* Better boat handling
+* [WIP] Better boat handling
+* Harvestable Cobwebs using Shears
+* Prevent damaging Flint and Steel on failed ignite
+* Ability to disable sleeping but still allow setting spawnpoints at beds
+* Ability to disable spawning mobs when going to sleep (Nightmares)
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -41,6 +52,7 @@
 ### Recipes
 * Tool Repair recipes
 * More Furnace Fuels
+
 <details>
     <summary>Modern Recipes</summary>
 
@@ -56,6 +68,7 @@
 * Modern Fence Recipe
 * Snow Layer Recipe
 * 3 Ladder per Craft
+
 </details>
 
 <details>
@@ -63,6 +76,7 @@
 
 * Shapeless Jack o' Lantern
 * Adjustable Stairs per Craft
+
 </details>
 
 <details>
@@ -76,19 +90,22 @@
 * Craftable Gold Ore
 * Craftable Lapis Ore
 * Craftable Diamond Ore
+
 </details>
 
 ## Bugfixes
-#### **All Bugfixes can be toggled unless specified**
 * Bit Depth Fix - Fixes Z-Fighting on AMD graphic cards
 * Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
 * Stairs Drop Fix - Stairs now drop themselves
 * Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
 * Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
-  * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern, Wooden Pressure Plate, Jukebox and Noteblock
-  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates and Spawner
+    * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern,
+      Wooden Pressure Plate, Jukebox and Noteblock
+    * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates
+      and Spawner
 * Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
 * Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation ***non-configurable***
 * Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape
 * Pick Block Fix - Fixes some blocks not being pickable using Pick Block
 * Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
+* Lava Without Source Fix - Flowing lava now correctly dissapears when source block is removed
