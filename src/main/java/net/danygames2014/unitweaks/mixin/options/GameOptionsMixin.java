@@ -1,6 +1,5 @@
 package net.danygames2014.unitweaks.mixin.options;
 
-import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;

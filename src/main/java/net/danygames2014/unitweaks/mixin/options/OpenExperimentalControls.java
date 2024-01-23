@@ -1,8 +1,6 @@
 package net.danygames2014.unitweaks.mixin.options;
 
 import net.danygames2014.unitweaks.tweaks.controls.ControlsScreen;
-import net.java.games.input.Component;
-import net.java.games.input.Controller;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.lwjgl.input.Keyboard;

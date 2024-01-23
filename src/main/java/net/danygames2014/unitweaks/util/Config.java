@@ -4,7 +4,6 @@ import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
 import net.glasslauncher.mods.api.gcapi.api.ConfigName;
 import net.glasslauncher.mods.api.gcapi.api.MultiplayerSynced;
-import org.checkerframework.checker.units.qual.C;
 
 public class Config {
     public static class GeneralConfig {

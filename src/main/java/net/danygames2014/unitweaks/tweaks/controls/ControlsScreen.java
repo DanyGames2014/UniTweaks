@@ -14,7 +14,6 @@ import org.lwjgl.input.Mouse;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Environment(EnvType.CLIENT)
 public class ControlsScreen extends Screen {
