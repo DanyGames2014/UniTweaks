@@ -20,12 +20,14 @@ public class Config {
         @ConfigName("No Food Wastage")
         @Comment("Prevents you from eating when your health is full")
         public Boolean noFoodWastage = true;
-        @MultiplayerSynced
+
         @ConfigName("Step Assist")
         @Comment("Allows you to step up one block")
         public Boolean stepAssist = true;
+
         @ConfigName("Pick Block from Inventory")
         public Boolean pickBlockFromInventory = true;
+
         @MultiplayerSynced
         @ConfigName("Shift Placing")
         @Comment("Ignores block actions allowing you to place blocks when crouching")
@@ -61,17 +63,24 @@ public class Config {
         @ConfigName("Better Boat handling (rn just quicker)")
         public Boolean betterBoats = true;
 
+        @MultiplayerSynced
         @ConfigName("Harvestable Cobwebs")
         public Boolean harvestableCobwebs = true;
 
+        @MultiplayerSynced
         @ConfigName("Expand Chicken Hitbox")
         @Comment("Expands chicken hitbox to it's modern size")
         public Boolean expandChickenHitbox = true;
+
+        @MultiplayerSynced
+        @ConfigName("Don't Damage Flint And Steel on failed ignite")
+        public Boolean modernFlintAndSteel = true;
 
         @ConfigCategory("Fast Leaf Decay")
         public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
 
         public static class FastLeafDecayConfig {
+            @MultiplayerSynced
             @ConfigName("Enable Fast Leaf Decay")
             public Boolean enableFastLeafDecay = true;
 
@@ -122,10 +131,12 @@ public class Config {
         @Comment("Fixes some blocks not being pickable using Pick Block")
         public Boolean pickBlockFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Spring propagation fix")
         @Comment("Fixes water source blocks not forming when a block below is water")
         public Boolean springPropagationFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Lava Without Source Fix")
         @Comment("Fixes lava not dissapearing without a source block")
         public Boolean lavaWithoutSourceFix = true;

@@ -15,7 +15,7 @@ public class FlowingLiquidBlockMixin {
                     target = "Lnet/minecraft/world/World;getBlockMeta(III)I"
             )
     )
-    private int annoyanceFix_allowWaterSpringPropagation(World world, int x, int y, int z) {
+    private int allowWaterSpringPropagation(World world, int x, int y, int z) {
         if (UniTweaks.BUGFIXES_CONFIG.springPropagationFix) {
             return world.getBlockMeta(x, y - 1, z);
         } else {
