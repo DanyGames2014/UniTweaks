@@ -127,6 +127,9 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Disable sleeping but retain respawning")
         public Boolean disableSleeping = true;
+
+        @ConfigName("Disable spawning mobs when you sleep")
+        public Boolean disableSleepSpawning = true;
     }
 
     public static class BugfixesConfig {

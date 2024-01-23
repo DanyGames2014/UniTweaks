@@ -15,6 +15,7 @@
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
     "tweaks.bedtweaks.BedBlockMixin",
+    "tweaks.bedtweaks.class_567Mixin",
     "tweaks.bedtweaks.PlayerEntityAccessor",
     "tweaks.betterburning.ArrowEntityMixin",
     "tweaks.betterburning.PlayerEntityMixin",
