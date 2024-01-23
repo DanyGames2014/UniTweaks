@@ -32,6 +32,10 @@ public class Config {
         @ConfigName("Shift Placing")
         @Comment("Ignores block actions allowing you to place blocks when crouching")
         public Boolean shiftPlacing = true;
+
+        @MultiplayerSynced
+        @ConfigName("Equip armor using right-click")
+        public Boolean rightClickEquipArmor = true;
     }
 
     public static class FeaturesConfig {
@@ -63,6 +67,7 @@ public class Config {
             public Boolean skeletonsBurningArrows = true;
 
             @ConfigName("Skeletons on Fire flaming arrow chance (0-100)")
+            @MaxLength(100)
             public Integer skeletonBurningArrowChance = 70;
 
             @ConfigName("Burning arrows set entities on fire")
@@ -72,6 +77,7 @@ public class Config {
             public Boolean burningEntitySpread = true;
 
             @ConfigName("Burning entities spread fire chance (0-100)")
+            @MaxLength(100)
             public Integer burningEntitySpreadChance = 30;
         }
     }
@@ -117,6 +123,10 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Don't Damage Flint And Steel on failed ignite")
         public Boolean modernFlintAndSteel = true;
+
+        @MultiplayerSynced
+        @ConfigName("Disable sleeping but retain respawning")
+        public Boolean disableSleeping = true;
     }
 
     public static class BugfixesConfig {

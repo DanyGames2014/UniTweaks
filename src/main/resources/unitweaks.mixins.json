@@ -14,6 +14,8 @@
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
+    "tweaks.bedtweaks.BedBlockMixin",
+    "tweaks.bedtweaks.PlayerEntityAccessor",
     "tweaks.betterburning.ArrowEntityMixin",
     "tweaks.betterburning.PlayerEntityMixin",
     "tweaks.betterburning.SkeletonEntityMixin",
@@ -36,6 +38,7 @@
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
+    "tweaks.rightclickarmor.ArmorItemMixin",
     "tweaks.stepassist.PlayerEntityMixin",
     "tweaks.sugarcaneonsand.SugarCaneBlockMixin"
   ],
