@@ -52,6 +52,7 @@
     "bugfixes.bowheldfix.PlayerEntityRendererMixin",
     "bugfixes.bowheldfix.SkeletonEntityRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
+    "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
     "options.GameOptionsMixin",
     "options.OpenExperimentalControls",
