@@ -180,6 +180,10 @@ public class Config {
         @ConfigName("Lava Without Source Fix")
         @Comment("Fixes lava not dissapearing without a source block")
         public Boolean lavaWithoutSourceFix = true;
+
+        @ConfigName("Bow Held Fix")
+        @Comment("Skeletons and Players now hold bows properly")
+        public Boolean bowHeldFix = true;
     }
 
     public static class OldFeaturesConfig {

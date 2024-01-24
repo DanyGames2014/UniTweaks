@@ -7,6 +7,7 @@
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
+    "bugfixes.bowheldfix.BowItemMixin",
     "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.lavawithoutsourcefix.FlowingLiquidBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
@@ -48,6 +49,8 @@
   ],
   "client": [
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "bugfixes.bowheldfix.PlayerEntityRendererMixin",
+    "bugfixes.bowheldfix.SkeletonEntityRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
     "options.GameOptionsMixin",
