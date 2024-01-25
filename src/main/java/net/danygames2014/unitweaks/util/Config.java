@@ -184,6 +184,9 @@ public class Config {
         @ConfigName("Bow Held Fix")
         @Comment("Skeletons and Players now hold bows properly")
         public Boolean bowHeldFix = true;
+
+        @ConfigName("Leggings When Riding Fix")
+        public Boolean leggingsWhenRidingFix = true;
     }
 
     public static class OldFeaturesConfig {
@@ -202,6 +205,10 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Punch TNT to Ignite")
         public Boolean punchTntToIgnite = false;
+
+        @MultiplayerSynced
+        @ConfigName("Hoe Grass for Seeds")
+        public Boolean hoeGrassForSeeds = false;
     }
 
     public static class RecipesConfig {

@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.leggingsridingfix;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -15,18 +16,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer {
-    @Shadow private BipedEntityModel field_296;
+    @Shadow
+    private BipedEntityModel field_296;
 
     public PlayerEntityRendererMixin(EntityModel arg, float f) {
         super(arg, f);
     }
 
     @Inject(method = "render(Lnet/minecraft/entity/player/PlayerEntity;DDDFF)V", at = @At("HEAD"))
-    public void fixLeggings(PlayerEntity player, double e, double f, double g, float h, float par6, CallbackInfo ci){
-        ItemStack stack = player.inventory.armor[1];
-        if (stack != null) {
-            if (stack.getItem() instanceof ArmorItem) {
-                this.field_296.riding = this.model.riding;
+    public void fixLeggings(PlayerEntity player, double e, double f, double g, float h, float par6, CallbackInfo ci) {
+        if (UniTweaks.BUGFIXES_CONFIG.leggingsWhenRidingFix) {
+            ItemStack stack = player.inventory.armor[1];
+            if (stack != null) {
+                if (stack.getItem() instanceof ArmorItem) {
+                    this.field_296.riding = this.model.riding;
+                }
             }
         }
     }

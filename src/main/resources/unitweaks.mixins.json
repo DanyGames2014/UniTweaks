@@ -32,6 +32,7 @@
     "tweaks.harvestablecobwebs.CobwebBlockMixin",
     "tweaks.harvestablecobwebs.ShearsItemMixin",
     "tweaks.harvestablecobwebs.SwordItemMixin",
+    "tweaks.hoegrassforseeds.HoeItemMixin",
     "tweaks.modernflintandsteel.FlintAndSteelItemMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
