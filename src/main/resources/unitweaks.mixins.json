@@ -66,6 +66,7 @@
     "tweaks.fogdensity.class555Mixin",
     "tweaks.fov.class555Mixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
+    "tweaks.mainmenu.TitleScreenMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
     "tweaks.shiftplacing.InteractionManagerMixin"

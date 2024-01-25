@@ -3,11 +3,25 @@
   "id": "unitweaks",
   "version": "${version}",
   "name": "UniTweaks",
-  "description": "An attempt at an all-in-one fixes and tweaks package for Beta 1.7.3",
+  "description":
+    "An attempt at an all-in-one fixes and tweaks package for Beta 1.7.3 Special Thanks to : Telvarost (Allowing me to implement their mainy tweaks and fixes), rek (Allowing me to use their Main Menu Panorama code)",
+
   "authors": [
-    "DanyGames2014",
-    "Telvarost"
+    {
+      "name": "DanyGames2014",
+      "contact": {
+        "sources": "https://github.com/danygames2014",
+        "discord": "danygames2014"
+      }
+    },
+    {
+      "name": "Telvarost",
+      "contact": {
+        "sources": "https://github.com/telvarost"
+      }
+    }
   ],
+
   "contact": {
     "sources": "https://github.com/danygames2014/UniTweaks"
   },
@@ -26,6 +40,7 @@
       "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes"
     ],
     "stationapi:event_bus_client": [
+      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener"
     ],
     "stationapi:event_bus_server": [
     ],
