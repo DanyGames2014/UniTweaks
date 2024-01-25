@@ -110,3 +110,4 @@
 * Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
 * Lava Without Source Fix - Flowing lava now correctly dissapears when source block is removed
 * Bow Held Fix - Bows are now being held correctly and not as only items
+* Leggings Riding Fix - Fix leggings not adjusting while riding
