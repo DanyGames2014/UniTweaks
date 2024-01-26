@@ -1,5 +1,6 @@
-package net.danygames2014.unitweaks.mixin.tweaks.mainmenu;
+package net.danygames2014.unitweaks.mixin.tweaks.mainmenupanorama;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.render.Tessellator;
@@ -42,7 +43,7 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V", shift = At.Shift.AFTER))
     public void redirectBackgroundRendering(int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        if (Keyboard.isKeyDown(Keyboard.KEY_P)) {
+        if (!UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma) {
             this.renderBackground();
         } else {
             this.fwidth = (float) width;
@@ -70,39 +71,44 @@ public class TitleScreenMixin extends Screen {
         GL11.glViewport(0, 0, this.minecraft.displayWidth, this.minecraft.displayHeight);
         tessellator.startQuads();
 
-        float fov = fwidth > fheight ? (120.0F / fwidth) : (120.0F / fheight);
-        float var6 = fheight * fov / 256.0F;
-        float var7 = fwidth * fov / 256.0F;
+        float var5 = fwidth > fheight ? (120.0F / fwidth) : (120.0F / fheight);
+        float var6 = fheight * var5 / 256.0F;
+        float var7 = fwidth * var5 / 256.0F;
         tessellator.color(1.0F, 1.0F, 1.0F, 1.0F);
         tessellator.vertex(0.0D, height, this.zOffset, 0.5F - var6, 0.5F + var7);
         tessellator.vertex(width, height, this.zOffset, 0.5F - var6, 0.5F - var7);
         tessellator.vertex(width, 0.0D, this.zOffset, 0.5F + var6, 0.5F - var7);
         tessellator.vertex(0.0D, 0.0D, this.zOffset, 0.5F + var6, 0.5F + var7);
         tessellator.draw();
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+
+        // Scaling filter
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
     }
 
     @Unique
     private void rotateAndBlurSkybox() {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.panoramaTexture);
         GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, panoramaImageSize, panoramaImageSize);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glColorMask(true, true, true, false);
+
+        // This doesn't seem to change anything ?
+        //GL11.glEnable(GL11.GL_BLEND);
+        //GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        //GL11.glColorMask(true, true, true, false);
+
         tessellator.startQuads();
-
-
         for (int i = 0; i < 3; ++i) {
-//            tessellator.color(1.0F, 1.0F, 1.0F, 1.0F / (float) (i + 1)); BLURRY FILTER
+            if (UniTweaks.GENERAL_CONFIG.panoramaConfig.blurBackground) {
+                tessellator.color(1.0F, 1.0F, 1.0F, 1.0F / (float) (i + 1)); //BLURRY FILTER
+            }
             float var7 = (float) (i - 3 / 2) / 256.0F;
             tessellator.vertex(fwidth, fheight, this.zOffset, 0.0F + var7, 0.0D);
             tessellator.vertex(fwidth, 0.0D, this.zOffset, 1.0F + var7, 0.0D);
             tessellator.vertex(0.0D, 0.0D, this.zOffset, 1.0F + var7, 1.0D);
             tessellator.vertex(0.0D, fheight, this.zOffset, 0.0F + var7, 1.0D);
         }
-
         tessellator.draw();
+
         GL11.glColorMask(true, true, true, true);
     }
 
@@ -143,7 +149,7 @@ public class TitleScreenMixin extends Screen {
                     case 5 -> GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.textureManager.getTextureId("assets/unitweaks/stationapi/textures/panorama/panorama" + rotation + ".png"));
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.textureManager.getTextureId("assets/unitweaks/stationapi/textures/" + UniTweaks.GENERAL_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png"));
                 tessellator.startQuads();
                 tessellator.color(16777215, 255 / (var6 + 1));
                 tessellator.vertex(-1.0D, -1.0D, 1.0D, 0.0F, 0.0F);

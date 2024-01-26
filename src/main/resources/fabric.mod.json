@@ -40,7 +40,8 @@
       "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes"
     ],
     "stationapi:event_bus_client": [
-      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener"
+      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener",
+      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener"
     ],
     "stationapi:event_bus_server": [
     ],

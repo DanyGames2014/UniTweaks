@@ -14,6 +14,23 @@ public class Config {
 
         @ConfigName("Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
+
+        @ConfigCategory("Main Menu Panorama")
+        public PanoramaConfig panoramaConfig = new PanoramaConfig();
+
+        public static class PanoramaConfig {
+
+            @ConfigName("Enable Panorama")
+            public Boolean enablePanorma = true;
+
+            @ConfigName("Blur Panorama")
+            public Boolean blurBackground = true;
+
+            @ConfigName("Panorama folder to use")
+            @Comment("Default included : beta18, glacier, glacier2")
+            public String panoramaFolder = "glacier";
+        }
+
     }
 
     public static class GameplayConfig {
