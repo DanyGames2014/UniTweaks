@@ -66,12 +66,12 @@
   "conflicts": {
     "finalbeta": "*",
     "smallcraftingtweaks": "*",
-    "nowobtainablerecipes": "*",
-    "betatweaks": "*"
+    "nowobtainablerecipes": "*"
   },
 
   "breaks": {
     "annoyancefix": "*",
-    "mostlymodernrecipes": "*"
+    "mostlymodernrecipes": "*",
+    "betatweaks": "*"
   }
 }
