@@ -2,7 +2,6 @@ package net.danygames2014.unitweaks.mixin.tweaks.shiftplacing;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.class_70;
-import net.minecraft.class_73;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
