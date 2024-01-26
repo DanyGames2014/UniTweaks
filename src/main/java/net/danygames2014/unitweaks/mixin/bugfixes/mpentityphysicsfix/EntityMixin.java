@@ -17,21 +17,21 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class EntityMixin {
     @Redirect(method = "move", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/Entity;x:D", opcode = Opcodes.PUTFIELD))
     private void fixX(Entity entity, double value) {
-        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)){
+        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)) {
             entity.x = value;
         }
     }
 
     @Redirect(method = "move", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/Entity;y:D", opcode = Opcodes.PUTFIELD))
     private void fixY(Entity entity, double value) {
-        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)){
+        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)) {
             entity.y = value;
         }
     }
 
     @Redirect(method = "move", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/Entity;z:D", opcode = Opcodes.PUTFIELD))
     private void fixZ(Entity entity, double value) {
-        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)){
+        if (!entity.world.isRemote || entity instanceof PlayerEntity || !(entity instanceof LivingEntity)) {
             entity.z = value;
         }
     }

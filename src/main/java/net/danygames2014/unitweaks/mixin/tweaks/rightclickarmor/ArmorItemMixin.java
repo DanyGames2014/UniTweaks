@@ -22,7 +22,7 @@ public class ArmorItemMixin extends Item {
 
     @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity user) {
-        if(UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor){
+        if (UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor) {
             if (user.inventory.armor[Math.abs(this.field_2083 - 3)] == null) {
                 user.inventory.armor[Math.abs(this.field_2083 - 3)] = stack.copy();
                 stack.count = 0;

@@ -15,9 +15,9 @@ public class BedBlockMixin {
     @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;method_495(III)Lnet/minecraft/class_141;"))
     public class_141 useinject(PlayerEntity player, int x, int y, int z) {
         if (UniTweaks.TWEAKS_CONFIG.disableSleeping) {
-            if(!player.world.isRemote){
+            if (!player.world.isRemote) {
                 player.method_490("Respawn Point Set");
-                ((PlayerEntityAccessor)player).setRespawnPos(new Vec3i(MathHelper.floor(x), MathHelper.floor(y), MathHelper.floor(z)));
+                ((PlayerEntityAccessor) player).setRespawnPos(new Vec3i(MathHelper.floor(x), MathHelper.floor(y), MathHelper.floor(z)));
                 return class_141.OK;
             }
         }

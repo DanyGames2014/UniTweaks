@@ -10,12 +10,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
     @Redirect(method = "method_1552", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float changeCloudHeight(Dimension dimension){
+    public float changeCloudHeight(Dimension dimension) {
         return ModOptions.getCloudHeight();
     }
 
     @Redirect(method = "method_1556", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float ChangeFancyCloudHeight(Dimension dimension){
+    public float ChangeFancyCloudHeight(Dimension dimension) {
         return ModOptions.getCloudHeight();
     }
 }

@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(targets = "net.minecraft.network.Connection$4")
 public class Connection$4Mixin {
     @ModifyConstant(method = "run", constant = @Constant(longValue = 100L))
-    public long decreasePacketDelay(long constant){
+    public long decreasePacketDelay(long constant) {
         return 2L;
     }
 }

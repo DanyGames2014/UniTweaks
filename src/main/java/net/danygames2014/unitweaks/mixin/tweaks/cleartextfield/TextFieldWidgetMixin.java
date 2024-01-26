@@ -10,21 +10,31 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TextFieldWidget.class)
 public class TextFieldWidgetMixin {
-    @Shadow public boolean enabled;
+    @Shadow
+    public boolean enabled;
 
-    @Shadow @Final private int x;
+    @Shadow
+    @Final
+    private int x;
 
-    @Shadow @Final private int width;
+    @Shadow
+    @Final
+    private int width;
 
-    @Shadow @Final private int y;
+    @Shadow
+    @Final
+    private int y;
 
-    @Shadow @Final private int height;
+    @Shadow
+    @Final
+    private int height;
 
-    @Shadow private String text;
+    @Shadow
+    private String text;
 
     @Inject(method = "mouseClicked", at = @At("HEAD"))
-    public void clearTextOnRightClick(int mouseX, int mouseY, int button, CallbackInfo ci){
-        if(enabled && mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height && button == 1){
+    public void clearTextOnRightClick(int mouseX, int mouseY, int button, CallbackInfo ci) {
+        if (enabled && mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height && button == 1) {
             text = "";
         }
 

@@ -19,8 +19,8 @@ public class BookshelfBlockMixin extends Block {
     }
 
     @Inject(method = "getDroppedItemCount", at = @At(value = "HEAD"), cancellable = true)
-    public void changeDropItemCount(Random random, CallbackInfoReturnable<Integer> cir){
-        if(UniTweaks.TWEAKS_CONFIG.bookshelvesDropBooks){
+    public void changeDropItemCount(Random random, CallbackInfoReturnable<Integer> cir) {
+        if (UniTweaks.TWEAKS_CONFIG.bookshelvesDropBooks) {
             cir.setReturnValue(3);
         }
     }

@@ -16,7 +16,7 @@ public abstract class BoatEntityMixin extends Entity {
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 0.2))
     public double increaseSpeedMultiplier(double constant) {
-        if(UniTweaks.TWEAKS_CONFIG.betterBoats){
+        if (UniTweaks.TWEAKS_CONFIG.betterBoats) {
             return 0.6;
         }
         return constant;
@@ -24,7 +24,7 @@ public abstract class BoatEntityMixin extends Entity {
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 0.4))
     public double increaseMaxSpeed(double constant) {
-        if(UniTweaks.TWEAKS_CONFIG.betterBoats){
+        if (UniTweaks.TWEAKS_CONFIG.betterBoats) {
             return 0.8;
         }
         return constant;
@@ -32,7 +32,7 @@ public abstract class BoatEntityMixin extends Entity {
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 0.15))
     public double increaseBreakingSpeedThreshold(double constant) {
-        if(UniTweaks.TWEAKS_CONFIG.betterBoats){
+        if (UniTweaks.TWEAKS_CONFIG.betterBoats) {
             return 1;
         }
         return constant;

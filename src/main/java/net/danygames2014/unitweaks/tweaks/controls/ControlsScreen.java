@@ -30,7 +30,11 @@ public class ControlsScreen extends Screen {
 
     // Widgets
     public KeybindListWidget keybindListWidget;
-    public TextFieldWidget searchTextField; int searchX; int searchY; int searchWidth; int searchHeight;
+    public TextFieldWidget searchTextField;
+    int searchX;
+    int searchY;
+    int searchWidth;
+    int searchHeight;
     public ButtonWidget doneButton;
 
     // Selected
@@ -139,6 +143,7 @@ public class ControlsScreen extends Screen {
 
 
     // Interaction Events
+
     /**
      * @author calmilamsy
      * Scrolling
@@ -160,7 +165,7 @@ public class ControlsScreen extends Screen {
         refreshKeyLabels();
 
         searchTextField.mouseClicked(mouseX, mouseY, button);
-        if(button == 1){
+        if (button == 1) {
             filterKeybinds();
         }
 

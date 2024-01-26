@@ -20,11 +20,11 @@ public class HoeItemMixin extends Item {
     }
 
     @Inject(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlock(IIII)Z"))
-    public void dropSeeds(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side, CallbackInfoReturnable<Boolean> cir){
-        if(!world.isRemote){
-            if(UniTweaks.OLD_FEATURES_CONFIG.hoeGrassForSeeds){
-                if(Block.GRASS.getDroppedItemId(0, world.field_214) != -1){
-                    ItemEntity seeds = new ItemEntity(world, x, y+1, z, new ItemStack(Item.SEEDS,1));
+    public void dropSeeds(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side, CallbackInfoReturnable<Boolean> cir) {
+        if (!world.isRemote) {
+            if (UniTweaks.OLD_FEATURES_CONFIG.hoeGrassForSeeds) {
+                if (Block.GRASS.getDroppedItemId(0, world.field_214) != -1) {
+                    ItemEntity seeds = new ItemEntity(world, x, y + 1, z, new ItemStack(Item.SEEDS, 1));
                     seeds.velocityY = 0.2f;
                     seeds.pickupDelay = 7; // Slightly shorter than normal
                     world.method_210(seeds);

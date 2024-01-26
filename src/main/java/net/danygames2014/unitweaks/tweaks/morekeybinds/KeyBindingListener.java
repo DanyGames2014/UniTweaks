@@ -10,7 +10,7 @@ public class KeyBindingListener {
     public static KeyBinding panoramaScreenshot;
 
     @EventListener
-    public void registerKeyBindings(KeyBindingRegisterEvent event){
+    public void registerKeyBindings(KeyBindingRegisterEvent event) {
         event.keyBindings.add(panoramaScreenshot = new KeyBinding("key.unitweaks.panorama_screenshot", Keyboard.KEY_NONE));
 
     }

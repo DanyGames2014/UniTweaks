@@ -15,16 +15,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FlintAndSteel.class)
 public class FlintAndSteelItemMixin {
     @Inject(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlock(IIII)Z", shift = At.Shift.AFTER), cancellable = true)
-    public void damageOnSuccesfulIgnite(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.TWEAKS_CONFIG.modernFlintAndSteel){
+    public void damageOnSuccesfulIgnite(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.TWEAKS_CONFIG.modernFlintAndSteel) {
             stack.damage(1, user);
             cir.setReturnValue(true);
         }
     }
 
     @ModifyConstant(method = "useOnBlock", constant = @Constant(intValue = 1, ordinal = 1))
-    public int disableVanillaDamage(int constant){
-        if(UniTweaks.TWEAKS_CONFIG.modernFlintAndSteel){
+    public int disableVanillaDamage(int constant) {
+        if (UniTweaks.TWEAKS_CONFIG.modernFlintAndSteel) {
             return 0;
         }
         return constant;

@@ -22,7 +22,7 @@ public class PlayerInventoryMixin {
             36, 37, 38, 39, 40, 41, 42, 43, 44, // Hotbar / 4th row
             27, 28, 29, 30, 31, 32, 33, 34, 35, // 3rd row
             18, 19, 20, 21, 22, 23, 24, 25, 26, // 2nd row
-             9, 10, 11, 12, 13, 14, 15, 16, 17 // 1st row
+            9, 10, 11, 12, 13, 14, 15, 16, 17 // 1st row
     };
 
     @Unique
@@ -97,7 +97,7 @@ public class PlayerInventoryMixin {
     }
 
     @Unique
-    public void sendClickPacket(int slot, ItemStack stack){
+    public void sendClickPacket(int slot, ItemStack stack) {
         ClickSlotC2SPacket packet = new ClickSlotC2SPacket(0, slotIndexToClickSlotIndex[slot], 0, false, stack, actionTypeCounter);
         actionTypeCounter++;
     }

@@ -10,7 +10,8 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(PigEntity.class)
 public abstract class PigEntityMixin extends AnimalEntity {
-    @Shadow public abstract boolean method_1724();
+    @Shadow
+    public abstract boolean method_1724();
 
     public PigEntityMixin(World arg) {
         super(arg);
@@ -18,8 +19,8 @@ public abstract class PigEntityMixin extends AnimalEntity {
 
     @Override
     protected void method_933() {
-        if(UniTweaks.BUGFIXES_CONFIG.pigSaddleDropFix){
-            if(method_1724()){
+        if (UniTweaks.BUGFIXES_CONFIG.pigSaddleDropFix) {
+            if (method_1724()) {
                 this.method_1339(Item.SADDLE.id, 1);
             }
         }

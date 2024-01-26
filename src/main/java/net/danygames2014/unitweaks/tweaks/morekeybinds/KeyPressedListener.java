@@ -14,7 +14,7 @@ public class KeyPressedListener {
 
     @EventListener
     public void keyPress(KeyStateChangedEvent event) {
-        if(minecraft == null){
+        if (minecraft == null) {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
@@ -41,10 +41,10 @@ public class KeyPressedListener {
         }
     }
 
-    public void facePlayer(int direction){
+    public void facePlayer(int direction) {
         minecraft.player.x = Math.floor(minecraft.player.x) + 0.5;
         minecraft.player.z = Math.floor(minecraft.player.z) + 0.5;
-        switch (direction){
+        switch (direction) {
             case 0 -> {
                 minecraft.player.pitch = 0;
                 minecraft.player.yaw = 0;

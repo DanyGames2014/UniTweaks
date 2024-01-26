@@ -17,8 +17,8 @@ public class FenceBlockMixin extends Block {
     }
 
     @Inject(method = "canPlaceAt", at = @At("HEAD"), cancellable = true)
-    public void liftPlacementRestrictions(World world, int x, int y, int z, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.TWEAKS_CONFIG.fencesPlaceableLikeNormal){
+    public void liftPlacementRestrictions(World world, int x, int y, int z, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.TWEAKS_CONFIG.fencesPlaceableLikeNormal) {
             cir.setReturnValue(super.canPlaceAt(world, x, y, z));
         }
     }

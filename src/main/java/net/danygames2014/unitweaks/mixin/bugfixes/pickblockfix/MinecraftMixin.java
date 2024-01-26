@@ -38,7 +38,7 @@ public class MinecraftMixin {
             index = 1
     )
     public int pickBlockId(int pickedId) {
-        if(UniTweaks.BUGFIXES_CONFIG.pickBlockFix){
+        if (UniTweaks.BUGFIXES_CONFIG.pickBlockFix) {
             switch (this.field_2823.type) {
                 case BLOCK -> {
                     return getPickBlockId(

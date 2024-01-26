@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(class_594.class)
 public class class_594Mixin extends DrawContext {
     @Inject(method = "method_1963", at = @At(value = "HEAD"))
-    public void failSessionCheck(CallbackInfo ci){
-        if(UniTweaks.GENERAL_CONFIG.unlicensedCopy){
+    public void failSessionCheck(CallbackInfo ci) {
+        if (UniTweaks.GENERAL_CONFIG.unlicensedCopy) {
             Minecraft.failedSessionCheckTime = 1L;
         }
     }

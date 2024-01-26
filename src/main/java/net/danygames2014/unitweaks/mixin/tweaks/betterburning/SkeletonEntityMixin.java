@@ -9,16 +9,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(SkeletonEntity.class)
-public abstract class SkeletonEntityMixin extends Entity{
+public abstract class SkeletonEntityMixin extends Entity {
 
     public SkeletonEntityMixin(World world) {
         super(world);
     }
 
     @Redirect(method = "method_637", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;method_210(Lnet/minecraft/entity/Entity;)Z"))
-    public boolean createBurningArrow(World world, Entity arrowEntity){
-        if(UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.skeletonsBurningArrows && this.fire > 0){
-            if(this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.skeletonBurningArrowChance){
+    public boolean createBurningArrow(World world, Entity arrowEntity) {
+        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.skeletonsBurningArrows && this.fire > 0) {
+            if (this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.skeletonBurningArrowChance) {
                 arrowEntity.fire = 400;
             }
         }

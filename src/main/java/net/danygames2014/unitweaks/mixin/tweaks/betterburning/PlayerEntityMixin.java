@@ -11,17 +11,17 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends Entity{
+public abstract class PlayerEntityMixin extends Entity {
     public PlayerEntityMixin(World world) {
         super(world);
     }
 
     @Inject(method = "damage(Lnet/minecraft/entity/Entity;I)Z", at = @At("HEAD"))
-    public void setOnFireIfAttackerBurning(Entity attacker, int amount, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpread && !this.world.isRemote){
-            if(!(attacker instanceof SkeletonEntity) && attacker != null){
-                if(this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpreadChance){
-                    if(attacker.fire > 0){
+    public void setOnFireIfAttackerBurning(Entity attacker, int amount, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpread && !this.world.isRemote) {
+            if (!(attacker instanceof SkeletonEntity) && attacker != null) {
+                if (this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpreadChance) {
+                    if (attacker.fire > 0) {
                         this.fire = 100;
                     }
                 }

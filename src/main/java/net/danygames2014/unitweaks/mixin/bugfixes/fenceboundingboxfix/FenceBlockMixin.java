@@ -31,12 +31,12 @@ public class FenceBlockMixin extends Block {
         boolean connectNegZ;
         int fenceId = Block.FENCE.id;
 
-        if(UniTweaks.TWEAKS_CONFIG.fencesConnectBlocks){
+        if (UniTweaks.TWEAKS_CONFIG.fencesConnectBlocks) {
             connectPosX = world.method_1780(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId;
             connectNegX = world.method_1780(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId;
             connectNegZ = world.method_1780(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId;
             connectPosZ = world.method_1780(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId;
-        }else{
+        } else {
             connectPosX = world.getBlockId(x + 1, y, z) == fenceId;
             connectNegX = world.getBlockId(x - 1, y, z) == fenceId;
             connectPosZ = world.getBlockId(x, y, z + 1) == fenceId;
@@ -47,7 +47,7 @@ public class FenceBlockMixin extends Block {
     }
 
     @Unique
-    private Box generateBox(World world, int x, int y, int z, boolean collider)     {
+    private Box generateBox(World world, int x, int y, int z, boolean collider) {
         Box box = generateBox(world, x, y, z);
 
         box.minX += x;
@@ -76,8 +76,7 @@ public class FenceBlockMixin extends Block {
         if (UniTweaks.BUGFIXES_CONFIG.fenceBoundingBoxFix) {
             FenceBlockMixin.world = world;
             return generateBox(world, x, y, z, false);
-        }
-        else {
+        } else {
             return super.getBoundingBox(world, x, y, z);
         }
     }
@@ -89,8 +88,7 @@ public class FenceBlockMixin extends Block {
                 return;
             Box box = generateBox(world, x, y, z);
             setBoundingBox((float) box.minX, (float) box.minY, (float) box.minZ, (float) box.maxX, (float) box.maxY, (float) box.maxZ);
-        }
-        else {
+        } else {
             super.updateBoundingBox(blockView, x, y, z);
         }
     }

@@ -13,7 +13,7 @@ public class BowItemMixin extends Item {
 
     @Override
     public boolean getIsHandheld() {
-        if(UniTweaks.BUGFIXES_CONFIG.bowHeldFix){
+        if (UniTweaks.BUGFIXES_CONFIG.bowHeldFix) {
             return true;
         }
         return super.getIsHandheld();

@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
     @Inject(method = "method_1552", at = @At(value = "HEAD"), cancellable = true)
-    public void toggleClouds(float par1, CallbackInfo ci){
-        if(!ModOptions.clouds){
+    public void toggleClouds(float par1, CallbackInfo ci) {
+        if (!ModOptions.clouds) {
             ci.cancel();
         }
     }

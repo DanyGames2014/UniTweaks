@@ -17,14 +17,14 @@ public abstract class BoatEntityMixin extends Entity {
     }
 
     @Inject(method = "tick", at = @At(value = "TAIL"))
-    public void elevateInWater(CallbackInfo ci){
-        if(UniTweaks.OLD_FEATURES_CONFIG.boatElevators){
-            if(this.isInFluid(Material.WATER)){
+    public void elevateInWater(CallbackInfo ci) {
+        if (UniTweaks.OLD_FEATURES_CONFIG.boatElevators) {
+            if (this.isInFluid(Material.WATER)) {
                 this.velocityY += 0.051F;
             }
 
-            if(this.velocityY > 0.05F){
-                if(this.isInFluid(Material.WATER)){
+            if (this.velocityY > 0.05F) {
+                if (this.isInFluid(Material.WATER)) {
                     this.velocityY *= 1.01F;
                 }
             }

@@ -36,15 +36,15 @@ public abstract class OptionMixin {
         options.add(FOV);
 
         Option FOG_DENSITY;
-        ModOptions.fogDensityOption = FOG_DENSITY = OptionMixin.newOption("FOG_DENSITY", last.ordinal()+1, "options.fog_density", true, false);
+        ModOptions.fogDensityOption = FOG_DENSITY = OptionMixin.newOption("FOG_DENSITY", last.ordinal() + 1, "options.fog_density", true, false);
         options.add(FOG_DENSITY);
 
         Option CLOUDS;
-        ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal()+2, "options.clouds", false, true);
+        ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal() + 2, "options.clouds", false, true);
         options.add(CLOUDS);
 
         Option CLOUD_HEIGHT;
-        ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal()+3, "options.cloud_height", true, false);
+        ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal() + 3, "options.cloud_height", true, false);
         options.add(CLOUD_HEIGHT);
 
         field_1113 = options.toArray(new Option[0]);

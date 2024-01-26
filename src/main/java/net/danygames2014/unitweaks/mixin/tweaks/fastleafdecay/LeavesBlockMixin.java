@@ -13,14 +13,14 @@ import java.util.Random;
 
 @Mixin(LeavesBlock.class)
 public class LeavesBlockMixin {
-    @Inject(method = "onTick", at = @At(value="INVOKE", target = "Lnet/minecraft/block/LeavesBlock;method_990(Lnet/minecraft/world/World;III)V"))
+    @Inject(method = "onTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/LeavesBlock;method_990(Lnet/minecraft/world/World;III)V"))
     private void accelerateLeafDecay(World world, int x, int y, int z, Random random, CallbackInfo ci) {
-        if(UniTweaks.FEATURES_CONFIG.fastLeafDecay.enableFastLeafDecay){
-            if(!world.isRemote){
-                for(int offsetX = -3; offsetX <= 3; offsetX++) {
-                    for(int offsetY = -3; offsetY<=3; offsetY++) {
-                        for(int offsetZ = -3; offsetZ<=3; offsetZ++) {
-                            world.method_216(x+offsetX, y+offsetY, z+offsetZ, ((class_307)(Object)this).id, random.nextInt(UniTweaks.FEATURES_CONFIG.fastLeafDecay.minimumDecayTime, UniTweaks.FEATURES_CONFIG.fastLeafDecay.maximumDecayTime));
+        if (UniTweaks.FEATURES_CONFIG.fastLeafDecay.enableFastLeafDecay) {
+            if (!world.isRemote) {
+                for (int offsetX = -3; offsetX <= 3; offsetX++) {
+                    for (int offsetY = -3; offsetY <= 3; offsetY++) {
+                        for (int offsetZ = -3; offsetZ <= 3; offsetZ++) {
+                            world.method_216(x + offsetX, y + offsetY, z + offsetZ, ((class_307) (Object) this).id, random.nextInt(UniTweaks.FEATURES_CONFIG.fastLeafDecay.minimumDecayTime, UniTweaks.FEATURES_CONFIG.fastLeafDecay.maximumDecayTime));
                         }
                     }
                 }

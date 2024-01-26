@@ -20,25 +20,25 @@ public abstract class BoatEntityMixin extends Entity {
     }
 
     @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;method_1325(IIF)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), require = 0)
-    public ItemEntity changeItemId(BoatEntity instance, int id, int count, float offset){
-        if(UniTweaks.TWEAKS_CONFIG.boatsDropThemselves){
+    public ItemEntity changeItemId(BoatEntity instance, int id, int count, float offset) {
+        if (UniTweaks.TWEAKS_CONFIG.boatsDropThemselves) {
             return this.method_1325(Item.BOAT.id, 1, offset);
-        }else{
+        } else {
             return this.method_1325(id, count, offset);
         }
     }
 
     @ModifyConstant(method = "damage", constant = @Constant(intValue = 3), require = 0)
-    public int changePrimaryDrop(int constant){
-        if(UniTweaks.TWEAKS_CONFIG.boatsDropThemselves){
+    public int changePrimaryDrop(int constant) {
+        if (UniTweaks.TWEAKS_CONFIG.boatsDropThemselves) {
             constant = 1;
         }
         return constant;
     }
 
     @ModifyConstant(method = "damage", constant = @Constant(intValue = 2), require = 0)
-    public int disableSecondaryDrop(int constant){
-        if(UniTweaks.TWEAKS_CONFIG.boatsDropThemselves){
+    public int disableSecondaryDrop(int constant) {
+        if (UniTweaks.TWEAKS_CONFIG.boatsDropThemselves) {
             constant = 0;
         }
         return constant;

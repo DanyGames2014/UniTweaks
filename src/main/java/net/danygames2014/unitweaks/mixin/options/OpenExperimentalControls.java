@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(TitleScreen.class)
 public class OpenExperimentalControls extends Screen {
     @Inject(method = "keyPressed", at = @At("HEAD"))
-    public void injectKey(char character, int keyCode, CallbackInfo ci){
-        if (keyCode == Keyboard.KEY_LCONTROL){
+    public void injectKey(char character, int keyCode, CallbackInfo ci) {
+        if (keyCode == Keyboard.KEY_LCONTROL) {
             this.minecraft.setScreen(new ControlsScreen(this, this.minecraft.options));
         }
     }
