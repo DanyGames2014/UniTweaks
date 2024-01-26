@@ -15,6 +15,15 @@ public class Config {
         @ConfigName("Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
 
+        @ConfigName("Hide Achievement Toast")
+        public Boolean hideAchievementToast = false;
+
+        @ConfigName("Unlicensed Copy Text")
+        public Boolean unlicensedCopy = false;
+
+        @ConfigName("Disable F3 Entity ID Tags")
+        public Boolean disableDebugEntityIdTags = true;
+
         @ConfigCategory("Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
 
@@ -231,6 +240,15 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Hoe Grass for Seeds")
         public Boolean hoeGrassForSeeds = false;
+
+        @ConfigName("Boat Elevators")
+        public Boolean boatElevators = false;
+
+        @ConfigName("Ladder Gaps")
+        public Boolean ladderGaps = false;
+
+        @ConfigName("Minecart Boosters")
+        public Boolean minecartBoosters = true;
     }
 
     public static class RecipesConfig {

@@ -22,6 +22,7 @@
     "tweaks.betterburning.PlayerEntityMixin",
     "tweaks.betterburning.SkeletonEntityMixin",
     "tweaks.biggerchickenhitbox.ChickenEntityMixin",
+    "tweaks.boatelevators.BoatEntityMixin",
     "tweaks.boatsdropthemselves.BoatEntityMixin",
     "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
@@ -33,6 +34,8 @@
     "tweaks.harvestablecobwebs.ShearsItemMixin",
     "tweaks.harvestablecobwebs.SwordItemMixin",
     "tweaks.hoegrassforseeds.HoeItemMixin",
+    "tweaks.laddergaps.LivingEntityMixin",
+    "tweaks.minecartboosters.MinecartEntityMixin",
     "tweaks.modernflintandsteel.FlintAndSteelItemMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
@@ -64,13 +67,16 @@
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
+    "tweaks.disablef3entityids.LivingEntityRendererMixin",
     "tweaks.fogdensity.class555Mixin",
     "tweaks.fov.class555Mixin",
+    "tweaks.hideachievementtoast.class_594Mixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
     "tweaks.mainmenupanorama.TitleScreenMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
-    "tweaks.shiftplacing.InteractionManagerMixin"
+    "tweaks.shiftplacing.InteractionManagerMixin",
+    "tweaks.unlicensedcopy.class_594Mixin"
   ],
   "injectors": {
     "defaultRequire": 1
