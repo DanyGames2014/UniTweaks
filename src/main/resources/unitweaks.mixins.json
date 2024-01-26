@@ -52,6 +52,7 @@
     "bugfixes.bitdepthfix.MinecraftMixin",
     "bugfixes.bowheldfix.PlayerEntityRendererMixin",
     "bugfixes.bowheldfix.SkeletonEntityRendererMixin",
+    "bugfixes.containeritemrendering.ContainerScreenMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.pickblockfix.MinecraftMixin",

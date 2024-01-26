@@ -204,6 +204,11 @@ public class Config {
 
         @ConfigName("Leggings When Riding Fix")
         public Boolean leggingsWhenRidingFix = true;
+
+        @ConfigName("ItemStack Rendering Fix")
+        @Comment("Fixes itemstacks being render below text in containers")
+        public Boolean itemstackRenderingFix = true;
+
     }
 
     public static class OldFeaturesConfig {
