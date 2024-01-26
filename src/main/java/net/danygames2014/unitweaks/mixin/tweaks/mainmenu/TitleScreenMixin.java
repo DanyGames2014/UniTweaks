@@ -33,7 +33,7 @@ public class TitleScreenMixin extends Screen {
     Tessellator tessellator;
 
     @Unique
-    public int panoramaImageSize = 512;
+    public int panoramaImageSize = 256;
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
     public void cancelDefaultBackgroundRendering(TitleScreen instance) {
@@ -50,7 +50,7 @@ public class TitleScreenMixin extends Screen {
             if (!panoramaInit) {
                 this.tessellator = Tessellator.INSTANCE;
                 this.panoramaInit = true;
-                this.panoramaTexture = this.minecraft.textureManager.method_1088(new BufferedImage(256, 256, 2));
+                this.panoramaTexture = this.minecraft.textureManager.method_1088(new BufferedImage(panoramaImageSize, panoramaImageSize, 2));
             }
             renderSkybox(delta);
             fillGradient(0, 0, this.width, this.height, -2130706433, 16777215);
@@ -86,7 +86,7 @@ public class TitleScreenMixin extends Screen {
     @Unique
     private void rotateAndBlurSkybox() {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.panoramaTexture);
-        GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, 256, 256);
+        GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, panoramaImageSize, panoramaImageSize);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glColorMask(true, true, true, false);
@@ -94,7 +94,7 @@ public class TitleScreenMixin extends Screen {
 
 
         for (int i = 0; i < 3; ++i) {
-//            tessellator.color(1.0F, 1.0F, 1.0F, 1.0F / (float) (i + 1));
+//            tessellator.color(1.0F, 1.0F, 1.0F, 1.0F / (float) (i + 1)); BLURRY FILTER
             float var7 = (float) (i - 3 / 2) / 256.0F;
             tessellator.vertex(fwidth, fheight, this.zOffset, 0.0F + var7, 0.0D);
             tessellator.vertex(fwidth, 0.0D, this.zOffset, 1.0F + var7, 0.0D);
