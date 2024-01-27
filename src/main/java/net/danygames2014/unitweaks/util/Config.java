@@ -18,8 +18,8 @@ public class Config {
         @ConfigName("Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
 
-        @ConfigName("Unlicensed Copy Text")
-        public Boolean unlicensedCopy = false;
+        @ConfigCategory("Version Text")
+        public VersionTextConfig versionTextConfig = new VersionTextConfig();
 
         @ConfigName("Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
@@ -40,6 +40,21 @@ public class Config {
             public String panoramaFolder = "glacier";
         }
 
+        public static class VersionTextConfig {
+
+            @ConfigName("Show Version Text Ingame")
+            public Boolean showVersionTextIngame = true;
+
+            @ConfigName("Unlicensed Copy")
+            public Boolean unlicensedCopy = false;
+
+            @ConfigName("Enable Custom Version Text")
+            public Boolean enableCustomVersionText = true;
+
+            @ConfigName("Custom Version Text")
+            @Comment("Only has effect if custom version text is enabled")
+            public String customVersionText = "Minecraft Beta 1.7.4";
+        }
     }
 
     public static class GameplayConfig {

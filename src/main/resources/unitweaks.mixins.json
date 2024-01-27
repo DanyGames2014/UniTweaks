@@ -72,11 +72,12 @@
     "tweaks.fov.class555Mixin",
     "tweaks.hideachievementtoast.class_594Mixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
+    "tweaks.ingameversiontext.class_594Mixin",
+    "tweaks.ingameversiontext.InGameHudMixin",
     "tweaks.mainmenupanorama.TitleScreenMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
     "tweaks.shiftplacing.InteractionManagerMixin",
-    "tweaks.unlicensedcopy.class_594Mixin"
   ],
   "injectors": {
     "defaultRequire": 1
