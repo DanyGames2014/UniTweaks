@@ -49,11 +49,12 @@ public class Config {
             public Boolean unlicensedCopy = false;
 
             @ConfigName("Enable Custom Version Text")
-            public Boolean enableCustomVersionText = true;
+            public Boolean enableCustomVersionText = false;
 
             @ConfigName("Custom Version Text")
             @Comment("Only has effect if custom version text is enabled")
-            public String customVersionText = "Minecraft Beta 1.7.4";
+            @MaxLength(64)
+            public String customVersionText = "Minecraft Beta 1.7.3 (UniTweaks)";
         }
     }
 
