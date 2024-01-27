@@ -7,7 +7,9 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BoatEntity.class)
@@ -16,18 +18,12 @@ public abstract class BoatEntityMixin extends Entity {
         super(world);
     }
 
-    @Inject(method = "tick", at = @At(value = "TAIL"))
-    public void elevateInWater(CallbackInfo ci) {
+    @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 1.0, ordinal = 1))
+    private double betaTweaks_elevatorBoatCondition(double d) {
         if (UniTweaks.OLD_FEATURES_CONFIG.boatElevators) {
-            if (this.isInFluid(Material.WATER)) {
-                this.velocityY += 0.051F;
-            }
-
-            if (this.velocityY > 0.05F) {
-                if (this.isInFluid(Material.WATER)) {
-                    this.velocityY *= 1.01F;
-                }
-            }
+            return Double.MAX_VALUE;
+        } else {
+            return d;
         }
     }
 }
