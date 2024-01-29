@@ -33,7 +33,7 @@ public class KeybindListWidget extends EntryListWidget {
         baseAccessor.setScrollAmount(baseAccessor.getScrollAmount() + value);
     }
 
-    public float getScroll(){
+    public float getScroll() {
         EntryListWidgetAccessor baseAccessor = ((EntryListWidgetAccessor) this);
         return baseAccessor.getScrollAmount();
     }
@@ -67,10 +67,10 @@ public class KeybindListWidget extends EntryListWidget {
     protected void renderEntry(int index, int x, int y, int l, Tessellator tesselator) {
         KeybindEntry keybindEntry = parent.filteredKeybinds.get(index);
 
-        minecraft.textRenderer.drawWithShadow(parent.translations.get(parent.filteredKeybinds.get(index).keyBinding.translationKey), x, y + 5, Color.white.getRGB());
+        minecraft.textRenderer.drawWithShadow(parent.translations.get(parent.filteredKeybinds.get(index).keyBinding.translationKey), x - 20, y + 5, Color.white.getRGB());
 
         ButtonWidget keyButton = keybindEntry.keyButton;
-        keyButton.x = x + 100;
+        keyButton.x = x + 120;
         keyButton.y = y;
         keyButton.render(minecraft, mouseX, mouseY);
     }
