@@ -15,6 +15,7 @@
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and
   receiving a response) ***non-configurable***
 * Text field clearing with Right Mouse Button
+* Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
@@ -112,3 +113,4 @@
 * Bow Held Fix - Bows are now being held correctly and not as only items
 * Leggings Riding Fix - Fix leggings not adjusting while riding
 * Video Settings Slider Fix - Fixes sliders not being slidable in the video settings screen
+* Fullscreen Cursor Fix - Fixes cursor not being centered when opening inventories in fullscreen

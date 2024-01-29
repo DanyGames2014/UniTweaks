@@ -18,30 +18,51 @@ public class KeyPressedListener {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
-        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code) && minecraft.currentScreen == null) {
-            panoramaScreenshot();
+        if (Keyboard.getEventKeyState()) {
+            // Panorama Screenshot
+            if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code) && minecraft.currentScreen == null) {
+                panoramaScreenshot();
+            }
+
+            // Dismount
+            if (Keyboard.isKeyDown(KeyBindingListener.dismount.code)) {
+                dismount();
+            }
+
+            // Hotbar Slots
+            if (minecraft.currentScreen == null) {
+                if (Keyboard.isKeyDown(KeyBindingListener.hotbar1.code)) {
+                    minecraft.player.inventory.selectedSlot = 0;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar2.code)) {
+                    minecraft.player.inventory.selectedSlot = 1;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar3.code)) {
+                    minecraft.player.inventory.selectedSlot = 2;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar4.code)) {
+                    minecraft.player.inventory.selectedSlot = 3;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar5.code)) {
+                    minecraft.player.inventory.selectedSlot = 4;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar6.code)) {
+                    minecraft.player.inventory.selectedSlot = 5;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar7.code)) {
+                    minecraft.player.inventory.selectedSlot = 6;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar8.code)) {
+                    minecraft.player.inventory.selectedSlot = 7;
+                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar9.code)) {
+                    minecraft.player.inventory.selectedSlot = 8;
+                }
+            }
         }
 
-        if (Keyboard.getEventKeyState() && minecraft.currentScreen == null){
-            if(Keyboard.isKeyDown(KeyBindingListener.hotbar1.code)){
-                minecraft.player.inventory.selectedSlot = 0;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar2.code)) {
-                minecraft.player.inventory.selectedSlot = 1;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar3.code)) {
-                minecraft.player.inventory.selectedSlot = 2;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar4.code)) {
-                minecraft.player.inventory.selectedSlot = 3;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar5.code)) {
-                minecraft.player.inventory.selectedSlot = 4;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar6.code)) {
-                minecraft.player.inventory.selectedSlot = 5;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar7.code)) {
-                minecraft.player.inventory.selectedSlot = 6;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar8.code)) {
-                minecraft.player.inventory.selectedSlot = 7;
-            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar9.code)) {
-                minecraft.player.inventory.selectedSlot = 8;
-            }
+
+    }
+
+    public void dismount() {
+        if (minecraft.player == null) {
+            return;
+        }
+
+        if (minecraft.player.field_1595 != null) {
+            minecraft.player.field_1595.method_1323(minecraft.player);
         }
     }
 

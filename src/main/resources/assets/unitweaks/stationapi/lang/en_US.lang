@@ -8,5 +8,11 @@ key.hotbar_6=Hotbar 6
 key.hotbar_7=Hotbar 7
 key.hotbar_8=Hotbar 8
 key.hotbar_9=Hotbar 9
+key.hide_hud=Hide HUD
+key.take_screenshot=Take Screenshot
+key.debug_hud=Debug HUD
+key.third_person=Third Person
+key.cinematic_camera=Cinematic Camera
+key.toggle_fullscreen=Toggle Fullscreen
 
 options.clouds=Clouds

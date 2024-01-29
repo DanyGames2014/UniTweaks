@@ -17,6 +17,13 @@ public class KeyBindingListener {
     public static KeyBinding hotbar7;
     public static KeyBinding hotbar8;
     public static KeyBinding hotbar9;
+    public static KeyBinding hideHUD; // F1
+    public static KeyBinding takeScreenshot; // F2
+    public static KeyBinding debugHud; // F3
+    public static KeyBinding thirdPerson; // F5
+    public static KeyBinding cinematicCamera; // F6
+    public static KeyBinding toggleFullscreen; // F11
+    public static KeyBinding dismount;
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
@@ -30,5 +37,12 @@ public class KeyBindingListener {
         event.keyBindings.add(hotbar7 = new KeyBinding("key.unitweaks:hotbar_7", Keyboard.KEY_7));
         event.keyBindings.add(hotbar8 = new KeyBinding("key.unitweaks:hotbar_8", Keyboard.KEY_8));
         event.keyBindings.add(hotbar9 = new KeyBinding("key.unitweaks:hotbar_9", Keyboard.KEY_9));
+        event.keyBindings.add(hideHUD = new KeyBinding("key.unitweaks:hide_hud", Keyboard.KEY_F1));
+        event.keyBindings.add(takeScreenshot = new KeyBinding("key.unitweaks:take_screenshot", Keyboard.KEY_F2));
+        event.keyBindings.add(debugHud = new KeyBinding("key.unitweaks:debug_hud", Keyboard.KEY_F3));
+        event.keyBindings.add(thirdPerson = new KeyBinding("key.unitweaks:third_person", Keyboard.KEY_F5));
+        event.keyBindings.add(cinematicCamera = new KeyBinding("key.unitweaks:cinematic_camera", Keyboard.KEY_F6));
+        event.keyBindings.add(toggleFullscreen = new KeyBinding("key.unitweaks:toggle_fullscreen", Keyboard.KEY_F11));
+        event.keyBindings.add(dismount = new KeyBinding("key.unitweaks:dismount", Keyboard.KEY_LSHIFT));
     }
 }
