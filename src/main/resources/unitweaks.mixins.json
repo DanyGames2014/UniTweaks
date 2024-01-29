@@ -59,6 +59,7 @@
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
+    "bugfixes.videosettingssliderfix.VideoOptionsScreenMixin",
     "options.GameOptionsMixin",
     "options.OpenExperimentalControls",
     "options.OptionMixin",
