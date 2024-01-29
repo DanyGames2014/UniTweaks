@@ -154,6 +154,7 @@ public class ControlsScreen extends Screen {
         float dWheel = Mouse.getDWheel();
         if (dWheel != 0) {
             keybindListWidget.scroll(-(dWheel / 10));
+//            System.out.println(keybindListWidget.getScroll());
         }
     }
 
@@ -187,9 +188,14 @@ public class ControlsScreen extends Screen {
         for (var keybindEntry : filteredKeybinds) {
             ButtonWidget button = keybindEntry.keyButton;
             if (button.isMouseOver(minecraft, mouseX, mouseY)) {
-                minecraft.soundManager.method_2009("random.click", 1.0F, 1.0F);
-                buttonClicked(button);
-                System.out.println("Clicked button " + button.text + " with id " + button.id);
+                if (keybindListWidget.getScroll() < ((button.id * 20) + 24)) {
+                    minecraft.soundManager.method_2009("random.click", 1.0F, 1.0F);
+                    buttonClicked(button);
+//                    System.out.println("Clicked button " + button.text + " with id : " + button.id + ", y : " + button.y);
+                    return;
+                }else{
+//                    System.out.println("Ignored button " + button.text + " with id : " + button.id + ", y : " + button.y);
+                }
             }
         }
     }

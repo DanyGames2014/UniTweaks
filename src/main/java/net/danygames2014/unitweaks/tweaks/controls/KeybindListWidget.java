@@ -33,6 +33,11 @@ public class KeybindListWidget extends EntryListWidget {
         baseAccessor.setScrollAmount(baseAccessor.getScrollAmount() + value);
     }
 
+    public float getScroll(){
+        EntryListWidgetAccessor baseAccessor = ((EntryListWidgetAccessor) this);
+        return baseAccessor.getScrollAmount();
+    }
+
     @Override
     protected void entryClicked(int index, boolean doubleClick) {
 
@@ -54,8 +59,6 @@ public class KeybindListWidget extends EntryListWidget {
     public void render(int mouseX, int mouseY, float delta) {
         this.mouseX = mouseX;
         this.mouseY = mouseY;
-
-//        parent.filter();
 
         super.render(mouseX, mouseY, delta);
     }
