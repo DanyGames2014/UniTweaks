@@ -1,17 +1,12 @@
-achievement.boned=You've been boned!
-achievement.boned.desc=Pick up a bone.
-achievement.apple=AppleStuff
-achievement.apple.desc=Pick up an apple.
-
-achievement.page.examplemod=Example
-
-item.coolitem.name=Cool Item
-
-tile.test.name=Example Block
-tile.test2.name=Example Block With Model
-
-key.test=Give Boned Achievement
-key.test2=Give Apple Achievement
-key.hurtme=Hurt Self
+key.panorama_screenshot=Panorama Screenshot
+key.hotbar_1=Hotbar 1
+key.hotbar_2=Hotbar 2
+key.hotbar_3=Hotbar 3
+key.hotbar_4=Hotbar 4
+key.hotbar_5=Hotbar 5
+key.hotbar_6=Hotbar 6
+key.hotbar_7=Hotbar 7
+key.hotbar_8=Hotbar 8
+key.hotbar_9=Hotbar 9
 
 options.clouds=Clouds

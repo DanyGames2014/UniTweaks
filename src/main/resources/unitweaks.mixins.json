@@ -76,9 +76,10 @@
     "tweaks.ingameversiontext.class_594Mixin",
     "tweaks.ingameversiontext.InGameHudMixin",
     "tweaks.mainmenupanorama.TitleScreenMixin",
+    "tweaks.morekeybinds.MinecraftMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
-    "tweaks.shiftplacing.InteractionManagerMixin",
+    "tweaks.shiftplacing.InteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -18,27 +18,50 @@ public class KeyPressedListener {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
-        // FOV 70 and 2560x1440 -> 2304x1440 scaling works well
+        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code) && minecraft.currentScreen == null) {
+            panoramaScreenshot();
+        }
 
+        if (Keyboard.getEventKeyState() && minecraft.currentScreen == null){
+            if(Keyboard.isKeyDown(KeyBindingListener.hotbar1.code)){
+                minecraft.player.inventory.selectedSlot = 0;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar2.code)) {
+                minecraft.player.inventory.selectedSlot = 1;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar3.code)) {
+                minecraft.player.inventory.selectedSlot = 2;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar4.code)) {
+                minecraft.player.inventory.selectedSlot = 3;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar5.code)) {
+                minecraft.player.inventory.selectedSlot = 4;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar6.code)) {
+                minecraft.player.inventory.selectedSlot = 5;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar7.code)) {
+                minecraft.player.inventory.selectedSlot = 6;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar8.code)) {
+                minecraft.player.inventory.selectedSlot = 7;
+            } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar9.code)) {
+                minecraft.player.inventory.selectedSlot = 8;
+            }
+        }
+    }
+
+    public void panoramaScreenshot() {
+        // FOV 70 and 2560x1440 -> 2304x1440 scaling works well
         if (minecraft.player == null) {
             return;
         }
 
-        if (Keyboard.getEventKeyState() && Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code) && minecraft.currentScreen == null) {
+        minecraft.options.hideHud = true;
 
-            minecraft.options.hideHud = true;
-
-            for (int i = 0; i < 6; i++) {
-                facePlayer(i);
-                minecraft.player.baseTick();
-                minecraft.field_2818.method_1844(0F);
-                System.out.println(i);
-                class_260.method_908(Minecraft.getRunDirectory(), minecraft.displayWidth, minecraft.displayHeight);
-            }
-
-            minecraft.options.hideHud = false;
-
+        for (int i = 0; i < 6; i++) {
+            facePlayer(i);
+            minecraft.player.baseTick();
+            minecraft.field_2818.method_1844(0F);
+            System.out.println(i);
+            class_260.method_908(Minecraft.getRunDirectory(), minecraft.displayWidth, minecraft.displayHeight);
         }
+
+        minecraft.options.hideHud = false;
     }
 
     public void facePlayer(int direction) {
