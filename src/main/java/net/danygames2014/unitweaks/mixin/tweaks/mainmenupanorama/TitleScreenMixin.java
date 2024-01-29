@@ -90,10 +90,10 @@ public class TitleScreenMixin extends Screen {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.panoramaTexture);
         GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, panoramaImageSize, panoramaImageSize);
 
-        // This doesn't seem to change anything ?
-        //GL11.glEnable(GL11.GL_BLEND);
-        //GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        //GL11.glColorMask(true, true, true, false);
+        // Without this, Panorama breaks when blur is enabled on AMD drivers :abyss:
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glColorMask(true, true, true, false);
 
         tessellator.startQuads();
         for (int i = 0; i < 3; ++i) {
