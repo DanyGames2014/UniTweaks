@@ -10,6 +10,7 @@
     "bugfixes.bowheldfix.BowItemMixin",
     "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.fishvelocityfix.FishingBobberEntityMixin",
+    "bugfixes.furnaceconsumebucketfix.FurnaceBlockEntityMixin",
     "bugfixes.lavawithoutsourcefix.FlowingLiquidBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
     "bugfixes.pigdropsaddlefix.PigEntityMixin",

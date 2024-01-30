@@ -238,6 +238,9 @@ public class Config {
         @Comment("Fixes fish flying above the player head when caught")
         public Boolean fishVelocityFix = true;
 
+        @ConfigName("Furnace Consume Bucket Fix")
+        @Comment("Fixes furnace consuming lava bucket as fuel")
+        public Boolean furnaceConsumeBucketFix = true;
     }
 
     public static class OldFeaturesConfig {
