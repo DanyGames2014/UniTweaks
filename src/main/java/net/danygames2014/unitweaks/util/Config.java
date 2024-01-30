@@ -172,6 +172,9 @@ public class Config {
 
         @ConfigName("Disable spawning mobs when you sleep")
         public Boolean disableSleepSpawning = false;
+
+        @ConfigName("Prevent Items Stopping Minecarts")
+        public Boolean preventItemsStoppingMinecarts = true;
     }
 
     public static class BugfixesConfig {

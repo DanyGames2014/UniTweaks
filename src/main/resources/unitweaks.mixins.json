@@ -36,6 +36,7 @@
     "tweaks.harvestablecobwebs.ShearsItemMixin",
     "tweaks.harvestablecobwebs.SwordItemMixin",
     "tweaks.hoegrassforseeds.HoeItemMixin",
+    "tweaks.itemsdontstopminecart.MinecartEntityMixin",
     "tweaks.laddergaps.LivingEntityMixin",
     "tweaks.minecartboosters.MinecartEntityMixin",
     "tweaks.modernflintandsteel.FlintAndSteelItemMixin",
