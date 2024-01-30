@@ -47,6 +47,10 @@ public abstract class OptionMixin {
         ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal() + 3, "options.cloud_height", true, false);
         options.add(CLOUD_HEIGHT);
 
+        Option FPS_LIMIT;
+        ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal()+4, "options.fps_limit", true, false);
+        options.add(FPS_LIMIT);
+
         field_1113 = options.toArray(new Option[0]);
     }
 }

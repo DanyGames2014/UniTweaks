@@ -72,6 +72,7 @@
     "tweaks.disablef3entityids.LivingEntityRendererMixin",
     "tweaks.fogdensity.class555Mixin",
     "tweaks.fov.class555Mixin",
+    "tweaks.fpslimitslider.class_555Mixin",
     "tweaks.hideachievementtoast.class_594Mixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
     "tweaks.ingameversiontext.class_594Mixin",

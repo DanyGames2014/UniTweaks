@@ -33,6 +33,10 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.cloudHeightOption) {
             ModOptions.cloudHeight = value;
         }
+
+        if (option == ModOptions.fpsLimitOption) {
+            ModOptions.fpsLimit = value;
+        }
     }
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
@@ -55,6 +59,10 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.cloudHeightOption) {
             cir.setReturnValue(ModOptions.cloudHeight);
+        }
+
+        if (option == ModOptions.fpsLimitOption){
+            cir.setReturnValue(ModOptions.fpsLimit);
         }
     }
 
@@ -92,6 +100,11 @@ public abstract class GameOptionsMixin {
             } else {
                 cir.setReturnValue("Fog: " + ModOptions.getFogDisplayValue() * 2F + "x");
             }
+        }
+
+        if (option == ModOptions.fpsLimitOption){
+            float value = ModOptions.getFpsLimitValue();
+            cir.setReturnValue("FPS Limit: " + value);
         }
 
         if (option == ModOptions.cloudHeightOption) {

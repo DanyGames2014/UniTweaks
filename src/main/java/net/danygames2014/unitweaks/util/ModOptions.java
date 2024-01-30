@@ -7,6 +7,14 @@ public class ModOptions {
     public static Option cloudsOption;
     public static Option fovOption;
     public static Option cloudHeightOption;
+    public static Option fpsLimitOption;
+
+    // FPS Limit
+    public static float fpsLimit = 0.4F;
+
+    public static int getFpsLimitValue(){
+        return (int) (Math.floor(fpsLimit * 40F) * 5);
+    }
 
     // Clouds
     public static boolean clouds = true;
