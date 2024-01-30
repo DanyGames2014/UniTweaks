@@ -4,7 +4,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.class_260;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.modificationstation.stationapi.api.client.event.keyboard.KeyStateChangedEvent;
+import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
 
 
@@ -61,8 +63,13 @@ public class KeyPressedListener {
             return;
         }
 
-        if (minecraft.player.field_1595 != null) {
-            minecraft.player.field_1595.method_1323(minecraft.player);
+        if (!minecraft.world.isRemote) {
+
+            if (minecraft.player.field_1595 != null) {
+                minecraft.player.field_1595.method_1323(minecraft.player);
+            }
+        } else {
+            PacketHelper.send(new PlayerInteractEntityC2SPacket(minecraft.player.id, minecraft.player.field_1595.id, 0));
         }
     }
 
