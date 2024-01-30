@@ -16,6 +16,8 @@
   receiving a response) ***non-configurable***
 * Text field clearing with Right Mouse Button
 * Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
+* Dismount Key
+* FPS Limit slider
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
@@ -30,6 +32,7 @@
     * Burning Skeletons have a 70% chance of shooting a burning arrow
     * Burning Arrows ignite entities
     * Mobs on fire attacking player have a 30% chance to spread that fire onto the player
+* Zoom Key
 
 ### Tweaks
 * Sugar Cane can be placed on sand (from Beta 1.8)
@@ -43,6 +46,7 @@
 * Prevent damaging Flint and Steel on failed ignite
 * Ability to disable sleeping but still allow setting spawnpoints at beds
 * Ability to disable spawning mobs when going to sleep (Nightmares)
+* Ability to prevent Items and Arrows from stopping MInecarts
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -114,3 +118,5 @@
 * Leggings Riding Fix - Fix leggings not adjusting while riding
 * Video Settings Slider Fix - Fixes sliders not being slidable in the video settings screen
 * Fullscreen Cursor Fix - Fixes cursor not being centered when opening inventories in fullscreen
+* Furnace Consume Bucket Fix - Fixes furnace consuming bucket when fueled with lava
+* Fish Velocity Fix - Fix fish flying way behind the player when caught
