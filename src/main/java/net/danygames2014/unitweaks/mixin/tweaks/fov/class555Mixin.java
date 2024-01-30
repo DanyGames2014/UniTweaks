@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
+import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.block.Material;
 import net.minecraft.class_555;
@@ -37,7 +38,7 @@ public class class555Mixin {
             fov *= 60.0F / 70.0F;
         }
 
-        if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
+        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code)) {
             fov /= 4F;
             field_2349.options.cinematicMode = true;
         } else {

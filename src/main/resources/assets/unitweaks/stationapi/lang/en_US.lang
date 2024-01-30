@@ -14,6 +14,8 @@ key.debug_hud=Debug HUD
 key.third_person=Third Person
 key.cinematic_camera=Cinematic Camera
 key.toggle_fullscreen=Toggle Fullscreen
+key.dismount=Dismount
+key.zoom=Zoom
 
 options.clouds=Clouds
 options.fps_limit=FPS Limit

@@ -133,7 +133,9 @@ public class ControlsScreen extends Screen {
             // Look for conflicts
             for (int j = 0; j < options.allKeys.length; j++) {
                 if (!(options.allKeys[j].translationKey.equals(keybindEntry.keyBinding.translationKey)) && (options.allKeys[j].code == keybindEntry.keyBinding.code)) {
-                    formatting = Formatting.RED;
+                    if (!options.allKeys[j].translationKey.equals("key.unitweaks:dismount") && !keybindEntry.keyBinding.translationKey.equals("key.unitweaks:dismount")) {
+                        formatting = Formatting.RED;
+                    }
                 }
             }
 
@@ -193,7 +195,7 @@ public class ControlsScreen extends Screen {
                     buttonClicked(button);
 //                    System.out.println("Clicked button " + button.text + " with id : " + button.id + ", y : " + button.y);
                     return;
-                }else{
+                } else {
 //                    System.out.println("Ignored button " + button.text + " with id : " + button.id + ", y : " + button.y);
                 }
             }

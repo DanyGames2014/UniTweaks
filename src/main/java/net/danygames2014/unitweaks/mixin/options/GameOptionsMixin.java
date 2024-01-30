@@ -61,7 +61,7 @@ public abstract class GameOptionsMixin {
             cir.setReturnValue(ModOptions.cloudHeight);
         }
 
-        if (option == ModOptions.fpsLimitOption){
+        if (option == ModOptions.fpsLimitOption) {
             cir.setReturnValue(ModOptions.fpsLimit);
         }
     }
@@ -102,11 +102,11 @@ public abstract class GameOptionsMixin {
             }
         }
 
-        if (option == ModOptions.fpsLimitOption){
+        if (option == ModOptions.fpsLimitOption) {
             float value = ModOptions.getFpsLimitValue();
-            if(value >= 300){
+            if (value >= 300) {
                 cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + translations.get("options.unitweaks:fps_limit_max"));
-            }else{
+            } else {
                 cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + value);
             }
         }
@@ -142,6 +142,10 @@ public abstract class GameOptionsMixin {
         if (stringArray[0].equals("cloud_height")) {
             ModOptions.cloudHeight = this.parseFloat(stringArray[1]);
         }
+
+        if (stringArray[0].equals("fps_limit")) {
+            ModOptions.fpsLimit = this.parseFloat(stringArray[1]);
+        }
     }
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -150,5 +154,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("fog_density:" + ModOptions.fogDensity);
         printWriter.println("clouds:" + ModOptions.clouds);
         printWriter.println("cloud_height:" + ModOptions.cloudHeight);
+        printWriter.println("fps_limit: " + ModOptions.fpsLimit);
     }
 }
