@@ -36,7 +36,7 @@ public class Config {
             public Boolean blurBackground = true;
 
             @ConfigName("Panorama folder to use")
-            @Comment("Default included : beta18, glacier, glacier2")
+            @Comment("Default included : beta18, glacier")
             public String panoramaFolder = "glacier";
         }
 
@@ -65,7 +65,7 @@ public class Config {
 
         @ConfigName("Step Assist")
         @Comment("Allows you to step up one block")
-        public Boolean stepAssist = true;
+        public Boolean stepAssist = false;
 
         @ConfigName("Pick Block from Inventory")
         public Boolean pickBlockFromInventory = true;
@@ -271,7 +271,7 @@ public class Config {
         public Boolean ladderGaps = false;
 
         @ConfigName("Minecart Boosters")
-        public Boolean minecartBoosters = true;
+        public Boolean minecartBoosters = false;
     }
 
     public static class RecipesConfig {
