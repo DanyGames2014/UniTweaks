@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.mainmenupanorama;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.render.Tessellator;
@@ -42,7 +43,7 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V", shift = At.Shift.AFTER))
     public void redirectBackgroundRendering(int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        if (!UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma) {
+        if (!UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
             this.renderBackground();
         } else {
             this.fwidth = (float) width;
@@ -148,7 +149,10 @@ public class TitleScreenMixin extends Screen {
                     case 5 -> GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.minecraft.textureManager.getTextureId("assets/unitweaks/stationapi/textures/" + UniTweaks.GENERAL_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png"));
+                GL11.glBindTexture(
+                        GL11.GL_TEXTURE_2D,
+                        this.minecraft.textureManager.getTextureId("assets/unitweaks/textures/" + UniTweaks.GENERAL_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png")
+                );
                 tessellator.startQuads();
                 tessellator.color(16777215, 255 / (var6 + 1));
                 tessellator.vertex(-1.0D, -1.0D, 1.0D, 0.0F, 0.0F);
