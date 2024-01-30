@@ -104,7 +104,11 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.fpsLimitOption){
             float value = ModOptions.getFpsLimitValue();
-            cir.setReturnValue("FPS Limit: " + value);
+            if(value >= 300){
+                cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + translations.get("options.unitweaks:fps_limit_max"));
+            }else{
+                cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + value);
+            }
         }
 
         if (option == ModOptions.cloudHeightOption) {

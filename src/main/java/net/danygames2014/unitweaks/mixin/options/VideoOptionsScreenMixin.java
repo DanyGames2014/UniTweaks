@@ -14,10 +14,10 @@ public class VideoOptionsScreenMixin {
     private static Option[] field_2003;
 
     static {
-        field_2003 = Arrays.copyOf(field_2003, field_2003.length + 4);
-        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 4] = ModOptions.fogDensityOption;
-        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 3] = ModOptions.cloudsOption;
-        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 2] = ModOptions.cloudHeightOption;
-        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 1] = ModOptions.fpsLimitOption;
+        field_2003 = Arrays.copyOf(field_2003, field_2003.length + 3);
+        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 3] = ModOptions.fogDensityOption;
+        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 2] = ModOptions.cloudsOption;
+        VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 1] = ModOptions.cloudHeightOption;
+        VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
     }
 }

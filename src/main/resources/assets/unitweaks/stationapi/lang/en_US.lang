@@ -16,3 +16,5 @@ key.cinematic_camera=Cinematic Camera
 key.toggle_fullscreen=Toggle Fullscreen
 
 options.clouds=Clouds
+options.fps_limit=FPS Limit
+options.fps_limit_max=Unlimited
