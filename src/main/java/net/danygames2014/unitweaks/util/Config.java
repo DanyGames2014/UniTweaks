@@ -234,6 +234,10 @@ public class Config {
         @Comment("Fixes itemstacks being render below text in containers")
         public Boolean itemstackRenderingFix = true;
 
+        @ConfigName("Fish Velocity Fix")
+        @Comment("Fixes fish flying above the player head when caught")
+        public Boolean fishVelocityFix = true;
+
     }
 
     public static class OldFeaturesConfig {
