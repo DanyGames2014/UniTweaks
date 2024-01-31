@@ -43,7 +43,7 @@ public class FenceBlockMixin extends Block {
             connectNegZ = world.getBlockId(x, y, z - 1) == fenceId;
         }
 
-        return Box.create(connectNegX ? 0 : 0.375F, 0.F, connectNegZ ? 0.F : 0.375F, connectPosX ? 1.F : 0.625F, 1.F, connectPosZ ? 1.F : 0.625F);
+        return Box.create(connectNegX ? 0 : 0.375F, 0F, connectNegZ ? 0F : 0.375F, connectPosX ? 1F : 0.625F, 1F, connectPosZ ? 1.F : 0.625F);
     }
 
     @Unique
@@ -58,7 +58,11 @@ public class FenceBlockMixin extends Block {
         box.maxZ += z;
 
         if (collider) {
-            box.maxY += 0.5F;
+            if(UniTweaks.GAMEPLAY_CONFIG.fenceJumping){
+                box.maxY += 0.01F;
+            }else{
+                box.maxY += 0.5F;
+            }
         }
 
         return box;

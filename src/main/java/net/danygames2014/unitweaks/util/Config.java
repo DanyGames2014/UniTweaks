@@ -78,6 +78,9 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Equip armor using right-click")
         public Boolean rightClickEquipArmor = true;
+
+        @ConfigName("Allows you to jump on fences")
+        public Boolean fenceJumping = true;
     }
 
     public static class FeaturesConfig {
