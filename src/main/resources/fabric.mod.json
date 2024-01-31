@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "UniTweaks",
   "description":
-    "An attempt at an all-in-one fixes and tweaks package for Beta 1.7.3 Special Thanks to : Telvarost (Allowing me to implement their mainy tweaks and fixes), rek (Allowing me to use their Main Menu Panorama code)",
+    "An attempt at an all-in-one fixes and tweaks package for Beta 1.7.3",
 
   "authors": [
     {
