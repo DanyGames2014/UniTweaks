@@ -12,5 +12,10 @@ public class ColorProviderListener {
                 (item, damage) -> class_287.method_981(0.5F, 0.5F),
                 Block.GRASS_BLOCK
         );
+
+        event.itemColors.register(
+                (item, damage) -> class_287.method_981(0.5F, 0.5F),
+                Block.GRASS.asItem()
+        );
     }
 }
