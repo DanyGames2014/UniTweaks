@@ -257,6 +257,9 @@ public class Config {
         @ConfigName("Furnace Consume Bucket Fix")
         @Comment("Fixes furnace consuming lava bucket as fuel")
         public Boolean furnaceConsumeBucketFix = true;
+
+        @ConfigName("Armor Icon Fix")
+        public Boolean armorIconsFix = true;
     }
 
     public static class OldFeaturesConfig {
