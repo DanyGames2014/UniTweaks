@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
+import blue.endless.jankson.JsonObject;
+import blue.endless.jankson.JsonPrimitive;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -85,9 +87,6 @@ public class ControlsScreen extends Screen {
 
         // Step Assist
         stepAssist = new ButtonWidget(1001, (this.width / 2) + 10, 10, 100, 20, "Step Assist: OFF");
-        if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
-            stepAssist.text = "Step Assist: ON";
-        }
         this.buttons.add(stepAssist);
 
         // Init Keybinds
@@ -98,6 +97,9 @@ public class ControlsScreen extends Screen {
 
         // Refresh Key Labels
         refreshKeyLabels();
+
+        // Refresh Button Labels
+        refreshButtonLabels();
     }
 
     /**
@@ -151,6 +153,14 @@ public class ControlsScreen extends Screen {
             }
 
             keybindEntry.keyButton.text = formatting + Keyboard.getKeyName(keybindEntry.keyBinding.code) + Formatting.WHITE;
+        }
+    }
+
+    public void refreshButtonLabels() {
+        if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
+            stepAssist.text = "Step Assist: ON";
+        } else {
+            stepAssist.text = "Step Assist: OFF";
         }
     }
 
@@ -245,17 +255,17 @@ public class ControlsScreen extends Screen {
     // Button Clik
     @Override
     protected void buttonClicked(ButtonWidget button) {
-        if (button.id == 1000) {
+        if (button.id == 1000) { // Done
             minecraft.setScreen(this.parent);
-        } else if (button.id == 1001) {
+
+        } else if (button.id == 1001) { // Step Assist
             UniTweaks.GAMEPLAY_CONFIG.stepAssist = !UniTweaks.GAMEPLAY_CONFIG.stepAssist;
-            if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
-                stepAssist.text = "Step Assist: ON";
-            } else {
-                stepAssist.text = "Step Assist: OFF";
-            }
-            GCAPI.reloadConfig(Identifier.of("unitweaks:gameplay"));
-        } else if (keybindButtons.contains(button)) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.GAMEPLAY_CONFIG.stepAssist));
+            GCAPI.reloadConfig(Identifier.of("unitweaks:gameplay"), jsonObject);
+            refreshButtonLabels();
+
+        } else if (keybindButtons.contains(button)) { // Keybind
             selectedButton = button;
             button.text = "> " + button.text + " <";
         }
