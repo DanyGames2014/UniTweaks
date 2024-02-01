@@ -1,4 +1,4 @@
-package net.danygames2014.unitweaks.mixin.tweaks.harvestablecobwebs;
+package net.danygames2014.unitweaks.mixin.tweaks.shearharvesting;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;

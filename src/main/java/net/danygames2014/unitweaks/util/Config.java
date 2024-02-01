@@ -159,8 +159,8 @@ public class Config {
         public Boolean betterBoats = false;
 
         @MultiplayerSynced
-        @ConfigName("Harvestable Cobwebs")
-        public Boolean harvestableCobwebs = true;
+        @ConfigName("Allow shears to harvest cobwebs and tall grass")
+        public Boolean shearHarvesting = true;
 
         @MultiplayerSynced
         @ConfigName("Expand Chicken Hitbox")
