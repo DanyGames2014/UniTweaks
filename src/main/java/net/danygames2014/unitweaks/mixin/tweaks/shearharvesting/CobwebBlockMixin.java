@@ -16,7 +16,7 @@ public class CobwebBlockMixin extends Block {
 
     @Override
     public int getDroppedItemCount(Random random) {
-        if (UniTweaks.TWEAKS_CONFIG.harvestableCobwebs) {
+        if (UniTweaks.TWEAKS_CONFIG.shearHarvesting) {
             return 0;
         }
         return super.getDroppedItemCount(random);

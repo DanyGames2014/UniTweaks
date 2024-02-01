@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SwordItemMixin {
     @Inject(method = "postMine", at = @At("HEAD"))
     public void harvestCobweb(ItemStack stack, int blockId, int x, int y, int z, LivingEntity player, CallbackInfoReturnable<Boolean> cir) {
-        if (UniTweaks.TWEAKS_CONFIG.harvestableCobwebs && !player.world.isRemote && blockId == Block.COBWEB.id) {
+        if (UniTweaks.TWEAKS_CONFIG.shearHarvesting && !player.world.isRemote && blockId == Block.COBWEB.id) {
             ItemEntity itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Item.STRING, 1));
             itemEntity.pickupDelay = 10;
             player.world.method_210(itemEntity);
