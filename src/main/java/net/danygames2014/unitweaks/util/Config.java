@@ -79,8 +79,9 @@ public class Config {
         @ConfigName("Equip armor using right-click")
         public Boolean rightClickEquipArmor = true;
 
-        @ConfigName("Allows you to jump on fences")
-        public Boolean fenceJumping = true;
+        @ConfigName("Fence Jump")
+        @Comment("Only works if fence bounding box fix is enabled")
+        public Boolean fenceJumping = false;
     }
 
     public static class FeaturesConfig {

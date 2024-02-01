@@ -58,9 +58,9 @@ public class FenceBlockMixin extends Block {
         box.maxZ += z;
 
         if (collider) {
-            if(UniTweaks.GAMEPLAY_CONFIG.fenceJumping){
-                box.maxY += 0.01F;
-            }else{
+            if (UniTweaks.GAMEPLAY_CONFIG.fenceJumping) {
+                box.maxY += 0.26F;
+            } else {
                 box.maxY += 0.5F;
             }
         }

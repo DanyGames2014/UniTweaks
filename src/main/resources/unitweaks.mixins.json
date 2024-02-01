@@ -31,6 +31,7 @@
     "tweaks.disabletallgrass.GrassPatchFeatureMixin",
     "tweaks.fasterboats.BoatEntityMixin",
     "tweaks.fastleafdecay.LeavesBlockMixin",
+    "tweaks.fencejump.PlayerEntityMixin",
     "tweaks.fenceplacement.FenceBlockMixin",
     "tweaks.harvestablecobwebs.CobwebBlockMixin",
     "tweaks.harvestablecobwebs.ShearsItemMixin",
