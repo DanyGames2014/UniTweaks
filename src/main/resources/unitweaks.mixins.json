@@ -21,6 +21,7 @@
     "tweaks.bedtweaks.class_567Mixin",
     "tweaks.bedtweaks.PlayerEntityAccessor",
     "tweaks.betterburning.ArrowEntityMixin",
+    "tweaks.igniteentities.FlintAndSteelItemMixin",
     "tweaks.betterburning.PlayerEntityMixin",
     "tweaks.betterburning.SkeletonEntityMixin",
     "tweaks.biggerchickenhitbox.ChickenEntityMixin",

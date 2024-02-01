@@ -182,6 +182,10 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Prevent Items Stopping Minecarts")
         public Boolean preventItemsStoppingMinecarts = true;
+
+        @MultiplayerSynced
+        @ConfigName("Allow igniting entities with flint and steel")
+        public Boolean allowIgnitingEntities = true;
     }
 
     public static class BugfixesConfig {
