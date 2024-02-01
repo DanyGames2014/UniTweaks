@@ -79,6 +79,7 @@ public class Config {
         @ConfigName("Equip armor using right-click")
         public Boolean rightClickEquipArmor = true;
 
+        @MultiplayerSynced
         @ConfigName("Fence Jump")
         @Comment("Only works if fence bounding box fix is enabled")
         public Boolean fenceJumping = false;
@@ -174,9 +175,11 @@ public class Config {
         @ConfigName("Disable sleeping but retain respawning")
         public Boolean disableSleeping = false;
 
+        @MultiplayerSynced
         @ConfigName("Disable spawning mobs when you sleep")
         public Boolean disableSleepSpawning = false;
 
+        @MultiplayerSynced
         @ConfigName("Prevent Items Stopping Minecarts")
         public Boolean preventItemsStoppingMinecarts = true;
     }
@@ -241,10 +244,12 @@ public class Config {
         @Comment("Fixes itemstacks being render below text in containers")
         public Boolean itemstackRenderingFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Fish Velocity Fix")
         @Comment("Fixes fish flying above the player head when caught")
         public Boolean fishVelocityFix = true;
 
+        @MultiplayerSynced
         @ConfigName("Furnace Consume Bucket Fix")
         @Comment("Fixes furnace consuming lava bucket as fuel")
         public Boolean furnaceConsumeBucketFix = true;
@@ -271,12 +276,15 @@ public class Config {
         @ConfigName("Hoe Grass for Seeds")
         public Boolean hoeGrassForSeeds = false;
 
+        @MultiplayerSynced
         @ConfigName("Boat Elevators")
         public Boolean boatElevators = false;
 
+        @MultiplayerSynced
         @ConfigName("Ladder Gaps")
         public Boolean ladderGaps = false;
 
+        @MultiplayerSynced
         @ConfigName("Minecart Boosters")
         public Boolean minecartBoosters = false;
     }
