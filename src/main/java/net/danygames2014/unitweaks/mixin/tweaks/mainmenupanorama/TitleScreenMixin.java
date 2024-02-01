@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.mainmenupanorama;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.render.Tessellator;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @Mixin(TitleScreen.class)
@@ -35,6 +37,16 @@ public class TitleScreenMixin extends Screen {
 
     @Unique
     public int panoramaImageSize = 256;
+
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", ordinal = 0))
+    public void moveVersionText(TitleScreen instance, TextRenderer textRenderer, String text, int x, int y, int color) {
+        if (UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma) {
+            textRenderer.drawWithShadow(text, x, this.height - 10, Color.white.getRGB());
+        } else {
+            textRenderer.drawWithShadow(text, x, y, color);
+        }
+    }
+
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
     public void cancelDefaultBackgroundRendering(TitleScreen instance) {
