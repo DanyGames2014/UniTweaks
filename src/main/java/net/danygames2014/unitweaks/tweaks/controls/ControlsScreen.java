@@ -1,7 +1,9 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.glasslauncher.mods.api.gcapi.api.GCAPI;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -9,6 +11,7 @@ import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.resource.language.TranslationStorage;
 import net.modificationstation.stationapi.api.util.Formatting;
+import net.modificationstation.stationapi.api.util.Identifier;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -36,6 +39,7 @@ public class ControlsScreen extends Screen {
     int searchWidth;
     int searchHeight;
     public ButtonWidget doneButton;
+    public ButtonWidget stepAssist;
 
     // Selected
     public ButtonWidget selectedButton;
@@ -78,6 +82,13 @@ public class ControlsScreen extends Screen {
         // Done Button
         doneButton = new ButtonWidget(1000, (this.width / 2) + 10, this.height - 30, 100, 20, "Done");
         this.buttons.add(doneButton);
+
+        // Step Assist
+        stepAssist = new ButtonWidget(1001, (this.width / 2) + 10, 10, 100, 20, "Step Assist: OFF");
+        if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
+            stepAssist.text = "Step Assist: ON";
+        }
+        this.buttons.add(stepAssist);
 
         // Init Keybinds
         initKeybinds();
@@ -236,6 +247,14 @@ public class ControlsScreen extends Screen {
     protected void buttonClicked(ButtonWidget button) {
         if (button.id == 1000) {
             minecraft.setScreen(this.parent);
+        } else if (button.id == 1001) {
+            UniTweaks.GAMEPLAY_CONFIG.stepAssist = !UniTweaks.GAMEPLAY_CONFIG.stepAssist;
+            if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
+                stepAssist.text = "Step Assist: ON";
+            } else {
+                stepAssist.text = "Step Assist: OFF";
+            }
+            GCAPI.reloadConfig(Identifier.of("unitweaks:gameplay"));
         } else if (keybindButtons.contains(button)) {
             selectedButton = button;
             button.text = "> " + button.text + " <";
@@ -251,6 +270,7 @@ public class ControlsScreen extends Screen {
         this.drawTextWithShadow(textRenderer, debugText, 10, 20, Color.white.getRGB());
         searchTextField.render();
         doneButton.render(minecraft, mouseX, mouseY);
+        stepAssist.render(minecraft, mouseX, mouseY);
     }
 
     public static class KeybindEntry {
