@@ -9,9 +9,17 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(FurnaceBlockEntity.class)
+@Mixin(value = FurnaceBlockEntity.class, priority = 1100)
 public class FurnaceBlockEntityMixin {
-    @Redirect(method = "method_1076", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/item/ItemStack;count:I"))
+    @Redirect(
+            method = "method_1076",
+            at = @At(
+                    value = "FIELD",
+                    opcode = Opcodes.PUTFIELD,
+                    target = "Lnet/minecraft/item/ItemStack;count:I"
+            ),
+            require = 0
+    )
     public void iNotHasABucket(ItemStack stack, int value) {
         if (UniTweaks.BUGFIXES_CONFIG.furnaceConsumeBucketFix) {
             if (stack.itemId == Item.LAVA_BUCKET.id) {
