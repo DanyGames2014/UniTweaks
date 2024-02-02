@@ -20,9 +20,9 @@ public class KeyPressedListener {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
-        if (Keyboard.getEventKeyState()) {
+        if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             // Panorama Screenshot
-            if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code) && minecraft.currentScreen == null) {
+            if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code)) {
                 panoramaScreenshot();
             }
 
@@ -63,11 +63,12 @@ public class KeyPressedListener {
             return;
         }
 
-        if (!minecraft.world.isRemote) {
+        if (minecraft.player.field_1595 == null) {
+            return;
+        }
 
-            if (minecraft.player.field_1595 != null) {
-                minecraft.player.field_1595.method_1323(minecraft.player);
-            }
+        if (!minecraft.world.isRemote) {
+            minecraft.player.field_1595.method_1323(minecraft.player);
         } else {
             PacketHelper.send(new PlayerInteractEntityC2SPacket(minecraft.player.id, minecraft.player.field_1595.id, 0));
         }
