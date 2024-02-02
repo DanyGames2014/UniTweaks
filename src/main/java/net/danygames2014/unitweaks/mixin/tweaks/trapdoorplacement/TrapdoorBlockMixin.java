@@ -1,0 +1,34 @@
+package net.danygames2014.unitweaks.mixin.tweaks.trapdoorplacement;
+
+import net.danygames2014.unitweaks.UniTweaks;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(TrapdoorBlock.class)
+public class TrapdoorBlockMixin extends Block {
+    public TrapdoorBlockMixin(int id, Material material) {
+        super(id, material);
+    }
+
+    @Inject(method = "canPlaceAt", at = @At(value = "HEAD"), cancellable = true)
+    public void canPlaceAt(World world, int x, int y, int z, int side, CallbackInfoReturnable<Boolean> cir) {
+        if (UniTweaks.TWEAKS_CONFIG.allowTrapdoorsWithoutSupport) {
+            cir.setReturnValue(super.canPlaceAt(world, x, y, z));
+        }
+    }
+
+    @Redirect(method = "neighborUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;method_1780(III)Z"))
+    public boolean bamboozlingTheTrapdoor(World world, int x, int y, int z) {
+        if (UniTweaks.TWEAKS_CONFIG.allowTrapdoorsWithoutSupport) {
+            return true;
+        }
+        return world.method_1780(x, y, z);
+    }
+}

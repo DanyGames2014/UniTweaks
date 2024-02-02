@@ -53,7 +53,8 @@
     "tweaks.shearharvesting.ShearsItemMixin",
     "tweaks.shearharvesting.SwordItemMixin",
     "tweaks.stepassist.PlayerEntityMixin",
-    "tweaks.sugarcaneonsand.SugarCaneBlockMixin"
+    "tweaks.sugarcaneonsand.SugarCaneBlockMixin",
+    "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
     "tweaks.shiftplacing.class_70Mixin"

@@ -186,6 +186,10 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Allow igniting entities with flint and steel")
         public Boolean allowIgnitingEntities = true;
+
+        @MultiplayerSynced
+        @ConfigName("Allow placing trapdoors without support")
+        public Boolean allowTrapdoorsWithoutSupport = true;
     }
 
     public static class BugfixesConfig {
