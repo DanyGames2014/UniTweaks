@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(Minecraft.class)
+@Mixin(value = Minecraft.class, remap = false)
 public class MinecraftMixin {
     @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;create()V", ordinal = 0), require = 0)
     public void bitDepthFix() throws LWJGLException {
