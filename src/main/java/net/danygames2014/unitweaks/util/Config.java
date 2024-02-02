@@ -185,7 +185,7 @@ public class Config {
 
         @MultiplayerSynced
         @ConfigName("Allow igniting entities with flint and steel")
-        public Boolean allowIgnitingEntities = true;
+        public Boolean allowIgnitingEntities = false;
 
         @MultiplayerSynced
         @ConfigName("Allow placing trapdoors without support")
