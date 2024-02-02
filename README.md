@@ -18,6 +18,7 @@
 * Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
 * Dismount Key
 * FPS Limit slider
+* Armor Outlines in Player Inventory
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
@@ -25,6 +26,7 @@
 * Pick Block from Inventory -- Allow picking blocks from inventory
 * Shift Placing - Bypassing use actions on blocks when crouching
 * Right Click Armor Equip - Equip/Swap armor by right-clicking it
+* Fence Jumping - Allows you to jump on fences
 
 ### Features
 * Fast Leaf Decay
@@ -42,11 +44,13 @@
 * Bookshelves drop 3 books
 * Allow placing pressure plates on fences
 * [WIP] Better boat handling
-* Harvestable Cobwebs using Shears
+* Harvestable Cobwebs and Tall Grass using Shears
 * Prevent damaging Flint and Steel on failed ignite
 * Ability to disable sleeping but still allow setting spawnpoints at beds
 * Ability to disable spawning mobs when going to sleep (Nightmares)
-* Ability to prevent Items and Arrows from stopping MInecarts
+* Ability to prevent Items and Arrows from stopping Minecarts
+* Ignite Entities using Flint and Steel
+* Ability to place trapdoors without supporting block
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -109,7 +113,7 @@
     * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates
       and Spawner
 * Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
-* Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation ***non-configurable***
+* Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation
 * Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape
 * Pick Block Fix - Fixes some blocks not being pickable using Pick Block
 * Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
@@ -120,3 +124,5 @@
 * Fullscreen Cursor Fix - Fixes cursor not being centered when opening inventories in fullscreen
 * Furnace Consume Bucket Fix - Fixes furnace consuming bucket when fueled with lava
 * Fish Velocity Fix - Fix fish flying way behind the player when caught
+* Torch Bottom Texture Fix - Fixes torches not having a bottom textures
+* Grass Block Item Fix - Fixes Grass Block item not rendering properly
