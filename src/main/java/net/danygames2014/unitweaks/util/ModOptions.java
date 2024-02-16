@@ -11,12 +11,12 @@ public class ModOptions {
     public static Option renderDistanceOption;
 
     // Render Distance
-    public static float renderDistance = 0.25F;
+    public static float renderDistance = 0.07F;
 
     public static final int maxRenderDistance = 32;
 
     public static int getRenderDistanceChunks() {
-        return (int) (2 + (renderDistance * (maxRenderDistance - 2)));
+        return (int) (2 + Math.floor(renderDistance * (maxRenderDistance - 2)));
     }
 
     // FPS Limit

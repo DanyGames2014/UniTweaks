@@ -16,11 +16,7 @@ public abstract class class555Mixin {
 
     @Inject(method = "method_1842", at = @At(value = "HEAD"))
     public void overrideFogDensity(int f, float par2, CallbackInfo ci) {
-        this.field_2350 *= ModOptions.getFogMultiplier();
-    }
-
-    @Inject(method = "method_1840", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/class_555;field_2350:F", shift = At.Shift.AFTER))
-    public void overrideFarPlaneDistance(float i, int par2, CallbackInfo ci){
-        this.field_2350 = 16 * ModOptions.getRenderDistanceChunks();
+//        this.field_2350 = field_2350 * ModOptions.getFogMultiplier();
+//        System.out.println(this.field_2350);
     }
 }
