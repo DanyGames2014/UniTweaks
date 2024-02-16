@@ -26,7 +26,7 @@ public class FurnaceBlockEntityMixin {
                 stack.itemId = Item.BUCKET.id;
                 stack.count = 1;
             } else {
-                stack.count = 0;
+                stack.count = value;
             }
         } else {
             stack.count = value;
