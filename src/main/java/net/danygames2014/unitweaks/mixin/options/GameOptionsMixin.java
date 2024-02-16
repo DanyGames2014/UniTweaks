@@ -120,7 +120,6 @@ public abstract class GameOptionsMixin {
         }
 
         if (option == ModOptions.cloudHeightOption) {
-            float value = ModOptions.cloudHeight;
             String optionName = "Cloud Height : " + ModOptions.getCloudHeight();
             cir.setReturnValue(optionName);
         }

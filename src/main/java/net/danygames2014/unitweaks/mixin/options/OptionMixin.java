@@ -28,7 +28,7 @@ public abstract class OptionMixin {
 
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = 179, target = "Lnet/minecraft/client/option/Option;field_1113:[Lnet/minecraft/client/option/Option;", shift = At.Shift.AFTER))
     private static void addOptions(CallbackInfo ci) {
-        ArrayList<Option> options = new ArrayList<Option>(Arrays.asList(field_1113));
+        ArrayList<Option> options = new ArrayList<>(Arrays.asList(field_1113));
         Option last = options.get(options.size() - 1);
 
         Option FOV;
