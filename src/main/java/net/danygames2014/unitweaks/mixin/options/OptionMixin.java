@@ -51,6 +51,10 @@ public abstract class OptionMixin {
         ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal()+4, "options.fps_limit", true, false);
         options.add(FPS_LIMIT);
 
+        Option RENDER_DISTANCE;
+        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal()+5, "options.render_distance", true, false);
+        options.add(RENDER_DISTANCE);
+
         field_1113 = options.toArray(new Option[0]);
     }
 }
