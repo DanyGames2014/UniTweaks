@@ -20,3 +20,5 @@ key.zoom=Zoom
 options.clouds=Clouds
 options.fps_limit=FPS Limit
 options.fps_limit_max=Unlimited
+options.render_distance=Render Distance
+options.render_distance.chunks=chunks

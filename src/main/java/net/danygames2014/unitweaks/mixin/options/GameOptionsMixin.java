@@ -130,7 +130,15 @@ public abstract class GameOptionsMixin {
         }
 
         if (option == ModOptions.renderDistanceOption) {
-            String optionName = "Render Distance: " + ModOptions.getRenderDistanceChunks() + " chunks";
+            String chunkValue;
+            switch (ModOptions.getRenderDistanceChunks()) {
+                case 2 -> chunkValue = "Tiny";
+                case 4 -> chunkValue = "Short";
+                case 8 -> chunkValue = "Normal";
+                case 12 -> chunkValue = "Far";
+                default -> chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks:render_distance.chunks");
+            }
+            String optionName = translations.get("options.unitweaks:render_distance") + ": " + chunkValue;
             cir.setReturnValue(optionName);
         }
     }
@@ -158,6 +166,10 @@ public abstract class GameOptionsMixin {
         if (stringArray[0].equals("fps_limit")) {
             ModOptions.fpsLimit = this.parseFloat(stringArray[1]);
         }
+
+        if (stringArray[0].equals("render_distance")) {
+            ModOptions.renderDistance = this.parseFloat(stringArray[1]);
+        }
     }
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -167,5 +179,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("clouds:" + ModOptions.clouds);
         printWriter.println("cloud_height:" + ModOptions.cloudHeight);
         printWriter.println("fps_limit: " + ModOptions.fpsLimit);
+        printWriter.println("render_distance: " + ModOptions.renderDistance);
     }
 }
