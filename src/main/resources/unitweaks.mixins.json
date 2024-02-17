@@ -79,7 +79,6 @@
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
     "tweaks.disablef3entityids.LivingEntityRendererMixin",
-    "tweaks.fogdensity.class555Mixin",
     "tweaks.fov.class555Mixin",
     "tweaks.fpslimitslider.class_555Mixin",
     "tweaks.hideachievementtoast.class_594Mixin",
