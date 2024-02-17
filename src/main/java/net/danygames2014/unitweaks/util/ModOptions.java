@@ -8,16 +8,26 @@ public class ModOptions {
     public static Option fovOption;
     public static Option cloudHeightOption;
     public static Option fpsLimitOption;
+    public static Option renderDistanceOption;
+
+    // Render Distance
+    public static float renderDistance = 0.07F;
+
+    public static final int maxRenderDistance = 32;
+
+    public static int getRenderDistanceChunks() {
+        return (int) (2 + Math.floor(renderDistance * (maxRenderDistance - 2)));
+    }
 
     // FPS Limit
     public static float fpsLimit = 0.4F;
 
-    public static int getFpsLimitValue(){
+    public static int getFpsLimitValue() {
         return (int) (Math.floor(fpsLimit * 59F) * 5) + 5;
     }
 
-    public static int getPerformanceLevel(){
-        if(getFpsLimitValue() >= 300){
+    public static int getPerformanceLevel() {
+        if (getFpsLimitValue() >= 300) {
             return 0;
         } else {
             return 2;

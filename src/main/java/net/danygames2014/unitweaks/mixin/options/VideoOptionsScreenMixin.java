@@ -19,5 +19,6 @@ public class VideoOptionsScreenMixin {
         VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 2] = ModOptions.cloudsOption;
         VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - 1] = ModOptions.cloudHeightOption;
         VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
+        VideoOptionsScreenMixin.field_2003[1] = ModOptions.renderDistanceOption;
     }
 }

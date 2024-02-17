@@ -37,6 +37,10 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.fpsLimitOption) {
             ModOptions.fpsLimit = value;
         }
+
+        if (option == ModOptions.renderDistanceOption) {
+            ModOptions.renderDistance = value;
+        }
     }
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
@@ -63,6 +67,10 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.fpsLimitOption) {
             cir.setReturnValue(ModOptions.fpsLimit);
+        }
+
+        if (option == ModOptions.renderDistanceOption) {
+            cir.setReturnValue(ModOptions.renderDistance);
         }
     }
 
@@ -112,13 +120,17 @@ public abstract class GameOptionsMixin {
         }
 
         if (option == ModOptions.cloudHeightOption) {
-            float value = ModOptions.cloudHeight;
             String optionName = "Cloud Height : " + ModOptions.getCloudHeight();
             cir.setReturnValue(optionName);
         }
 
         if (option == ModOptions.cloudsOption) {
             String optionName = translations.get("options.unitweaks:clouds") + ": " + (ModOptions.clouds ? translations.get("options.on") : translations.get("options.off"));
+            cir.setReturnValue(optionName);
+        }
+
+        if (option == ModOptions.renderDistanceOption) {
+            String optionName = "Render Distance: " + ModOptions.getRenderDistanceChunks() + " chunks";
             cir.setReturnValue(optionName);
         }
     }

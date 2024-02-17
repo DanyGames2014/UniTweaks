@@ -28,7 +28,7 @@ public abstract class OptionMixin {
 
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = 179, target = "Lnet/minecraft/client/option/Option;field_1113:[Lnet/minecraft/client/option/Option;", shift = At.Shift.AFTER))
     private static void addOptions(CallbackInfo ci) {
-        ArrayList<Option> options = new ArrayList<Option>(Arrays.asList(field_1113));
+        ArrayList<Option> options = new ArrayList<>(Arrays.asList(field_1113));
         Option last = options.get(options.size() - 1);
 
         Option FOV;
@@ -50,6 +50,10 @@ public abstract class OptionMixin {
         Option FPS_LIMIT;
         ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal()+4, "options.fps_limit", true, false);
         options.add(FPS_LIMIT);
+
+        Option RENDER_DISTANCE;
+        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal()+5, "options.render_distance", true, false);
+        options.add(RENDER_DISTANCE);
 
         field_1113 = options.toArray(new Option[0]);
     }
