@@ -36,7 +36,7 @@ public class class555Mixin {
 
     @Redirect(method = "method_1841", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
     public int skyFog(GameOptions instance){
-        return ModOptions.getRenderDistanceChunks() >= 8 ? 0 : 3;
+        return ModOptions.getRenderDistanceChunks() > 7 ? 0 : 3;
     }
 
 //    @Redirect(method = "method_1852", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
