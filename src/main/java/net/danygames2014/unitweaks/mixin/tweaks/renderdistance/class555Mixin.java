@@ -25,7 +25,7 @@ public class class555Mixin {
             )
     )
     public void overrideFarPlaneDistance(float i, int par2, CallbackInfo ci) {
-        this.field_2350 = (16 * ModOptions.getRenderDistanceChunks());// * ModOptions.getFogMultiplier();
+        this.field_2350 = (16 * ModOptions.getRenderDistanceChunks()) * ModOptions.getFogMultiplier();
     }
 
     // EXPERIMENT
