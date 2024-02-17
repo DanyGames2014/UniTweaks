@@ -11,7 +11,7 @@ public class ModOptions {
     public static Option renderDistanceOption;
 
     // Render Distance
-    public static float renderDistance = 0.07F;
+    public static float renderDistance = 0.2F;
 
     public static final int maxRenderDistance = 32;
 
