@@ -264,6 +264,9 @@ public class Config {
 
         @ConfigName("Armor Icon Fix")
         public Boolean armorIconsFix = true;
+
+        @ConfigName("Dropped Item Size Fix")
+        public Boolean droppedItemSizeFix = true;
     }
 
     public static class OldFeaturesConfig {

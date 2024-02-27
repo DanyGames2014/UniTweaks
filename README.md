@@ -128,3 +128,4 @@
 * Torch Bottom Texture Fix - Fixes torches not having a bottom textures
 * Grass Block Item Fix - Fixes Grass Block item not rendering properly
 * Slab Crash Fix - Fixes slabs with no name crashing the game
+* Dropped Item Size Fix - Fixes some blocks being too large when dropped
