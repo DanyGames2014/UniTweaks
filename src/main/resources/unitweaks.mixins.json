@@ -15,6 +15,7 @@
     "bugfixes.lavawithoutsourcefix.FlowingLiquidBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
     "bugfixes.pigdropsaddlefix.PigEntityMixin",
+    "bugfixes.slabcrashfix.SlabBlockItemMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
