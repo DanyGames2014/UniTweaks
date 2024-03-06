@@ -23,7 +23,7 @@ public abstract class OptionsScreenMixin extends Screen {
     private static Option[] field_2764;
 
     @Shadow
-    private GameOptions field_2763;
+    private GameOptions options;
 
     static {
         field_2764 = Arrays.copyOf(field_2764, field_2764.length + 1);
@@ -34,7 +34,7 @@ public abstract class OptionsScreenMixin extends Screen {
     public void openImprovedControls(ButtonWidget button, CallbackInfo ci) {
         if (UniTweaks.GENERAL_CONFIG.improvedControlsMenu) {
             if (button.id == 100) {
-                this.minecraft.setScreen(new ControlsScreen(this, this.field_2763));
+                this.minecraft.setScreen(new ControlsScreen(this, this.options));
                 ci.cancel();
             }
         }

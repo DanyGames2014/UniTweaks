@@ -14,12 +14,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class MinecraftMixin {
     @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;create()V", ordinal = 0), require = 0)
     public void bitDepthFix() throws LWJGLException {
-        // Since with MojangFix the transformation will fail anyway this won't even show but.. meh
-        if (FabricLoader.getInstance().isModLoaded("mojangfix")) {
-            UniTweaks.logger.warn("MojangFix is installed, disabling BitDepthFix");
-            return;
-        }
-
         if (UniTweaks.BUGFIXES_CONFIG.bitDepthFix) {
             Display.create(new PixelFormat().withDepthBits(24));
         } else {

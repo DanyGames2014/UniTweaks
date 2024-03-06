@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
 public class ArmorItemMixin extends Item {
     @Shadow
     @Final
-    public int field_2083;
+    public int equipmentSlot;
 
     public ArmorItemMixin(int id) {
         super(id);
@@ -23,12 +23,12 @@ public class ArmorItemMixin extends Item {
     @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity user) {
         if (UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor) {
-            if (user.inventory.armor[Math.abs(this.field_2083 - 3)] == null) {
-                user.inventory.armor[Math.abs(this.field_2083 - 3)] = stack.copy();
+            if (user.inventory.armor[Math.abs(this.equipmentSlot - 3)] == null) {
+                user.inventory.armor[Math.abs(this.equipmentSlot - 3)] = stack.copy();
                 stack.count = 0;
             } else {
-                ItemStack temp = user.inventory.armor[Math.abs(this.field_2083 - 3)];
-                user.inventory.armor[Math.abs(this.field_2083 - 3)] = stack.copy();
+                ItemStack temp = user.inventory.armor[Math.abs(this.equipmentSlot - 3)];
+                user.inventory.armor[Math.abs(this.equipmentSlot - 3)] = stack.copy();
                 return temp;
             }
         }

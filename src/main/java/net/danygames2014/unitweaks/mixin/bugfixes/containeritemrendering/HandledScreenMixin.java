@@ -1,7 +1,7 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.containeritemrendering;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.minecraft.client.gui.screen.container.ContainerScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -10,14 +10,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ContainerScreen.class)
-public abstract class ContainerScreenMixin {
+@Mixin(HandledScreen.class)
+public abstract class HandledScreenMixin {
 
     @Shadow
     protected abstract void drawForeground();
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/container/ContainerScreen;drawForeground()V"))
-    public void cancelDrawForeground(ContainerScreen instance) {
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawForeground()V"))
+    public void cancelDrawForeground(HandledScreen instance) {
         if (!UniTweaks.BUGFIXES_CONFIG.itemstackRenderingFix) {
             drawForeground();
         }
