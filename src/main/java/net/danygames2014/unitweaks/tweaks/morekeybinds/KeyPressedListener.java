@@ -21,6 +21,11 @@ public class KeyPressedListener {
         }
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
+
+            if(Keyboard.isKeyDown(Keyboard.KEY_P)){
+                minecraft.player.inventory.getSelectedItem().setDamage(minecraft.player.inventory.getSelectedItem().getMaxDamage());
+            }
+
             // Panorama Screenshot
             if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code)) {
                 panoramaScreenshot();
