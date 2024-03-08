@@ -41,7 +41,6 @@
     "tweaks.moresounds.FoodItemMixin",
     "tweaks.moresounds.ItemStackMixin",
     "tweaks.moresounds.SheepEntityMixin",
-    "tweaks.moresounds.SoundManagerMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
     "tweaks.packetspeedup.Connection$4Mixin",
