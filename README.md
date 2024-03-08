@@ -52,6 +52,7 @@
 * Ability to prevent Items and Arrows from stopping Minecarts
 * Ignite Entities using Flint and Steel
 * Ability to place trapdoors without supporting block
+* Sounds for Chest, Item Breaking, Sheep Shearing and Eating
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -105,6 +106,7 @@
 
 ## Bugfixes
 * Bit Depth Fix - Fixes Z-Fighting on AMD graphic cards
+* HiDPI Fix - Fixes the game not scaling properly with display scaling
 * Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
 * Stairs Drop Fix - Stairs now drop themselves
 * Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
