@@ -190,6 +190,10 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Allow placing trapdoors without support")
         public Boolean allowTrapdoorsWithoutSupport = true;
+
+        @ConfigName("More Sounds")
+        @Comment("Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
+        public Boolean moreSounds = true;
     }
 
     public static class BugfixesConfig {

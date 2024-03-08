@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.moresounds;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FoodItem;
 import net.minecraft.item.ItemStack;
@@ -18,9 +19,11 @@ public class FoodItemMixin {
     private static final Random random = new Random();
     @Inject(method = "use", at = @At(value = "HEAD"))
     public void burpOnEat(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir){
-        world.playSound(user, "random.eat", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
-        if(random.nextInt(0,10) > 3){
-            world.playSound(user, "random.burp",0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+            world.playSound(user, "random.eat", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            if(random.nextInt(0,10) > 3){
+                world.playSound(user, "random.burp",0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            }
         }
     }
 }

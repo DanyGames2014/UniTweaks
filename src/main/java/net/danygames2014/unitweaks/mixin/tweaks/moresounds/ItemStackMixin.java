@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.moresounds;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
@@ -27,18 +28,22 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;increaseStat(Lnet/minecraft/stat/Stat;I)V", shift = At.Shift.AFTER))
     public void playSoundOnToolBreak(int amount, Entity entity, CallbackInfo ci){
-        PlayerEntity player = (PlayerEntity) entity;
+        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+            PlayerEntity player = (PlayerEntity) entity;
 
-        player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        }
     }
 
     @Inject(method = "damage", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/item/ItemStack;count:I", ordinal = 0, shift = At.Shift.BEFORE))
     public void playSoundOnArmorBreak(int amount, Entity entity, CallbackInfo ci){
-        if(this.getItem() instanceof ArmorItem){
-            if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT){
-                Minecraft minecraft = (Minecraft)FabricLoader.getInstance().getGameInstance();
-                PlayerEntity player = minecraft.player;
-                player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+            if(this.getItem() instanceof ArmorItem){
+                if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT){
+                    Minecraft minecraft = (Minecraft)FabricLoader.getInstance().getGameInstance();
+                    PlayerEntity player = minecraft.player;
+                    player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+                }
             }
         }
     }

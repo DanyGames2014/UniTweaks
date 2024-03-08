@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.moresounds;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.SheepEntity;
@@ -21,6 +22,8 @@ public class SheepEntityMixin extends AnimalEntity {
 
     @Inject(method = "method_1323", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/Entity;)V"))
     public void snipSoundOnShear(PlayerEntity player, CallbackInfoReturnable<Boolean> cir){
-        player.world.playSound(player, "unitweaks:entity.sheep.shear", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+            player.world.playSound(player, "unitweaks:entity.sheep.shear", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+        }
     }
 }
