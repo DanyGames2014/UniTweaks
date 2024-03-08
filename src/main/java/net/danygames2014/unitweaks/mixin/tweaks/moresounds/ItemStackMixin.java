@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.moresounds;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -35,6 +36,7 @@ public abstract class ItemStackMixin {
         }
     }
 
+    @Environment(EnvType.CLIENT)
     @Inject(method = "damage", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/item/ItemStack;count:I", ordinal = 0, shift = At.Shift.BEFORE))
     public void playSoundOnArmorBreak(int amount, Entity entity, CallbackInfo ci){
         if(UniTweaks.TWEAKS_CONFIG.moreSounds){
