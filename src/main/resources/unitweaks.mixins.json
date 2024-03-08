@@ -72,6 +72,7 @@
     "bugfixes.droppeditemfix.ArsenicItemRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.fullscreencursorfix.class_596Mixin",
+    "bugfixes.hidpifix.MinecraftMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
     "bugfixes.slabcrashfix.SlabBlockItemMixin",

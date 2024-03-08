@@ -197,6 +197,10 @@ public class Config {
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
 
+        @ConfigName("HiDPI Fix")
+        @Comment("Fixes the canvas not adjusting properly on higher than 100% display scaling")
+        public Boolean hiDpiFix = true;
+
         @MultiplayerSynced
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
