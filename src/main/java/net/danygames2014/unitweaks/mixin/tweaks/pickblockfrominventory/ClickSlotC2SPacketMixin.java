@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.pickblockfrominventory;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,6 +33,8 @@ public class ClickSlotC2SPacketMixin {
 
     @Inject(method = "write", at = @At("HEAD"))
     private void debugPrint(DataOutputStream par1, CallbackInfo ci) {
-        System.out.println("Slot : " + this.slot + " | Button : " + this.button + " | Shift : " + this.holdingShift + " | Stack : " + this.stack + " | SyncId : + " + this.syncId);
+        if(FabricLoader.getInstance().isDevelopmentEnvironment()){
+            System.out.println("Slot : " + this.slot + " | Button : " + this.button + " | Shift : " + this.holdingShift + " | Stack : " + this.stack + " | SyncId : + " + this.syncId);
+        }
     }
 }
