@@ -2,7 +2,6 @@ package net.danygames2014.unitweaks.mixin.bugfixes.hidpifix;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
-@Mixin(Minecraft.class)
+@Mixin(value = Minecraft.class)
 public class MinecraftMixin {
 
     @Shadow public Canvas canvas;
@@ -22,7 +21,7 @@ public class MinecraftMixin {
 
     @Shadow public int displayHeight;
 
-    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getWidth()I"), remap = false)
+    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getWidth()I", ordinal = 1), remap = false)
     public int fixWidth(Canvas canvas){
         if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
@@ -31,7 +30,7 @@ public class MinecraftMixin {
         return canvas.getWidth();
     }
 
-    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getHeight()I"), remap = false)
+    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getHeight()I", ordinal = 1), remap = false)
     public int fixHeight(Canvas canvas){
         if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
