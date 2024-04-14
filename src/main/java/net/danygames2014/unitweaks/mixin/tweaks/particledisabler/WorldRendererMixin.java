@@ -28,49 +28,233 @@ public class WorldRendererMixin {
 
 	@Inject(method = "method_1153", at = @At("HEAD"), cancellable = true)
 	public void addParticle(String string, double d, double e, double f, double g, double h, double i, CallbackInfo ci) {
-		if (UniTweaks.TWEAKS_CONFIG.disableParticles) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableAllParticles) {
 			ci.cancel();
 		}
-//		if (this.client == null || this.client.field_2807 == null || this.client.field_2808 == null) {
-//			return;
-//		}
-//		double d2 = this.client.field_2807.x - d;
-//		double d3 = this.client.field_2807.y - e;
-//		double d4 = this.client.field_2807.z - f;
-//		double d5 = 16.0;
-//		if (d2 * d2 + d3 * d3 + d4 * d4 > d5 * d5) {
-//			return;
-//		}
-//		if (string.equals("bubble")) {
-//			this.client.field_2808.method_325(new WaterBubbleParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("smoke")) {
-//			this.client.field_2808.method_325(new FireSmokeParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("note")) {
-//			this.client.field_2808.method_325(new NoteParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("portal")) {
-//			this.client.field_2808.method_325(new PortalParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("explode")) {
-//			this.client.field_2808.method_325(new ExplosionParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("flame")) {
-//			this.client.field_2808.method_325(new FlameParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("lava")) {
-//			this.client.field_2808.method_325(new LavaEmberParticle(this.world, d, e, f));
-//		} else if (string.equals("footstep")) {
-//			this.client.field_2808.method_325(new FootstepParticle(this.textureManager, this.world, d, e, f));
-//		} else if (string.equals("splash")) {
-//			this.client.field_2808.method_325(new WaterSplashParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("largesmoke")) {
-//			this.client.field_2808.method_325(new FireSmokeParticle(this.world, d, e, f, g, h, i, 2.5f));
-//		} else if (string.equals("reddust")) {
-//			this.client.field_2808.method_325(new RedDustParticle(this.world, d, e, f, (float)g, (float)h, (float)i));
-//		} else if (string.equals("snowballpoof")) {
-//			this.client.field_2808.method_325(new ItemParticle(this.world, d, e, f, Item.SNOWBALL));
-//		} else if (string.equals("snowshovel")) {
-//			this.client.field_2808.method_325(new SnowflakeParticle(this.world, d, e, f, g, h, i));
-//		} else if (string.equals("slime")) {
-//			this.client.field_2808.method_325(new ItemParticle(this.world, d, e, f, Item.SLIMEBALL));
-//		} else if (string.equals("heart")) {
-//			this.client.field_2808.method_325(new HeartParticle(this.world, d, e, f, g, h, i));
-//		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 0
+			),
+			cancellable = true
+	)
+	public void addParticle_WaterBubbleParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableWaterBubbleParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 1
+			),
+			cancellable = true
+	)
+	public void addParticle_FireSmokeParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableFireSmokeParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 2
+			),
+			cancellable = true
+	)
+	public void addParticle_NoteParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableNoteParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 3
+			),
+			cancellable = true
+	)
+	public void addParticle_PortalParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disablePortalParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 4
+			),
+			cancellable = true
+	)
+	public void addParticle_ExplosionParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableExplosionParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 5
+			),
+			cancellable = true
+	)
+	public void addParticle_FlameParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableFlameParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 6
+			),
+			cancellable = true
+	)
+	public void addParticle_LavaEmberParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableLavaEmberParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 7
+			),
+			cancellable = true
+	)
+	public void addParticle_FootstepParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableFootstepParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 8
+			),
+			cancellable = true
+	)
+	public void addParticle_WaterSplashParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableWaterSplashParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 9
+			),
+			cancellable = true
+	)
+	public void addParticle_LargeFireSmokeParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableLargeFireSmokeParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 10
+			),
+			cancellable = true
+	)
+	public void addParticle_RedDustParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableRedDustParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 11
+			),
+			cancellable = true
+	)
+	public void addParticle_SnowballParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableSnowballParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 12
+			),
+			cancellable = true
+	)
+	public void addParticle_SnowflakeParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableSnowShovelParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 13
+			),
+			cancellable = true
+	)
+	public void addParticle_SlimeParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableSlimeParticle) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(
+			method = "method_1153",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/class_75;method_325(Lnet/minecraft/client/particle/Particle;)V",
+					ordinal = 14
+			),
+			cancellable = true
+	)
+	public void addParticle_HeartParticle(String d, double e, double f, double g, double h, double i, double par7, CallbackInfo ci) {
+		if (UniTweaks.TWEAKS_CONFIG.PARTICLES_CONFIG.disableHeartParticle) {
+			ci.cancel();
+		}
 	}
 }

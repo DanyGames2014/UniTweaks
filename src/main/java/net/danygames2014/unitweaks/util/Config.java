@@ -129,7 +129,62 @@ public class Config {
         }
     }
 
+    public static class ParticlesConfig {
+
+        @ConfigName("Disable All Particles")
+        public Boolean disableAllParticles = false;
+
+        @ConfigName("Disable Water Bubble Particle")
+        public Boolean disableWaterBubbleParticle = false;
+
+        @ConfigName("Disable Smoke Particle")
+        public Boolean disableFireSmokeParticle = false;
+
+        @ConfigName("Disable Note Particle")
+        public Boolean disableNoteParticle = false;
+
+        @ConfigName("Disable Portal Particle")
+        public Boolean disablePortalParticle = false;
+
+        @ConfigName("Disable Explosion Particle")
+        public Boolean disableExplosionParticle = false;
+
+        @ConfigName("Disable Flame Particle")
+        public Boolean disableFlameParticle = false;
+
+        @ConfigName("Disable Lava Ember Particle")
+        public Boolean disableLavaEmberParticle = false;
+
+        @ConfigName("Disable Footstep Particle")
+        public Boolean disableFootstepParticle = false;
+
+        @ConfigName("Disable Water Splash Particle")
+        public Boolean disableWaterSplashParticle = false;
+
+        @ConfigName("Disable Large Smoke Particle")
+        public Boolean disableLargeFireSmokeParticle = false;
+
+        @ConfigName("Disable Redstone Dust Particle")
+        public Boolean disableRedDustParticle = false;
+
+        @ConfigName("Disable Snowball Particle")
+        public Boolean disableSnowballParticle = false;
+
+        @ConfigName("Disable Snow Shovel Particle")
+        public Boolean disableSnowShovelParticle = false;
+
+        @ConfigName("Disable Slime Particle")
+        public Boolean disableSlimeParticle = false;
+
+        @ConfigName("Disable Heart Particle")
+        public Boolean disableHeartParticle = false;
+    }
+
     public static class TweaksConfig {
+
+        @ConfigCategory("Particles Config")
+        public ParticlesConfig PARTICLES_CONFIG = new ParticlesConfig();
+
         @MultiplayerSynced
         @ConfigName("Allow placing sugar cane on sand")
         public Boolean sugarCaneOnSand = true;
@@ -137,9 +192,6 @@ public class Config {
         @MultiplayerSynced
         @ConfigName("Boats drop themselves when broken by a player")
         public Boolean boatsDropThemselves = true;
-
-        @ConfigName("Disable Particles")
-        public Boolean disableParticles = false;
 
         @MultiplayerSynced
         @ConfigName("Fences placeable like normal")
