@@ -59,7 +59,6 @@
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
-    "tweaks.moresounds.ServerPlayerEntityMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [
@@ -95,6 +94,7 @@
     "tweaks.ingameversiontext.InGameHudMixin",
     "tweaks.mainmenupanorama.TitleScreenMixin",
     "tweaks.morekeybinds.MinecraftMixin",
+    "tweaks.particledisabler.WorldRendererMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
     "tweaks.renderdistance.class555Mixin",

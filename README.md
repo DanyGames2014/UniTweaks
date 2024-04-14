@@ -20,6 +20,7 @@
 * Dismount Key
 * FPS Limit slider
 * Armor Outlines in Player Inventory
+* Ability to disable particles
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
