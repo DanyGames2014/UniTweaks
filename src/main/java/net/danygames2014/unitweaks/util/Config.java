@@ -138,6 +138,9 @@ public class Config {
         @ConfigName("Boats drop themselves when broken by a player")
         public Boolean boatsDropThemselves = true;
 
+        @ConfigName("Disable Particles")
+        public Boolean disableParticles = false;
+
         @MultiplayerSynced
         @ConfigName("Fences placeable like normal")
         public Boolean fencesPlaceableLikeNormal = true;
