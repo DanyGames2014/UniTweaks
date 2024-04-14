@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.util;
 
 import blue.endless.jankson.JsonObject;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.api.gcapi.api.PreConfigSavedListener;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -12,7 +13,9 @@ public class ConfigListener implements PreConfigSavedListener {
 
     @Override
     public void onPreConfigSaved(int var1, JsonObject jsonObject, JsonObject jsonObject1) {
-        if (null != FabricLoader.getInstance()) {
+        if (  (null != FabricLoader.getInstance())
+           && (EnvType.CLIENT == FabricLoader.getInstance().getEnvironmentType())
+        ) {
             Minecraft minecraft = (Minecraft) FabricLoader.getInstance().getGameInstance();
             if (null != minecraft) {
                 boolean brightnessSettingOld = false;
