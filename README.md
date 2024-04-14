@@ -9,6 +9,7 @@
 ## Tweaks
 ### General
 * Show Quit Button on the Main Menu
+* Brightness Slider with range and element configs
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
 * Render Distance slider that goes up to 32 chunks
