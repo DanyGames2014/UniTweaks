@@ -129,7 +129,27 @@ public class Config {
         }
     }
 
+    public static class BrightnessConfig {
+
+        @ConfigName("Effective Brightness Slider Range")
+        public BrightnessRangeEnum BRIGHTNESS_RANGE = BrightnessRangeEnum.SMALL;
+
+        @ConfigName("Enable Brightness Slider")
+        public Boolean ENABLE_BRIGHTNESS_SLIDER = true;
+
+        @ConfigName("Slider Affects Fog And Clouds")
+        public Boolean ENABLE_BRIGHTNESS_FOG = true;
+
+        @ConfigName("Slider Affects GUI Elements")
+        @Comment("Textures will reload on brightness change")
+        public Boolean ENABLE_BRIGHTNESS_GUI = false;
+    }
+
     public static class TweaksConfig {
+
+        @ConfigCategory("Brightness Config")
+        public BrightnessConfig BRIGHTNESS_CONFIG = new BrightnessConfig();
+
         @MultiplayerSynced
         @ConfigName("Allow placing sugar cane on sand")
         public Boolean sugarCaneOnSand = true;

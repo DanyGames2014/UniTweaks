@@ -4,6 +4,11 @@
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "tweaks.brightness.GameRendererMixin",
+    "tweaks.brightness.GL11Mixin",
+    "tweaks.brightness.RenderHelperMixin",
+    "tweaks.brightness.TessellatorMixin",
+    "tweaks.brightness.TextureManagerMixin",
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",

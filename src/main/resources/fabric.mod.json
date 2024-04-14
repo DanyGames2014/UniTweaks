@@ -48,6 +48,12 @@
     ],
     "gcapi":[
       "net.danygames2014.unitweaks.UniTweaks"
+    ],
+    "gcapi:factory_provider": [
+      "net.danygames2014.unitweaks.util.BrightnessRangeEnumFactory"
+    ],
+    "gcapi:presave": [
+      "net.danygames2014.unitweaks.util.ConfigListener"
     ]
   },
   "mixins": [

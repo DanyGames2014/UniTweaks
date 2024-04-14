@@ -35,24 +35,28 @@ public abstract class OptionMixin {
         ModOptions.fovOption = FOV = OptionMixin.newOption("FOV", last.ordinal(), "options.fov", true, false);
         options.add(FOV);
 
+        Option BRIGHTNESS;
+        ModOptions.brightnessOption = BRIGHTNESS = OptionMixin.newOption("BRIGHTNESS", last.ordinal() + 1, "options.brightness", true, false);
+        options.add(BRIGHTNESS);
+
         Option FOG_DENSITY;
-        ModOptions.fogDensityOption = FOG_DENSITY = OptionMixin.newOption("FOG_DENSITY", last.ordinal() + 1, "options.fog_density", true, false);
+        ModOptions.fogDensityOption = FOG_DENSITY = OptionMixin.newOption("FOG_DENSITY", last.ordinal() + 2, "options.fog_density", true, false);
         options.add(FOG_DENSITY);
 
         Option CLOUDS;
-        ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal() + 2, "options.clouds", false, true);
+        ModOptions.cloudsOption = CLOUDS = OptionMixin.newOption("CLOUDS", last.ordinal() + 3, "options.clouds", false, true);
         options.add(CLOUDS);
 
         Option CLOUD_HEIGHT;
-        ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal() + 3, "options.cloud_height", true, false);
+        ModOptions.cloudHeightOption = CLOUD_HEIGHT = OptionMixin.newOption("CLOUD_HEIGHT", last.ordinal() + 4, "options.cloud_height", true, false);
         options.add(CLOUD_HEIGHT);
 
         Option FPS_LIMIT;
-        ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal()+4, "options.fps_limit", true, false);
+        ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal() + 5, "options.fps_limit", true, false);
         options.add(FPS_LIMIT);
 
         Option RENDER_DISTANCE;
-        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal()+5, "options.render_distance", true, false);
+        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal() + 6, "options.render_distance", true, false);
         options.add(RENDER_DISTANCE);
 
         field_1113 = options.toArray(new Option[0]);

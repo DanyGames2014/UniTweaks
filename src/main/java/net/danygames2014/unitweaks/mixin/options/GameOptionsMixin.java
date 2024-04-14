@@ -1,9 +1,13 @@
 package net.danygames2014.unitweaks.mixin.options;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import net.minecraft.client.resource.language.TranslationStorage;
+import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,8 +24,22 @@ public abstract class GameOptionsMixin {
     @Shadow
     protected abstract float parseFloat(String string);
 
+    @Shadow protected Minecraft minecraft;
+
     @Inject(method = "setFloat", at = @At(value = "HEAD"))
     public void setFloat(Option option, float value, CallbackInfo ci) {
+        if (option == ModOptions.brightnessOption) {
+            ModOptions.brightness = value;
+
+            if (false == Mouse.isButtonDown(0)) {
+                this.minecraft.worldRenderer.method_1537();
+                this.minecraft.textRenderer = new TextRenderer(this.minecraft.options, "/font/default.png", this.minecraft.textureManager);
+                if (UniTweaks.TWEAKS_CONFIG.BRIGHTNESS_CONFIG.ENABLE_BRIGHTNESS_GUI) {
+                    this.minecraft.textureManager.method_1096();
+                }
+            }
+        }
+
         if (option == ModOptions.fovOption) {
             ModOptions.fov = value;
         }
@@ -53,6 +71,10 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "getFloat", at = @At(value = "HEAD"), cancellable = true)
     public void getFloat(Option option, CallbackInfoReturnable<Float> cir) {
+        if (option == ModOptions.brightnessOption) {
+            cir.setReturnValue(ModOptions.brightness);
+        }
+
         if (option == ModOptions.fovOption) {
             cir.setReturnValue(ModOptions.fov);
         }
@@ -86,27 +108,44 @@ public abstract class GameOptionsMixin {
     public void getTranslatedValue(Option option, CallbackInfoReturnable<String> cir) {
         TranslationStorage translations = TranslationStorage.getInstance();
 
+        if (option == ModOptions.brightnessOption) {
+            if (UniTweaks.TWEAKS_CONFIG.BRIGHTNESS_CONFIG.ENABLE_BRIGHTNESS_SLIDER) {
+                float value = ModOptions.getBrightness();
+                if (value == 0.0f) {
+                    cir.setReturnValue(translations.get("options.unitweaks:brightness") + ": " + translations.get("options.unitweaks:brightness_min"));
+                } else if (value == 0.5f) {
+                    cir.setReturnValue(translations.get("options.unitweaks:brightness") + ": " + translations.get("options.unitweaks:brightness_normal"));
+                } else if (value == 1.0f) {
+                    cir.setReturnValue(translations.get("options.unitweaks:brightness") + ": " + translations.get("options.unitweaks:brightness_max"));
+                } else {
+                    cir.setReturnValue(translations.get("options.unitweaks:brightness") + ": " + (value * 2F) + "x");
+                }
+            } else {
+                cir.setReturnValue(translations.get("options.unitweaks:brightness_disabled"));
+            }
+        }
+
         if (option == ModOptions.fovOption) {
             float value = ModOptions.fov;
             if (value == 0.0f) {
-                cir.setReturnValue("FOV: Normal");
+                cir.setReturnValue(translations.get("options.unitweaks:fov") + ": " + translations.get("options.unitweaks:fov_normal"));
             } else if (value == 1.0f) {
-                cir.setReturnValue("FOV: Quake Pro");
+                cir.setReturnValue(translations.get("options.unitweaks:fov") + ": " + translations.get("options.unitweaks:fov_max"));
             } else {
-                cir.setReturnValue("FOV: " + ModOptions.getFovInDegrees());
+                cir.setReturnValue(translations.get("options.unitweaks:fov") + ": " + ModOptions.getFovInDegrees());
             }
         }
 
         if (option == ModOptions.fogDensityOption) {
             float value = ModOptions.getFogDisplayValue();
             if (value == 0.0F) {
-                cir.setReturnValue("Fog: Disabled");
+                cir.setReturnValue(translations.get("options.unitweaks:fog") + ": " + translations.get("options.unitweaks:fog_disabled"));
             } else if (value == 1.0F) {
-                cir.setReturnValue("Fog: Silent Hill");
+                cir.setReturnValue(translations.get("options.unitweaks:fog") + ": " + translations.get("options.unitweaks:fog_max"));
             } else if (value == 0.5F) {
-                cir.setReturnValue("Fog: Normal");
+                cir.setReturnValue(translations.get("options.unitweaks:fog") + ": " + translations.get("options.unitweaks:fog_normal"));
             } else {
-                cir.setReturnValue("Fog: " + ModOptions.getFogDisplayValue() * 2F + "x");
+                cir.setReturnValue(translations.get("options.unitweaks:fog") + ": " + ModOptions.getFogDisplayValue() * 2F + "x");
             }
         }
 
@@ -120,7 +159,8 @@ public abstract class GameOptionsMixin {
         }
 
         if (option == ModOptions.cloudHeightOption) {
-            String optionName = "Cloud Height: " + ModOptions.getCloudHeight();
+            float value = ModOptions.cloudHeight;
+            String optionName = translations.get("options.unitweaks:cloud_height") + ": " + ModOptions.getCloudHeight();
             cir.setReturnValue(optionName);
         }
 
@@ -132,10 +172,10 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.renderDistanceOption) {
             String chunkValue;
             switch (ModOptions.getRenderDistanceChunks()) {
-                case 2 -> chunkValue = "Tiny";
-                case 4 -> chunkValue = "Short";
-                case 8 -> chunkValue = "Normal";
-                case 12 -> chunkValue = "Far";
+                case 2 -> chunkValue = translations.get("options.unitweaks:render_distance_tiny");
+                case 4 -> chunkValue = translations.get("options.unitweaks:render_distance_short");
+                case 8 -> chunkValue = translations.get("options.unitweaks:render_distance_normal");
+                case 12 -> chunkValue = translations.get("options.unitweaks:render_distance_far");
                 default -> chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks:render_distance.chunks");
             }
             String optionName = translations.get("options.unitweaks:render_distance") + ": " + chunkValue;
@@ -146,6 +186,10 @@ public abstract class GameOptionsMixin {
     @Inject(method = "load", at = @At(value = "INVOKE", target = "Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void load(CallbackInfo ci, BufferedReader bufferedReader, String string) {
         String[] stringArray = string.split(":");
+
+        if (stringArray[0].equals("brightness")) {
+            ModOptions.brightness = this.parseFloat(stringArray[1]);
+        }
 
         if (stringArray[0].equals("fov")) {
             ModOptions.fov = this.parseFloat(stringArray[1]);
@@ -174,6 +218,7 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
+        printWriter.println("brightness:" + ModOptions.brightness);
         printWriter.println("fov:" + ModOptions.fov);
         printWriter.println("fog_density:" + ModOptions.fogDensity);
         printWriter.println("clouds:" + ModOptions.clouds);
