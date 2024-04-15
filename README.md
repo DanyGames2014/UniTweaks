@@ -131,3 +131,4 @@
 * Grass Block Item Fix - Fixes Grass Block item not rendering properly
 * Slab Crash Fix - Fixes slabs with no name crashing the game
 * Dropped Item Size Fix - Fixes some blocks being too large when dropped
+* Vehicle Login/Logout Fix - Fixes dismounting from vehicle on login
