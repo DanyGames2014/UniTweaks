@@ -199,7 +199,7 @@ public class Config {
         public Boolean bitDepthFix = true;
 
         @MultiplayerSynced
-        @ConfigName("Boat Logout/Login Fixes Enabled")
+        @ConfigName("Boat Logout/Login Fix")
         public Boolean boatLogoutLoginFixesEnabled = true;
 
         @ConfigName("HiDPI Fix")
