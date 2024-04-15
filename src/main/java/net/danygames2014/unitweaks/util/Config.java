@@ -1,10 +1,7 @@
 package net.danygames2014.unitweaks.util;
 
 import blue.endless.jankson.Comment;
-import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
-import net.glasslauncher.mods.api.gcapi.api.ConfigName;
-import net.glasslauncher.mods.api.gcapi.api.MaxLength;
-import net.glasslauncher.mods.api.gcapi.api.MultiplayerSynced;
+import net.glasslauncher.mods.api.gcapi.api.*;
 
 public class Config {
     public static class GeneralConfig {
@@ -200,6 +197,10 @@ public class Config {
         @ConfigName("Bit Depth Fix")
         @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
+
+        @MultiplayerSynced
+        @ConfigName("Boat Logout/Login Fix")
+        public Boolean boatLogoutLoginFixesEnabled = true;
 
         @ConfigName("HiDPI Fix")
         @Comment("Fixes the canvas not adjusting properly on higher than 100% display scaling")

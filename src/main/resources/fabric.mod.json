@@ -60,6 +60,14 @@
     "stationapi": ">=2.0-alpha.1"
   },
 
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_54": [
+        "net/danygames2014/unitweaks/util/VehicleInterface"
+      ]
+    }
+  },
+
   "recommends": {
     "modmenu": "*"
   },
