@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.option.KeyBinding;
 import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegisterEvent;
@@ -28,7 +29,7 @@ public class KeyBindingListener {
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
-        event.keyBindings.add(dismount = new KeyBinding("Dismount", Keyboard.KEY_LSHIFT));
+        event.keyBindings.add(dismount = new KeyBinding(UniTweaks.NAMESPACE.id("dismount").toString(), Keyboard.KEY_LSHIFT));
         event.keyBindings.add(zoom = new KeyBinding("Zoom", Keyboard.KEY_LCONTROL));
         event.keyBindings.add(hideHUD = new KeyBinding("Hide HUD", Keyboard.KEY_F1));
         event.keyBindings.add(takeScreenshot = new KeyBinding("Take Screenshot", Keyboard.KEY_F2));

@@ -3,12 +3,16 @@ package net.danygames2014.unitweaks;
 import net.danygames2014.unitweaks.util.Config;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.Logger;
 
 public class UniTweaks {
     @Entrypoint.Logger
     public static final Logger logger = Null.get();
+
+    @Entrypoint.Namespace
+    public static final Namespace NAMESPACE = Null.get();
 
     @GConfig(value = "general", visibleName = "General", primary = true)
     public static final Config.GeneralConfig GENERAL_CONFIG = new Config.GeneralConfig();
