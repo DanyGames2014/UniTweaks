@@ -73,6 +73,9 @@
     "annoyancefix": "*",
     "mostlymodernrecipes": "*",
     "betatweaks": "*",
-    "finalbeta": "*"
+    "finalbeta": "*",
+    "extremeview": "*",
+    "gameplayessentials": "*",
+    "clientsideessentials": "*"
   }
 }
