@@ -9,6 +9,17 @@ public class ModOptions {
     public static Option cloudHeightOption;
     public static Option fpsLimitOption;
     public static Option renderDistanceOption;
+    public static Option brightnessOption;
+
+    // Brightness
+    private static final float BRIGHTNESS_SCALE = 2.0F;
+    public static float brightness = 0.5F;
+    public static float brightnessMultiplier = 1.0F;
+
+    public static void updateBrigthnessMultiplier() {
+        brightnessMultiplier = (brightness * BRIGHTNESS_SCALE) - (BRIGHTNESS_SCALE / 2.0F);
+    }
+
 
     // Render Distance
     public static float renderDistance = 0.2F;

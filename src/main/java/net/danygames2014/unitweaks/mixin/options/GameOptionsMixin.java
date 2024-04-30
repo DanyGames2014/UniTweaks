@@ -41,6 +41,11 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.renderDistanceOption) {
             ModOptions.renderDistance = value;
         }
+
+        if (option == ModOptions.brightnessOption){
+            ModOptions.brightness = value;
+            ModOptions.updateBrigthnessMultiplier();
+        }
     }
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
@@ -71,6 +76,10 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.renderDistanceOption) {
             cir.setReturnValue(ModOptions.renderDistance);
+        }
+
+        if (option == ModOptions.brightnessOption){
+            cir.setReturnValue(ModOptions.brightness);
         }
     }
 
@@ -170,6 +179,11 @@ public abstract class GameOptionsMixin {
         if (stringArray[0].equals("render_distance")) {
             ModOptions.renderDistance = this.parseFloat(stringArray[1]);
         }
+
+        if(stringArray[0].equals("brightness")){
+            ModOptions.brightness = this.parseFloat(stringArray[1]);
+            ModOptions.updateBrigthnessMultiplier();
+        }
     }
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -180,5 +194,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("cloud_height:" + ModOptions.cloudHeight);
         printWriter.println("fps_limit: " + ModOptions.fpsLimit);
         printWriter.println("render_distance: " + ModOptions.renderDistance);
+        printWriter.println("brightness:" + ModOptions.brightness);
     }
 }
