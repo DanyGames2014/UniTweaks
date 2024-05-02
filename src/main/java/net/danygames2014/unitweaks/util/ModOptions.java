@@ -12,12 +12,12 @@ public class ModOptions {
     public static Option brightnessOption;
 
     // Brightness
-    private static final float BRIGHTNESS_SCALE = 2.0F;
     public static float brightness = 0.5F;
-    public static float brightnessMultiplier = 1.0F;
+    public static float minimumBrightness = 0.5F;
 
-    public static void updateBrigthnessMultiplier() {
-        brightnessMultiplier = (brightness * BRIGHTNESS_SCALE) - (BRIGHTNESS_SCALE / 2.0F);
+    public static void updateBrightnessMultiplier() {
+        minimumBrightness = 1F + 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
+        System.out.println("NEW MINIMUM : " + minimumBrightness);
     }
 
 
