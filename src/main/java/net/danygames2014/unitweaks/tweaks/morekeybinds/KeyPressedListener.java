@@ -23,6 +23,17 @@ public class KeyPressedListener {
         }
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
+            /// Dev Keybinds
+            // Print luminance
+            if(FabricLoader.getInstance().isDevelopmentEnvironment()){
+                if(Keyboard.isKeyDown(Keyboard.KEY_L)){
+                    if(minecraft.player != null){
+                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
+                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
+                    }
+                }
+            }
+
             // Panorama Screenshot
             if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code)) {
                 panoramaScreenshot();
@@ -31,15 +42,6 @@ public class KeyPressedListener {
             // Dismount
             if (Keyboard.isKeyDown(KeyBindingListener.dismount.code)) {
                 dismount();
-            }
-
-            if(Keyboard.isKeyDown(Keyboard.KEY_L)){
-                if(minecraft.player != null){
-//                    if(minecraft.world.getBlockId((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)) != 0){
-                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
-                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
-//                    }
-                }
             }
 
             // Hotbar Slots
