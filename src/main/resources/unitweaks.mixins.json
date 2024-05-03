@@ -59,7 +59,6 @@
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
-    "tweaks.moresounds.ServerPlayerEntityMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [
@@ -84,7 +83,8 @@
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
     "tweaks.brightness.BlockRenderManagerMixin",
-    "tweaks.brightness.EntityRenderDispatcherMixin",
+    "tweaks.brightness.WorldMixin",
+    "tweaks.brightness.LightingCalculatorImplMixin",
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
