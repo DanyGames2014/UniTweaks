@@ -48,8 +48,8 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.brightnessOption){
             ModOptions.brightness = value;
-            ModOptions.updateBrightnessMultiplier();
             if (!Mouse.isButtonDown(0)) {
+                ModOptions.updateBrightnessMultiplier();
                 minecraft.worldRenderer.method_1537();
             }
         }
