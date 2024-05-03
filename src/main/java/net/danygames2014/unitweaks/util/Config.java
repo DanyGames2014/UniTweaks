@@ -18,6 +18,9 @@ public class Config {
         @ConfigName("Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
 
+        @ConfigName("Enable Brightness Slider")
+        public Boolean brightnessSlider = true;
+
         @ConfigCategory("Version Text")
         public VersionTextConfig versionTextConfig = new VersionTextConfig();
 
@@ -26,6 +29,7 @@ public class Config {
 
         @ConfigCategory("Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
+
 
         public static class PanoramaConfig {
 

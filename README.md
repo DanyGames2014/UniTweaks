@@ -11,6 +11,7 @@
 * Show Quit Button on the Main Menu
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
+* Brightness Slider
 * Render Distance slider that goes up to 32 chunks
 * Improved Controls Menu
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and

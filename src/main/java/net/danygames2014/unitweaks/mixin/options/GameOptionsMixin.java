@@ -1,9 +1,11 @@
 package net.danygames2014.unitweaks.mixin.options;
 
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import net.minecraft.client.resource.language.TranslationStorage;
+import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,6 +21,8 @@ import java.io.PrintWriter;
 public abstract class GameOptionsMixin {
     @Shadow
     protected abstract float parseFloat(String string);
+
+    @Shadow protected Minecraft minecraft;
 
     @Inject(method = "setFloat", at = @At(value = "HEAD"))
     public void setFloat(Option option, float value, CallbackInfo ci) {
@@ -40,6 +44,14 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.renderDistanceOption) {
             ModOptions.renderDistance = value;
+        }
+
+        if (option == ModOptions.brightnessOption){
+            ModOptions.brightness = value;
+            if (!Mouse.isButtonDown(0)) {
+                ModOptions.updateBrightnessMultiplier();
+                minecraft.worldRenderer.method_1537();
+            }
         }
     }
 
@@ -71,6 +83,10 @@ public abstract class GameOptionsMixin {
 
         if (option == ModOptions.renderDistanceOption) {
             cir.setReturnValue(ModOptions.renderDistance);
+        }
+
+        if (option == ModOptions.brightnessOption){
+            cir.setReturnValue(ModOptions.brightness);
         }
     }
 
@@ -170,6 +186,11 @@ public abstract class GameOptionsMixin {
         if (stringArray[0].equals("render_distance")) {
             ModOptions.renderDistance = this.parseFloat(stringArray[1]);
         }
+
+        if(stringArray[0].equals("brightness")){
+            ModOptions.brightness = this.parseFloat(stringArray[1]);
+            ModOptions.updateBrightnessMultiplier();
+        }
     }
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -180,5 +201,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("cloud_height:" + ModOptions.cloudHeight);
         printWriter.println("fps_limit: " + ModOptions.fpsLimit);
         printWriter.println("render_distance: " + ModOptions.renderDistance);
+        printWriter.println("brightness:" + ModOptions.brightness);
     }
 }

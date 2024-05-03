@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.option.Option;
 
 public class ModOptions {
@@ -9,6 +10,17 @@ public class ModOptions {
     public static Option cloudHeightOption;
     public static Option fpsLimitOption;
     public static Option renderDistanceOption;
+    public static Option brightnessOption;
+
+    // Brightness
+    public static float brightness = 0.5F;
+    public static float minimumBrightness = 0.5F;
+
+    public static void updateBrightnessMultiplier() {
+        minimumBrightness = 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
+        UniTweaks.logger.info("Minimum luminance set to " + minimumBrightness);
+    }
+
 
     // Render Distance
     public static float renderDistance = 0.2F;

@@ -2,14 +2,17 @@ package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.Block;
 import net.minecraft.class_260;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
+import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.client.event.keyboard.KeyStateChangedEvent;
 import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
 
 
+@SuppressWarnings({"unused", "deprecation"})
 public class KeyPressedListener {
 
     Minecraft minecraft = null;
@@ -21,6 +24,17 @@ public class KeyPressedListener {
         }
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
+            /// Dev Keybinds
+            // Print luminance
+            if(FabricLoader.getInstance().isDevelopmentEnvironment()){
+                if(Keyboard.isKeyDown(Keyboard.KEY_L)){
+                    if(minecraft.player != null){
+                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
+                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
+                    }
+                }
+            }
+
             // Panorama Screenshot
             if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code)) {
                 panoramaScreenshot();

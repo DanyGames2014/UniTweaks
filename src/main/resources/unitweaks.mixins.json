@@ -38,9 +38,9 @@
     "tweaks.laddergaps.LivingEntityMixin",
     "tweaks.minecartboosters.MinecartEntityMixin",
     "tweaks.modernflintandsteel.FlintAndSteelItemMixin",
+    "tweaks.moresounds.ClientPlayerEntityMixin",
     "tweaks.moresounds.FoodItemMixin",
     "tweaks.moresounds.ItemStackMixin",
-    "tweaks.moresounds.ClientPlayerEntityMixin",
     "tweaks.moresounds.SheepEntityMixin",
     "tweaks.nofoodwastage.FoodItemMixin",
     "tweaks.packetspeedup.Connection$1Mixin",
@@ -59,7 +59,6 @@
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
-    "tweaks.moresounds.ServerPlayerEntityMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [
@@ -83,6 +82,9 @@
     "options.OptionMixin",
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
+    "tweaks.brightness.BlockRenderManagerMixin",
+    "tweaks.brightness.WorldMixin",
+    "tweaks.brightness.LightingCalculatorImplMixin",
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
