@@ -17,8 +17,35 @@ key.unitweaks.toggle_fullscreen=Toggle Fullscreen
 key.unitweaks.dismount=Dismount
 key.unitweaks.zoom=Zoom
 
-options.clouds=Clouds
-options.fps_limit=FPS Limit
-options.fps_limit_max=Unlimited
-options.render_distance=Render Distance
-options.render_distance.chunks=chunks
+# FOV
+options.unitweaks.fov=FOV
+options.unitweaks.fov.normal=Normal
+options.unitweaks.fov.max=Quake Pro
+
+# Fog
+options.unitweaks.fog=Fog
+options.unitweaks.fog.off=Disabled
+options.unitweaks.fog.normal=Normal
+options.unitweaks.fog.max=Silent Hill
+options.unitweaks.multiplier_symbol=x
+
+# Clouds
+options.unitweaks.clouds=Clouds
+options.unitweaks.cloud_height=Cloud Height
+
+# FPS Limit
+options.unitweaks.fps_limit=FPS Limit
+options.unitweaks.fps_limit.max=Unlimited
+
+# Render Distance
+options.unitweaks.render_distance=Render Distance
+options.unitweaks.render_distance.chunks=chunks
+options.unitweaks.render_distane.tiny=Tiny
+options.unitweaks.render_distane.short=Short
+options.unitweaks.render_distane.normal=Normal
+options.unitweaks.render_distane.far=Far
+
+# Brightness
+options.unitweaks.brightness=Brightness
+options.unitweaks.brightness.min=Normal
+options.unitweaks.brightness.max=Bright

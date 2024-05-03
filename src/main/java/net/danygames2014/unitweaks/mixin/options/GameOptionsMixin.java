@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import net.minecraft.client.resource.language.TranslationStorage;
+import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -105,56 +106,69 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.fovOption) {
             float value = ModOptions.fov;
             if (value == 0.0f) {
-                cir.setReturnValue("FOV: Normal");
+                cir.setReturnValue(translations.get("options.unitweaks.fov") + ": " + translations.get("options.unitweaks.fov.normal"));
             } else if (value == 1.0f) {
-                cir.setReturnValue("FOV: Quake Pro");
+                cir.setReturnValue(translations.get("options.unitweaks.fov") + ": " + translations.get("options.unitweaks.fov.max"));
             } else {
-                cir.setReturnValue("FOV: " + ModOptions.getFovInDegrees());
+                cir.setReturnValue(translations.get("options.unitweaks.fov") + ": " + ModOptions.getFovInDegrees());
             }
         }
 
         if (option == ModOptions.fogDensityOption) {
             float value = ModOptions.getFogDisplayValue();
             if (value == 0.0F) {
-                cir.setReturnValue("Fog: Disabled");
+                cir.setReturnValue(translations.get("options.unitweaks.fog") + ": " + translations.get("options.unitweaks.fog.off"));
             } else if (value == 1.0F) {
-                cir.setReturnValue("Fog: Silent Hill");
+                cir.setReturnValue(translations.get("options.unitweaks.fog") + ": " + translations.get("options.unitweaks.fog.max"));
             } else if (value == 0.5F) {
-                cir.setReturnValue("Fog: Normal");
+                cir.setReturnValue(translations.get("options.unitweaks.fog") + ": " + translations.get("options.unitweaks.fog.normal"));
             } else {
-                cir.setReturnValue("Fog: " + ModOptions.getFogDisplayValue() * 2F + "x");
+                cir.setReturnValue(translations.get("options.unitweaks.fog") + ": " + ModOptions.getFogDisplayValue() * 2F + translations.get("options.unitweaks.multiplier_symbol"));
             }
         }
 
         if (option == ModOptions.fpsLimitOption) {
             float value = ModOptions.getFpsLimitValue();
             if (value >= 300) {
-                cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + translations.get("options.unitweaks:fps_limit_max"));
+                cir.setReturnValue(translations.get("options.unitweaks.fps_limit") + ": " + translations.get("options.unitweaks.fps_limit.max"));
             } else {
-                cir.setReturnValue(translations.get("options.unitweaks:fps_limit") + ": " + value);
+                cir.setReturnValue(translations.get("options.unitweaks.fps_limit") + ": " + value);
             }
         }
 
         if (option == ModOptions.cloudHeightOption) {
-            String optionName = "Cloud Height: " + ModOptions.getCloudHeight();
+            String optionName = translations.get("options.unitweaks.cloud_height") + ": " + ModOptions.getCloudHeight();
             cir.setReturnValue(optionName);
         }
 
         if (option == ModOptions.cloudsOption) {
-            String optionName = translations.get("options.unitweaks:clouds") + ": " + (ModOptions.clouds ? translations.get("options.on") : translations.get("options.off"));
+            String optionName = translations.get("options.unitweaks.clouds") + ": " + (ModOptions.clouds ? translations.get("options.on") : translations.get("options.off"));
             cir.setReturnValue(optionName);
         }
 
         if (option == ModOptions.renderDistanceOption) {
             String chunkValue;
             switch (ModOptions.getRenderDistanceChunks()) {
-                case 2 -> chunkValue = "Tiny";
-                case 4 -> chunkValue = "Short";
-                case 8 -> chunkValue = "Normal";
-                case 12 -> chunkValue = "Far";
-                default -> chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks:render_distance.chunks");
+                case 2 -> chunkValue = translations.get("options.unitweaks.render_distane.tiny");
+                case 4 -> chunkValue = translations.get("options.unitweaks.render_distane.short");
+                case 8 -> chunkValue = translations.get("options.unitweaks.render_distane.normal");
+                case 12 -> chunkValue = translations.get("options.unitweaks.render_distane.far");
+                default -> chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks.render_distance.chunks");
             }
-            String optionName = translations.get("options.unitweaks:render_distance") + ": " + chunkValue;
+            String optionName = translations.get("options.unitweaks.render_distance") + ": " + chunkValue;
+            cir.setReturnValue(optionName);
+        }
+
+        if(option == ModOptions.brightnessOption){
+            String brightnessValue;
+            if(ModOptions.brightness == 0F){
+                brightnessValue = translations.get("options.unitweaks.brightness.min");
+            } else if (ModOptions.brightness == 1F) {
+                brightnessValue = translations.get("options.unitweaks.brightness.max");
+            } else {
+                brightnessValue = MathHelper.ceil(ModOptions.brightness * 100F) + "%";
+            }
+            String optionName = translations.get("options.unitweaks.brightness") + ": " + brightnessValue;
             cir.setReturnValue(optionName);
         }
     }
