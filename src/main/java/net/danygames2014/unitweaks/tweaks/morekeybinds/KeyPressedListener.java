@@ -12,6 +12,7 @@ import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
 
 
+@SuppressWarnings({"unused", "deprecation"})
 public class KeyPressedListener {
 
     Minecraft minecraft = null;
