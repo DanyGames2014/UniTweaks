@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.option.Option;
 
 public class ModOptions {
@@ -16,8 +17,8 @@ public class ModOptions {
     public static float minimumBrightness = 0.5F;
 
     public static void updateBrightnessMultiplier() {
-        minimumBrightness = 1F + 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
-        System.out.println("NEW MINIMUM : " + minimumBrightness);
+        minimumBrightness = 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
+        UniTweaks.logger.info("Minimum luminance set to " + minimumBrightness);
     }
 
 
