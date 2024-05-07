@@ -83,8 +83,8 @@
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
     "tweaks.brightness.BlockRenderManagerMixin",
-    "tweaks.brightness.WorldMixin",
     "tweaks.brightness.LightingCalculatorImplMixin",
+    "tweaks.brightness.WorldMixin",
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
@@ -100,6 +100,7 @@
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
     "tweaks.renderdistance.class555Mixin",
+    "tweaks.renderdistance.MinecraftMixin",
     "tweaks.renderdistance.WorldRendererMixin",
     "tweaks.shiftplacing.InteractionManagerMixin"
   ],

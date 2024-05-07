@@ -2,6 +2,8 @@ package net.danygames2014.unitweaks.util;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.option.Option;
+import net.modificationstation.stationapi.api.util.math.MathHelper;
+import org.lwjgl.input.Keyboard;
 
 public class ModOptions {
     public static Option fogDensityOption;
@@ -29,6 +31,33 @@ public class ModOptions {
 
     public static int getRenderDistanceChunks() {
         return (int) (2 + Math.floor(renderDistance * (maxRenderDistance - 2)));
+    }
+
+    public static void setRenderDistanceChunks(int chunks) {
+        renderDistance = (1.0F / (maxRenderDistance - 2)) * (chunks - 2);
+    }
+
+    public static void cycleRenderDistance() {
+        boolean inverted = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+
+        switch (getRenderDistanceChunks()) {
+            case 2, 3 -> { // Tiny
+                setRenderDistanceChunks(inverted ? 12 : 4);
+            }
+
+            case 4, 5, 6, 7 -> { // Short
+                setRenderDistanceChunks(inverted ? 2 : 8);
+            }
+
+            case 8, 9, 10, 11 -> { // Normal
+                setRenderDistanceChunks(inverted ? 4 : 12);
+            }
+
+            default -> {
+                setRenderDistanceChunks(inverted ? 8 : 2);
+            }
+        }
+        renderDistance = MathHelper.clamp(renderDistance, 0.0F, 1.0F);
     }
 
     // FPS Limit
