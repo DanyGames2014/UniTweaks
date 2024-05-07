@@ -1,10 +1,7 @@
 package net.danygames2014.unitweaks.util;
 
 import blue.endless.jankson.Comment;
-import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
-import net.glasslauncher.mods.api.gcapi.api.ConfigName;
-import net.glasslauncher.mods.api.gcapi.api.MaxLength;
-import net.glasslauncher.mods.api.gcapi.api.MultiplayerSynced;
+import net.glasslauncher.mods.api.gcapi.api.*;
 
 public class Config {
     public static class GeneralConfig {
@@ -19,6 +16,7 @@ public class Config {
         public Boolean hideAchievementToast = false;
 
         @ConfigName("Enable Brightness Slider")
+        @Comment("Requires a restart to take effect")
         public Boolean brightnessSlider = true;
 
         @ConfigCategory("Version Text")
@@ -75,15 +73,21 @@ public class Config {
         public Boolean pickBlockFromInventory = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Shift Placing")
         @Comment("Ignores block actions allowing you to place blocks when crouching")
         public Boolean shiftPlacing = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Equip armor using right-click")
         public Boolean rightClickEquipArmor = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Fence Jump")
         @Comment("Only works if fence bounding box fix is enabled")
         public Boolean fenceJumping = false;
@@ -98,6 +102,8 @@ public class Config {
 
         public static class FastLeafDecayConfig {
             @MultiplayerSynced
+            @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+            @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
             @ConfigName("Enable Fast Leaf Decay")
             public Boolean enableFastLeafDecay = true;
 
@@ -110,6 +116,8 @@ public class Config {
 
         public static class BetterBurningConfig {
             @MultiplayerSynced
+            @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+            @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
             @ConfigName("Enable Better Burning")
             @Comment("Master switch for all features here")
             public Boolean enableBetterBurning = true;
@@ -135,63 +143,93 @@ public class Config {
 
     public static class TweaksConfig {
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Allow placing sugar cane on sand")
         public Boolean sugarCaneOnSand = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Boats drop themselves when broken by a player")
         public Boolean boatsDropThemselves = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Fences placeable like normal")
         public Boolean fencesPlaceableLikeNormal = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Fences Connect to Blocks")
         public Boolean fencesConnectBlocks = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Bookshelves Drop 3 Books")
         public Boolean bookshelvesDropBooks = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Pressure Plates on Fences")
         public Boolean pressurePlatesOnFences = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Better Boat handling (rn just quicker)")
         public Boolean betterBoats = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Allow shears to harvest cobwebs and tall grass")
         public Boolean shearHarvesting = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Expand Chicken Hitbox")
         @Comment("Expands chicken hitbox to it's modern size")
         public Boolean expandChickenHitbox = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Don't Damage Flint And Steel on failed ignite")
         public Boolean modernFlintAndSteel = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Disable sleeping but retain respawning")
         public Boolean disableSleeping = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Disable spawning mobs when you sleep")
         public Boolean disableSleepSpawning = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Prevent Items Stopping Minecarts")
         public Boolean preventItemsStoppingMinecarts = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Allow igniting entities with flint and steel")
         public Boolean allowIgnitingEntities = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Allow placing trapdoors without support")
         public Boolean allowTrapdoorsWithoutSupport = true;
 
@@ -210,31 +248,43 @@ public class Config {
         public Boolean hiDpiFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Slime Split Fix")
         @Comment("Fixes slimes not splitting when their health is below zero after dying")
         public Boolean enableSlimeSplitFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Boat Dismount Fix")
         @Comment("Fixes sometimes falling through the boat when dismounting it")
         public Boolean boatDismountFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Stairs Drop Fix")
         @Comment("Stairs will drop themselves instead of the base block")
         public Boolean stairsDropFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Block Effectiveness Fix")
         @Comment("Fixes axes and pickaxes not being effective on various blocks")
         public Boolean blockEffectivenessFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Pig Saddle Drop Fix")
         @Comment("Fixes pigs not dropping saddle on death")
         public Boolean pigSaddleDropFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Fence Bounding Box Fix")
         @Comment("Fixes fence bounding box not reflecting the fence state")
         public Boolean fenceBoundingBoxFix = true;
@@ -244,11 +294,15 @@ public class Config {
         public Boolean pickBlockFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Spring propagation fix")
         @Comment("Fixes water source blocks not forming when a block below is water")
         public Boolean springPropagationFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Lava Without Source Fix")
         @Comment("Fixes lava not dissapearing without a source block")
         public Boolean lavaWithoutSourceFix = true;
@@ -265,11 +319,15 @@ public class Config {
         public Boolean itemstackRenderingFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Fish Velocity Fix")
         @Comment("Fixes fish flying above the player head when caught")
         public Boolean fishVelocityFix = true;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Furnace Consume Bucket Fix")
         @Comment("Fixes furnace consuming lava bucket as fuel")
         public Boolean furnaceConsumeBucketFix = true;
@@ -283,40 +341,58 @@ public class Config {
 
     public static class OldFeaturesConfig {
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Disable Dead Bush Generation")
         public Boolean disableDeadBushGeneration = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Disable Tall Grass Generation")
         public Boolean disableTallGrassGeneration = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Punch Sheep for Wool")
         public Boolean punchSheepForWool = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Punch TNT to Ignite")
         public Boolean punchTntToIgnite = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Hoe Grass for Seeds")
         public Boolean hoeGrassForSeeds = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Boat Elevators")
         public Boolean boatElevators = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Ladder Gaps")
         public Boolean ladderGaps = false;
 
         @MultiplayerSynced
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigName("Minecart Boosters")
         public Boolean minecartBoosters = false;
     }
 
     public static class RecipesConfig {
         @ConfigName("Enable Recipe Tweaks")
+        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @Comment("Acts as a master switch for all recipe tweaks")
         public Boolean enableRecipes = true;
 
