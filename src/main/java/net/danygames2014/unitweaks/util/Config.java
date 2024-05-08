@@ -15,6 +15,10 @@ public class Config {
         @ConfigName("Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
 
+        @ConfigName("Achievement Screen Back To Menu")
+        @Comment("Done button will lead to Game Menu instead of unpausing")
+        public Boolean achievementBackToMenu = true;
+
         @ConfigName("Enable Brightness Slider")
         @Comment("Requires a restart to take effect")
         public Boolean brightnessSlider = true;
