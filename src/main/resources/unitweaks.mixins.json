@@ -81,6 +81,7 @@
     "options.OptionMixin",
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
+    "tweaks.backtomenu.AchievementsScreenMixin",
     "tweaks.brightness.BlockRenderManagerMixin",
     "tweaks.brightness.LightingCalculatorImplMixin",
     "tweaks.brightness.WorldMixin",
