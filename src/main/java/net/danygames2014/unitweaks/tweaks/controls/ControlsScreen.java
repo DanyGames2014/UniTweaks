@@ -26,7 +26,7 @@ public class ControlsScreen extends Screen {
     // Generaů
     public Screen parent;
     public String title = "Controls";
-    public String debugText = "[EXPERIMENTAL]";
+    public String debugText = "";
     public GameOptions options;
     public final TranslationStorage translations;
 
@@ -87,6 +87,9 @@ public class ControlsScreen extends Screen {
 
         // Step Assist
         stepAssist = new ButtonWidget(1001, (this.width / 2) + 10, 10, 100, 20, "Step Assist: OFF");
+        if(this.minecraft.world == null){
+            stepAssist.active = false;
+        }
         this.buttons.add(stepAssist);
 
         // Init Keybinds
