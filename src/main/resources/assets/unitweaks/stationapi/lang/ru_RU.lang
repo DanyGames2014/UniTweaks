@@ -1,0 +1,51 @@
+key.unitweaks.panorama_screenshot=Панорамный снимок экрана
+key.unitweaks.hotbar_1=Слот 1
+key.unitweaks.hotbar_2=Слот 2
+key.unitweaks.hotbar_3=Слот 3
+key.unitweaks.hotbar_4=Слот 4
+key.unitweaks.hotbar_5=Слот 5
+key.unitweaks.hotbar_6=Слот 6
+key.unitweaks.hotbar_7=Слот 7
+key.unitweaks.hotbar_8=Слот 8
+key.unitweaks.hotbar_9=Слот 9
+key.unitweaks.hide_hud=Скрыть экран
+key.unitweaks.take_screenshot=Сделать снимок экрана
+key.unitweaks.debug_hud=Экран отладки
+key.unitweaks.third_person=Третье лицо
+key.unitweaks.cinematic_camera=Кинематографичная камера
+key.unitweaks.toggle_fullscreen=Полноэкранный режим
+key.unitweaks.dismount=Спешится
+key.unitweaks.zoom=Zoom
+
+# FOV
+options.unitweaks.fov=Поле зрения
+options.unitweaks.fov.normal=Нормально
+options.unitweaks.fov.max=Quake Pro
+
+# Fog
+options.unitweaks.fog=Туман
+options.unitweaks.fog.off=Отключен
+options.unitweaks.fog.normal=Нормальный
+options.unitweaks.fog.max=Сайлент Хилл
+options.unitweaks.multiplier_symbol=x
+
+# Clouds
+options.unitweaks.clouds=Облака
+options.unitweaks.cloud_height=Высота облаков
+
+# FPS Limit
+options.unitweaks.fps_limit=Лимит FPS
+options.unitweaks.fps_limit.max=Неограниченно
+
+# Render Distance
+options.unitweaks.render_distance=Прорисовка
+options.unitweaks.render_distance.chunks=чанков
+options.unitweaks.render_distane.tiny=Крошечная
+options.unitweaks.render_distane.short=Короткая
+options.unitweaks.render_distane.normal=Нормальная
+options.unitweaks.render_distane.far=Дальняя
+
+# Brightness
+options.unitweaks.brightness=Яркость
+options.unitweaks.brightness.min=Нормально
+options.unitweaks.brightness.max=Ярко
