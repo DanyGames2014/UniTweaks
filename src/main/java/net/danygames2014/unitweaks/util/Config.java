@@ -32,6 +32,10 @@ public class Config {
         @ConfigCategory("Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
 
+        @ConfigName("Autosave Interval (seconds)")
+        @MaxLength(3600)
+        public Integer autosaveInterval = 1;
+
 
         public static class PanoramaConfig {
 

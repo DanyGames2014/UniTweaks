@@ -16,6 +16,7 @@
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
+    "tweaks.autosaveinterval.WorldMixin",
     "tweaks.bedtweaks.BedBlockMixin",
     "tweaks.bedtweaks.class_567Mixin",
     "tweaks.bedtweaks.PlayerEntityAccessor",
