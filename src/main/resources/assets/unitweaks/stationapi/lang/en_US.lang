@@ -1,3 +1,4 @@
+# Keybinds
 key.unitweaks.panorama_screenshot=Panorama Screenshot
 key.unitweaks.hotbar_1=Hotbar 1
 key.unitweaks.hotbar_2=Hotbar 2
@@ -16,6 +17,7 @@ key.unitweaks.cinematic_camera=Cinematic Camera
 key.unitweaks.toggle_fullscreen=Toggle Fullscreen
 key.unitweaks.dismount=Dismount
 key.unitweaks.zoom=Zoom
+key.unitweaks.release_mouse=Release Mouse
 
 # FOV
 options.unitweaks.fov=FOV

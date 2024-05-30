@@ -12,6 +12,9 @@ public class Config {
         @ConfigName("Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
 
+        @ConfigName("Pause on Lost Focus")
+        public Boolean pauseOnLostFocus = true;
+
         @ConfigName("Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
 
@@ -116,9 +119,11 @@ public class Config {
             public Boolean enableFastLeafDecay = true;
 
             @ConfigName("Minimum Decay Time")
+            @MaxLength(1200)
             public Integer minimumDecayTime = 10;
 
             @ConfigName("Maximum Decay Time")
+            @MaxLength(1800)
             public Integer maximumDecayTime = 25;
         }
 

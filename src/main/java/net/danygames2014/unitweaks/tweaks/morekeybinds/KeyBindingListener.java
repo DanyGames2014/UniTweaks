@@ -1,6 +1,5 @@
 package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
-import net.danygames2014.unitweaks.UniTweaks;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.option.KeyBinding;
 import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegisterEvent;
@@ -26,6 +25,7 @@ public class KeyBindingListener {
     public static KeyBinding toggleFullscreen; // F11
     public static KeyBinding dismount;
     public static KeyBinding zoom;
+    public static KeyBinding releaseMouse;
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
@@ -37,7 +37,7 @@ public class KeyBindingListener {
         event.keyBindings.add(thirdPerson = new KeyBinding("key.unitweaks.third_person", Keyboard.KEY_F5));
         event.keyBindings.add(cinematicCamera = new KeyBinding("key.unitweaks.cinematic_camera", Keyboard.KEY_F6));
         event.keyBindings.add(toggleFullscreen = new KeyBinding("key.unitweaks.toggle_fullscreen", Keyboard.KEY_F11));
-        event.keyBindings.add(panoramaScreenshot = new KeyBinding("key.unitweaks.panorama_screenshot", Keyboard.KEY_NONE));
+        event.keyBindings.add(releaseMouse = new KeyBinding("key.unitweaks.release_mouse", Keyboard.KEY_LMENU));
         event.keyBindings.add(hotbar1 = new KeyBinding("key.unitweaks.hotbar_1", Keyboard.KEY_1));
         event.keyBindings.add(hotbar2 = new KeyBinding("key.unitweaks.hotbar_2", Keyboard.KEY_2));
         event.keyBindings.add(hotbar3 = new KeyBinding("key.unitweaks.hotbar_3", Keyboard.KEY_3));
@@ -47,5 +47,6 @@ public class KeyBindingListener {
         event.keyBindings.add(hotbar7 = new KeyBinding("key.unitweaks.hotbar_7", Keyboard.KEY_7));
         event.keyBindings.add(hotbar8 = new KeyBinding("key.unitweaks.hotbar_8", Keyboard.KEY_8));
         event.keyBindings.add(hotbar9 = new KeyBinding("key.unitweaks.hotbar_9", Keyboard.KEY_9));
+        event.keyBindings.add(panoramaScreenshot = new KeyBinding("key.unitweaks.panorama_screenshot", Keyboard.KEY_NONE));
     }
 }

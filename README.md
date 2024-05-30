@@ -22,6 +22,8 @@
 * FPS Limit slider
 * Armor Outlines in Player Inventory
 * The Done Button in Achievements will lead to ingame menu instead of unpausing
+* Disable pausing on lost focus
+* Keybind for releasing the mouse
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full

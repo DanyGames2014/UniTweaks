@@ -10,12 +10,14 @@ import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.client.event.keyboard.KeyStateChangedEvent;
 import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 
 @SuppressWarnings({"unused", "deprecation"})
 public class KeyPressedListener {
 
     Minecraft minecraft = null;
+    public static boolean releasedMouse = false;
 
     @EventListener
     public void keyPress(KeyStateChangedEvent event) {
@@ -23,34 +25,46 @@ public class KeyPressedListener {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
+        if (Keyboard.getEventKeyState()) {
+            if (Keyboard.isKeyDown(KeyBindingListener.releaseMouse.code)) {
+                if (Mouse.isGrabbed()) {
+                    Mouse.setGrabbed(false);
+                    releasedMouse = true;
+                } else {
+                    Mouse.setGrabbed(true);
+                    releasedMouse = false;
+                }
+            }
+        }
+
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             /// Dev Keybinds
             // Print luminance
-            if(FabricLoader.getInstance().isDevelopmentEnvironment()){
-                if(Keyboard.isKeyDown(Keyboard.KEY_L)){
-                    if(minecraft.player != null){
+            if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+                if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
+                    if (minecraft.player != null) {
                         Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
                         System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
                     }
                 }
 
-                if(Keyboard.isKeyDown(Keyboard.KEY_N)){
+                if (Keyboard.isKeyDown(Keyboard.KEY_N)) {
                     minecraft.world.setTime(9223372036854775700L);
-                    minecraft.player.method_490(minecraft.world.getTime()+"");
+                    minecraft.player.method_490(minecraft.world.getTime() + "");
                 }
 
-                if(Keyboard.isKeyDown(Keyboard.KEY_M)){
-                    minecraft.player.method_490(minecraft.world.getTime()+"");
+                if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
+                    minecraft.player.method_490(minecraft.world.getTime() + "");
                 }
 
-                if(Keyboard.isKeyDown(Keyboard.KEY_UP)){
-                    minecraft.world.setTime(minecraft.world.getTime()+1000L);
-                    minecraft.player.method_490(minecraft.world.getTime()+"");
+                if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+                    minecraft.world.setTime(minecraft.world.getTime() + 1000L);
+                    minecraft.player.method_490(minecraft.world.getTime() + "");
                 }
 
-                if(Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
-                    minecraft.world.setTime(minecraft.world.getTime()-100L);
-                    minecraft.player.method_490(minecraft.world.getTime()+"");
+                if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+                    minecraft.world.setTime(minecraft.world.getTime() - 100L);
+                    minecraft.player.method_490(minecraft.world.getTime() + "");
                 }
             }
 
