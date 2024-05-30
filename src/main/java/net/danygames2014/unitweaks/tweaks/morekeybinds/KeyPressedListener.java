@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
+import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
@@ -65,6 +66,10 @@ public class KeyPressedListener {
                 if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
                     minecraft.world.setTime(minecraft.world.getTime() - 100L);
                     minecraft.player.method_490(minecraft.world.getTime() + "");
+                }
+
+                if(Keyboard.isKeyDown(Keyboard.KEY_P)){
+                    this.minecraft.setScreen(new PhotoModeScreen());
                 }
             }
 
