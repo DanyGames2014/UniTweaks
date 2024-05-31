@@ -91,14 +91,14 @@ public class ModOptions {
     }
 
     // Fog Density
-    public static float photoModeFogMultiplier = 0.5F;
+    public static float photoModeFogMultiplier = 1.0F;
     public static float fogDensity = 0.5F;
 
     public static float getFogMultiplier() {
         if (fogDensity == 0F) {
             return 100F;
         } else {
-            return ((1F - Math.min(getFogDisplayValue(), 0.9F)) * 2F) * (photoModeFogMultiplier * 2F);
+            return ((1F - Math.min(getFogDisplayValue(), 0.9F)) * 2F) * (photoModeFogMultiplier);
         }
     }
 

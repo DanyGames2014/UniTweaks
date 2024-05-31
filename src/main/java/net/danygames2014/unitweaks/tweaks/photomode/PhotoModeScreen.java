@@ -7,19 +7,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.LightType;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 public class PhotoModeScreen extends Screen {
-    private ButtonWidget buttonRotateLeft;
-    private ButtonWidget buttonRotateRight;
-    private SliderWidget sliderTimeOfDay;
-    private ButtonWidget buttonTakeScreenshot;
-    private ButtonWidget buttonExit;
-    private SliderWidget sliderFog;
-    private SliderWidget sliderTilt;
+    private ButtonWidget rotateLeftButton;
+    private ButtonWidget rotateRightButton;
+    private SliderWidget timeSlider;
+    private ButtonWidget screenshotButton;
+    private ButtonWidget exitButton;
+    private SliderWidget tiltSlider;
     private long originalTOD;
     private long desiredTOD = -1L;
     private long desiredDay = -1L;
@@ -30,59 +27,55 @@ public class PhotoModeScreen extends Screen {
     public float zoomGoal = 1.0f;
     public float tilt = 30.0f;
     public float tiltGoal = 30.0f;
-    public float fog = 0.5f;
-    public float fogGoal = 0.5f;
 
     @Override
     public void init() {
         super.init();
-        this.buttonExit = new ButtonWidget(5, 0, 0, 20, 20, "X");
-        this.buttonRotateLeft = new ButtonWidget(0, this.width / 2 - 49 - 2 - 20, this.height - 20, 20, 20, "<");
-        this.buttonRotateRight = new ButtonWidget(1, this.width / 2 + 49 + 2, this.height - 20, 20, 20, ">");
-        this.buttonTakeScreenshot = new ButtonWidget(4, this.width / 2 - 49, this.height - 20, 98, 20, "Take Screenshot");
-        this.sliderTimeOfDay = new SliderWidgetWithoutSaving(2, this.width - 151, 0, "Time of Day: DEFAULT", 0.0f);
-        this.sliderFog = new SliderWidgetWithoutSaving(6, this.width - 151, 0,  "Fog: 1.0", 1.0f);
-        this.sliderTilt = new SliderWidgetWithoutSaving(7, this.width - 151, 0,  "Tilt: Default", 0.33333334f);
-        this.buttons.add(this.sliderTilt);
+        this.exitButton = new ButtonWidget(5, 0, 0, 20, 20, "X");
+        this.rotateLeftButton = new ButtonWidget(0, this.width / 2 - 49 - 2 - 20, this.height - 20, 20, 20, "<");
+        this.rotateRightButton = new ButtonWidget(1, this.width / 2 + 49 + 2, this.height - 20, 20, 20, ">");
+        this.screenshotButton = new ButtonWidget(4, this.width / 2 - 49, this.height - 20, 98, 20, "Take Screenshot");
+        this.tiltSlider = new SliderWidgetWithoutSaving(7, this.width - 151, 0,  "Tilt: Default", 0.33333334f);
+        this.timeSlider = new SliderWidgetWithoutSaving(2, this.width - 151, 20, "Time of Day: DEFAULT", 0.0f);
+
+        this.buttons.add(this.tiltSlider);
+
         if (!this.minecraft.world.isRemote) {
-            this.buttons.add(this.sliderTimeOfDay);
-            this.buttons.add(this.sliderFog);
+            this.buttons.add(this.timeSlider);
         }
-        int n2 = 0;
-        for (Object buttons : this.buttons) {
-            ((ButtonWidget) buttons).y = n2++ * 20;
-        }
-        this.buttons.add(this.buttonRotateLeft);
-        this.buttons.add(this.buttonRotateRight);
-        this.buttons.add(this.buttonTakeScreenshot);
-        this.buttons.add(this.buttonExit);
+
+        this.buttons.add(this.rotateLeftButton);
+        this.buttons.add(this.rotateRightButton);
+        this.buttons.add(this.screenshotButton);
+        this.buttons.add(this.exitButton);
         this.originalTOD = this.minecraft.world.getTime();
         if (this.desiredTOD == -1L) {
             this.desiredTOD = this.originalTOD % 24000L;
         } else {
-            this.sliderTimeOfDay.field_2591 = (float) this.desiredTOD / 24000.0f;
+            this.timeSlider.field_2591 = (float) this.desiredTOD / 24000.0f;
         }
         if (this.desiredDay == -1L) {
             this.desiredDay = this.originalTOD / 24000L;
         }
         this.updateButtonsText();
+        ModOptions.photoModeFogMultiplier = 100F;
     }
 
     @Override
     public void removed() {
         this.minecraft.world.setTime(this.originalTOD);
-        ModOptions.photoModeFogMultiplier = 0.5F;
+        ModOptions.photoModeFogMultiplier = 1.0F;
     }
 
     @Override
     protected void buttonClicked(ButtonWidget ButtonWidget2) {
-        if (ButtonWidget2 == this.buttonRotateLeft) {
+        if (ButtonWidget2 == this.rotateLeftButton) {
             this.rotationGoal += 0.5f;
-        } else if (ButtonWidget2 == this.buttonRotateRight) {
+        } else if (ButtonWidget2 == this.rotateRightButton) {
             this.rotationGoal -= 0.5f;
-        } else if (ButtonWidget2 == this.buttonTakeScreenshot) {
+        } else if (ButtonWidget2 == this.screenshotButton) {
             this.shouldScreenshot = true;
-        } else if (ButtonWidget2 == this.buttonExit) {
+        } else if (ButtonWidget2 == this.exitButton) {
             this.minecraft.setScreen(null);
         }
         this.updateButtonsText();
@@ -104,6 +97,7 @@ public class PhotoModeScreen extends Screen {
         GL11.glMatrixMode(5888);
         GL11.glLoadIdentity();
         GL11.glTranslatef(0.0f, 0.0f, -2000.0f);
+
         if (this.zoom != this.zoomGoal) {
             this.zoom += (this.zoomGoal - this.zoom) * 0.02f + (this.zoomGoal - this.zoom) * 0.02f * f;
             if (Math.abs(this.zoom - this.zoomGoal) < 5.0E-4f) {
@@ -122,12 +116,6 @@ public class PhotoModeScreen extends Screen {
                 this.tilt = this.tiltGoal;
             }
         }
-        if (this.fogGoal != this.fog) {
-            this.fog += (this.fogGoal - this.fog) * 0.02f + (this.fogGoal - this.fog) * 0.02f * f;
-            if (Math.abs(this.fog - this.fogGoal) < 5.0E-5f) {
-                this.fog = this.fogGoal;
-            }
-        }
         if (!this.shouldScreenshot) {
             super.render(n2, n3, f);
         } else {
@@ -136,9 +124,9 @@ public class PhotoModeScreen extends Screen {
         }
         this.scroll(Mouse.getDWheel());
 
-        if (this.sliderTimeOfDay.field_2592) {
-            long var4 = (long)(this.sliderTimeOfDay.field_2591 * 24000.0F);
-            if (this.sliderTimeOfDay.field_2591 == 0.0F) {
+        if (this.timeSlider.field_2592) {
+            long var4 = (long)(this.timeSlider.field_2591 * 24000.0F);
+            if (this.timeSlider.field_2591 == 0.0F) {
                 this.desiredTOD = this.originalTOD % 24000L;
             } else {
                 this.desiredTOD = var4;
@@ -151,30 +139,22 @@ public class PhotoModeScreen extends Screen {
             this.updateButtonsText();
         }
 
-        if (this.sliderTilt.field_2592) {
-            float var6 = (float)((int)(this.sliderTilt.field_2591 * 90.0F));
+        if (this.tiltSlider.field_2592) {
+            float var6 = (float)((int)(this.tiltSlider.field_2591 * 90.0F));
             this.tiltGoal = var6;
             this.updateButtonsText();
         }
-
-        if (this.sliderFog.field_2592) {
-            this.fogGoal = (float)Math.pow(2.0, 8.0F * this.sliderFog.field_2591 - 8.0F);
-            this.updateButtonsText();
-        }
-
-        ModOptions.photoModeFogMultiplier = this.sliderFog.field_2591;
     }
 
     private void updateButtonsText() {
-        this.sliderTimeOfDay.text = this.sliderTimeOfDay.field_2591 == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.sliderTimeOfDay.field_2591 * 24000.0f);
-        this.sliderFog.text = "Fog Distance: " + (int) (this.sliderFog.field_2591 * 100.0f) + "%";
-        this.sliderTilt.text = (int) (this.sliderTilt.field_2591 * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (this.sliderTilt.field_2591 * 90.0f) + " degrees";
+        this.timeSlider.text = this.timeSlider.field_2591 == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.timeSlider.field_2591 * 24000.0f);
+        this.tiltSlider.text = (int) (this.tiltSlider.field_2591 * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (this.tiltSlider.field_2591 * 90.0f) + " degrees";
     }
 
-    public void scroll(int n2) {
-        if (n2 < 0) {
+    public void scroll(int direction) {
+        if (direction < 0) {
             this.zoomGoal -= 0.25f;
-        } else if (n2 > 0) {
+        } else if (direction > 0) {
             this.zoomGoal += 0.25f;
         }
     }
