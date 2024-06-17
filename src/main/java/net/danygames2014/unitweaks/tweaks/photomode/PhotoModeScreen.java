@@ -39,15 +39,14 @@ public class PhotoModeScreen extends Screen {
         this.timeSlider = new SliderWidgetWithoutSaving(2, this.width - 151, 20, "Time of Day: DEFAULT", 0.0f);
 
         this.buttons.add(this.tiltSlider);
-
-        if (!this.minecraft.world.isRemote) {
-            this.buttons.add(this.timeSlider);
-        }
-
         this.buttons.add(this.rotateLeftButton);
         this.buttons.add(this.rotateRightButton);
         this.buttons.add(this.screenshotButton);
         this.buttons.add(this.exitButton);
+        if (!this.minecraft.world.isRemote) {
+            this.buttons.add(this.timeSlider);
+        }
+
         this.originalTOD = this.minecraft.world.getTime();
         if (this.desiredTOD == -1L) {
             this.desiredTOD = this.originalTOD % 24000L;

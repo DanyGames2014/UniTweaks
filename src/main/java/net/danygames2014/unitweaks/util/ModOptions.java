@@ -15,8 +15,8 @@ public class ModOptions {
     public static Option brightnessOption;
 
     // Brightness
-    public static float brightness = 0.5F;
-    public static float minimumBrightness = 0.5F;
+    public static float brightness = 0.0F;
+    public static float minimumBrightness = 0.05F;
 
     public static void updateBrightnessMultiplier() {
         minimumBrightness = 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
