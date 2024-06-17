@@ -44,7 +44,7 @@ public class class_555Mixin {
     }
 
     // 5/13
-    @Inject(method = "method_1851", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", shift = At.Shift.BEFORE, ordinal = 4))
+    @Inject(method = "method_1851", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", shift = At.Shift.BEFORE, ordinal = 4, remap = false))
     public void test5(float par1, CallbackInfo ci) {
         if (this.field_2349.currentScreen instanceof PhotoModeScreen) {
             GL11.glRotatef(((PhotoModeScreen) this.field_2349.currentScreen).tilt, 1.0F, 0.0F, 0.0F);
@@ -61,22 +61,22 @@ public class class_555Mixin {
         return original;
     }
 
-    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", ordinal = 1))
+    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", ordinal = 1, remap = false))
     public boolean disableTranslateF(float x, float y, float z) {
         return !(this.field_2349.currentScreen instanceof PhotoModeScreen);
     }
 
-    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glScaled(DDD)V", ordinal = 0))
+    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glScaled(DDD)V", ordinal = 0, remap = false))
     public boolean disableScaled(double x, double y, double z) {
         return !(this.field_2349.currentScreen instanceof PhotoModeScreen);
     }
 
-    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0))
+    @WrapWithCondition(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, remap = false))
     public boolean disableGluPerspective(float fovy, float aspect, float zNear, float zFar) {
         return !(this.field_2349.currentScreen instanceof PhotoModeScreen);
     }
 
-    @Inject(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE))
+    @Inject(method = "method_1840", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE, remap = false))
     public void test8(float i, int par2, CallbackInfo ci) {
         if (this.field_2349.currentScreen instanceof PhotoModeScreen) {
             double var3 = Math.pow(2.0, ((PhotoModeScreen) this.field_2349.currentScreen).zoom);
