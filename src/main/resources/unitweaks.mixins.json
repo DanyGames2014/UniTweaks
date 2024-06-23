@@ -91,6 +91,7 @@
     "tweaks.cloudstoggle.WorldRendererMixin",
     "tweaks.disablef3entityids.LivingEntityRendererMixin",
     "tweaks.fov.class555Mixin",
+    "tweaks.fov.MinecraftMixin",
     "tweaks.fpslimitslider.class_555Mixin",
     "tweaks.hideachievementtoast.AchievementToastMixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",

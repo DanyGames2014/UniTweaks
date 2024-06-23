@@ -7,7 +7,9 @@ import net.minecraft.block.Material;
 import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
+import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import org.objectweb.asm.Opcodes;
@@ -31,6 +33,12 @@ public class class555Mixin {
     float fov = 70F;
 
     @Unique
+    float fovZoom = 0F;
+
+    @Unique
+    boolean zoomedIn = false;
+
+    @Unique
     public float getFovMultiplier(float f, boolean isHand) {
         LivingEntity entity = this.field_2349.field_2807;
         fov = ModOptions.getFovInDegrees();
@@ -44,7 +52,29 @@ public class class555Mixin {
         }
 
         if (Keyboard.isKeyDown(KeyBindingListener.zoom.code) && field_2349.currentScreen == null) {
-            fov /= 4F;
+            if (!zoomedIn) {
+                ModOptions.zoomFovOffset = 0;
+                fovZoom = 0F;
+                zoomedIn = true;
+            }
+
+            if (!isHand) {
+                fov /= 4F;
+
+                fovZoom += ModOptions.zoomFovOffset * 5;
+                ModOptions.zoomFovOffset = 0;
+
+                fovZoom = MathHelper.clamp(fovZoom, 5F - fov, 130F - fov);
+            } else {
+                fov -= (ModOptions.getFovInDegrees() - 50F);
+            }
+
+            fov += fovZoom;
+
+//            System.out.println("isHand = " + isHand + " | fov = " + fov + " | fovZoom = " + fovZoom + " | 5f-fov = " + (5f - fov) + " | 130f-fov = " + (130f - fov));
+
+        } else {
+            zoomedIn = false;
         }
 
         if (entity.health <= 0) {
@@ -56,7 +86,7 @@ public class class555Mixin {
     }
 
     @ModifyExpressionValue(method = "method_1844", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;cinematicMode:Z"))
-    public boolean smoothCameraWhenZooming(boolean original){
+    public boolean smoothCameraWhenZooming(boolean original) {
         return original || Keyboard.isKeyDown(KeyBindingListener.zoom.code);
     }
 

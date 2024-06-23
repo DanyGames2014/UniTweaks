@@ -14,6 +14,7 @@ public class ModOptions {
     public static Option renderDistanceOption;
     public static Option brightnessOption;
 
+
     // Brightness
     public static float brightness = 0.0F;
     public static float minimumBrightness = 0.05F;
@@ -88,6 +89,13 @@ public class ModOptions {
 
     public static int getFovInDegrees() {
         return Math.round(70.0f + fov * 40.0f);
+    }
+
+    // Zoom
+    public static float zoomFovOffset = 0;
+
+    public static void addZoomFovOffset(float offset) {
+        zoomFovOffset = offset;
     }
 
     // Fog Density

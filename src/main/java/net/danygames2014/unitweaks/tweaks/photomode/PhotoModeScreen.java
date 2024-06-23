@@ -36,7 +36,7 @@ public class PhotoModeScreen extends Screen {
         this.rotateRightButton = new ButtonWidget(1, this.width / 2 + 49 + 2, this.height - 20, 20, 20, ">");
         this.screenshotButton = new ButtonWidget(4, this.width / 2 - 49, this.height - 20, 98, 20, "Take Screenshot");
         this.tiltSlider = new SliderWidgetWithoutSaving(7, this.width - 151, 0,  "Tilt: Default", 0.33333334f);
-        this.timeSlider = new SliderWidgetWithoutSaving(2, this.width - 151, 20, "Time of Day: DEFAULT", 0.0f);
+        this.timeSlider = new SliderWidgetWithoutSaving(2, this.width - 151, 20, "Time of Day: Current", 0.0f);
 
         this.buttons.add(this.tiltSlider);
         this.buttons.add(this.rotateLeftButton);
@@ -147,7 +147,7 @@ public class PhotoModeScreen extends Screen {
 
     private void updateButtonsText() {
         this.timeSlider.text = this.timeSlider.field_2591 == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.timeSlider.field_2591 * 24000.0f);
-        this.tiltSlider.text = (int) (this.tiltSlider.field_2591 * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (this.tiltSlider.field_2591 * 90.0f) + " degrees";
+        this.tiltSlider.text = (int) (this.tiltSlider.field_2591 * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (Math.floor(this.tiltSlider.field_2591 * 90.0f)) + " degrees";
     }
 
     public void scroll(int direction) {
