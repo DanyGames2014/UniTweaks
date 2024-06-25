@@ -12,10 +12,11 @@
 * FOV Slider with proper hand adjustment
 * Fog Density Slider
 * Brightness Slider
+* Photo Mode
 * Render Distance slider that goes up to 32 chunks
 * Improved Controls Menu
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and
-  receiving a response) ***non-configurable***
+  receiving a response)
 * Text field clearing with Right Mouse Button
 * Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
 * Dismount Key
