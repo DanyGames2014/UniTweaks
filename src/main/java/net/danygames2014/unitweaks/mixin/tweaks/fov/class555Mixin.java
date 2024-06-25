@@ -1,14 +1,17 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.block.Material;
 import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
+import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -26,9 +29,18 @@ public class class555Mixin {
     private float field_2350;
 
     @Unique
+    float fov = 70F;
+
+    @Unique
+    float fovZoom = 0F;
+
+    @Unique
+    boolean zoomedIn = false;
+
+    @Unique
     public float getFovMultiplier(float f, boolean isHand) {
         LivingEntity entity = this.field_2349.field_2807;
-        float fov = ModOptions.getFovInDegrees();
+        fov = ModOptions.getFovInDegrees();
 
         if (isHand) {
             fov = 70F;
@@ -38,11 +50,30 @@ public class class555Mixin {
             fov *= 60.0F / 70.0F;
         }
 
-        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code)) {
-            fov /= 4F;
-            field_2349.options.cinematicMode = true;
+        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code) && field_2349.currentScreen == null) {
+            if (!zoomedIn) {
+                ModOptions.zoomFovOffset = 0;
+                fovZoom = 0F;
+                zoomedIn = true;
+            }
+
+            if (!isHand) {
+                fov /= 4F;
+
+                fovZoom += ModOptions.zoomFovOffset * 5;
+                ModOptions.zoomFovOffset = 0;
+
+                fovZoom = MathHelper.clamp(fovZoom, 5F - fov, 130F - fov);
+            } else {
+                fov -= (ModOptions.getFovInDegrees() - 50F);
+            }
+
+            fov += fovZoom;
+
+//            System.out.println("isHand = " + isHand + " | fov = " + fov + " | fovZoom = " + fovZoom + " | 5f-fov = " + (5f - fov) + " | 130f-fov = " + (130f - fov));
+
         } else {
-            field_2349.options.cinematicMode = false;
+            zoomedIn = false;
         }
 
         if (entity.health <= 0) {
@@ -51,6 +82,11 @@ public class class555Mixin {
         }
 
         return fov;
+    }
+
+    @ModifyExpressionValue(method = "method_1844", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;cinematicMode:Z"))
+    public boolean smoothCameraWhenZooming(boolean original) {
+        return original || Keyboard.isKeyDown(KeyBindingListener.zoom.code);
     }
 
     @Unique
