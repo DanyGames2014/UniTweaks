@@ -40,37 +40,37 @@ public class KeyPressedListener {
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             /// Dev Keybinds
-            // Print luminance
             if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-                if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
-                    if (minecraft.player != null) {
-                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
-                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
-                    }
-                }
+//                if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
+//                    if (minecraft.player != null) {
+//                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
+//                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
+//                    }
+//                }
+//
+//                if (Keyboard.isKeyDown(Keyboard.KEY_N)) {
+//                    minecraft.world.setTime(9223372036854775700L);
+//                    minecraft.player.method_490(minecraft.world.getTime() + "");
+//                }
+//
+//                if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
+//                    minecraft.player.method_490(minecraft.world.getTime() + "");
+//                }
+//
+//                if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+//                    minecraft.world.setTime(minecraft.world.getTime() + 1000L);
+//                    minecraft.player.method_490(minecraft.world.getTime() + "");
+//                }
+//
+//                if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+//                    minecraft.world.setTime(minecraft.world.getTime() - 100L);
+//                    minecraft.player.method_490(minecraft.world.getTime() + "");
+//                }
+            }
 
-                if (Keyboard.isKeyDown(Keyboard.KEY_N)) {
-                    minecraft.world.setTime(9223372036854775700L);
-                    minecraft.player.method_490(minecraft.world.getTime() + "");
-                }
-
-                if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
-                    minecraft.player.method_490(minecraft.world.getTime() + "");
-                }
-
-                if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-                    minecraft.world.setTime(minecraft.world.getTime() + 1000L);
-                    minecraft.player.method_490(minecraft.world.getTime() + "");
-                }
-
-                if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-                    minecraft.world.setTime(minecraft.world.getTime() - 100L);
-                    minecraft.player.method_490(minecraft.world.getTime() + "");
-                }
-
-                if(Keyboard.isKeyDown(Keyboard.KEY_P)){
-                    this.minecraft.setScreen(new PhotoModeScreen());
-                }
+            // Photo Mode
+            if(Keyboard.isKeyDown(KeyBindingListener.photoMode.code)){
+                this.minecraft.setScreen(new PhotoModeScreen(null));
             }
 
             // Panorama Screenshot

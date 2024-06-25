@@ -34,4 +34,15 @@ public class UniTweaks {
 
     @GConfig(value = "recipes", visibleName = "Recipes")
     public static final Config.RecipesConfig RECIPES_CONFIG = new Config.RecipesConfig();
+
+    // These will eventually be completely redone, probably with the gcapi merge into StAPI
+
+    // General, Gameplay, Tweaks - These have to be redone, there isnt a clear theme to any of these
+    // categories, currently thinking about User Interface, Tweaks, QoL etc. categories
+
+    // Features - This was supposed to be extra features that actually add a game mechanic
+
+    // Bugfixes - This will stay but might need to create sub-categories and evaluate what is bugfix and what is tweak
+    // Old Features - This can stay, the category is small enough and descriptive enough
+    // Recipes - This can probably stay
 }

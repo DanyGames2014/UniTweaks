@@ -6,8 +6,8 @@ import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegi
 import org.lwjgl.input.Keyboard;
 
 public class KeyBindingListener {
-
     public static KeyBinding panoramaScreenshot;
+    public static KeyBinding photoMode;
     public static KeyBinding hotbar1;
     public static KeyBinding hotbar2;
     public static KeyBinding hotbar3;
@@ -31,6 +31,7 @@ public class KeyBindingListener {
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
         event.keyBindings.add(dismount = new KeyBinding("key.unitweaks.dismount", Keyboard.KEY_LSHIFT));
         event.keyBindings.add(zoom = new KeyBinding("key.unitweaks.zoom", Keyboard.KEY_LCONTROL));
+        event.keyBindings.add(photoMode = new KeyBinding("key.unitweaks.photo_mode", Keyboard.KEY_P));
         event.keyBindings.add(hideHUD = new KeyBinding("key.unitweaks.hide_hud", Keyboard.KEY_F1));
         event.keyBindings.add(takeScreenshot = new KeyBinding("key.unitweaks.take_screenshot", Keyboard.KEY_F2));
         event.keyBindings.add(debugHud = new KeyBinding("key.unitweaks.debug_hud", Keyboard.KEY_F3));

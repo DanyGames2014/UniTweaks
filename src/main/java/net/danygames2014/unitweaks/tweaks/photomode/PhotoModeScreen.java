@@ -27,6 +27,11 @@ public class PhotoModeScreen extends Screen {
     public float zoomGoal = 1.0f;
     public float tilt = 30.0f;
     public float tiltGoal = 30.0f;
+    public Screen previousScreen;
+
+    public PhotoModeScreen(Screen previousScreen) {
+        this.previousScreen = previousScreen;
+    }
 
     @Override
     public void init() {
@@ -75,7 +80,7 @@ public class PhotoModeScreen extends Screen {
         } else if (ButtonWidget2 == this.screenshotButton) {
             this.shouldScreenshot = true;
         } else if (ButtonWidget2 == this.exitButton) {
-            this.minecraft.setScreen(null);
+            this.minecraft.setScreen(this.previousScreen);
         }
         this.updateButtonsText();
     }

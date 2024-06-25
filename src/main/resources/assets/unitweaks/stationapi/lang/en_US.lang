@@ -18,6 +18,7 @@ key.unitweaks.toggle_fullscreen=Toggle Fullscreen
 key.unitweaks.dismount=Dismount
 key.unitweaks.zoom=Zoom
 key.unitweaks.release_mouse=Release Mouse
+key.unitweaks.photo_mode=Photo Mode
 
 # FOV
 options.unitweaks.fov=FOV

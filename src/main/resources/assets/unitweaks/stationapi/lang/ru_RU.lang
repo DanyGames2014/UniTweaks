@@ -15,7 +15,9 @@ key.unitweaks.third_person=Третье лицо
 key.unitweaks.cinematic_camera=Кинематографичная камера
 key.unitweaks.toggle_fullscreen=Полноэкранный режим
 key.unitweaks.dismount=Спешится
-key.unitweaks.zoom=Zoom
+key.unitweaks.zoom=Приближение (Zoom)
+key.unitweaks.release_mouse=Отпустить курсор
+key.unitweaks.photo_mode=Фоторежим
 
 # FOV
 options.unitweaks.fov=Поле зрения
