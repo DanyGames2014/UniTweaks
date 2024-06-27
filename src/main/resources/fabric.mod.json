@@ -76,6 +76,7 @@
     "finalbeta": "*",
     "extremeview": "*",
     "gameplayessentials": "*",
-    "clientsideessentials": "*"
+    "clientsideessentials": "*",
+    "photomode": "*"
   }
 }
