@@ -19,7 +19,7 @@ public class SwordItemMixin {
         if (UniTweaks.TWEAKS_CONFIG.shearHarvesting && !player.world.isRemote && blockId == Block.COBWEB.id) {
             ItemEntity itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Item.STRING, 1));
             itemEntity.pickupDelay = 10;
-            player.world.method_210(itemEntity);
+            player.world.spawnEntity(itemEntity);
         }
     }
 }

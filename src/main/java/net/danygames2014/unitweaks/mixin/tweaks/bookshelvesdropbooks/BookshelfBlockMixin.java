@@ -3,7 +3,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.bookshelvesdropbooks;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BookshelfBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

@@ -3,7 +3,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.fov;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.ModOptions;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
@@ -77,7 +77,7 @@ public class class555Mixin {
         }
 
         if (entity.health <= 0) {
-            float deathTimeFov = (float) entity.field_1041 + f;
+            float deathTimeFov = (float) entity.deathTime + f;
             fov /= (1.0F - 500F / (deathTimeFov + 500F)) * 2.0F + 1.0F;
         }
 

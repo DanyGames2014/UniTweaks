@@ -28,7 +28,7 @@ public class class_555Mixin {
     private float field_2350;
 
     // 1/13
-    @WrapOperation(method = "method_1851", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;method_943()Z"))
+    @WrapOperation(method = "method_1851", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isSleeping()Z"))
     public boolean test(LivingEntity instance, Operation<Boolean> original) {
         return original.call(instance) && !(this.field_2349.currentScreen instanceof PhotoModeScreen);
     }

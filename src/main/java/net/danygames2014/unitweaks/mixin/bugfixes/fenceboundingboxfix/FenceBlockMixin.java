@@ -3,7 +3,7 @@ package net.danygames2014.unitweaks.mixin.bugfixes.fenceboundingboxfix;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.FenceBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -32,10 +32,10 @@ public class FenceBlockMixin extends Block {
         int fenceId = Block.FENCE.id;
 
         if (UniTweaks.TWEAKS_CONFIG.fencesConnectBlocks) {
-            connectPosX = world.method_1780(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId;
-            connectNegX = world.method_1780(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId;
-            connectNegZ = world.method_1780(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId;
-            connectPosZ = world.method_1780(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId;
+            connectPosX = world.shouldSuffocate(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId;
+            connectNegX = world.shouldSuffocate(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId;
+            connectNegZ = world.shouldSuffocate(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId;
+            connectPosZ = world.shouldSuffocate(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId;
         } else {
             connectPosX = world.getBlockId(x + 1, y, z) == fenceId;
             connectNegX = world.getBlockId(x - 1, y, z) == fenceId;

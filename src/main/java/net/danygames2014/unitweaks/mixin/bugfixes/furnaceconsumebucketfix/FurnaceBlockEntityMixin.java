@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(value = FurnaceBlockEntity.class, priority = 1100)
 public class FurnaceBlockEntityMixin {
     @Redirect(
-            method = "method_1076",
+            method = "tick",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,

@@ -29,10 +29,10 @@ public abstract class BlockRenderManagerMixin {
             block.setBoundingBox(var6, 0.0F, var6, var7, 1.0F, var7);
             this.renderBlock(block, x, y, z);
 
-            boolean connectedPosX = this.blockView.method_1780(x + 1, y, z) || this.blockView.getBlockId(x + 1, y, z) == Block.FENCE.id;
-            boolean connectedNegX = this.blockView.method_1780(x - 1, y, z) || this.blockView.getBlockId(x - 1, y, z) == Block.FENCE.id;
-            boolean connectedNegZ = this.blockView.method_1780(x, y, z - 1) || this.blockView.getBlockId(x, y, z - 1) == Block.FENCE.id;
-            boolean connectedPosZ = this.blockView.method_1780(x, y, z + 1) || this.blockView.getBlockId(x, y, z + 1) == Block.FENCE.id;
+            boolean connectedPosX = this.blockView.shouldSuffocate(x + 1, y, z) || this.blockView.getBlockId(x + 1, y, z) == Block.FENCE.id;
+            boolean connectedNegX = this.blockView.shouldSuffocate(x - 1, y, z) || this.blockView.getBlockId(x - 1, y, z) == Block.FENCE.id;
+            boolean connectedNegZ = this.blockView.shouldSuffocate(x, y, z - 1) || this.blockView.getBlockId(x, y, z - 1) == Block.FENCE.id;
+            boolean connectedPosZ = this.blockView.shouldSuffocate(x, y, z + 1) || this.blockView.getBlockId(x, y, z + 1) == Block.FENCE.id;
 
             boolean connectedX = connectedPosX || connectedNegX;
             boolean connectedZ = connectedPosZ || connectedNegZ;

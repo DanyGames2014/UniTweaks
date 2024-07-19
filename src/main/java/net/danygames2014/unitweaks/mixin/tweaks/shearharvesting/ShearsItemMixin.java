@@ -28,7 +28,7 @@ public class ShearsItemMixin {
 
             if (itemEntity != null) {
                 itemEntity.pickupDelay = 10;
-                player.world.method_210(itemEntity);
+                player.world.spawnEntity(itemEntity);
             }
         }
     }

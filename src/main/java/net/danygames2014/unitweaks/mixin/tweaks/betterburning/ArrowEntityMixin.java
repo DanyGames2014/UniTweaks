@@ -16,8 +16,8 @@ public abstract class ArrowEntityMixin extends Entity {
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;damage(Lnet/minecraft/entity/Entity;I)Z"))
     public boolean setAttackedOnFire(Entity attacked, Entity damageSource, int amount) {
-        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.burningArrowsSetOnFire && this.fire > 0) {
-            attacked.fire = 100;
+        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.burningArrowsSetOnFire && this.fireTicks > 0) {
+            attacked.fireTicks = 100;
         }
         return attacked.damage(damageSource, amount);
     }

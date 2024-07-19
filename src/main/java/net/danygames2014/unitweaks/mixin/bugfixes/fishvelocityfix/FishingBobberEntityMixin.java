@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(FishingBobberEntity.class)
 public class FishingBobberEntityMixin {
-    @ModifyConstant(method = "method_956", constant = @Constant(doubleValue = 0.08))
+    @ModifyConstant(method = "use", constant = @Constant(doubleValue = 0.08))
     public double reduceFishVerticalVelocity(double constant) {
         if (UniTweaks.BUGFIXES_CONFIG.fishVelocityFix) {
             return 0.04;

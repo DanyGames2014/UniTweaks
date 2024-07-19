@@ -3,7 +3,7 @@ package net.danygames2014.unitweaks.mixin.bugfixes.lavawithoutsourcefix;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.FlowingLiquidBlock;
 import net.minecraft.block.LiquidBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,7 +19,7 @@ public class FlowingLiquidBlockMixin extends LiquidBlock {
             method = "onTick",
             at = @At(
                     value = "FIELD",
-                    target = "Lnet/minecraft/block/FlowingLiquidBlock;material:Lnet/minecraft/block/Material;",
+                    target = "Lnet/minecraft/block/FlowingLiquidBlock;material:Lnet/minecraft/block/material/Material;",
                     opcode = Opcodes.GETFIELD,
                     ordinal = 3
             )

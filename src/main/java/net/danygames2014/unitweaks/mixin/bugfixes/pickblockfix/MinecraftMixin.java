@@ -98,7 +98,7 @@ public class MinecraftMixin {
         }
 
         if (pickedEntity instanceof MinecartEntity minecart) {
-            return switch (minecart.field_2275) {
+            return switch (minecart.type) {
                 case 1 -> Item.CHEST_MINECART.id;
                 case 2 -> Item.FURNACE_MINECART.id;
                 default -> Item.MINECART.id;

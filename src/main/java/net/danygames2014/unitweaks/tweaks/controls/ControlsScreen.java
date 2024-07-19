@@ -215,7 +215,7 @@ public class ControlsScreen extends Screen {
             ButtonWidget button = keybindEntry.keyButton;
             if (button.isMouseOver(minecraft, mouseX, mouseY)) {
                 if (keybindListWidget.getScroll() < ((button.id * 20) + 24)) {
-                    minecraft.soundManager.method_2009("random.click", 1.0F, 1.0F);
+                    minecraft.soundManager.playSound("random.click", 1.0F, 1.0F);
                     buttonClicked(button);
 //                    System.out.println("Clicked button " + button.text + " with id : " + button.id + ", y : " + button.y);
                     return;

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
-    @WrapOperation(method = "init", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;create()V"), require = 0, remap = true)
+    @WrapOperation(method = "init", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;create()V", remap = false), require = 0)
     public void bitDepthFix(Operation<Void> original) throws LWJGLException {
         if (UniTweaks.BUGFIXES_CONFIG.bitDepthFix) {
             Display.create(new PixelFormat().withDepthBits(24));

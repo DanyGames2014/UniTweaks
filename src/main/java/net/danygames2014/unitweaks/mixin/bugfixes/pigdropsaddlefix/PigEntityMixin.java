@@ -11,19 +11,19 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(PigEntity.class)
 public abstract class PigEntityMixin extends AnimalEntity {
     @Shadow
-    public abstract boolean method_1724();
+    public abstract boolean isSaddled();
 
     public PigEntityMixin(World arg) {
         super(arg);
     }
 
     @Override
-    protected void method_933() {
+    protected void drop() {
         if (UniTweaks.BUGFIXES_CONFIG.pigSaddleDropFix) {
-            if (method_1724()) {
-                this.method_1339(Item.SADDLE.id, 1);
+            if (isSaddled()) {
+                this.dropItem(Item.SADDLE.id, 1);
             }
         }
-        super.method_933();
+        super.drop();
     }
 }

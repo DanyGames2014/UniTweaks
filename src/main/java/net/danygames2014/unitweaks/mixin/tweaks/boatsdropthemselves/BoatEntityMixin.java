@@ -19,12 +19,12 @@ public abstract class BoatEntityMixin extends Entity {
         super(world);
     }
 
-    @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;method_1325(IIF)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), require = 0)
+    @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;dropItem(IIF)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), require = 0)
     public ItemEntity changeItemId(BoatEntity instance, int id, int count, float offset) {
         if (UniTweaks.TWEAKS_CONFIG.boatsDropThemselves) {
-            return this.method_1325(Item.BOAT.id, 1, offset);
+            return this.dropItem(Item.BOAT.id, 1, offset);
         } else {
-            return this.method_1325(id, count, offset);
+            return this.dropItem(id, count, offset);
         }
     }
 

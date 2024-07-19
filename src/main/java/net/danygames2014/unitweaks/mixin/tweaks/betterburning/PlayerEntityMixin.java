@@ -21,8 +21,8 @@ public abstract class PlayerEntityMixin extends Entity {
         if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpread && !this.world.isRemote) {
             if (!(attacker instanceof SkeletonEntity) && attacker != null) {
                 if (this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.burningEntitySpreadChance) {
-                    if (attacker.fire > 0) {
-                        this.fire = 100;
+                    if (attacker.fireTicks > 0) {
+                        this.fireTicks = 100;
                     }
                 }
             }

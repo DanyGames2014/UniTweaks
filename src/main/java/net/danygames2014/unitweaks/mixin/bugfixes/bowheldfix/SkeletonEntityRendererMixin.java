@@ -17,7 +17,7 @@ public abstract class SkeletonEntityRendererMixin extends EntityRenderer {
     @Inject(method = "method_827", at = @At(value = "INVOKE", target = "Lnet/minecraft/class_556;method_1862(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.BEFORE))
     public void changeBowRendering(LivingEntity entity, float f, CallbackInfo ci) {
         if (UniTweaks.BUGFIXES_CONFIG.bowHeldFix) {
-            ItemStack itemStack = entity.method_909();
+            ItemStack itemStack = entity.getHeldItem();
             if (itemStack != null && itemStack.getItem() instanceof BowItem) {
                 GL11.glRotatef(-5, 1, 0, 0);
                 GL11.glTranslatef(0.2F, -0.5F, 0.2F);

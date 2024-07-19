@@ -16,7 +16,7 @@ public class class_70Mixin {
 
     @Redirect(method = "method_1832", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
     public int shiftPlacing(World world, int x, int y, int z) {
-        if (this.field_2309.method_1373() && !(this.field_2309.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
+        if (this.field_2309.isSneaking() && !(this.field_2309.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
             return 0;
         }
         return world.getBlockId(x, y, z);

@@ -3,7 +3,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.shearharvesting;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.CobwebBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.Random;

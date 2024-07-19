@@ -18,7 +18,7 @@ public class InteractionManagerMixin {
 
     @Redirect(method = "method_1713", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
     public int shiftPlacing(World world, int x, int y, int z) {
-        if (this.minecraft.player.method_1373() && !(this.minecraft.player.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
+        if (this.minecraft.player.isSneaking() && !(this.minecraft.player.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
             return 0;
         }
         return world.getBlockId(x, y, z);

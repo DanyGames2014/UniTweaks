@@ -15,13 +15,13 @@ public abstract class SkeletonEntityMixin extends Entity {
         super(world);
     }
 
-    @Redirect(method = "method_637", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;method_210(Lnet/minecraft/entity/Entity;)Z"))
+    @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
     public boolean createBurningArrow(World world, Entity arrowEntity) {
-        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.skeletonsBurningArrows && this.fire > 0) {
+        if (UniTweaks.FEATURES_CONFIG.betterBurning.enableBetterBurning && UniTweaks.FEATURES_CONFIG.betterBurning.skeletonsBurningArrows && this.fireTicks > 0) {
             if (this.random.nextInt(0, 100) < UniTweaks.FEATURES_CONFIG.betterBurning.skeletonBurningArrowChance) {
-                arrowEntity.fire = 400;
+                arrowEntity.fireTicks = 400;
             }
         }
-        return world.method_210(arrowEntity);
+        return world.spawnEntity(arrowEntity);
     }
 }

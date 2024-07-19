@@ -1,16 +1,12 @@
 package net.danygames2014.unitweaks.mixin.tweaks.boatelevators;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BoatEntity.class)
 public abstract class BoatEntityMixin extends Entity {

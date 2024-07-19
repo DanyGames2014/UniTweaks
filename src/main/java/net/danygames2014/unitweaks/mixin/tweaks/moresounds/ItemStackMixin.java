@@ -36,6 +36,7 @@ public abstract class ItemStackMixin {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Environment(EnvType.CLIENT)
     @Inject(method = "damage", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/item/ItemStack;count:I", ordinal = 0, shift = At.Shift.BEFORE))
     public void playSoundOnArmorBreak(int amount, Entity entity, CallbackInfo ci){

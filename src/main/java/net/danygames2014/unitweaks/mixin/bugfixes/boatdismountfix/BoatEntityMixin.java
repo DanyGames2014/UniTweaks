@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BoatEntity.class)
 public class BoatEntityMixin {
 
-    @Inject(method = "method_1323", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;method_1376(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
+    @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setVehicle(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
     public void fixPositionOnDismount(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.boatDismountFix) {
-            if (player.field_1594 == null) {
-                player.method_1340(player.x, player.y + 0.01, player.z);
+            if (player.passenger == null) {
+                player.setPos(player.x, player.y + 0.01, player.z);
             }
         }
     }

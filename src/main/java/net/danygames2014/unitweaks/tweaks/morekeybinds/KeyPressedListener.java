@@ -49,7 +49,7 @@ public class KeyPressedListener {
                         World world = minecraft.world;
                         PlayerEntity player = minecraft.player;
 
-                        world.method_210(new ItemEntity(world, player.x, player.y, player.z, new ItemStack(Block.SLAB, 16, 4)));
+                        world.spawnEntity(new ItemEntity(world, player.x, player.y, player.z, new ItemStack(Block.SLAB, 16, 4)));
                     }
                 }
 
@@ -127,14 +127,14 @@ public class KeyPressedListener {
             return;
         }
 
-        if (minecraft.player.field_1595 == null) {
+        if (minecraft.player.vehicle == null) {
             return;
         }
 
         if (!minecraft.world.isRemote) {
-            minecraft.player.field_1595.method_1323(minecraft.player);
+            minecraft.player.vehicle.interact(minecraft.player);
         } else {
-            PacketHelper.send(new PlayerInteractEntityC2SPacket(minecraft.player.id, minecraft.player.field_1595.id, 0));
+            PacketHelper.send(new PlayerInteractEntityC2SPacket(minecraft.player.id, minecraft.player.vehicle.id, 0));
         }
     }
 

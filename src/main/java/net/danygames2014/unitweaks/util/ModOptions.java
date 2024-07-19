@@ -24,7 +24,7 @@ public class ModOptions {
         }
 
         float brightness = ModOptions.brightness;
-        float[] lightLevels = minecraft.world.dimension.field_2178;
+        float[] lightLevels = minecraft.world.dimension.lightLevelToLuminance;
         float minimumLevel = 0.05F;
 
         if (minecraft.world.dimension.field_2176) { // if(isNether)

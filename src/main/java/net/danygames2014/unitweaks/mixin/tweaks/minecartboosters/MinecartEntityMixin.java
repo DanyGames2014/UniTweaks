@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(MinecartEntity.class)
 public class MinecartEntityMixin {
-    @ModifyVariable(method = "method_1353", at = @At(value = "STORE"), ordinal = 6)
+    @ModifyVariable(method = "onCollision", at = @At(value = "STORE"), ordinal = 6)
     private double betaTweaks_minecartBoosterCondition(double constant) {
         if (UniTweaks.OLD_FEATURES_CONFIG.minecartBoosters) {
             return 0;

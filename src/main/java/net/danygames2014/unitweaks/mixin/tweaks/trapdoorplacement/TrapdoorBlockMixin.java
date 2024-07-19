@@ -2,8 +2,8 @@ package net.danygames2014.unitweaks.mixin.tweaks.trapdoorplacement;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,11 +24,11 @@ public class TrapdoorBlockMixin extends Block {
         }
     }
 
-    @Redirect(method = "neighborUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;method_1780(III)Z"), require = 0)
+    @Redirect(method = "neighborUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;shouldSuffocate(III)Z"), require = 0)
     public boolean bamboozlingTheTrapdoor(World world, int x, int y, int z) {
         if (UniTweaks.TWEAKS_CONFIG.allowTrapdoorsWithoutSupport) {
             return true;
         }
-        return world.method_1780(x, y, z);
+        return world.shouldSuffocate(x, y, z);
     }
 }

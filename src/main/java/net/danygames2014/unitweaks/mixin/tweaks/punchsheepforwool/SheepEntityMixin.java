@@ -17,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SheepEntity.class)
 public abstract class SheepEntityMixin extends Entity {
     @Shadow
-    public abstract boolean method_2048();
+    public abstract boolean isSheared();
 
     @Shadow
-    public abstract void method_2045(boolean bl);
+    public abstract void setSheared(boolean sheared);
 
     @Shadow
-    public abstract int method_2047();
+    public abstract int getColor();
 
     public SheepEntityMixin(World world) {
         super(world);
@@ -33,11 +33,11 @@ public abstract class SheepEntityMixin extends Entity {
     public void dropWoolOnHit(Entity attacker, int amount, CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.OLD_FEATURES_CONFIG.punchSheepForWool) {
             if ((attacker instanceof PlayerEntity player) && !player.world.isRemote) {
-                if (!method_2048()) { // getSheared()
-                    this.method_2045(true); // setSheared(true)
+                if (!isSheared()) {
+                    this.setSheared(true);
                     int woolCount = random.nextInt(1, 4); // 1 - 3 wool
                     for (int j = 0; j < woolCount; j++) {
-                        ItemEntity wool = this.method_1327(new ItemStack(Block.WOOL.id, 1, this.method_2047()), 1.0F); // dropStacks() getWoolColor()
+                        ItemEntity wool = this.dropItem(new ItemStack(Block.WOOL.id, 1, this.getColor()), 1.0F);
                         wool.velocityX += (random.nextFloat() - random.nextFloat()) * 0.1F;
                         wool.velocityY += random.nextFloat() * 0.05F;
                         wool.velocityZ += (random.nextFloat() - random.nextFloat()) * 0.1F;

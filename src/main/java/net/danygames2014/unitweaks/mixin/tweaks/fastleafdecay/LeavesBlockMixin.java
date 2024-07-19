@@ -20,7 +20,7 @@ public class LeavesBlockMixin {
                 for (int offsetX = -3; offsetX <= 3; offsetX++) {
                     for (int offsetY = -3; offsetY <= 3; offsetY++) {
                         for (int offsetZ = -3; offsetZ <= 3; offsetZ++) {
-                            world.method_216(x + offsetX, y + offsetY, z + offsetZ, ((class_307) (Object) this).id, random.nextInt(UniTweaks.FEATURES_CONFIG.fastLeafDecay.minimumDecayTime, UniTweaks.FEATURES_CONFIG.fastLeafDecay.maximumDecayTime));
+                            world.scheduleBlockUpdate(x + offsetX, y + offsetY, z + offsetZ, ((class_307) (Object) this).id, random.nextInt(UniTweaks.FEATURES_CONFIG.fastLeafDecay.minimumDecayTime, UniTweaks.FEATURES_CONFIG.fastLeafDecay.maximumDecayTime));
                         }
                     }
                 }

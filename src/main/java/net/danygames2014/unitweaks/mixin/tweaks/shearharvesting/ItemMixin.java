@@ -15,7 +15,7 @@ public class ItemMixin {
     @Final
     public int id;
 
-    @Inject(method = "method_470", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "getPlacementMetadata", at = @At(value = "HEAD"), cancellable = true)
     public void overridePlacedMeta(int meta, CallbackInfoReturnable<Integer> cir) {
         if (this.id == Block.GRASS.asItem().id) {
             cir.setReturnValue(1);

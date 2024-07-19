@@ -9,18 +9,18 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(targets = "net.minecraft.screen.PlayerScreenHandler$1")
+@Mixin(targets = "net.minecraft.class_277$1")
 public class ArmorSlotMixin extends Slot {
     public ArmorSlotMixin(Inventory inventory, int index, int x, int y) {
         super(inventory, index, x, y);
     }
 
     @Override
-    public int method_471() {
-        if(UniTweaks.BUGFIXES_CONFIG.armorIconsFix){
+    public int getBackgroundTextureId() {
+        if (UniTweaks.BUGFIXES_CONFIG.armorIconsFix) {
             return 7355608;
-        }else{
-            return super.method_471();
+        } else {
+            return super.getBackgroundTextureId();
         }
     }
 }

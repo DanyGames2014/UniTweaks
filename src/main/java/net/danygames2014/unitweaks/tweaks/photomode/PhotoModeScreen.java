@@ -10,6 +10,7 @@ import net.minecraft.client.gui.widget.SliderWidget;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+@SuppressWarnings("unchecked")
 public class PhotoModeScreen extends Screen {
     private ButtonWidget rotateLeftButton;
     private ButtonWidget rotateRightButton;
@@ -137,15 +138,14 @@ public class PhotoModeScreen extends Screen {
             }
 
             this.minecraft.world.setTime(this.desiredDay + this.desiredTOD);
-            this.minecraft.world.method_237();
+            this.minecraft.world.updateSkyBrightness();
 //            this.minecraft.world.method_232();
             this.minecraft.worldRenderer.method_1148();
             this.updateButtonsText();
         }
 
         if (this.tiltSlider.field_2592) {
-            float var6 = (float)((int)(this.tiltSlider.field_2591 * 90.0F));
-            this.tiltGoal = var6;
+            this.tiltGoal = (float)((int)(this.tiltSlider.field_2591 * 90.0F));
             this.updateButtonsText();
         }
     }
