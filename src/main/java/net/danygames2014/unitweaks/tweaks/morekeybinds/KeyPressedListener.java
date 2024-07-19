@@ -6,8 +6,11 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.class_260;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.client.event.keyboard.KeyStateChangedEvent;
 import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
@@ -41,6 +44,15 @@ public class KeyPressedListener {
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             /// Dev Keybinds
             if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+                if(Keyboard.isKeyDown(Keyboard.KEY_0)){
+                    if(minecraft.player != null && minecraft.world != null){
+                        World world = minecraft.world;
+                        PlayerEntity player = minecraft.player;
+
+                        world.method_210(new ItemEntity(world, player.x, player.y, player.z, new ItemStack(Block.SLAB, 16, 4)));
+                    }
+                }
+
 //                if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
 //                    if (minecraft.player != null) {
 //                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();

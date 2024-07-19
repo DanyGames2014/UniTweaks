@@ -12,7 +12,7 @@ public class SlabBlockItemMixin {
 
     @Inject(method = "getTranslationKey", at = @At("HEAD"), cancellable = true)
     public void preventCrash(ItemStack stack, CallbackInfoReturnable<String> cir){
-        if(stack.getDamage() > SlabBlock.field_2323.length){
+        if(stack.getDamage() >= SlabBlock.field_2323.length){
             cir.setReturnValue(null);
         }
     }
