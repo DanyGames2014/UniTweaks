@@ -48,10 +48,9 @@ public abstract class GameOptionsMixin {
         }
 
         if (option == ModOptions.brightnessOption){
-            ModOptions.brightness = value;
-            if (!Mouse.isButtonDown(0)) {
-                ModOptions.updateBrightnessMultiplier();
-                minecraft.worldRenderer.method_1537();
+            if (!Mouse.isButtonDown(0) && ModOptions.brightness != value) {
+                ModOptions.brightness = value;
+                ModOptions.updateWorldLightTable(minecraft);
             }
         }
     }
@@ -203,7 +202,7 @@ public abstract class GameOptionsMixin {
 
         if(stringArray[0].equals("brightness")){
             ModOptions.brightness = this.parseFloat(stringArray[1]);
-            ModOptions.updateBrightnessMultiplier();
+            ModOptions.updateWorldLightTable(minecraft);
         }
     }
 

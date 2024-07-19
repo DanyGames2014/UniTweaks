@@ -1,6 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
-import net.danygames2014.unitweaks.UniTweaks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.Option;
 import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
@@ -17,11 +17,27 @@ public class ModOptions {
 
     // Brightness
     public static float brightness = 0.0F;
-    public static float minimumBrightness = 0.05F;
 
-    public static void updateBrightnessMultiplier() {
-        minimumBrightness = 0.05F + (0.20F * ((float) Math.round(brightness * 20) / 20));
-        UniTweaks.logger.info("Minimum luminance set to " + minimumBrightness);
+    public static void updateWorldLightTable(Minecraft minecraft) {
+        if (minecraft == null || minecraft.world == null || minecraft.world.dimension == null) {
+            return;
+        }
+
+        float brightness = ModOptions.brightness;
+        float[] lightLevels = minecraft.world.dimension.field_2178;
+        float minimumLevel = 0.05F;
+
+        if (minecraft.world.dimension.field_2176) { // if(isNether)
+            minimumLevel = 0.1F + brightness * 0.15F;
+        }
+
+        float k = 3.0f * (1.0F - brightness);
+        for (int level = 0; level <= 15; ++level) {
+            float var3 = 1.0F - (float) level / 15.0f;
+            lightLevels[level] = (1.0F - var3) / (var3 * k + 1.0F) * (1.0F - minimumLevel) + minimumLevel;
+        }
+
+        minecraft.worldRenderer.method_1537();
     }
 
 
