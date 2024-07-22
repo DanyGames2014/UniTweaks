@@ -6,6 +6,7 @@
   "mixins": [
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
+    "bugfixes.blockeffectivenessfix.ShovelItemMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.fishvelocityfix.FishingBobberEntityMixin",

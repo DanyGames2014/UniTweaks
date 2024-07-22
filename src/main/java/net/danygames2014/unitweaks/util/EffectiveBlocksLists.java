@@ -34,6 +34,9 @@ public class EffectiveBlocksLists {
             "minecraft:jack_o_lantern",
             "minecraft:oak_fence",
             "minecraft:note_block"
+    };
 
+    public static String[] shovelEffectiveAgainst = new String[]{
+            "minecraft:soul_sand"
     };
 }
