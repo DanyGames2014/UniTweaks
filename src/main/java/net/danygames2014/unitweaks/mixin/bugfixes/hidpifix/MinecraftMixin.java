@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.hidpifix;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,22 +23,22 @@ public class MinecraftMixin {
 
     @Shadow public int displayHeight;
 
-    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getWidth()I", ordinal = 1), remap = false)
-    public int fixWidth(Canvas canvas){
+    @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getWidth()I", ordinal = 1), remap = false, require = 0)
+    public int fixWidth(Canvas instance, Operation<Integer> original){
         if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getWidth() * transform.getScaleX());
         }
-        return canvas.getWidth();
+        return original.call(instance);
     }
 
-    @Redirect(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getHeight()I", ordinal = 1), remap = false)
-    public int fixHeight(Canvas canvas){
+    @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getHeight()I", ordinal = 1), remap = false, require = 0)
+    public int fixHeight(Canvas instance, Operation<Integer> original){
         if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getHeight() * transform.getScaleY());
         }
-        return canvas.getHeight();
+        return original.call(instance);
     }
 
     @Inject(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;method_2108(II)V"))

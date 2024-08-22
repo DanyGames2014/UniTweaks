@@ -258,7 +258,7 @@ public class Config {
 
         @ConfigName("HiDPI Fix")
         @Comment("Fixes the canvas not adjusting properly on higher than 100% display scaling")
-        public Boolean hiDpiFix = true;
+        public Boolean hiDpiFix = false;
 
         @MultiplayerSynced
         @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
