@@ -13,7 +13,19 @@ public class ModOptions {
     public static Option fpsLimitOption;
     public static Option renderDistanceOption;
     public static Option brightnessOption;
+    public static Option guiScaleOption;
 
+    // GUI Scale
+    public static float guiScale = 0.0F;
+    public static float realGuiScale = 0.0F;
+
+    public static int getGuiScale() {
+        return (int) Math.floor(realGuiScale * 8);
+    }
+
+    public static int getGuiScaleDisplayValue() {
+        return (int) Math.floor(guiScale * 8);
+    }
 
     // Brightness
     public static float brightness = 0.0F;

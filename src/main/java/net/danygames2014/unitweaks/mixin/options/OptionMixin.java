@@ -59,6 +59,10 @@ public abstract class OptionMixin {
         ModOptions.brightnessOption = BRIGHTNESS = OptionMixin.newOption("BRIGHTNESS", last.ordinal()+6, "options.brightness", true, false);
         options.add(BRIGHTNESS);
 
+        Option GUI_SCALE;
+        ModOptions.guiScaleOption = GUI_SCALE = OptionMixin.newOption("GUI_SCALE", last.ordinal()+7, "options.gui_scale", true, false);
+        options.add(GUI_SCALE);
+
         field_1113 = options.toArray(new Option[0]);
     }
 }

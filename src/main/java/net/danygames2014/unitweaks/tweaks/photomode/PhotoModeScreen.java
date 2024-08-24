@@ -2,11 +2,11 @@ package net.danygames2014.unitweaks.tweaks.photomode;
 
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.class_260;
-import net.minecraft.class_564;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
+import net.minecraft.client.util.ScreenScaler;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
@@ -88,7 +88,7 @@ public class PhotoModeScreen extends Screen {
 
     @Override
     public void render(int n2, int n3, float f) {
-        class_564 scaledResolution = new class_564(this.minecraft.options, this.minecraft.displayWidth, this.minecraft.displayHeight);
+        ScreenScaler scaledResolution = new ScreenScaler(this.minecraft.options, this.minecraft.displayWidth, this.minecraft.displayHeight);
 
         GL11.glViewport(0, 0, this.minecraft.displayWidth, this.minecraft.displayHeight);
         GL11.glMatrixMode(5889);
@@ -98,7 +98,7 @@ public class PhotoModeScreen extends Screen {
         GL11.glClear(256);
         GL11.glMatrixMode(5889);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0.0,  scaledResolution.method_1857(), scaledResolution.method_1858(), 0.0, 1000.0, 3000.0);
+        GL11.glOrtho(0.0,  scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), 0.0, 1000.0, 3000.0);
         GL11.glMatrixMode(5888);
         GL11.glLoadIdentity();
         GL11.glTranslatef(0.0f, 0.0f, -2000.0f);

@@ -43,12 +43,16 @@ options.unitweaks.fps_limit.max=Unlimited
 # Render Distance
 options.unitweaks.render_distance=Render Distance
 options.unitweaks.render_distance.chunks=chunks
-options.unitweaks.render_distane.tiny=Tiny
-options.unitweaks.render_distane.short=Short
-options.unitweaks.render_distane.normal=Normal
-options.unitweaks.render_distane.far=Far
+options.unitweaks.render_distance.tiny=Tiny
+options.unitweaks.render_distance.short=Short
+options.unitweaks.render_distance.normal=Normal
+options.unitweaks.render_distance.far=Far
 
 # Brightness
 options.unitweaks.brightness=Brightness
 options.unitweaks.brightness.min=Normal
 options.unitweaks.brightness.max=Bright
+
+# GUI Scale
+options.unitweaks.gui_scale=GUI Scale
+options.unitweaks.gui_scale.auto=Auto

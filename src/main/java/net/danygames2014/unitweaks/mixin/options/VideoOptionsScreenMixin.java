@@ -34,5 +34,6 @@ public class VideoOptionsScreenMixin {
 
         VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
         VideoOptionsScreenMixin.field_2003[1] = ModOptions.renderDistanceOption;
+        VideoOptionsScreenMixin.field_2003[6] = ModOptions.guiScaleOption;
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import net.minecraft.client.resource.language.TranslationStorage;
+import net.minecraft.client.util.ScreenScaler;
 import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +24,8 @@ public abstract class GameOptionsMixin {
     @Shadow
     protected abstract float parseFloat(String string);
 
-    @Shadow protected Minecraft minecraft;
+    @Shadow
+    protected Minecraft minecraft;
 
     @Inject(method = "setFloat", at = @At(value = "HEAD"))
     public void setFloat(Option option, float value, CallbackInfo ci) {
@@ -47,10 +49,23 @@ public abstract class GameOptionsMixin {
             ModOptions.renderDistance = value;
         }
 
-        if (option == ModOptions.brightnessOption){
+        if (option == ModOptions.brightnessOption) {
             if (!Mouse.isButtonDown(0) && ModOptions.brightness != value) {
                 ModOptions.brightness = value;
                 ModOptions.updateWorldLightTable(minecraft);
+            }
+        }
+
+        if (option == ModOptions.guiScaleOption) {
+            ModOptions.guiScale = value;
+
+            if (!Mouse.isButtonDown(0)) {
+                ModOptions.realGuiScale = value;
+
+                ScreenScaler screenScaler = new ScreenScaler(this.minecraft.options, this.minecraft.displayWidth, this.minecraft.displayHeight);
+                int scaledWidth = screenScaler.getScaledWidth();
+                int scaledHeight = screenScaler.getScaledHeight();
+                this.minecraft.currentScreen.init(this.minecraft, scaledWidth, scaledHeight);
             }
         }
     }
@@ -85,8 +100,12 @@ public abstract class GameOptionsMixin {
             cir.setReturnValue(ModOptions.renderDistance);
         }
 
-        if (option == ModOptions.brightnessOption){
+        if (option == ModOptions.brightnessOption) {
             cir.setReturnValue(ModOptions.brightness);
+        }
+
+        if (option == ModOptions.guiScaleOption) {
+            cir.setReturnValue(ModOptions.guiScale);
         }
     }
 
@@ -148,19 +167,20 @@ public abstract class GameOptionsMixin {
         if (option == ModOptions.renderDistanceOption) {
             String chunkValue;
             switch (ModOptions.getRenderDistanceChunks()) {
-                case 2 -> chunkValue = translations.get("options.unitweaks.render_distane.tiny");
-                case 4 -> chunkValue = translations.get("options.unitweaks.render_distane.short");
-                case 8 -> chunkValue = translations.get("options.unitweaks.render_distane.normal");
-                case 12 -> chunkValue = translations.get("options.unitweaks.render_distane.far");
-                default -> chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks.render_distance.chunks");
+                case 2 -> chunkValue = translations.get("options.unitweaks.render_distance.tiny");
+                case 4 -> chunkValue = translations.get("options.unitweaks.render_distance.short");
+                case 8 -> chunkValue = translations.get("options.unitweaks.render_distance.normal");
+                case 12 -> chunkValue = translations.get("options.unitweaks.render_distance.far");
+                default ->
+                        chunkValue = ModOptions.getRenderDistanceChunks() + " " + translations.get("options.unitweaks.render_distance.chunks");
             }
             String optionName = translations.get("options.unitweaks.render_distance") + ": " + chunkValue;
             cir.setReturnValue(optionName);
         }
 
-        if(option == ModOptions.brightnessOption){
+        if (option == ModOptions.brightnessOption) {
             String brightnessValue;
-            if(ModOptions.brightness == 0F){
+            if (ModOptions.brightness == 0F) {
                 brightnessValue = translations.get("options.unitweaks.brightness.min");
             } else if (ModOptions.brightness == 1F) {
                 brightnessValue = translations.get("options.unitweaks.brightness.max");
@@ -168,6 +188,12 @@ public abstract class GameOptionsMixin {
                 brightnessValue = MathHelper.ceil(ModOptions.brightness * 100F) + "%";
             }
             String optionName = translations.get("options.unitweaks.brightness") + ": " + brightnessValue;
+            cir.setReturnValue(optionName);
+        }
+
+        if (option == ModOptions.guiScaleOption) {
+            String guiScaleValue = ModOptions.getGuiScaleDisplayValue() == 0 ? translations.get("options.unitweaks.gui_scale.auto") : ModOptions.getGuiScaleDisplayValue() + translations.get("options.unitweaks.multiplier_symbol");
+            String optionName = translations.get("options.unitweaks.gui_scale") + ": " + guiScaleValue;
             cir.setReturnValue(optionName);
         }
     }
@@ -200,9 +226,13 @@ public abstract class GameOptionsMixin {
             ModOptions.renderDistance = this.parseFloat(stringArray[1]);
         }
 
-        if(stringArray[0].equals("brightness")){
+        if (stringArray[0].equals("brightness")) {
             ModOptions.brightness = this.parseFloat(stringArray[1]);
             ModOptions.updateWorldLightTable(minecraft);
+        }
+
+        if (stringArray[0].equals("gui_scale")) {
+            ModOptions.guiScale = this.parseFloat(stringArray[1]);
         }
     }
 
@@ -215,5 +245,6 @@ public abstract class GameOptionsMixin {
         printWriter.println("fps_limit: " + ModOptions.fpsLimit);
         printWriter.println("render_distance: " + ModOptions.renderDistance);
         printWriter.println("brightness:" + ModOptions.brightness);
+        printWriter.println("gui_scale:" + ModOptions.guiScale);
     }
 }
