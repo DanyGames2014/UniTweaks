@@ -233,6 +233,7 @@ public abstract class GameOptionsMixin {
 
         if (stringArray[0].equals("gui_scale")) {
             ModOptions.guiScale = this.parseFloat(stringArray[1]);
+            ModOptions.realGuiScale = ModOptions.guiScale;
         }
     }
 
