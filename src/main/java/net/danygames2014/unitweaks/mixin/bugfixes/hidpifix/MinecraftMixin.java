@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
@@ -17,15 +16,18 @@ import java.awt.geom.AffineTransform;
 @Mixin(value = Minecraft.class)
 public class MinecraftMixin {
 
-    @Shadow public Canvas canvas;
+    @Shadow
+    public Canvas canvas;
 
-    @Shadow public int displayWidth;
+    @Shadow
+    public int displayWidth;
 
-    @Shadow public int displayHeight;
+    @Shadow
+    public int displayHeight;
 
     @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getWidth()I", ordinal = 1), remap = false, require = 0)
-    public int fixWidth(Canvas instance, Operation<Integer> original){
-        if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
+    public int fixWidth(Canvas instance, Operation<Integer> original) {
+        if (UniTweaks.BUGFIXES_CONFIG.hiDpiFix) {
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getWidth() * transform.getScaleX());
         }
@@ -33,8 +35,8 @@ public class MinecraftMixin {
     }
 
     @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Ljava/awt/Canvas;getHeight()I", ordinal = 1), remap = false, require = 0)
-    public int fixHeight(Canvas instance, Operation<Integer> original){
-        if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
+    public int fixHeight(Canvas instance, Operation<Integer> original) {
+        if (UniTweaks.BUGFIXES_CONFIG.hiDpiFix) {
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getHeight() * transform.getScaleY());
         }
@@ -42,9 +44,11 @@ public class MinecraftMixin {
     }
 
     @Inject(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;method_2108(II)V"))
-    public void fixCanvasSize(CallbackInfo ci){
-        if(UniTweaks.BUGFIXES_CONFIG.hiDpiFix){
-            this.canvas.setBounds(0,0, this.displayWidth, this.displayHeight);
+    public void fixCanvasSize(CallbackInfo ci) {
+        if (UniTweaks.BUGFIXES_CONFIG.hiDpiFix) {
+            if (canvas != null) {
+                this.canvas.setBounds(0, 0, this.displayWidth, this.displayHeight);
+            }
         }
     }
 }
