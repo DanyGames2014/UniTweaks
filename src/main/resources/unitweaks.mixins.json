@@ -71,6 +71,7 @@
     "bugfixes.bowheldfix.PlayerEntityRendererMixin",
     "bugfixes.bowheldfix.SkeletonEntityRendererMixin",
     "bugfixes.containeritemrendering.HandledScreenMixin",
+    "bugfixes.deathscreenscorefix.DeathScreenMixin",
     "bugfixes.droppeditemfix.ArsenicItemRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.fullscreencursorfix.MouseMixin",

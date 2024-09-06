@@ -353,6 +353,9 @@ public class Config {
 
         @ConfigName("Dropped Item Size Fix")
         public Boolean droppedItemSizeFix = true;
+        
+        @ConfigName("Death Screen Formatting Fix")
+        public Boolean deathScreenFormattingFix = true;
     }
 
     public static class OldFeaturesConfig {
