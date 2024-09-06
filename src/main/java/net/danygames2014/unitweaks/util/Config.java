@@ -354,6 +354,10 @@ public class Config {
         @ConfigName("Dropped Item Size Fix")
         public Boolean droppedItemSizeFix = true;
         
+        @ConfigName("Breaking Animation Fix")
+        @Comment("Fixes the breaking animation not rendering on bottom face")
+        public Boolean breakingAnimationFix = true;
+        
         @ConfigName("Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
     }

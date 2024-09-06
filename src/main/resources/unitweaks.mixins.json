@@ -67,6 +67,7 @@
     "bugfixes.armoriconsfix.ArmorSlotMixin",
     "bugfixes.armoriconsfix.HandledScreenMixin",
     "bugfixes.bitdepthfix.MinecraftMixin",
+    "bugfixes.blockbreakinganimation.WorldRendererMixin",
     "bugfixes.bowheldfix.BowItemMixin",
     "bugfixes.bowheldfix.PlayerEntityRendererMixin",
     "bugfixes.bowheldfix.SkeletonEntityRendererMixin",
