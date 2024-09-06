@@ -38,6 +38,9 @@ public class Config {
         @ConfigName("Autosave Interval (seconds)")
         @MaxLength(3600)
         public Integer autosaveInterval = 1;
+        
+        @ConfigName("TCP NoDelay")
+        public Boolean tcpNoDelay = true;
 
 
         public static class PanoramaConfig {

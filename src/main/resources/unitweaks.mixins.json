@@ -57,6 +57,7 @@
     "tweaks.shearharvesting.SwordItemMixin",
     "tweaks.stepassist.PlayerEntityMixin",
     "tweaks.sugarcaneonsand.SugarCaneBlockMixin",
+    "tweaks.tcpnodelay.ConnectionMixin",
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
