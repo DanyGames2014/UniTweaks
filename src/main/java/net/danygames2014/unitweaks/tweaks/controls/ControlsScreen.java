@@ -149,8 +149,14 @@ public class ControlsScreen extends Screen {
             // Look for conflicts
             for (int j = 0; j < options.allKeys.length; j++) {
                 if (!(options.allKeys[j].translationKey.equals(keybindEntry.keyBinding.translationKey)) && (options.allKeys[j].code == keybindEntry.keyBinding.code)) {
+                    // Im sorry for this
+                    
+                    // Disable checking for dismount
                     if (!options.allKeys[j].translationKey.equals("Dismount") && !keybindEntry.keyBinding.translationKey.equals("Dismount")) {
-                        formatting = Formatting.RED;
+                        // Disable checking for unbound keys
+                        if(options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
+                            formatting = Formatting.RED;
+                        }
                     }
                 }
             }

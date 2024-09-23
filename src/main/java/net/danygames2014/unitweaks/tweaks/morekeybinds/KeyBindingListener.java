@@ -26,6 +26,8 @@ public class KeyBindingListener {
     public static KeyBinding dismount;
     public static KeyBinding zoom;
     public static KeyBinding releaseMouse;
+    public static KeyBinding rescanMouse;
+    public static KeyBinding toggleRawInput;
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
@@ -49,5 +51,7 @@ public class KeyBindingListener {
         event.keyBindings.add(hotbar8 = new KeyBinding("key.unitweaks.hotbar_8", Keyboard.KEY_8));
         event.keyBindings.add(hotbar9 = new KeyBinding("key.unitweaks.hotbar_9", Keyboard.KEY_9));
         event.keyBindings.add(panoramaScreenshot = new KeyBinding("key.unitweaks.panorama_screenshot", Keyboard.KEY_NONE));
+        event.keyBindings.add(rescanMouse = new KeyBinding("key.unitweaks.rescan", Keyboard.KEY_NONE));
+        event.keyBindings.add(toggleRawInput = new KeyBinding("key.unitweaks.toggle_raw_input", Keyboard.KEY_NONE));
     }
 }

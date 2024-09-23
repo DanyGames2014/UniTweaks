@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
+import net.danygames2014.unitweaks.tweaks.rawinput.RawInputHandler;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
@@ -38,6 +39,10 @@ public class KeyPressedListener {
                     Mouse.setGrabbed(true);
                     releasedMouse = false;
                 }
+            }
+            
+            if(Keyboard.isKeyDown(KeyBindingListener.rescanMouse.code)){
+                RawInputHandler.getMouse("Player Triggered Rescan");
             }
         }
 
