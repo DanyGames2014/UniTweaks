@@ -30,8 +30,10 @@ public class MinecraftMixin {
 
     @Inject(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;field_2767:Lnet/minecraft/client/Mouse;", ordinal = 0, shift = At.Shift.AFTER))
     public void replaceMouseHelper(CallbackInfo ci) {
-        UniTweaks.logger.error("REPLACE");
-        field_2767 = new RawMouseHelper(this.canvas);
+        if(UniTweaks.GENERAL_CONFIG.rawInput){
+            UniTweaks.logger.info("Enabling Raw Input");
+            field_2767 = new RawMouseHelper(this.canvas);
+        }
 
         RawInputHandler.init();
     }
@@ -45,7 +47,6 @@ public class MinecraftMixin {
     public void onLeaveWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world == null) {
             RawInputHandler.onLeaveWorld();
-            UniTweaks.logger.info("LEAVE WORLD");
         }
     }
 
@@ -53,7 +54,6 @@ public class MinecraftMixin {
     public void onJoinWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world != null) {
             RawInputHandler.onJoinWorld();
-            UniTweaks.logger.info("JOIN WORLD");
         }
     }
 }

@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
 import net.danygames2014.unitweaks.tweaks.rawinput.RawInputHandler;
+import net.danygames2014.unitweaks.util.Util;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
@@ -40,17 +41,13 @@ public class KeyPressedListener {
                     releasedMouse = false;
                 }
             }
-            
-            if(Keyboard.isKeyDown(KeyBindingListener.rescanMouse.code)){
-                RawInputHandler.getMouse("Player Triggered Rescan");
-            }
         }
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             /// Dev Keybinds
             if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-                if(Keyboard.isKeyDown(Keyboard.KEY_0)){
-                    if(minecraft.player != null && minecraft.world != null){
+                if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
+                    if (minecraft.player != null && minecraft.world != null) {
                         World world = minecraft.world;
                         PlayerEntity player = minecraft.player;
 
@@ -86,7 +83,7 @@ public class KeyPressedListener {
             }
 
             // Photo Mode
-            if(Keyboard.isKeyDown(KeyBindingListener.photoMode.code)){
+            if (Keyboard.isKeyDown(KeyBindingListener.photoMode.code)) {
                 this.minecraft.setScreen(new PhotoModeScreen(null));
             }
 
@@ -98,6 +95,17 @@ public class KeyPressedListener {
             // Dismount
             if (Keyboard.isKeyDown(KeyBindingListener.dismount.code)) {
                 dismount();
+            }
+
+            // Rescan Mouse
+            if (Keyboard.isKeyDown(KeyBindingListener.rescanMouse.code)) {
+                RawInputHandler.getMouse("Player Triggered Rescan");
+                Util.notify("Rescanning for Mice");
+            }
+
+            // Toggle Raw Input
+            if (Keyboard.isKeyDown(KeyBindingListener.toggleRawInput.code)) {
+                RawInputHandler.toggleRawInput(minecraft.canvas);
             }
 
             // Hotbar Slots

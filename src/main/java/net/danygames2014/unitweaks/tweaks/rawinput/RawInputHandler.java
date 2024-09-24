@@ -1,18 +1,19 @@
 package net.danygames2014.unitweaks.tweaks.rawinput;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.Util;
 import net.java.games.input.Controller;
 import net.java.games.input.DirectAndRawInputEnvironmentPlugin;
 import net.java.games.input.Mouse;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
-import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.tick.GameTickEvent;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.*;
 
+@SuppressWarnings({"StringConcatenationArgumentToLogCall", "BusyWait"})
 public class RawInputHandler {
     public static Controller[] controllers;
     public static Controller[] mouseControllers;
@@ -80,7 +81,7 @@ public class RawInputHandler {
         });
         getMouseThread.setName("getMouseThread");
         getMouseThread.start();
-        UniTweaks.logger.info(String.format("getMouse thread is fired now for reason: %s. should get mouse: %s", reason, shouldGetMouse));
+        UniTweaks.logger.debug(String.format("getMouse called. Reason: %s. Should get mouse: %s", reason, shouldGetMouse));
     }
 
     public static void toggleRawInput(Component parent) {
@@ -91,13 +92,11 @@ public class RawInputHandler {
         if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
             Minecraft.INSTANCE.field_2767 = new net.minecraft.client.Mouse(parent);
             Minecraft.INSTANCE.field_2767.lockCursor();
-            System.out.println("Toggled On");
-//            Minecraft.INSTANCE.player.sendMessage(new TextComponentString("Toggled OFF"));
+            Util.notify("Raw Input Toggled to ON");
         } else {
             Minecraft.INSTANCE.field_2767 = new RawMouseHelper(parent);
             Minecraft.INSTANCE.field_2767.lockCursor();
-            System.out.println("Toggled Off");
-//            Minecraft.INSTANCE.player.sendMessage(new TextComponentString("Toggled ON"));
+            Util.notify("Raw Input Toggled to OFF");
         }
         player.yaw = saveYaw;
         player.pitch = savePitch;
@@ -109,18 +108,17 @@ public class RawInputHandler {
             worldJoinTimer--;
         }
         if (shouldGetMouse) {
-            getMouse("Client Tick Event");
+            getMouse("Post Join/Leave Timer");
             shouldGetMouse = false;
         }
     }
     public static void onJoinWorld() {
-        UniTweaks.logger.info(String.format("Player connected to server just now. Should get mouse: %s, will then be set to true.", shouldGetMouse));
+//        UniTweaks.logger.info(String.format("Player Joined World. Getting Mouse"));
         worldJoinTimer = 3;
         shouldGetMouse = true;
 
     }
     public static void onLeaveWorld() {
-        UniTweaks.logger.info(String.format("Player disconnected to server just now. Should get mouse: %s, will then be set to false.", shouldGetMouse));
         shouldGetMouse = false;
     }
 }
