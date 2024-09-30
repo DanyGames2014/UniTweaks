@@ -12,13 +12,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.modificationstation.stationapi.api.event.tick.GameTickEvent;
 import org.apache.logging.log4j.Logger;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 @SuppressWarnings({"StringConcatenationArgumentToLogCall", "BusyWait"})
 public class RawInputHandler {
     private static final Logger logger = UniTweaks.logger;
-    
+
     public static Controller[] controllers;
     public static ArrayList<Mouse> mice = new ArrayList<>();
 
@@ -33,16 +32,15 @@ public class RawInputHandler {
     public static void init() {
         startInputThread();
     }
-    
+
     public static void startInputThread() {
         Thread inputThread = new Thread(() -> {
             while (true) {
-                if (!mice.isEmpty() && Minecraft.INSTANCE.currentScreen == null){
+                if (!mice.isEmpty() && Minecraft.INSTANCE.currentScreen == null) {
                     mice.forEach(mouse -> {
                         mouse.poll();
                         dx += (int) mouse.getX().getPollData();
                         dy += (int) mouse.getY().getPollData();
-                        logger.error(mouse.getX().getPollData());
                     });
                 } else if (!mice.isEmpty()) {
                     mice.forEach(AbstractController::poll);
@@ -50,67 +48,89 @@ public class RawInputHandler {
 
                 try {
                     // Don't run that often if raw input aint enabled anyway
-                    if(!rawInputEnabled){
+                    if (!rawInputEnabled) {
                         Thread.sleep(1000);
-                        
+
                         // If for some reason the value is wrong, correct it
                         if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
                             rawInputEnabled = true;
                         }
                     }
-                    
+
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
                     UniTweaks.logger.error(e.getStackTrace());
                 }
             }
         });
-        
+
         inputThread.setName("inputThread");
         inputThread.start();
     }
 
     public static void getMouse(String reason) {
-        Thread getMouseThread = new Thread(() -> {
-            ControllerEnvironment controllerEnvironment = ControllerEnvironment.getDefaultEnvironment();
-            controllers = controllerEnvironment.getControllers();
-
-            mice = new ArrayList<>();
-
-            for (Controller controller : controllers) {
-                if (controller.getType() == Controller.Type.MOUSE && controller instanceof Mouse mouseController) {
-                    mice.add(mouseController);
-                }
-            }
-            
-            logger.info("Found " + mice.size() + " mouse controllers");
-        });
-        
-        getMouseThread.setName("getMouseThread");
-        getMouseThread.start();
+        // Log a debug message
         logger.debug(String.format("getMouse called. Reason: %s. Should get mouse: %s", reason, shouldGetMouse));
+
+        // Setup the controller environment
+        ControllerEnvironment controllerEnvironment = ControllerEnvironment.getDefaultEnvironment();
+        controllers = controllerEnvironment.getControllers();
+
+        // Reset the mice arraylist
+        mice = new ArrayList<>();
+
+        // Go thru controllers and find mice
+        for (Controller controller : controllers) {
+            //logger.info("Found Controller " + controller.getName() + " of type " + controller.getType());
+            if (controller instanceof Mouse mouseController) {
+                mice.add(mouseController);
+                //logger.info("Adding Controller " + controller.getName() + " of type " + controller.getType());
+            }
+        }
+
+        // Announce the number of found controllers, on Linux this will probably be dissapoitning
+        logger.info("Found " + mice.size() + " mouse controllers");
+
+        // If none are found, fall back to Vanilla Mouse Helper
+        if (mice.isEmpty()) {
+            logger.warn("No mouse controllers found, switching back to Vanilla Mouse Helper");
+            disableRawInput(false, false);
+        }
     }
 
-    public static void toggleRawInput(Component parent) {
+    public static void toggleRawInput() {
         PlayerEntity player = Minecraft.INSTANCE.player;
         float saveYaw = player.yaw;
         float savePitch = player.pitch;
 
         if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
-            Minecraft.INSTANCE.field_2767 = new net.minecraft.client.Mouse(parent);
-            Minecraft.INSTANCE.field_2767.lockCursor();
-            rawInputEnabled = false;
-            Util.notify("Raw Input Toggled OFF");
+            disableRawInput(true, true);
         } else {
-            Minecraft.INSTANCE.field_2767 = new RawMouseHelper(parent);
-            Minecraft.INSTANCE.field_2767.lockCursor();
-            rawInputEnabled = true;
-            Util.notify("Raw Input Toggled ON");
+            enableRawInput(true, true);
         }
+
         player.yaw = saveYaw;
         player.pitch = savePitch;
     }
-    
+
+    public static void enableRawInput(boolean lock, boolean notifyInChat) {
+        Minecraft.INSTANCE.field_2767 = new RawMouseHelper(Minecraft.INSTANCE.canvas);
+        if (lock) {
+            Minecraft.INSTANCE.field_2767.lockCursor();
+        }
+        rawInputEnabled = true;
+        Util.notify("Raw Input Toggled ON", notifyInChat);
+    }
+
+    public static void disableRawInput(boolean lock, boolean notifyInChat) {
+        Minecraft.INSTANCE.field_2767 = new net.minecraft.client.Mouse(Minecraft.INSTANCE.canvas);
+        if (lock) {
+            Minecraft.INSTANCE.field_2767.lockCursor();
+        }
+        rawInputEnabled = false;
+        Util.notify("Raw Input Toggled OFF", notifyInChat);
+    }
+
     @EventListener
     public static void timer(GameTickEvent.End event) {
         if (worldJoinTimer >= 0) {
@@ -121,12 +141,14 @@ public class RawInputHandler {
             shouldGetMouse = false;
         }
     }
+
     public static void onJoinWorld() {
 //        UniTweaks.logger.info(String.format("Player Joined World. Getting Mouse"));
         worldJoinTimer = 3;
         shouldGetMouse = true;
 
     }
+
     public static void onLeaveWorld() {
         shouldGetMouse = false;
     }

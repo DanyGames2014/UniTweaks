@@ -100,12 +100,12 @@ public class KeyPressedListener {
             // Rescan Mouse
             if (Keyboard.isKeyDown(KeyBindingListener.rescanMouse.code)) {
                 RawInputHandler.getMouse("Player Triggered Rescan");
-                Util.notify("Rescanning for Mice");
+                Util.notify("Rescanning for Mice", true);
             }
 
             // Toggle Raw Input
             if (Keyboard.isKeyDown(KeyBindingListener.toggleRawInput.code)) {
-                RawInputHandler.toggleRawInput(minecraft.canvas);
+                RawInputHandler.toggleRawInput();
             }
 
             // Hotbar Slots
