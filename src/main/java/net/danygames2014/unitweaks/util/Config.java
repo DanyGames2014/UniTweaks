@@ -43,7 +43,7 @@ public class Config {
         public Boolean tcpNoDelay = true;
         
         @ConfigName("Raw Input")
-        public Boolean rawInput = true;
+        public Boolean rawInput = false;
 
 
         public static class PanoramaConfig {
