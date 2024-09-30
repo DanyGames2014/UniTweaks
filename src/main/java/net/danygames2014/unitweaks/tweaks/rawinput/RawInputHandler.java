@@ -2,29 +2,33 @@ package net.danygames2014.unitweaks.tweaks.rawinput;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.Util;
+import net.java.games.input.AbstractController;
 import net.java.games.input.Controller;
-import net.java.games.input.DirectAndRawInputEnvironmentPlugin;
+import net.java.games.input.ControllerEnvironment;
 import net.java.games.input.Mouse;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.modificationstation.stationapi.api.event.tick.GameTickEvent;
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 @SuppressWarnings({"StringConcatenationArgumentToLogCall", "BusyWait"})
 public class RawInputHandler {
+    private static final Logger logger = UniTweaks.logger;
+    
     public static Controller[] controllers;
-    public static Controller[] mouseControllers;
+    public static ArrayList<Mouse> mice = new ArrayList<>();
 
-    public static Mouse mouse;
     public static int dx = 0;
     public static int dy = 0;
 
     private static int worldJoinTimer;
 
     private static boolean shouldGetMouse = false;
+    public static boolean rawInputEnabled = false;
 
     public static void init() {
         startInputThread();
@@ -33,55 +37,58 @@ public class RawInputHandler {
     public static void startInputThread() {
         Thread inputThread = new Thread(() -> {
             while (true) {
-                if (mouse != null && Minecraft.INSTANCE.currentScreen == null) {
-                    mouse.poll();
-                    dx += (int) mouse.getX().getPollData();
-                    dy += (int) mouse.getY().getPollData();
-                } else if (mouse != null) {
-                    mouse.poll();
+                if (!mice.isEmpty() && Minecraft.INSTANCE.currentScreen == null){
+                    mice.forEach(mouse -> {
+                        mouse.poll();
+                        dx += (int) mouse.getX().getPollData();
+                        dy += (int) mouse.getY().getPollData();
+                        logger.error(mouse.getX().getPollData());
+                    });
+                } else if (!mice.isEmpty()) {
+                    mice.forEach(AbstractController::poll);
                 }
 
                 try {
+                    // Don't run that often if raw input aint enabled anyway
+                    if(!rawInputEnabled){
+                        Thread.sleep(1000);
+                        
+                        // If for some reason the value is wrong, correct it
+                        if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
+                            rawInputEnabled = true;
+                        }
+                    }
+                    
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
                     UniTweaks.logger.error(e.getStackTrace());
                 }
             }
         });
+        
         inputThread.setName("inputThread");
         inputThread.start();
     }
 
     public static void getMouse(String reason) {
         Thread getMouseThread = new Thread(() -> {
-            DirectAndRawInputEnvironmentPlugin directEnv = new DirectAndRawInputEnvironmentPlugin();
-            controllers = directEnv.getControllers();
+            ControllerEnvironment controllerEnvironment = ControllerEnvironment.getDefaultEnvironment();
+            controllers = controllerEnvironment.getControllers();
 
-            mouseControllers = null;
-            mouse = null;
+            mice = new ArrayList<>();
 
-            for (Controller i : controllers) {
-                if (i.getType() == Controller.Type.MOUSE) {
-                    mouseControllers = ArrayUtils.add(mouseControllers, i);
+            for (Controller controller : controllers) {
+                if (controller.getType() == Controller.Type.MOUSE && controller instanceof Mouse mouseController) {
+                    mice.add(mouseController);
                 }
             }
-
-            while (mouse == null) {
-                if (mouseControllers != null) {
-                    for (Controller i : mouseControllers) {
-                        i.poll();
-                        float mouseX = ((Mouse) i).getX().getPollData();
-
-                        if (mouseX > 0.1f || mouseX < -0.1f) {
-                            mouse = ((Mouse) i);
-                        }
-                    }
-                }
-            }
+            
+            logger.info("Found " + mice.size() + " mouse controllers");
         });
+        
         getMouseThread.setName("getMouseThread");
         getMouseThread.start();
-        UniTweaks.logger.debug(String.format("getMouse called. Reason: %s. Should get mouse: %s", reason, shouldGetMouse));
+        logger.debug(String.format("getMouse called. Reason: %s. Should get mouse: %s", reason, shouldGetMouse));
     }
 
     public static void toggleRawInput(Component parent) {
@@ -92,11 +99,13 @@ public class RawInputHandler {
         if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
             Minecraft.INSTANCE.field_2767 = new net.minecraft.client.Mouse(parent);
             Minecraft.INSTANCE.field_2767.lockCursor();
-            Util.notify("Raw Input Toggled to ON");
+            rawInputEnabled = false;
+            Util.notify("Raw Input Toggled OFF");
         } else {
             Minecraft.INSTANCE.field_2767 = new RawMouseHelper(parent);
             Minecraft.INSTANCE.field_2767.lockCursor();
-            Util.notify("Raw Input Toggled to OFF");
+            rawInputEnabled = true;
+            Util.notify("Raw Input Toggled ON");
         }
         player.yaw = saveYaw;
         player.pitch = savePitch;

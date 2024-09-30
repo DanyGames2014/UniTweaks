@@ -33,6 +33,7 @@ public class MinecraftMixin {
         if(UniTweaks.GENERAL_CONFIG.rawInput){
             UniTweaks.logger.info("Enabling Raw Input");
             field_2767 = new RawMouseHelper(this.canvas);
+            RawInputHandler.rawInputEnabled = true;
         }
 
         RawInputHandler.init();
