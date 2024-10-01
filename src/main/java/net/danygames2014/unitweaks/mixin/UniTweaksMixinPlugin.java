@@ -1,6 +1,5 @@
 package net.danygames2014.unitweaks.mixin;
 
-import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import org.objectweb.asm.tree.ClassNode;
@@ -13,15 +12,15 @@ import java.util.List;
 import java.util.Set;
 
 public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
-    public static GlassYamlFile config;
-    
+    public static GlassYamlFile ui_config;
+
     @Override
     public void onLoad(String mixinPackage) {
-        File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "unitweaks/general.yml");
-        
-        config = new GlassYamlFile();
+        File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "unitweaks/userinterface.yml");
+
+        ui_config = new GlassYamlFile();
         try {
-            config.load(file);
+            ui_config.load(file);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             //noinspection CallToPrintStackTrace
@@ -58,43 +57,43 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // Cloud Height Slider
-        if (isDisabled(mixinClassName, "tweaks.cloudheight.WorldRendererMixin", "cloudHeightSlider")) {
+        if (isDisabled(mixinClassName, "tweaks.cloudheight.WorldRendererMixin", ui_config, "videoSettingsConfig.cloudHeightSlider")) {
             return false;
         }
 
         // Clouds Toggle
-        if(isDisabled(mixinClassName, "tweaks.cloudstoggle.WorldRendererMixin", "cloudsToggle")){
+        if (isDisabled(mixinClassName, "tweaks.cloudstoggle.WorldRendererMixin", ui_config, "videoSettingsConfig.cloudsToggle")) {
             return false;
         }
 
         // FPS Limit Slider
-        if(isDisabled(mixinClassName, "tweaks.fpslimitslider.class_555Mixin", "fpsLimitSlider")){
+        if (isDisabled(mixinClassName, "tweaks.fpslimitslider.class_555Mixin", ui_config, "videoSettingsConfig.fpsLimitSlider")) {
             return false;
         }
 
         // GUI Scale Slider
-        if(isDisabled(mixinClassName, "tweaks.guiscaleslider.ScreenScalerMixin", "guiScaleSlider")){
+        if (isDisabled(mixinClassName, "tweaks.guiscaleslider.ScreenScalerMixin", ui_config, "videoSettingsConfig.guiScaleSlider")) {
             return false;
         }
 
         // Render Distance
-        if(isDisabled(mixinClassName, "tweaks.renderdistance.class555Mixin", "renderDistanceSlider")){
-            return false;            
-        }
-        if(isDisabled(mixinClassName, "tweaks.renderdistance.MinecraftMixin", "renderDistanceSlider")){
+        if (isDisabled(mixinClassName, "tweaks.renderdistance.class555Mixin", ui_config, "videoSettingsConfig.renderDistanceSlider")) {
             return false;
         }
-        if(isDisabled(mixinClassName, "tweaks.renderdistance.WorldRendererMixin", "renderDistanceSlider")){
+        if (isDisabled(mixinClassName, "tweaks.renderdistance.MinecraftMixin", ui_config, "videoSettingsConfig.renderDistanceSlider")) {
+            return false;
+        }
+        if (isDisabled(mixinClassName, "tweaks.renderdistance.WorldRendererMixin", ui_config, "videoSettingsConfig.renderDistanceSlider")) {
             return false;
         }
 
         return true;
     }
 
-    public static boolean isDisabled(String mixinClassName, String mixinName, String configBool) {
-        if(config.contains(configBool)){
+    public static boolean isDisabled(String mixinClassName, String mixinName, GlassYamlFile config, String configBool) {
+        if (config.contains(configBool)) {
             return mixinClassName.equals("net.danygames2014.unitweaks.mixin." + mixinName) && !config.getBoolean(configBool);
         }
-        return true;        
+        return false;
     }
 }

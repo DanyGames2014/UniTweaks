@@ -14,7 +14,7 @@ public class AchievementToastMixin extends DrawContext {
 
     @Inject(method = "method_1963", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/gui/hud/toast/AchievementToast;achievement:Lnet/minecraft/achievement/Achievement;"), cancellable = true)
     public void disableAchievementToast(CallbackInfo ci) {
-        if (UniTweaks.GENERAL_CONFIG.hideAchievementToast) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.hideAchievementToast) {
             ci.cancel();
         }
     }

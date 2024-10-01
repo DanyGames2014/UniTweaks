@@ -40,7 +40,7 @@ public class TitleScreenMixin extends Screen {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", ordinal = 0))
     public void moveVersionText(TitleScreen instance, TextRenderer textRenderer, String text, int x, int y, int color) {
-        if (UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
             textRenderer.drawWithShadow(text, x, this.height - 10, Color.white.getRGB());
         } else {
             textRenderer.drawWithShadow(text, x, y, color);
@@ -55,7 +55,7 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V", shift = At.Shift.AFTER))
     public void redirectBackgroundRendering(int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        if (!UniTweaks.GENERAL_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
+        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
             this.renderBackground();
         } else {
             this.fwidth = (float) width;
@@ -110,7 +110,7 @@ public class TitleScreenMixin extends Screen {
 
         tessellator.startQuads();
         for (int i = 0; i < 3; ++i) {
-            if (UniTweaks.GENERAL_CONFIG.panoramaConfig.blurBackground) {
+            if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.blurBackground) {
                 tessellator.color(1.0F, 1.0F, 1.0F, 1.0F / (float) (i + 1)); //BLURRY FILTER
             }
             float var7 = (float) (i - 3 / 2) / 256.0F;
@@ -163,7 +163,7 @@ public class TitleScreenMixin extends Screen {
 
                 GL11.glBindTexture(
                         GL11.GL_TEXTURE_2D,
-                        this.minecraft.textureManager.getTextureId("assets/unitweaks/textures/" + UniTweaks.GENERAL_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png")
+                        this.minecraft.textureManager.getTextureId("assets/unitweaks/textures/" + UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png")
                 );
                 tessellator.startQuads();
                 tessellator.color(16777215, 255 / (var6 + 1));

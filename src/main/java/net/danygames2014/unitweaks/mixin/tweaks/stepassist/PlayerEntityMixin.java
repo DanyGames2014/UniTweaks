@@ -19,6 +19,6 @@ public abstract class PlayerEntityMixin extends Entity {
     //    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;method_1341(DDDFF)V"))
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void changeStepHeight(CallbackInfo ci) {
-        this.stepHeight = UniTweaks.GAMEPLAY_CONFIG.stepAssist && !this.isSneaking() ? 1.0F : 0.5F;
+        this.stepHeight = UniTweaks.FEATURES_CONFIG.stepAssist && !this.isSneaking() ? 1.0F : 0.5F;
     }
 }

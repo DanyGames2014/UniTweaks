@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class InGameHudMixin extends DrawContext {
     @ModifyConstant(method = "render", constant = @Constant(stringValue = "Minecraft Beta 1.7.3 ("), require = 0)
     public String changeVersionText(String constant) {
-        if (UniTweaks.GENERAL_CONFIG.versionTextConfig.enableCustomVersionText) {
-            return UniTweaks.GENERAL_CONFIG.versionTextConfig.customVersionText + " (";
+        if (UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.enableCustomVersionText) {
+            return UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.customVersionText + " (";
         }
         return constant;
     }

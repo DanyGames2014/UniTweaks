@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LivingEntityRendererMixin {
     @Inject(method = "method_821", at = @At("HEAD"), cancellable = true)
     public void disableDebugEntityIds(LivingEntity entity, double x, double y, double z, CallbackInfo ci) {
-        if (UniTweaks.GENERAL_CONFIG.disableDebugEntityIdTags) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.disableDebugEntityIdTags) {
             ci.cancel();
         }
     }

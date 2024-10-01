@@ -32,7 +32,7 @@ public abstract class OptionsScreenMixin extends Screen {
 
     @Inject(method = "buttonClicked", at = @At("HEAD"), cancellable = true)
     public void openImprovedControls(ButtonWidget button, CallbackInfo ci) {
-        if (UniTweaks.GENERAL_CONFIG.improvedControlsMenu) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.improvedControlsMenu) {
             if (button.id == 100) {
                 this.minecraft.setScreen(new ControlsScreen(this, this.options));
                 ci.cancel();

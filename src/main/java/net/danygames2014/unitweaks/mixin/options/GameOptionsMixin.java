@@ -34,30 +34,30 @@ public abstract class GameOptionsMixin {
             ModOptions.fov = value;
         }
 
-        if (option == ModOptions.fogDensityOption && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
+        if (option == ModOptions.fogDensityOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             ModOptions.fogDensity = value;
         }
 
-        if (option == ModOptions.cloudHeightOption && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
+        if (option == ModOptions.cloudHeightOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider) {
             ModOptions.cloudHeight = value;
         }
 
-        if (option == ModOptions.fpsLimitOption && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
+        if (option == ModOptions.fpsLimitOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             ModOptions.fpsLimit = value;
         }
 
-        if (option == ModOptions.renderDistanceOption && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
+        if (option == ModOptions.renderDistanceOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             ModOptions.renderDistance = value;
         }
 
-        if (option == ModOptions.brightnessOption && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
+        if (option == ModOptions.brightnessOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             if (!Mouse.isButtonDown(0) && ModOptions.brightness != value) {
                 ModOptions.brightness = value;
                 ModOptions.updateWorldLightTable(minecraft);
             }
         }
 
-        if (option == ModOptions.guiScaleOption && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
+        if (option == ModOptions.guiScaleOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider) {
             ModOptions.guiScale = value;
 
             if (!Mouse.isButtonDown(0)) {
@@ -73,7 +73,7 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
     public void setBoolean(Option option, int value, CallbackInfo ci) {
-        if (option == ModOptions.cloudsOption && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+        if (option == ModOptions.cloudsOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             ModOptions.clouds = !ModOptions.clouds;
         }
     }
@@ -85,34 +85,34 @@ public abstract class GameOptionsMixin {
             cir.setReturnValue(ModOptions.fov);
         }
 
-        if (option == ModOptions.fogDensityOption && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
+        if (option == ModOptions.fogDensityOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             cir.setReturnValue(ModOptions.fogDensity);
         }
 
-        if (option == ModOptions.cloudHeightOption && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
+        if (option == ModOptions.cloudHeightOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider) {
             cir.setReturnValue(ModOptions.cloudHeight);
         }
 
-        if (option == ModOptions.fpsLimitOption && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
+        if (option == ModOptions.fpsLimitOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             cir.setReturnValue(ModOptions.fpsLimit);
         }
 
-        if (option == ModOptions.renderDistanceOption && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
+        if (option == ModOptions.renderDistanceOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             cir.setReturnValue(ModOptions.renderDistance);
         }
 
-        if (option == ModOptions.brightnessOption && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
+        if (option == ModOptions.brightnessOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             cir.setReturnValue(ModOptions.brightness);
         }
 
-        if (option == ModOptions.guiScaleOption && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
+        if (option == ModOptions.guiScaleOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider) {
             cir.setReturnValue(ModOptions.guiScale);
         }
     }
 
     @Inject(method = "getBoolean", at = @At(value = "HEAD"), cancellable = true)
     public void getBoolean(Option option, CallbackInfoReturnable<Boolean> cir) {
-        if (option == ModOptions.cloudsOption && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+        if (option == ModOptions.cloudsOption && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             cir.setReturnValue(ModOptions.clouds);
         }
     }
@@ -207,32 +207,32 @@ public abstract class GameOptionsMixin {
             ModOptions.fov = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("fog_density") && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
+        if (stringArray[0].equals("fog_density") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             ModOptions.fogDensity = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("clouds") && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+        if (stringArray[0].equals("clouds") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             ModOptions.clouds = stringArray[1].equals("true");
         }
 
-        if (stringArray[0].equals("cloud_height") && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
+        if (stringArray[0].equals("cloud_height") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider) {
             ModOptions.cloudHeight = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("fps_limit") && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
+        if (stringArray[0].equals("fps_limit") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             ModOptions.fpsLimit = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("render_distance") && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
+        if (stringArray[0].equals("render_distance") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             ModOptions.renderDistance = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("brightness") && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
+        if (stringArray[0].equals("brightness") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             ModOptions.brightness = this.parseFloat(stringArray[1]);
             ModOptions.updateWorldLightTable(minecraft);
         }
 
-        if (stringArray[0].equals("gui_scale") && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
+        if (stringArray[0].equals("gui_scale") && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider) {
             ModOptions.guiScale = this.parseFloat(stringArray[1]);
             ModOptions.realGuiScale = ModOptions.guiScale;
         }
@@ -242,31 +242,31 @@ public abstract class GameOptionsMixin {
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
         printWriter.println("fov:" + ModOptions.fov);
 
-        if (UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             printWriter.println("fog_density:" + ModOptions.fogDensity);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             printWriter.println("clouds:" + ModOptions.clouds);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider) {
             printWriter.println("cloud_height:" + ModOptions.cloudHeight);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             printWriter.println("fps_limit: " + ModOptions.fpsLimit);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             printWriter.println("render_distance: " + ModOptions.renderDistance);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.brightnessSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             printWriter.println("brightness:" + ModOptions.brightness);
         }
 
-        if (UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider) {
             printWriter.println("gui_scale:" + ModOptions.guiScale);
         }
     }

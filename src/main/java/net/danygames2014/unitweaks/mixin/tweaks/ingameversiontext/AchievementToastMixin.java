@@ -30,8 +30,8 @@ public class AchievementToastMixin extends DrawContext {
 
     @Unique
     public String getVersionText() {
-        if (UniTweaks.GENERAL_CONFIG.versionTextConfig.enableCustomVersionText) {
-            return UniTweaks.GENERAL_CONFIG.versionTextConfig.customVersionText;
+        if (UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.enableCustomVersionText) {
+            return UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.customVersionText;
         } else {
             return "Minecraft Beta 1.7.3";
         }
@@ -39,7 +39,7 @@ public class AchievementToastMixin extends DrawContext {
 
     @Inject(method = "method_1963", at = @At(value = "HEAD"))
     public void renderVersionText(CallbackInfo ci) {
-        if (UniTweaks.GENERAL_CONFIG.versionTextConfig.showVersionTextIngame) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.showVersionTextIngame) {
             if (!(this.client.options.debugHud)) {
                 boolean draw = false;
                 int color = 16777215;
@@ -52,7 +52,7 @@ public class AchievementToastMixin extends DrawContext {
                 }
 
                 if (draw) {
-                    if (UniTweaks.GENERAL_CONFIG.versionTextConfig.unlicensedCopy) {
+                    if (UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.unlicensedCopy) {
                         this.drawTextWithShadow(client.textRenderer, getVersionText() + "   Unlicensed Copy :(", 2, 2, color);
                         this.drawTextWithShadow(client.textRenderer, "(Or logged in from another location)", 2, 11, color);
                         this.drawTextWithShadow(client.textRenderer, "Purchase at minecraft.net", 2, 20, color);

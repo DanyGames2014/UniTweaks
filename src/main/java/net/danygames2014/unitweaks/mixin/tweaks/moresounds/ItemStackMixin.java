@@ -29,7 +29,7 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;increaseStat(Lnet/minecraft/stat/Stat;I)V", shift = At.Shift.AFTER))
     public void playSoundOnToolBreak(int amount, Entity entity, CallbackInfo ci){
-        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+        if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity) entity;
 
             player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
@@ -40,7 +40,7 @@ public abstract class ItemStackMixin {
     @Environment(EnvType.CLIENT)
     @Inject(method = "damage", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/item/ItemStack;count:I", ordinal = 0, shift = At.Shift.BEFORE))
     public void playSoundOnArmorBreak(int amount, Entity entity, CallbackInfo ci){
-        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+        if(UniTweaks.FEATURES_CONFIG.moreSounds){
             if(this.getItem() instanceof ArmorItem){
                 if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT){
                     Minecraft minecraft = (Minecraft)FabricLoader.getInstance().getGameInstance();

@@ -16,7 +16,7 @@ public class MinecraftAppletMixin {
 
     @Inject(method = "init", at = @At(value = "TAIL"), remap = false)
     public void setIsAppletToFalse(CallbackInfo ci) {
-        if (UniTweaks.GENERAL_CONFIG.showQuitButton) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.showQuitButton) {
             this.field_2832.isApplet = false;
         }
     }

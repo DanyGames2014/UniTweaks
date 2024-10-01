@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class WorldRendererMixin {
     @Inject(method = "method_1552", at = @At(value = "HEAD"), cancellable = true)
     public void toggleClouds(float par1, CallbackInfo ci) {
-        if (!ModOptions.clouds && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+        if (!ModOptions.clouds && UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             ci.cancel();
         }
     }

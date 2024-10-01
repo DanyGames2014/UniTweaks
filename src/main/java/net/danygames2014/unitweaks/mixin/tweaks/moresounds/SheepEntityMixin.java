@@ -22,7 +22,7 @@ public class SheepEntityMixin extends AnimalEntity {
 
     @Inject(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/Entity;)V"))
     public void snipSoundOnShear(PlayerEntity player, CallbackInfoReturnable<Boolean> cir){
-        if(UniTweaks.TWEAKS_CONFIG.moreSounds){
+        if(UniTweaks.FEATURES_CONFIG.moreSounds){
             player.world.playSound(player, "unitweaks:entity.sheep.shear", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }
     }

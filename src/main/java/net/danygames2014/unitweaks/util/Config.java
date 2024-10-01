@@ -5,18 +5,27 @@ import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 import net.glasslauncher.mods.gcapi3.api.TriBoolean;
 import net.glasslauncher.mods.gcapi3.api.ValueOnVanillaServer;
 
-import javax.swing.*;
-
 public class Config {
     public static class GeneralConfig {
+        @ConfigEntry(name = "Pause on Lost Focus")
+        public Boolean pauseOnLostFocus = true;
+
+        @ConfigEntry(name = "Autosave Interval (seconds)", maxLength = 3600)
+        public Integer autosaveInterval = 1;
+
+        @ConfigEntry(name = "TCP NoDelay")
+        public Boolean tcpNoDelay = true;
+
+        @ConfigEntry(name = "Raw Input")
+        public Boolean rawInput = false;
+    }
+    
+    public static class UserInterfaceConfig {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
 
         @ConfigEntry(name = "Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
-
-        @ConfigEntry(name = "Pause on Lost Focus")
-        public Boolean pauseOnLostFocus = true;
 
         @ConfigEntry(name = "Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
@@ -24,45 +33,40 @@ public class Config {
         @ConfigEntry(name = "Achievement Screen Back To Menu", description = "Done button will lead to Game Menu instead of unpausing")
         public Boolean achievementBackToMenu = true;
 
-        @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
-        public Boolean brightnessSlider = true;
+        @ConfigEntry(name = "Disable F3 Entity ID Tags")
+        public Boolean disableDebugEntityIdTags = true;
+        
+        @ConfigCategory(name = "Video Settings")
+        public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();
 
         @ConfigCategory(name = "Version Text")
         public VersionTextConfig versionTextConfig = new VersionTextConfig();
-
-        @ConfigEntry(name = "Disable F3 Entity ID Tags")
-        public Boolean disableDebugEntityIdTags = true;
-
+        
         @ConfigCategory(name = "Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
+        
+        public static class VideoSettingsConfig {
+            @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
+            public Boolean brightnessSlider = true;
 
-        @ConfigEntry(name = "Autosave Interval (seconds)", maxLength = 3600)
-        public Integer autosaveInterval = 1;
-        
-        @ConfigEntry(name = "TCP NoDelay")
-        public Boolean tcpNoDelay = true;
-        
-        @ConfigEntry(name = "Raw Input")
-        public Boolean rawInput = false;
-        
-        @ConfigEntry(name = "Cloud Height Slider", description = "Requires a restart to take effect")
-        public Boolean cloudHeightSlider = true;
-        
-        @ConfigEntry(name = "Clouds Toggle", description = "Requires a restart to take effect")
-        public Boolean cloudsToggle = true;
-        
-        @ConfigEntry(name = "Fog Density Slider", description = "Requires a restart to take effect")
-        public Boolean fogDensitySlider = true;
-        
-        @ConfigEntry(name = "GUI Scale Slider", description = "Requires a restart to take effect")
-        public Boolean guiScaleSlider = true;
-        
-        @ConfigEntry(name = "FPS Limit Slider", description = "Requires a restart to take effect")
-        public Boolean fpsLimitSlider = true;
-        
-        @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
-        public Boolean renderDistanceSlider = true;
+            @ConfigEntry(name = "Cloud Height Slider", description = "Requires a restart to take effect")
+            public Boolean cloudHeightSlider = true;
 
+            @ConfigEntry(name = "Clouds Toggle", description = "Requires a restart to take effect")
+            public Boolean cloudsToggle = true;
+
+            @ConfigEntry(name = "Fog Density Slider", description = "Requires a restart to take effect")
+            public Boolean fogDensitySlider = true;
+
+            @ConfigEntry(name = "GUI Scale Slider", description = "Requires a restart to take effect")
+            public Boolean guiScaleSlider = true;
+
+            @ConfigEntry(name = "FPS Limit Slider", description = "Requires a restart to take effect")
+            public Boolean fpsLimitSlider = true;
+
+            @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
+            public Boolean renderDistanceSlider = true;
+        }
 
         public static class PanoramaConfig {
 
@@ -96,18 +100,11 @@ public class Config {
         @ConfigEntry(name = "No Food Wastage", description = "Prevents you from eating when your health is full")
         public Boolean noFoodWastage = true;
 
-        @ConfigEntry(name = "Step Assist", description = "Allows you to step up one block")
-        public Boolean stepAssist = false;
-
         @ConfigEntry(name = "Pick Block from Inventory")
         public Boolean pickBlockFromInventory = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigEntry(
-                name = "Shift Placing", 
-                description = "Ignores block actions allowing you to place blocks when crouching",
-                multiplayerSynced = true
-        )
+        @ConfigEntry(name = "Shift Placing", description = "Ignores block actions allowing you to place blocks when crouching", multiplayerSynced = true)
         public Boolean shiftPlacing = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
@@ -125,6 +122,12 @@ public class Config {
 
         @ConfigCategory(name = "Better Burning")
         public BetterBurningConfig betterBurning = new BetterBurningConfig();
+
+        @ConfigEntry(name = "Step Assist", description = "Allows you to step up one block")
+        public Boolean stepAssist = false;
+
+        @ConfigEntry(name = "More Sounds", description = "Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
+        public Boolean moreSounds = true;
 
         public static class FastLeafDecayConfig {
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
@@ -220,16 +223,13 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Allow placing trapdoors without support", multiplayerSynced = true)
         public Boolean allowTrapdoorsWithoutSupport = true;
-
-        @ConfigEntry(name = "More Sounds", description = "Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
-        public Boolean moreSounds = true;
     }
 
     public static class BugfixesConfig {
         @ConfigEntry(name = "Bit Depth Fix", description = "Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
 
-        @ConfigEntry(name = "HiDPI Fix", description = "Fixes the canvas not adjusting properly on higher than 100% display scaling")
+        @ConfigEntry(name = "HiDPI Fix", description = "NOT RECOMMENDED! Fixes the canvas not adjusting properly on higher than 100% display scaling")
         public Boolean hiDpiFix = false;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
@@ -289,10 +289,10 @@ public class Config {
 
         @ConfigEntry(name = "Dropped Item Size Fix")
         public Boolean droppedItemSizeFix = true;
-        
+
         @ConfigEntry(name = "Breaking Animation Fix", description = "Fixes the breaking animation not rendering on bottom face")
         public Boolean breakingAnimationFix = true;
-        
+
         @ConfigEntry(name = "Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
     }
@@ -336,7 +336,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Enable Recipe Tweaks", description = "Acts as a master switch for all recipe tweaks", multiplayerSynced = true)
         public Boolean enableRecipes = true;
-        
+
         @ConfigEntry(name = "Make more wooden items burnable")
         public Boolean furnaceFuels = true;
 

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class AchievementsScreenMixin extends Screen {
     @Inject(method = "buttonClicked", at = @At(value = "HEAD"), cancellable = true)
     public void redirectToGameMenu(ButtonWidget button, CallbackInfo ci){
-        if(UniTweaks.GENERAL_CONFIG.achievementBackToMenu){
+        if(UniTweaks.USER_INTERFACE_CONFIG.achievementBackToMenu){
             if(button.id == 1){
                 this.minecraft.setScreen(new GameMenuScreen());
                 ci.cancel();

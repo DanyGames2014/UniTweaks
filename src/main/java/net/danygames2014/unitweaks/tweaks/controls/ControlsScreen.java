@@ -167,7 +167,7 @@ public class ControlsScreen extends Screen {
     }
 
     public void refreshButtonLabels() {
-        if (UniTweaks.GAMEPLAY_CONFIG.stepAssist) {
+        if (UniTweaks.FEATURES_CONFIG.stepAssist) {
             stepAssist.text = "Step Assist: ON";
         } else {
             stepAssist.text = "Step Assist: OFF";
@@ -269,9 +269,9 @@ public class ControlsScreen extends Screen {
             minecraft.setScreen(this.parent);
 
         } else if (button.id == 1001) { // Step Assist
-            UniTweaks.GAMEPLAY_CONFIG.stepAssist = !UniTweaks.GAMEPLAY_CONFIG.stepAssist;
+            UniTweaks.FEATURES_CONFIG.stepAssist = !UniTweaks.FEATURES_CONFIG.stepAssist;
             JsonObject jsonObject = new JsonObject();
-            jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.GAMEPLAY_CONFIG.stepAssist));
+            jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.FEATURES_CONFIG.stepAssist));
             try {
                 GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:gameplay")), jsonObject.toJson());
             } catch (IOException e) {
