@@ -20,9 +20,18 @@ public class VideoOptionsScreenMixin {
     private static ArrayList<Option> addedOptions = new ArrayList<>();
 
     static {
-        addedOptions.add(ModOptions.fogDensityOption);
-        addedOptions.add(ModOptions.cloudsOption);
-        addedOptions.add(ModOptions.cloudHeightOption);
+        if(UniTweaks.GENERAL_CONFIG.fogDensitySlider){
+            addedOptions.add(ModOptions.fogDensityOption);
+        }
+        
+        if(UniTweaks.GENERAL_CONFIG.cloudsToggle){
+            addedOptions.add(ModOptions.cloudsOption);
+        }
+        
+        if(UniTweaks.GENERAL_CONFIG.cloudHeightSlider){
+            addedOptions.add(ModOptions.cloudHeightOption);
+        }
+        
         if(UniTweaks.GENERAL_CONFIG.brightnessSlider){
             addedOptions.add(ModOptions.brightnessOption);
         }
@@ -32,8 +41,16 @@ public class VideoOptionsScreenMixin {
             VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - (addedOptions.size() - i)] = addedOptions.get(i);
         }
 
-        VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
-        VideoOptionsScreenMixin.field_2003[1] = ModOptions.renderDistanceOption;
-        VideoOptionsScreenMixin.field_2003[6] = ModOptions.guiScaleOption;
+        if(UniTweaks.GENERAL_CONFIG.fpsLimitSlider){
+            VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
+        }
+        
+        if(UniTweaks.GENERAL_CONFIG.renderDistanceSlider){
+            VideoOptionsScreenMixin.field_2003[1] = ModOptions.renderDistanceOption;
+        }
+        
+        if(UniTweaks.GENERAL_CONFIG.guiScaleSlider){
+            VideoOptionsScreenMixin.field_2003[6] = ModOptions.guiScaleOption;
+        }
     }
 }

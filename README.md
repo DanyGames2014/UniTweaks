@@ -64,6 +64,10 @@
 * Disable Tall Grass Generation
 * Punch TNT to light it
 * Punch Sheep for wool
+* Hoes Grass for Seeds
+* Boat Elevators
+* Ladder Gaps
+* Minecart Boosters
 
 ### Recipes
 * Tool Repair recipes
@@ -136,3 +140,7 @@
 * Grass Block Item Fix - Fixes Grass Block item not rendering properly
 * Slab Crash Fix - Fixes slabs with no name crashing the game
 * Dropped Item Size Fix - Fixes some blocks being too large when dropped
+* Armor Icon Fix - Fixes armor icons not being displayed
+* Death Screen Formatting Fix - Fixes the score color on death screen
+* Breaking Animation Fix - Fixes the breaking animation sometimes not being visible from below
+* ItemStack Rendering Fix - Fixes itemstacks being render below text in containers

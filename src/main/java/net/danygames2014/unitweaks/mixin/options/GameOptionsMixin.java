@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.options;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
@@ -33,30 +34,30 @@ public abstract class GameOptionsMixin {
             ModOptions.fov = value;
         }
 
-        if (option == ModOptions.fogDensityOption) {
+        if (option == ModOptions.fogDensityOption && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
             ModOptions.fogDensity = value;
         }
 
-        if (option == ModOptions.cloudHeightOption) {
+        if (option == ModOptions.cloudHeightOption && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
             ModOptions.cloudHeight = value;
         }
 
-        if (option == ModOptions.fpsLimitOption) {
+        if (option == ModOptions.fpsLimitOption && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
             ModOptions.fpsLimit = value;
         }
 
-        if (option == ModOptions.renderDistanceOption) {
+        if (option == ModOptions.renderDistanceOption && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
             ModOptions.renderDistance = value;
         }
 
-        if (option == ModOptions.brightnessOption) {
+        if (option == ModOptions.brightnessOption && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
             if (!Mouse.isButtonDown(0) && ModOptions.brightness != value) {
                 ModOptions.brightness = value;
                 ModOptions.updateWorldLightTable(minecraft);
             }
         }
 
-        if (option == ModOptions.guiScaleOption) {
+        if (option == ModOptions.guiScaleOption && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
             ModOptions.guiScale = value;
 
             if (!Mouse.isButtonDown(0)) {
@@ -72,7 +73,7 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "setInt", at = @At(value = "HEAD"))
     public void setBoolean(Option option, int value, CallbackInfo ci) {
-        if (option == ModOptions.cloudsOption) {
+        if (option == ModOptions.cloudsOption && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
             ModOptions.clouds = !ModOptions.clouds;
         }
     }
@@ -84,34 +85,34 @@ public abstract class GameOptionsMixin {
             cir.setReturnValue(ModOptions.fov);
         }
 
-        if (option == ModOptions.fogDensityOption) {
+        if (option == ModOptions.fogDensityOption && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
             cir.setReturnValue(ModOptions.fogDensity);
         }
 
-        if (option == ModOptions.cloudHeightOption) {
+        if (option == ModOptions.cloudHeightOption && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
             cir.setReturnValue(ModOptions.cloudHeight);
         }
 
-        if (option == ModOptions.fpsLimitOption) {
+        if (option == ModOptions.fpsLimitOption && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
             cir.setReturnValue(ModOptions.fpsLimit);
         }
 
-        if (option == ModOptions.renderDistanceOption) {
+        if (option == ModOptions.renderDistanceOption && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
             cir.setReturnValue(ModOptions.renderDistance);
         }
 
-        if (option == ModOptions.brightnessOption) {
+        if (option == ModOptions.brightnessOption && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
             cir.setReturnValue(ModOptions.brightness);
         }
 
-        if (option == ModOptions.guiScaleOption) {
+        if (option == ModOptions.guiScaleOption && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
             cir.setReturnValue(ModOptions.guiScale);
         }
     }
 
     @Inject(method = "getBoolean", at = @At(value = "HEAD"), cancellable = true)
     public void getBoolean(Option option, CallbackInfoReturnable<Boolean> cir) {
-        if (option == ModOptions.cloudsOption) {
+        if (option == ModOptions.cloudsOption && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
             cir.setReturnValue(ModOptions.clouds);
         }
     }
@@ -206,32 +207,32 @@ public abstract class GameOptionsMixin {
             ModOptions.fov = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("fog_density")) {
+        if (stringArray[0].equals("fog_density") && UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
             ModOptions.fogDensity = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("clouds")) {
+        if (stringArray[0].equals("clouds") && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
             ModOptions.clouds = stringArray[1].equals("true");
         }
 
-        if (stringArray[0].equals("cloud_height")) {
+        if (stringArray[0].equals("cloud_height") && UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
             ModOptions.cloudHeight = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("fps_limit")) {
+        if (stringArray[0].equals("fps_limit") && UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
             ModOptions.fpsLimit = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("render_distance")) {
+        if (stringArray[0].equals("render_distance") && UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
             ModOptions.renderDistance = this.parseFloat(stringArray[1]);
         }
 
-        if (stringArray[0].equals("brightness")) {
+        if (stringArray[0].equals("brightness") && UniTweaks.GENERAL_CONFIG.brightnessSlider) {
             ModOptions.brightness = this.parseFloat(stringArray[1]);
             ModOptions.updateWorldLightTable(minecraft);
         }
 
-        if (stringArray[0].equals("gui_scale")) {
+        if (stringArray[0].equals("gui_scale") && UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
             ModOptions.guiScale = this.parseFloat(stringArray[1]);
             ModOptions.realGuiScale = ModOptions.guiScale;
         }
@@ -240,12 +241,33 @@ public abstract class GameOptionsMixin {
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
         printWriter.println("fov:" + ModOptions.fov);
-        printWriter.println("fog_density:" + ModOptions.fogDensity);
-        printWriter.println("clouds:" + ModOptions.clouds);
-        printWriter.println("cloud_height:" + ModOptions.cloudHeight);
-        printWriter.println("fps_limit: " + ModOptions.fpsLimit);
-        printWriter.println("render_distance: " + ModOptions.renderDistance);
-        printWriter.println("brightness:" + ModOptions.brightness);
-        printWriter.println("gui_scale:" + ModOptions.guiScale);
+
+        if (UniTweaks.GENERAL_CONFIG.fogDensitySlider) {
+            printWriter.println("fog_density:" + ModOptions.fogDensity);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.cloudsToggle) {
+            printWriter.println("clouds:" + ModOptions.clouds);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.cloudHeightSlider) {
+            printWriter.println("cloud_height:" + ModOptions.cloudHeight);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.fpsLimitSlider) {
+            printWriter.println("fps_limit: " + ModOptions.fpsLimit);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.renderDistanceSlider) {
+            printWriter.println("render_distance: " + ModOptions.renderDistance);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.brightnessSlider) {
+            printWriter.println("brightness:" + ModOptions.brightness);
+        }
+
+        if (UniTweaks.GENERAL_CONFIG.guiScaleSlider) {
+            printWriter.println("gui_scale:" + ModOptions.guiScale);
+        }
     }
 }

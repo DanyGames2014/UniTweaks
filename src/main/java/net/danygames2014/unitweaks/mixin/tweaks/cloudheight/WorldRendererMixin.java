@@ -1,5 +1,8 @@
 package net.danygames2014.unitweaks.mixin.tweaks.cloudheight;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.world.dimension.Dimension;
@@ -9,13 +12,19 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
-    @Redirect(method = "method_1552", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float changeCloudHeight(Dimension dimension) {
-        return ModOptions.getCloudHeight();
+    @WrapOperation(method = "method_1552", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
+    public float changeCloudHeight(Dimension instance, Operation<Float> original) {
+        if(UniTweaks.GENERAL_CONFIG.cloudHeightSlider){
+            return ModOptions.getCloudHeight();
+        }
+        return original.call(instance);
     }
 
-    @Redirect(method = "method_1556", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
-    public float ChangeFancyCloudHeight(Dimension dimension) {
-        return ModOptions.getCloudHeight();
+    @WrapOperation(method = "method_1556", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
+    public float ChangeFancyCloudHeight(Dimension instance, Operation<Float> original) {
+        if(UniTweaks.GENERAL_CONFIG.cloudHeightSlider){
+            return ModOptions.getCloudHeight();
+        }
+        return original.call(instance);
     }
 }

@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.cloudstoggle;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.render.WorldRenderer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class WorldRendererMixin {
     @Inject(method = "method_1552", at = @At(value = "HEAD"), cancellable = true)
     public void toggleClouds(float par1, CallbackInfo ci) {
-        if (!ModOptions.clouds) {
+        if (!ModOptions.clouds && UniTweaks.GENERAL_CONFIG.cloudsToggle) {
             ci.cancel();
         }
     }

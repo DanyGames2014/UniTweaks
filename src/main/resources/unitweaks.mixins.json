@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "net.danygames2014.unitweaks.mixin.UniTweaksMixinPlugin",
   "mixins": [
     "RegistriesMixin",
     "bugfixes.blockeffectivenessfix.AxeItemMixin",

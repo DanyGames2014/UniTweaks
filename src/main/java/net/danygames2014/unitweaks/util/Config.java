@@ -3,6 +3,8 @@ package net.danygames2014.unitweaks.util;
 import blue.endless.jankson.Comment;
 import net.glasslauncher.mods.api.gcapi.api.*;
 
+import javax.swing.*;
+
 public class Config {
     public static class GeneralConfig {
         @ConfigName("Show Quit Button")
@@ -44,6 +46,30 @@ public class Config {
         
         @ConfigName("Raw Input")
         public Boolean rawInput = false;
+        
+        @ConfigName("Cloud Height Slider")
+        @Comment("Requires a restart to take effect")
+        public Boolean cloudHeightSlider = true;
+        
+        @ConfigName("Clouds Toggle")
+        @Comment("Requires a restart to take effect")
+        public Boolean cloudsToggle = true;
+        
+        @ConfigName("Fog Density Slider")
+        @Comment("Requires a restart to take effect")
+        public Boolean fogDensitySlider = true;
+        
+        @ConfigName("GUI Scale Slider")
+        @Comment("Requires a restart to take effect")
+        public Boolean guiScaleSlider = true;
+        
+        @ConfigName("FPS Limit Slider")
+        @Comment("Requires a restart to take effect")
+        public Boolean fpsLimitSlider = true;
+        
+        @ConfigName("Render Distance Slider")
+        @Comment("Requires a restart to take effect")
+        public Boolean renderDistanceSlider = true;
 
 
         public static class PanoramaConfig {
