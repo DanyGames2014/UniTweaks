@@ -4,6 +4,7 @@
   "package": "net.danygames2014.unitweaks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "RegistriesMixin",
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.blockeffectivenessfix.ShovelItemMixin",
