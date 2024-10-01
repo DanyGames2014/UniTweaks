@@ -1,9 +1,6 @@
 package net.danygames2014.unitweaks.mixin;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.glasslauncher.mods.api.gcapi.api.GCAPI;
-import net.glasslauncher.mods.api.gcapi.impl.GCCore;
-import net.modificationstation.stationapi.api.util.Identifier;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;

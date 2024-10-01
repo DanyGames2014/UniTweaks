@@ -47,7 +47,7 @@
     ],
     "stationapi:event_bus_server": [
     ],
-    "gcapi":[
+    "gcapi3":[
       "net.danygames2014.unitweaks.UniTweaks"
     ]
   },
@@ -57,7 +57,7 @@
   "accessWidener": "unitweaks.accesswidener",
   "depends": {
     "minecraft": "1.0.0-beta.7.3",
-    "gcapi": ">=1.2.0",
+    "gcapi3": ">=3.0.0",
     "stationapi": "*"
   },
 

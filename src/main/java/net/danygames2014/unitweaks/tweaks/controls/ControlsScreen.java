@@ -5,7 +5,7 @@ import blue.endless.jankson.JsonPrimitive;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.glasslauncher.mods.api.gcapi.api.GCAPI;
+import net.glasslauncher.mods.gcapi3.api.GCAPI;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -18,6 +18,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Environment(EnvType.CLIENT)
@@ -271,7 +272,11 @@ public class ControlsScreen extends Screen {
             UniTweaks.GAMEPLAY_CONFIG.stepAssist = !UniTweaks.GAMEPLAY_CONFIG.stepAssist;
             JsonObject jsonObject = new JsonObject();
             jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.GAMEPLAY_CONFIG.stepAssist));
-            GCAPI.reloadConfig(Identifier.of("unitweaks:gameplay"), jsonObject);
+            try {
+                GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:gameplay")), jsonObject.toJson());
+            } catch (IOException e) {
+                UniTweaks.logger.error("Failed to reload config", e);
+            }
             refreshButtonLabels();
 
         } else if (keybindButtons.contains(button)) { // Keybind

@@ -1,522 +1,408 @@
 package net.danygames2014.unitweaks.util;
 
-import blue.endless.jankson.Comment;
-import net.glasslauncher.mods.api.gcapi.api.*;
+import net.glasslauncher.mods.gcapi3.api.ConfigCategory;
+import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
+import net.glasslauncher.mods.gcapi3.api.TriBoolean;
+import net.glasslauncher.mods.gcapi3.api.ValueOnVanillaServer;
 
 import javax.swing.*;
 
 public class Config {
     public static class GeneralConfig {
-        @ConfigName("Show Quit Button")
-        @Comment("Shows Quit Button on the Main Menu")
+        @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
 
-        @ConfigName("Improved Controls Menu")
+        @ConfigEntry(name = "Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
 
-        @ConfigName("Pause on Lost Focus")
+        @ConfigEntry(name = "Pause on Lost Focus")
         public Boolean pauseOnLostFocus = true;
 
-        @ConfigName("Hide Achievement Toast")
+        @ConfigEntry(name = "Hide Achievement Toast")
         public Boolean hideAchievementToast = false;
 
-        @ConfigName("Achievement Screen Back To Menu")
-        @Comment("Done button will lead to Game Menu instead of unpausing")
+        @ConfigEntry(name = "Achievement Screen Back To Menu", description = "Done button will lead to Game Menu instead of unpausing")
         public Boolean achievementBackToMenu = true;
 
-        @ConfigName("Enable Brightness Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
         public Boolean brightnessSlider = true;
 
-        @ConfigCategory("Version Text")
+        @ConfigCategory(name = "Version Text")
         public VersionTextConfig versionTextConfig = new VersionTextConfig();
 
-        @ConfigName("Disable F3 Entity ID Tags")
+        @ConfigEntry(name = "Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
 
-        @ConfigCategory("Main Menu Panorama")
+        @ConfigCategory(name = "Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
 
-        @ConfigName("Autosave Interval (seconds)")
-        @MaxLength(3600)
+        @ConfigEntry(name = "Autosave Interval (seconds)", maxLength = 3600)
         public Integer autosaveInterval = 1;
         
-        @ConfigName("TCP NoDelay")
+        @ConfigEntry(name = "TCP NoDelay")
         public Boolean tcpNoDelay = true;
         
-        @ConfigName("Raw Input")
+        @ConfigEntry(name = "Raw Input")
         public Boolean rawInput = false;
         
-        @ConfigName("Cloud Height Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "Cloud Height Slider", description = "Requires a restart to take effect")
         public Boolean cloudHeightSlider = true;
         
-        @ConfigName("Clouds Toggle")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "Clouds Toggle", description = "Requires a restart to take effect")
         public Boolean cloudsToggle = true;
         
-        @ConfigName("Fog Density Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "Fog Density Slider", description = "Requires a restart to take effect")
         public Boolean fogDensitySlider = true;
         
-        @ConfigName("GUI Scale Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "GUI Scale Slider", description = "Requires a restart to take effect")
         public Boolean guiScaleSlider = true;
         
-        @ConfigName("FPS Limit Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "FPS Limit Slider", description = "Requires a restart to take effect")
         public Boolean fpsLimitSlider = true;
         
-        @ConfigName("Render Distance Slider")
-        @Comment("Requires a restart to take effect")
+        @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
         public Boolean renderDistanceSlider = true;
 
 
         public static class PanoramaConfig {
 
-            @ConfigName("Enable Panorama")
+            @ConfigEntry(name = "Enable Panorama")
             public Boolean enablePanorma = true;
 
-            @ConfigName("Blur Panorama")
+            @ConfigEntry(name = "Blur Panorama")
             public Boolean blurBackground = true;
 
-            @ConfigName("Panorama folder to use")
-            @Comment("Default included : beta18, glacier")
+            @ConfigEntry(name = "Panorama folder to use", description = "Default included : beta18, glacier")
             public String panoramaFolder = "glacier";
         }
 
         public static class VersionTextConfig {
 
-            @ConfigName("Show Version Text Ingame")
+            @ConfigEntry(name = "Show Version Text Ingame")
             public Boolean showVersionTextIngame = true;
 
-            @ConfigName("Unlicensed Copy")
+            @ConfigEntry(name = "Unlicensed Copy")
             public Boolean unlicensedCopy = false;
 
-            @ConfigName("Enable Custom Version Text")
+            @ConfigEntry(name = "Enable Custom Version Text")
             public Boolean enableCustomVersionText = false;
 
-            @ConfigName("Custom Version Text")
-            @Comment("Only has effect if custom version text is enabled")
-            @MaxLength(64)
+            @ConfigEntry(name = "Custom Version Text", maxLength = 64, description = "Only has effect if custom version text is enabled")
             public String customVersionText = "Minecraft Beta 1.7.3 (UniTweaks)";
         }
     }
 
     public static class GameplayConfig {
-        @ConfigName("No Food Wastage")
-        @Comment("Prevents you from eating when your health is full")
+        @ConfigEntry(name = "No Food Wastage", description = "Prevents you from eating when your health is full")
         public Boolean noFoodWastage = true;
 
-        @ConfigName("Step Assist")
-        @Comment("Allows you to step up one block")
+        @ConfigEntry(name = "Step Assist", description = "Allows you to step up one block")
         public Boolean stepAssist = false;
 
-        @ConfigName("Pick Block from Inventory")
+        @ConfigEntry(name = "Pick Block from Inventory")
         public Boolean pickBlockFromInventory = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Shift Placing")
-        @Comment("Ignores block actions allowing you to place blocks when crouching")
+        @ConfigEntry(
+                name = "Shift Placing", 
+                description = "Ignores block actions allowing you to place blocks when crouching",
+                multiplayerSynced = true
+        )
         public Boolean shiftPlacing = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Equip armor using right-click")
+        @ConfigEntry(name = "Equip armor using right-click", multiplayerSynced = true)
         public Boolean rightClickEquipArmor = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Fence Jump")
-        @Comment("Only works if fence bounding box fix is enabled")
+        @ConfigEntry(name = "Fence Jump", description = "Only works if fence bounding box fix is enabled", multiplayerSynced = true)
         public Boolean fenceJumping = false;
     }
 
     public static class FeaturesConfig {
-        @ConfigCategory("Fast Leaf Decay")
+        @ConfigCategory(name = "Fast Leaf Decay")
         public FastLeafDecayConfig fastLeafDecay = new FastLeafDecayConfig();
 
-        @ConfigCategory("Better Burning")
+        @ConfigCategory(name = "Better Burning")
         public BetterBurningConfig betterBurning = new BetterBurningConfig();
 
         public static class FastLeafDecayConfig {
-            @MultiplayerSynced
-            @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-            @ConfigName("Enable Fast Leaf Decay")
+            @ConfigEntry(name = "Enable Fast Leaf Decay", multiplayerSynced = true)
             public Boolean enableFastLeafDecay = true;
 
-            @ConfigName("Minimum Decay Time")
-            @MaxLength(1200)
+            @ConfigEntry(name = "Minimum Decay Time", maxLength = 1200)
             public Integer minimumDecayTime = 10;
 
-            @ConfigName("Maximum Decay Time")
-            @MaxLength(1800)
+            @ConfigEntry(name = "Maximum Decay Time", maxLength = 1200)
             public Integer maximumDecayTime = 25;
         }
 
         public static class BetterBurningConfig {
-            @MultiplayerSynced
-            @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-            @ConfigName("Enable Better Burning")
-            @Comment("Master switch for all features here")
+            @ConfigEntry(name = "Enable Better Burning", description = "Master switch for all features here", multiplayerSynced = true)
             public Boolean enableBetterBurning = true;
 
-            @ConfigName("Skeletons on Fire shoot flaming arrows")
+            @ConfigEntry(name = "Skeletons on Fire shoot flaming arrows")
             public Boolean skeletonsBurningArrows = true;
 
-            @ConfigName("Skeletons on Fire flaming arrow chance (0-100)")
-            @MaxLength(100)
+            @ConfigEntry(name = "Skeletons on Fire flaming arrow chance (0-100)", maxLength = 100)
             public Integer skeletonBurningArrowChance = 70;
 
-            @ConfigName("Burning arrows set entities on fire")
+            @ConfigEntry(name = "Burning arrows set entities on fire")
             public Boolean burningArrowsSetOnFire = true;
 
-            @ConfigName("Burning entities spread fire to others")
+            @ConfigEntry(name = "Burning entities spread fire to others")
             public Boolean burningEntitySpread = true;
 
-            @ConfigName("Burning entities spread fire chance (0-100)")
-            @MaxLength(100)
+            @ConfigEntry(name = "Burning entities spread fire chance (0-100)", maxLength = 100)
             public Integer burningEntitySpreadChance = 30;
         }
     }
 
     public static class TweaksConfig {
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Allow placing sugar cane on sand")
+        @ConfigEntry(name = "Allow placing sugar cane on sand", multiplayerSynced = true)
         public Boolean sugarCaneOnSand = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Boats drop themselves when broken by a player")
+        @ConfigEntry(name = "Boats drop themselves when broken by a player", multiplayerSynced = true)
         public Boolean boatsDropThemselves = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Fences placeable like normal")
+        @ConfigEntry(name = "Fences placeable like normal", multiplayerSynced = true)
         public Boolean fencesPlaceableLikeNormal = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Fences Connect to Blocks")
+        @ConfigEntry(name = "Fences Connect to Blocks", multiplayerSynced = true)
         public Boolean fencesConnectBlocks = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Bookshelves Drop 3 Books")
+        @ConfigEntry(name = "Bookshelves Drop 3 Books", multiplayerSynced = true)
         public Boolean bookshelvesDropBooks = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Pressure Plates on Fences")
+        @ConfigEntry(name = "Pressure Plates on Fences", multiplayerSynced = true)
         public Boolean pressurePlatesOnFences = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Better Boat handling (rn just quicker)")
+        @ConfigEntry(name = "Better Boat handling (rn just quicker)", multiplayerSynced = true)
         public Boolean betterBoats = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Allow shears to harvest cobwebs and tall grass")
+        @ConfigEntry(name = "Allow shears to harvest cobwebs and tall grass", multiplayerSynced = true)
         public Boolean shearHarvesting = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Expand Chicken Hitbox")
-        @Comment("Expands chicken hitbox to it's modern size")
+        @ConfigEntry(name = "Expand Chicken Hitbox", description = "Expands chicken hitbox to it's modern size", multiplayerSynced = true)
         public Boolean expandChickenHitbox = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Don't Damage Flint And Steel on failed ignite")
+        @ConfigEntry(name = "Don't Damage Flint And Steel on failed ignite", multiplayerSynced = true)
         public Boolean modernFlintAndSteel = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Disable sleeping but retain respawning")
+        @ConfigEntry(name = "Disable sleeping but retain respawning", multiplayerSynced = true)
         public Boolean disableSleeping = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Disable spawning mobs when you sleep")
+        @ConfigEntry(name = "Disable spawning mobs when you sleep", multiplayerSynced = true)
         public Boolean disableSleepSpawning = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Prevent Items Stopping Minecarts")
+        @ConfigEntry(name = "Prevent Items Stopping Minecarts", multiplayerSynced = true)
         public Boolean preventItemsStoppingMinecarts = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Allow igniting entities with flint and steel")
+        @ConfigEntry(name = "Allow igniting entities with flint and steel", multiplayerSynced = true)
         public Boolean allowIgnitingEntities = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Allow placing trapdoors without support")
+        @ConfigEntry(name = "Allow placing trapdoors without support", multiplayerSynced = true)
         public Boolean allowTrapdoorsWithoutSupport = true;
 
-        @ConfigName("More Sounds")
-        @Comment("Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
+        @ConfigEntry(name = "More Sounds", description = "Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
         public Boolean moreSounds = true;
     }
 
     public static class BugfixesConfig {
-        @ConfigName("Bit Depth Fix")
-        @Comment("Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
+        @ConfigEntry(name = "Bit Depth Fix", description = "Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
 
-        @ConfigName("HiDPI Fix")
-        @Comment("Fixes the canvas not adjusting properly on higher than 100% display scaling")
+        @ConfigEntry(name = "HiDPI Fix", description = "Fixes the canvas not adjusting properly on higher than 100% display scaling")
         public Boolean hiDpiFix = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Slime Split Fix")
-        @Comment("Fixes slimes not splitting when their health is below zero after dying")
+        @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Boat Dismount Fix")
-        @Comment("Fixes sometimes falling through the boat when dismounting it")
+        @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)
         public Boolean boatDismountFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Stairs Drop Fix")
-        @Comment("Stairs will drop themselves instead of the base block")
+        @ConfigEntry(name = "Stairs Drop Fix", description = "Stairs will drop themselves instead of the base block", multiplayerSynced = true)
         public Boolean stairsDropFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Block Effectiveness Fix")
-        @Comment("Fixes axes and pickaxes not being effective on various blocks")
+        @ConfigEntry(name = "Block Effectiveness Fix", description = "Fixes axes and pickaxes not being effective on various blocks", multiplayerSynced = true)
         public Boolean blockEffectivenessFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Pig Saddle Drop Fix")
-        @Comment("Fixes pigs not dropping saddle on death")
+        @ConfigEntry(name = "Pig Saddle Drop Fix", description = "Fixes pigs not dropping saddle on death", multiplayerSynced = true)
         public Boolean pigSaddleDropFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Fence Bounding Box Fix")
-        @Comment("Fixes fence bounding box not reflecting the fence state")
+        @ConfigEntry(name = "Fence Bounding Box Fix", description = "Fixes fence bounding box not reflecting the fence state", multiplayerSynced = true)
         public Boolean fenceBoundingBoxFix = true;
 
-        @ConfigName("Pick Block Fix")
-        @Comment("Fixes some blocks not being pickable using Pick Block")
+        @ConfigEntry(name = "Pick Block Fix", description = "Fixes some blocks not being pickable using Pick Block")
         public Boolean pickBlockFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Spring propagation fix")
-        @Comment("Fixes water source blocks not forming when a block below is water")
+        @ConfigEntry(name = "Spring propagation fix", description = "Fixes water source blocks not forming when a block below is water", multiplayerSynced = true)
         public Boolean springPropagationFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Lava Without Source Fix")
-        @Comment("Fixes lava not dissapearing without a source block")
+        @ConfigEntry(name = "Lava Without Source Fix", description = "Fixes lava not dissapearing without a source block", multiplayerSynced = true)
         public Boolean lavaWithoutSourceFix = true;
 
-        @ConfigName("Bow Held Fix")
-        @Comment("Skeletons and Players now hold bows properly")
+        @ConfigEntry(name = "Bow Held Fix", description = "Skeletons and Players now hold bows properly")
         public Boolean bowHeldFix = true;
 
-        @ConfigName("Leggings When Riding Fix")
+        @ConfigEntry(name = "Leggings When Riding Fix")
         public Boolean leggingsWhenRidingFix = true;
 
-        @ConfigName("ItemStack Rendering Fix")
-        @Comment("Fixes itemstacks being render below text in containers")
+        @ConfigEntry(name = "ItemStack Rendering Fix", description = "Fixes itemstacks being render below text in containers")
         public Boolean itemstackRenderingFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Fish Velocity Fix")
-        @Comment("Fixes fish flying above the player head when caught")
+        @ConfigEntry(name = "Fish Velocity Fix", description = "Fixes fish flying above the player head when caught", multiplayerSynced = true)
         public Boolean fishVelocityFix = true;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Furnace Consume Bucket Fix")
-        @Comment("Fixes furnace consuming lava bucket as fuel")
+        @ConfigEntry(name = "Furnace Consume Bucket Fix", description = "Fixes furnace consuming lava bucket as fuel", multiplayerSynced = true)
         public Boolean furnaceConsumeBucketFix = true;
 
-        @ConfigName("Armor Icon Fix")
+        @ConfigEntry(name = "Armor Icon Fix")
         public Boolean armorIconsFix = true;
 
-        @ConfigName("Dropped Item Size Fix")
+        @ConfigEntry(name = "Dropped Item Size Fix")
         public Boolean droppedItemSizeFix = true;
         
-        @ConfigName("Breaking Animation Fix")
-        @Comment("Fixes the breaking animation not rendering on bottom face")
+        @ConfigEntry(name = "Breaking Animation Fix", description = "Fixes the breaking animation not rendering on bottom face")
         public Boolean breakingAnimationFix = true;
         
-        @ConfigName("Death Screen Formatting Fix")
+        @ConfigEntry(name = "Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
     }
 
     public static class OldFeaturesConfig {
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Disable Dead Bush Generation")
+        @ConfigEntry(name = "Disable Dead Bush Generation", multiplayerSynced = true)
         public Boolean disableDeadBushGeneration = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Disable Tall Grass Generation")
+        @ConfigEntry(name = "Disable Tall Grass Generation", multiplayerSynced = true)
         public Boolean disableTallGrassGeneration = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Punch Sheep for Wool")
+        @ConfigEntry(name = "Punch Sheep for Wool", multiplayerSynced = true)
         public Boolean punchSheepForWool = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Punch TNT to Ignite")
+        @ConfigEntry(name = "Punch TNT to Ignite", multiplayerSynced = true)
         public Boolean punchTntToIgnite = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Hoe Grass for Seeds")
+        @ConfigEntry(name = "Hoe Grass for Seeds", multiplayerSynced = true)
         public Boolean hoeGrassForSeeds = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Boat Elevators")
+        @ConfigEntry(name = "Boat Elevators", multiplayerSynced = true)
         public Boolean boatElevators = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Ladder Gaps")
+        @ConfigEntry(name = "Ladder Gaps", multiplayerSynced = true)
         public Boolean ladderGaps = false;
 
-        @MultiplayerSynced
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigName("Minecart Boosters")
+        @ConfigEntry(name = "Minecart Boosters", multiplayerSynced = true)
         public Boolean minecartBoosters = false;
     }
 
     public static class RecipesConfig {
-        @ConfigName("Enable Recipe Tweaks")
-        @ValueOnNoGCAPIServer(booleanValue = TriBoolean.FALSE)
-        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @Comment("Acts as a master switch for all recipe tweaks")
-        public Boolean enableRecipes = true;
 
-        @ConfigName("Make more wooden items burnable")
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Enable Recipe Tweaks", description = "Acts as a master switch for all recipe tweaks", multiplayerSynced = true)
+        public Boolean enableRecipes = true;
+        
+        @ConfigEntry(name = "Make more wooden items burnable")
         public Boolean furnaceFuels = true;
 
-        @ConfigName("Allow tool repair in crafting grid")
+        @ConfigEntry(name = "Allow tool repair in crafting grid")
         public Boolean toolRepair = true;
 
-        @ConfigCategory("Modern")
-        @Comment("Options here require restart to take effect")
+        @ConfigCategory(name = "Modern", description = "Options here require restart to take effect")
         public ModernRecipesConfig modern = new ModernRecipesConfig();
 
-        @ConfigCategory("Tweaked")
-        @Comment("Options here require restart to take effect")
+        @ConfigCategory(name = "Tweaked", description = "Options here require restart to take effect")
         public TweakedRecipesConfig tweaked = new TweakedRecipesConfig();
 
-        @ConfigCategory("Obtainable")
-        @Comment("Options here require restart to take effect")
+        @ConfigCategory(name = "Obtainable", description = "Options here require restart to take effect")
         public ObtainableRecipesConfig obtainable = new ObtainableRecipesConfig();
 
 
         public static class ModernRecipesConfig {
-            @ConfigName("Shapeless Flint and Steel")
+            @ConfigEntry(name = "Shapeless Flint and Steel")
             public Boolean shapelessFlintAndSteel = true;
-            @ConfigName("Shapeless Mushroom Stew")
+            @ConfigEntry(name = "Shapeless Mushroom Stew")
             public Boolean shapelessMushroomStew = true;
-            @ConfigName("Shapeless Chest Minecart")
+            @ConfigEntry(name = "Shapeless Chest Minecart")
             public Boolean shapelessChestMinecart = true;
-            @ConfigName("Shapeless Furnace Minecart")
+            @ConfigEntry(name = "Shapeless Furnace Minecart")
             public Boolean shapelessFurnaceMinecart = true;
-            @ConfigName("Shapeless Sticky Pistons")
+            @ConfigEntry(name = "Shapeless Sticky Pistons")
             public Boolean shapelessStickyPistons = true;
-            @ConfigName("Books Require Leather")
+            @ConfigEntry(name = "Books Require Leather")
             public Boolean booksRequireLeather = false;
-            @ConfigName("Wool Redyeing")
+            @ConfigEntry(name = "Wool Redyeing")
             public Boolean woolRedyeing = true;
-            @ConfigName("6 Slabs per Craft")
+            @ConfigEntry(name = "6 Slabs per Craft")
             public Boolean sixSlabsPerCraft = false;
-            @ConfigName("Button Requires 1 Stone")
+            @ConfigEntry(name = "Button Requires 1 Stone")
             public Boolean oneStonePerButton = true;
-            @ConfigName("Modern Fence Recipe (4 Planks,2 Sticks)")
+            @ConfigEntry(name = "Modern Fence Recipe (4 Planks,2 Sticks)")
             public Boolean modernFenceRecipe = false;
-            @ConfigName("Snow Layer Recipe")
+            @ConfigEntry(name = "Snow Layer Recipe")
             public Boolean snowLayerRecipe = true;
-            @ConfigName("3 Laders per Craft")
+            @ConfigEntry(name = "3 Laders per Craft")
             public Boolean threeLadersPerCraft = false;
         }
 
         public static class TweakedRecipesConfig {
-            @ConfigName("Shapeless Jack o' Lantern")
+            @ConfigEntry(name = "Shapeless Jack o' Lantern")
             public Boolean shapelessJackOLantern = true;
-            @ConfigName("Stairs per Craft")
+            @ConfigEntry(name = "Stairs per Craft")
             public Integer stairsPerCraft = 4;
         }
 
         public static class ObtainableRecipesConfig {
-            @ConfigName("Craftable Grass Blocks")
+            @ConfigEntry(name = "Craftable Grass Blocks")
             public Boolean craftableGrassBlocks = false;
-            @ConfigName("Craftable Cobwebs")
+            @ConfigEntry(name = "Craftable Cobwebs")
             public Boolean craftableCobwebs = false;
-            @ConfigName("Craftable Fire")
+            @ConfigEntry(name = "Craftable Fire")
             public Boolean craftableFire = false;
-            @ConfigName("Craftable Coal Ore (8 Coal around a Stone)")
+            @ConfigEntry(name = "Craftable Coal Ore (8 Coal around a Stone)")
             public Boolean craftableCoalOre = false;
-            @ConfigName("Craftable Iron Ore (8 Iron Ingots around a Stone)")
+            @ConfigEntry(name = "Craftable Iron Ore (8 Iron Ingots around a Stone)")
             public Boolean craftableIronOre = false;
-            @ConfigName("Craftable Gold Ore (8 Gold Ingots around a Stone)")
+            @ConfigEntry(name = "Craftable Gold Ore (8 Gold Ingots around a Stone)")
             public Boolean craftableGoldOre = false;
-            @ConfigName("Craftable Lapis Lazuli Ore (8 Lapis Lazuli around a Stone)")
+            @ConfigEntry(name = "Craftable Lapis Lazuli Ore (8 Lapis Lazuli around a Stone)")
             public Boolean craftableLapisOre = false;
-            @ConfigName("Craftable Diamond Ore (8 Diamonds around a Stone)")
+            @ConfigEntry(name = "Craftable Diamond Ore (8 Diamonds around a Stone)")
             public Boolean craftableDiamondOre = false;
         }
     }

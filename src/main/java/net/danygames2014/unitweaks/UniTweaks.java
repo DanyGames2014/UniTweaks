@@ -1,7 +1,7 @@
 package net.danygames2014.unitweaks;
 
 import net.danygames2014.unitweaks.util.Config;
-import net.glasslauncher.mods.api.gcapi.api.GConfig;
+import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
@@ -14,25 +14,25 @@ public class UniTweaks {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
 
-    @GConfig(value = "general", visibleName = "General", primary = true)
+    @ConfigRoot(value = "general", visibleName = "General", index = 0)
     public static final Config.GeneralConfig GENERAL_CONFIG = new Config.GeneralConfig();
 
-    @GConfig(value = "gameplay", visibleName = "Gameplay")
+    @ConfigRoot(value = "gameplay", visibleName = "Gameplay", index = 1)
     public static final Config.GameplayConfig GAMEPLAY_CONFIG = new Config.GameplayConfig();
 
-    @GConfig(value = "features", visibleName = "Features")
+    @ConfigRoot(value = "features", visibleName = "Features", index = 2)
     public static final Config.FeaturesConfig FEATURES_CONFIG = new Config.FeaturesConfig();
 
-    @GConfig(value = "tweaks", visibleName = "Tweaks")
+    @ConfigRoot(value = "tweaks", visibleName = "Tweaks", index = 3)
     public static final Config.TweaksConfig TWEAKS_CONFIG = new Config.TweaksConfig();
 
-    @GConfig(value = "oldfeatures", visibleName = "Old Features")
+    @ConfigRoot(value = "bugfixes", visibleName = "Bugfixes", index = 4)
+    public static final Config.BugfixesConfig BUGFIXES_CONFIG = new Config.BugfixesConfig();
+    
+    @ConfigRoot(value = "oldfeatures", visibleName = "Old Features", index = 5)
     public static final Config.OldFeaturesConfig OLD_FEATURES_CONFIG = new Config.OldFeaturesConfig();
 
-    @GConfig(value = "bugfixes", visibleName = "Bugfixes")
-    public static final Config.BugfixesConfig BUGFIXES_CONFIG = new Config.BugfixesConfig();
-
-    @GConfig(value = "recipes", visibleName = "Recipes")
+    @ConfigRoot(value = "recipes", visibleName = "Recipes", index = 6)
     public static final Config.RecipesConfig RECIPES_CONFIG = new Config.RecipesConfig();
 
     // These will eventually be completely redone, probably with the gcapi merge into StAPI
