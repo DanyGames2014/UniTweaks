@@ -31,6 +31,9 @@
 
   "environment": "*",
   "entrypoints": {
+    "main": [
+      "net.danygames2014.unitweaks.util.compat.CompatEntry"
+    ],
     "stationapi:event_bus": [
       "net.danygames2014.unitweaks.UniTweaks",
       "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",

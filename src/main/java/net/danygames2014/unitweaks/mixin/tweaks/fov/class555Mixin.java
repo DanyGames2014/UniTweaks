@@ -3,6 +3,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.fov;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.compat.SprintHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
@@ -19,6 +20,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import static net.danygames2014.unitweaks.util.compat.CompatEntry.sprint;
 
 @Mixin(class_555.class)
 public class class555Mixin {
@@ -69,9 +72,6 @@ public class class555Mixin {
             }
 
             fov += fovZoom;
-
-//            System.out.println("isHand = " + isHand + " | fov = " + fov + " | fovZoom = " + fovZoom + " | 5f-fov = " + (5f - fov) + " | 130f-fov = " + (130f - fov));
-
         } else {
             zoomedIn = false;
         }
@@ -79,6 +79,10 @@ public class class555Mixin {
         if (entity.health <= 0) {
             float deathTimeFov = (float) entity.deathTime + f;
             fov /= (1.0F - 500F / (deathTimeFov + 500F)) * 2.0F + 1.0F;
+        }
+
+        if (!isHand && sprint) {
+            fov = SprintHelper.modifyFOV(fov, f);
         }
 
         return fov;
