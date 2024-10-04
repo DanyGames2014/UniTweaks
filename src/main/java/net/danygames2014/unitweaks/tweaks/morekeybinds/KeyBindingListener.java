@@ -32,7 +32,7 @@ public class KeyBindingListener {
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
         event.keyBindings.add(dismount = new KeyBinding("key.unitweaks.dismount", Keyboard.KEY_LSHIFT));
-        event.keyBindings.add(zoom = new KeyBinding("key.unitweaks.zoom", Keyboard.KEY_LCONTROL));
+        event.keyBindings.add(zoom = new KeyBinding("key.unitweaks.zoom", Keyboard.KEY_C));
         event.keyBindings.add(photoMode = new KeyBinding("key.unitweaks.photo_mode", Keyboard.KEY_P));
         event.keyBindings.add(hideHUD = new KeyBinding("key.unitweaks.hide_hud", Keyboard.KEY_F1));
         event.keyBindings.add(takeScreenshot = new KeyBinding("key.unitweaks.take_screenshot", Keyboard.KEY_F2));

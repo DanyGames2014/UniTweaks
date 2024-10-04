@@ -93,6 +93,10 @@ dependencies {
     modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
         transitive false
     }
+
+    modImplementation("com.github.matthewperiut:babric-sprint:${project.babricsprint_version}") {
+        transitive false
+    }
 }
 
 processResources {
