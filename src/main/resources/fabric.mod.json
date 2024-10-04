@@ -33,6 +33,7 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "net.danygames2014.unitweaks.UniTweaks",
+      "net.danygames2014.unitweaks.event.InitListener",
       "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",
       "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
       "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes",

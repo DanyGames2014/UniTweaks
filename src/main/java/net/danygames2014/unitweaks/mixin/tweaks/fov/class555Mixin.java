@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
+import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.block.material.Material;
 import net.minecraft.class_555;
@@ -20,6 +21,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.function.BiFunction;
+
 @Mixin(class_555.class)
 public class class555Mixin {
     @Shadow
@@ -29,7 +32,7 @@ public class class555Mixin {
     private float field_2350;
 
     @Unique
-    float fov = 70F;
+    public float fov = 70F;
 
     @Unique
     float fovZoom = 0F;
@@ -38,7 +41,7 @@ public class class555Mixin {
     boolean zoomedIn = false;
 
     @Unique
-    public float getFovMultiplier(float f, boolean isHand) {
+    public float getFovMultiplier(float partialTicks, boolean isHand) {
         LivingEntity entity = this.field_2349.field_2807;
         fov = ModOptions.getFovInDegrees();
 
@@ -77,8 +80,13 @@ public class class555Mixin {
         }
 
         if (entity.health <= 0) {
-            float deathTimeFov = (float) entity.deathTime + f;
+            float deathTimeFov = (float) entity.deathTime + partialTicks;
             fov /= (1.0F - 500F / (deathTimeFov + 500F)) * 2.0F + 1.0F;
+        }
+
+        // Mod Compat
+        for (BiFunction<Float, Float, Float> modFovModifier : CompatHelper.fovMethods) {
+            fov = modFovModifier.apply(fov, partialTicks);
         }
 
         return fov;
