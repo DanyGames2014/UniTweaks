@@ -15,7 +15,7 @@ public abstract class PlayerEntityMixin extends Entity {
         super(world);
     }
 
-    @Inject(method = "method_944", at = @At("TAIL"))
+    @Inject(method = "jump", at = @At("TAIL"))
     public void increaseJumpHeight(CallbackInfo ci){
         if(UniTweaks.GAMEPLAY_CONFIG.fenceJumping){
             this.velocityY += 0.002F;

@@ -12,15 +12,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BedBlock.class)
 public class BedBlockMixin {
-    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;method_495(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
+    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
     public SleepAttemptResult useinject(PlayerEntity player, int x, int y, int z) {
         if (UniTweaks.TWEAKS_CONFIG.disableSleeping) {
             if (!player.world.isRemote) {
-                player.method_490("Respawn Point Set");
+                player.sendMessage("Respawn Point Set");
                 ((PlayerEntityAccessor) player).setRespawnPos(new Vec3i(MathHelper.floor(x), MathHelper.floor(y), MathHelper.floor(z)));
                 return SleepAttemptResult.OK;
             }
         }
-        return player.method_495(x, y, z);
+        return player.trySleep(x, y, z);
     }
 }

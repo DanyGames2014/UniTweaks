@@ -23,13 +23,13 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
     @Shadow
-    public HitResult field_2823;
+    public HitResult crosshairTarget;
 
     @Shadow
     public World world;
 
     @ModifyVariable(
-            method = "method_2103",
+            method = "handlePickBlock",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/client/Minecraft;player:Lnet/minecraft/entity/player/ClientPlayerEntity;",
@@ -39,19 +39,19 @@ public class MinecraftMixin {
     )
     public int pickBlockId(int pickedId) {
         if (UniTweaks.BUGFIXES_CONFIG.pickBlockFix) {
-            switch (this.field_2823.type) {
+            switch (this.crosshairTarget.type) {
                 case BLOCK -> {
                     return getPickBlockId(
                             pickedId,
-                            world.getBlockId(this.field_2823.blockX, this.field_2823.blockY, this.field_2823.blockZ),
-                            world.getBlockMeta(this.field_2823.blockX, this.field_2823.blockY, this.field_2823.blockZ)
+                            world.getBlockId(this.crosshairTarget.blockX, this.crosshairTarget.blockY, this.crosshairTarget.blockZ),
+                            world.getBlockMeta(this.crosshairTarget.blockX, this.crosshairTarget.blockY, this.crosshairTarget.blockZ)
                     );
                 }
 
                 case ENTITY -> {
                     return getPickEntityId(
                             pickedId,
-                            this.field_2823.entity
+                            this.crosshairTarget.entity
                     );
                 }
             }

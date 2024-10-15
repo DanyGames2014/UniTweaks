@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer {
     @Shadow
-    private BipedEntityModel field_296;
+    private BipedEntityModel armor2;
 
     public PlayerEntityRendererMixin(EntityModel arg, float f) {
         super(arg, f);
@@ -29,7 +29,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer {
             ItemStack stack = player.inventory.armor[1];
             if (stack != null) {
                 if (stack.getItem() instanceof ArmorItem) {
-                    this.field_296.riding = this.model.riding;
+                    this.armor2.riding = this.model.riding;
                 }
             }
         }

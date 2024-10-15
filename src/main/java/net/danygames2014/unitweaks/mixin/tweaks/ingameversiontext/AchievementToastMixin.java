@@ -23,7 +23,7 @@ public class AchievementToastMixin extends DrawContext {
     @Shadow
     private Minecraft client;
 
-    @ModifyConstant(method = "method_1963", constant = @Constant(stringValue = "Minecraft Beta 1.7.3   Unlicensed Copy :("))
+    @ModifyConstant(method = "tick", constant = @Constant(stringValue = "Minecraft Beta 1.7.3   Unlicensed Copy :("))
     public String modifyUnlicensedVersionText(String constant) {
         return getVersionText() + "   Unlicensed Copy :(";
     }
@@ -37,7 +37,7 @@ public class AchievementToastMixin extends DrawContext {
         }
     }
 
-    @Inject(method = "method_1963", at = @At(value = "HEAD"))
+    @Inject(method = "tick", at = @At(value = "HEAD"))
     public void renderVersionText(CallbackInfo ci) {
         if (UniTweaks.USER_INTERFACE_CONFIG.versionTextConfig.showVersionTextIngame) {
             if (!(this.client.options.debugHud)) {

@@ -1,8 +1,8 @@
 package net.danygames2014.unitweaks.mixin.tweaks.renderdistance;
 
 import net.danygames2014.unitweaks.util.ModOptions;
-import net.minecraft.class_555;
 import net.minecraft.client.option.GameOptions;
+import net.minecraft.client.render.GameRenderer;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -11,22 +11,22 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(class_555.class)
+@Mixin(GameRenderer.class)
 public class class555Mixin {
     @Shadow
-    private float field_2350;
+    private float viewDistance;
 
     @Inject(
-            method = "method_1840",
+            method = "renderWorld",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,
-                    target = "Lnet/minecraft/class_555;field_2350:F",
+                    target = "Lnet/minecraft/client/render/GameRenderer;viewDistance:F",
                     shift = At.Shift.AFTER
             )
     )
     public void overrideFarPlaneDistance(float i, int par2, CallbackInfo ci) {
-        this.field_2350 = (16 * ModOptions.getRenderDistanceChunks()) * ModOptions.getFogMultiplier();
+        this.viewDistance = (16 * ModOptions.getRenderDistanceChunks()) * ModOptions.getFogMultiplier();
     }
 
     // EXPERIMENT
@@ -35,7 +35,7 @@ public class class555Mixin {
 //        return 2;
 //    }
 
-    @Redirect(method = "method_1841", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
+    @Redirect(method = "renderFrame", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
     public int skyFog(GameOptions instance) {
         return ModOptions.getRenderDistanceChunks() > 7 ? 0 : 3;
     }

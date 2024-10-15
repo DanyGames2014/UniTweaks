@@ -20,14 +20,14 @@ import java.util.Arrays;
 public abstract class OptionsScreenMixin extends Screen {
 
     @Shadow
-    private static Option[] field_2764;
+    private static Option[] RENDER_OPTIONS;
 
     @Shadow
     private GameOptions options;
 
     static {
-        field_2764 = Arrays.copyOf(field_2764, field_2764.length + 1);
-        OptionsScreenMixin.field_2764[OptionsScreenMixin.field_2764.length - 1] = ModOptions.fovOption;
+        RENDER_OPTIONS = Arrays.copyOf(RENDER_OPTIONS, RENDER_OPTIONS.length + 1);
+        OptionsScreenMixin.RENDER_OPTIONS[OptionsScreenMixin.RENDER_OPTIONS.length - 1] = ModOptions.fovOption;
     }
 
     @Inject(method = "buttonClicked", at = @At("HEAD"), cancellable = true)

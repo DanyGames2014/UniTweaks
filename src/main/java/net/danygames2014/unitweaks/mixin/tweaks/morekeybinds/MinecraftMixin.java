@@ -24,7 +24,7 @@ public class MinecraftMixin {
     }
 
     // F2
-    @ModifyConstant(method = "method_2152", constant = @Constant(intValue = 60))
+    @ModifyConstant(method = "handleScreenshotKey", constant = @Constant(intValue = 60))
     public int modifyTakeScreenshotKeybind(int constant){
         return KeyBindingListener.takeScreenshot.code;
     }

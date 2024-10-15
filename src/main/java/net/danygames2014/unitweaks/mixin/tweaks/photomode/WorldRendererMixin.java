@@ -15,12 +15,12 @@ public class WorldRendererMixin {
     @Shadow
     private Minecraft client;
 
-    @ModifyExpressionValue(method = "method_1544", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;thirdPerson:Z"))
+    @ModifyExpressionValue(method = "renderEntities", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;thirdPerson:Z"))
     public boolean renderPlayerInPhotoMode(boolean original) {
         return original || this.client.currentScreen instanceof PhotoModeScreen;
     }
 
-    @Inject(method = "method_1552", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "renderClouds", at = @At(value = "HEAD"), cancellable = true)
     public void disableCloudsInPhotoMode(float par1, CallbackInfo ci) {
         if (this.client.currentScreen instanceof PhotoModeScreen) {
             ci.cancel();

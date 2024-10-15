@@ -39,7 +39,7 @@ public class ModOptions {
         float[] lightLevels = minecraft.world.dimension.lightLevelToLuminance;
         float minimumLevel = 0.05F;
 
-        if (minecraft.world.dimension.field_2176) { // if(isNether)
+        if (minecraft.world.dimension.isNether) {
             minimumLevel = 0.1F + brightness * 0.15F;
         }
 
@@ -49,7 +49,7 @@ public class ModOptions {
             lightLevels[level] = (1.0F - var3) / (var3 * k + 1.0F) * (1.0F - minimumLevel) + minimumLevel;
         }
 
-        minecraft.worldRenderer.method_1537();
+        minecraft.worldRenderer.reload();
     }
 
 

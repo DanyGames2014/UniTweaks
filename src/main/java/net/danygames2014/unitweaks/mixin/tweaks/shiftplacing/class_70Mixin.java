@@ -1,22 +1,22 @@
 package net.danygames2014.unitweaks.mixin.tweaks.shiftplacing;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.minecraft.class_70;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(class_70.class)
+@Mixin(ServerPlayerInteractionManager.class)
 public class class_70Mixin {
     @Shadow
-    public PlayerEntity field_2309;
+    public PlayerEntity player;
 
-    @Redirect(method = "method_1832", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
+    @Redirect(method = "interactBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
     public int shiftPlacing(World world, int x, int y, int z) {
-        if (this.field_2309.isSneaking() && !(this.field_2309.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
+        if (this.player.isSneaking() && !(this.player.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
             return 0;
         }
         return world.getBlockId(x, y, z);

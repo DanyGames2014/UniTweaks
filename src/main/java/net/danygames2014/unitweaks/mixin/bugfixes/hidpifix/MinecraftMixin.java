@@ -43,7 +43,7 @@ public class MinecraftMixin {
         return original.call(instance);
     }
 
-    @Inject(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;method_2108(II)V"))
+    @Inject(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;resize(II)V"))
     public void fixCanvasSize(CallbackInfo ci) {
         if (UniTweaks.BUGFIXES_CONFIG.hiDpiFix) {
             if (canvas != null) {

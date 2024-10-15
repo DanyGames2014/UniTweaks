@@ -18,12 +18,12 @@ public abstract class PigEntityMixin extends AnimalEntity {
     }
 
     @Override
-    protected void drop() {
+    protected void dropItems() {
         if (UniTweaks.BUGFIXES_CONFIG.pigSaddleDropFix) {
             if (isSaddled()) {
                 this.dropItem(Item.SADDLE.id, 1);
             }
         }
-        super.drop();
+        super.dropItems();
     }
 }

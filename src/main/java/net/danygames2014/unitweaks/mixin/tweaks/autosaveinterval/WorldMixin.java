@@ -18,7 +18,7 @@ public class WorldMixin {
     protected int saveInterval;
 
     @WrapOperation(
-            method = "<init>(Lnet/minecraft/world/dimension/DimensionData;Ljava/lang/String;JLnet/minecraft/world/dimension/Dimension;)V",
+            method = "<init>(Lnet/minecraft/world/storage/WorldStorage;Ljava/lang/String;JLnet/minecraft/world/dimension/Dimension;)V",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,

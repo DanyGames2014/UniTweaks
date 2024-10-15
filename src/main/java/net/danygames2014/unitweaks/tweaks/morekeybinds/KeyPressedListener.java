@@ -6,8 +6,8 @@ import net.danygames2014.unitweaks.util.Util;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
-import net.minecraft.class_260;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.Screenshot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -162,9 +162,9 @@ public class KeyPressedListener {
         for (int i = 0; i < 6; i++) {
             facePlayer(i);
             minecraft.player.baseTick();
-            minecraft.field_2818.method_1844(0F);
+            minecraft.gameRenderer.onFrameUpdate(0F);
             System.out.println(i);
-            class_260.method_908(Minecraft.getRunDirectory(), minecraft.displayWidth, minecraft.displayHeight);
+            Screenshot.take(Minecraft.getRunDirectory(), minecraft.displayWidth, minecraft.displayHeight);
         }
 
         minecraft.options.hideHud = false;

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientPlayerEntityMixin {
 
 
-    @Inject(method = "method_486", at = @At(value = "TAIL"))
+    @Inject(method = "openChestScreen", at = @At(value = "TAIL"))
     public void chestOpeningSound(Inventory inventory, CallbackInfo ci) {
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity.class.cast(this));
@@ -22,11 +22,11 @@ public class ClientPlayerEntityMixin {
         }
     }
 
-    @Inject(method = "closeScreen", at = @At(value = "HEAD"))
+    @Inject(method = "closeHandledScreen", at = @At(value = "HEAD"))
     public void chestClosingSound(CallbackInfo ci) {
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity.class.cast(this));
-            if (player.container instanceof GenericContainerScreenHandler) {
+            if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
                 player.world.playSound(player, "random.chestclosed", 0.3F, 1.0F);
             }
         }

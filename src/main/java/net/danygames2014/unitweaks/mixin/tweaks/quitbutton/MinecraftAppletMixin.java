@@ -12,12 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftApplet.class)
 public class MinecraftAppletMixin {
     @Shadow
-    private Minecraft field_2832;
+    private Minecraft minecraft;
 
     @Inject(method = "init", at = @At(value = "TAIL"), remap = false)
     public void setIsAppletToFalse(CallbackInfo ci) {
         if (UniTweaks.USER_INTERFACE_CONFIG.showQuitButton) {
-            this.field_2832.isApplet = false;
+            this.minecraft.isApplet = false;
         }
     }
 }

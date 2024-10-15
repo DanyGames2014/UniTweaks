@@ -38,7 +38,7 @@ public class PlayerInventoryMixin {
     public int selectedSlot;
 
     @Environment(EnvType.CLIENT)
-    @Inject(method = "method_691", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "setHeldItem", at = @At("HEAD"), cancellable = true)
     public void setSelectedItem(int itemId, boolean bl, CallbackInfo ci) {
         if (UniTweaks.GAMEPLAY_CONFIG.pickBlockFromInventory) {
             int slotWithItemIndex = -1;

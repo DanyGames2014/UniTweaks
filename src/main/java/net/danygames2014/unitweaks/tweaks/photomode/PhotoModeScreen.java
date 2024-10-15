@@ -1,8 +1,8 @@
 package net.danygames2014.unitweaks.tweaks.photomode;
 
 import net.danygames2014.unitweaks.util.ModOptions;
-import net.minecraft.class_260;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
@@ -57,7 +57,7 @@ public class PhotoModeScreen extends Screen {
         if (this.desiredTOD == -1L) {
             this.desiredTOD = this.originalTOD % 24000L;
         } else {
-            this.timeSlider.field_2591 = (float) this.desiredTOD / 24000.0f;
+            this.timeSlider.value = (float) this.desiredTOD / 24000.0f;
         }
         if (this.desiredDay == -1L) {
             this.desiredDay = this.originalTOD / 24000L;
@@ -124,14 +124,14 @@ public class PhotoModeScreen extends Screen {
         if (!this.shouldScreenshot) {
             super.render(n2, n3, f);
         } else {
-            class_260.method_908(Minecraft.getRunDirectory(), this.minecraft.displayWidth, this.minecraft.displayHeight);
+            Screenshot.take(Minecraft.getRunDirectory(), this.minecraft.displayWidth, this.minecraft.displayHeight);
             this.shouldScreenshot = false;
         }
         this.scroll(Mouse.getDWheel());
 
-        if (this.timeSlider.field_2592) {
-            long var4 = (long)(this.timeSlider.field_2591 * 24000.0F);
-            if (this.timeSlider.field_2591 == 0.0F) {
+        if (this.timeSlider.dragging) {
+            long var4 = (long)(this.timeSlider.value * 24000.0F);
+            if (this.timeSlider.value == 0.0F) {
                 this.desiredTOD = this.originalTOD % 24000L;
             } else {
                 this.desiredTOD = var4;
@@ -140,19 +140,19 @@ public class PhotoModeScreen extends Screen {
             this.minecraft.world.setTime(this.desiredDay + this.desiredTOD);
             this.minecraft.world.updateSkyBrightness();
 //            this.minecraft.world.method_232();
-            this.minecraft.worldRenderer.method_1148();
+            this.minecraft.worldRenderer.notifyAmbientDarknessChanged();
             this.updateButtonsText();
         }
 
-        if (this.tiltSlider.field_2592) {
-            this.tiltGoal = (float)((int)(this.tiltSlider.field_2591 * 90.0F));
+        if (this.tiltSlider.dragging) {
+            this.tiltGoal = (float)((int)(this.tiltSlider.value * 90.0F));
             this.updateButtonsText();
         }
     }
 
     private void updateButtonsText() {
-        this.timeSlider.text = this.timeSlider.field_2591 == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.timeSlider.field_2591 * 24000.0f);
-        this.tiltSlider.text = (int) (this.tiltSlider.field_2591 * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (Math.floor(this.tiltSlider.field_2591 * 90.0f)) + " degrees";
+        this.timeSlider.text = this.timeSlider.value == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.timeSlider.value * 24000.0f);
+        this.tiltSlider.text = (int) (this.tiltSlider.value * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (Math.floor(this.tiltSlider.value * 90.0f)) + " degrees";
     }
 
     public void scroll(int direction) {

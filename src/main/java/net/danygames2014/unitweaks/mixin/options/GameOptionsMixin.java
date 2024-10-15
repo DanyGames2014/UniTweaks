@@ -118,7 +118,7 @@ public abstract class GameOptionsMixin {
     }
 
 
-    @Inject(method = "method_1234", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "getString", at = @At(value = "HEAD"), cancellable = true)
     public void getTranslatedValue(Option option, CallbackInfoReturnable<String> cir) {
         TranslationStorage translations = TranslationStorage.getInstance();
 

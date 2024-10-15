@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Mixin(VideoOptionsScreen.class)
 public class VideoOptionsScreenMixin {
     @Shadow
-    private static Option[] field_2003;
+    private static Option[] VIDEO_OPTIONS;
 
     @Unique
     private static ArrayList<Option> addedOptions = new ArrayList<>();
@@ -36,21 +36,21 @@ public class VideoOptionsScreenMixin {
             addedOptions.add(ModOptions.brightnessOption);
         }
 
-        field_2003 = Arrays.copyOf(field_2003, field_2003.length + addedOptions.size());
+        VIDEO_OPTIONS = Arrays.copyOf(VIDEO_OPTIONS, VIDEO_OPTIONS.length + addedOptions.size());
         for (int i = 0; i < addedOptions.size(); i++) {
-            VideoOptionsScreenMixin.field_2003[VideoOptionsScreenMixin.field_2003.length - (addedOptions.size() - i)] = addedOptions.get(i);
+            VideoOptionsScreenMixin.VIDEO_OPTIONS[VideoOptionsScreenMixin.VIDEO_OPTIONS.length - (addedOptions.size() - i)] = addedOptions.get(i);
         }
 
         if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider){
-            VideoOptionsScreenMixin.field_2003[3] = ModOptions.fpsLimitOption;
+            VideoOptionsScreenMixin.VIDEO_OPTIONS[3] = ModOptions.fpsLimitOption;
         }
         
         if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider){
-            VideoOptionsScreenMixin.field_2003[1] = ModOptions.renderDistanceOption;
+            VideoOptionsScreenMixin.VIDEO_OPTIONS[1] = ModOptions.renderDistanceOption;
         }
         
         if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider){
-            VideoOptionsScreenMixin.field_2003[6] = ModOptions.guiScaleOption;
+            VideoOptionsScreenMixin.VIDEO_OPTIONS[6] = ModOptions.guiScaleOption;
         }
     }
 }

@@ -20,7 +20,7 @@ import java.awt.*;
 public class MinecraftMixin {
 
     @Shadow
-    public Mouse field_2767;
+    public Mouse mouse;
 
     @Shadow
     public Canvas canvas;
@@ -28,11 +28,11 @@ public class MinecraftMixin {
     @Shadow
     public World world;
 
-    @Inject(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;field_2767:Lnet/minecraft/client/Mouse;", ordinal = 0, shift = At.Shift.AFTER))
+    @Inject(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;mouse:Lnet/minecraft/client/Mouse;", ordinal = 0, shift = At.Shift.AFTER))
     public void replaceMouseHelper(CallbackInfo ci) {
         if(UniTweaks.GENERAL_CONFIG.rawInput){
             UniTweaks.logger.info("Enabling Raw Input");
-            field_2767 = new RawMouseHelper(this.canvas);
+            mouse = new RawMouseHelper(this.canvas);
             RawInputHandler.rawInputEnabled = true;
         }
 
@@ -44,14 +44,14 @@ public class MinecraftMixin {
         RawInputHandler.getMouse("Enter Main Menu");
     }
 
-    @Inject(method = "method_2115", at = @At(value = "HEAD"))
+    @Inject(method = "setWorld*", at = @At(value = "HEAD"))
     public void onLeaveWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world == null) {
             RawInputHandler.onLeaveWorld();
         }
     }
 
-    @Inject(method = "method_2115", at = @At(value = "TAIL"))
+    @Inject(method = "setWorld*", at = @At(value = "TAIL"))
     public void onJoinWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world != null) {
             RawInputHandler.onJoinWorld();

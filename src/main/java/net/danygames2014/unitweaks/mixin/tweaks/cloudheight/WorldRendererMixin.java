@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
-    @WrapOperation(method = "method_1552", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
+    @WrapOperation(method = "renderClouds", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;getCloudHeight()F"))
     public float changeCloudHeight(Dimension instance, Operation<Float> original) {
         if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider){
             return ModOptions.getCloudHeight();
@@ -20,7 +20,7 @@ public class WorldRendererMixin {
         return original.call(instance);
     }
 
-    @WrapOperation(method = "method_1556", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;method_1764()F"))
+    @WrapOperation(method = "renderFancyClouds", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/Dimension;getCloudHeight()F"))
     public float ChangeFancyCloudHeight(Dimension instance, Operation<Float> original) {
         if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider){
             return ModOptions.getCloudHeight();

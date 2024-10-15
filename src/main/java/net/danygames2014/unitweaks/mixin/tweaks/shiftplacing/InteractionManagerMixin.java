@@ -16,7 +16,7 @@ public class InteractionManagerMixin {
     @Final
     protected Minecraft minecraft;
 
-    @Redirect(method = "method_1713", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
+    @Redirect(method = "interactBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
     public int shiftPlacing(World world, int x, int y, int z) {
         if (this.minecraft.player.isSneaking() && !(this.minecraft.player.getHand() == null) && UniTweaks.GAMEPLAY_CONFIG.shiftPlacing) {
             return 0;

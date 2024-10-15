@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(PlayerEntity.class)
 public interface PlayerEntityAccessor {
-    @Accessor("field_516")
+    @Accessor("spawnPos")
     void setRespawnPos(Vec3i respawnPos);
 }

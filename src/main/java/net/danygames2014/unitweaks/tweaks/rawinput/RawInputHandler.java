@@ -52,7 +52,7 @@ public class RawInputHandler {
                         Thread.sleep(1000);
 
                         // If for some reason the value is wrong, correct it
-                        if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
+                        if (Minecraft.INSTANCE.mouse instanceof RawMouseHelper) {
                             rawInputEnabled = true;
                         }
                     }
@@ -103,7 +103,7 @@ public class RawInputHandler {
         float saveYaw = player.yaw;
         float savePitch = player.pitch;
 
-        if (Minecraft.INSTANCE.field_2767 instanceof RawMouseHelper) {
+        if (Minecraft.INSTANCE.mouse instanceof RawMouseHelper) {
             disableRawInput(true, true);
         } else {
             enableRawInput(true, true);
@@ -114,18 +114,18 @@ public class RawInputHandler {
     }
 
     public static void enableRawInput(boolean lock, boolean notifyInChat) {
-        Minecraft.INSTANCE.field_2767 = new RawMouseHelper(Minecraft.INSTANCE.canvas);
+        Minecraft.INSTANCE.mouse = new RawMouseHelper(Minecraft.INSTANCE.canvas);
         if (lock) {
-            Minecraft.INSTANCE.field_2767.lockCursor();
+            Minecraft.INSTANCE.mouse.lockCursor();
         }
         rawInputEnabled = true;
         Util.notify("Raw Input Toggled ON", notifyInChat);
     }
 
     public static void disableRawInput(boolean lock, boolean notifyInChat) {
-        Minecraft.INSTANCE.field_2767 = new net.minecraft.client.Mouse(Minecraft.INSTANCE.canvas);
+        Minecraft.INSTANCE.mouse = new net.minecraft.client.Mouse(Minecraft.INSTANCE.canvas);
         if (lock) {
-            Minecraft.INSTANCE.field_2767.lockCursor();
+            Minecraft.INSTANCE.mouse.lockCursor();
         }
         rawInputEnabled = false;
         Util.notify("Raw Input Toggled OFF", notifyInChat);

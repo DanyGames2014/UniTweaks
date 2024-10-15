@@ -63,7 +63,7 @@ public class TitleScreenMixin extends Screen {
             if (!panoramaInit) {
                 this.tessellator = Tessellator.INSTANCE;
                 this.panoramaInit = true;
-                this.panoramaTexture = this.minecraft.textureManager.method_1088(new BufferedImage(panoramaImageSize, panoramaImageSize, 2));
+                this.panoramaTexture = this.minecraft.textureManager.load(new BufferedImage(panoramaImageSize, panoramaImageSize, 2));
             }
             renderSkybox(delta);
             fillGradient(0, 0, this.width, this.height, -2130706433, 16777215);

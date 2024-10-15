@@ -15,7 +15,7 @@ public class BoatEntityMixin {
     public void fixPositionOnDismount(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.boatDismountFix) {
             if (player.passenger == null) {
-                player.setPos(player.x, player.y + 0.01, player.z);
+                player.setPosition(player.x, player.y + 0.01, player.z);
             }
         }
     }

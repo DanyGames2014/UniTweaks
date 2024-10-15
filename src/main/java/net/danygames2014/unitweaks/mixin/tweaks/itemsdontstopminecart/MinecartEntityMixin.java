@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecartEntity.class)
 public class MinecartEntityMixin {
-    @Inject(method = "method_1379", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getCollisionAgainstShape", at = @At("HEAD"), cancellable = true)
     public void preventCollisionWithItems(Entity other, CallbackInfoReturnable<Box> cir) {
         if (UniTweaks.TWEAKS_CONFIG.preventItemsStoppingMinecarts) {
             if (other instanceof ItemEntity || other instanceof ArrowEntity) {

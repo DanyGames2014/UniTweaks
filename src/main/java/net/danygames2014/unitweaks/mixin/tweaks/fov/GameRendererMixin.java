@@ -5,8 +5,8 @@ import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.block.material.Material;
-import net.minecraft.class_555;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
@@ -23,13 +23,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.BiFunction;
 
-@Mixin(class_555.class)
-public class class555Mixin {
+@Mixin(GameRenderer.class)
+public class GameRendererMixin {
     @Shadow
-    private Minecraft field_2349;
+    private Minecraft client;
 
     @Shadow
-    private float field_2350;
+    private float viewDistance;
 
     @Unique
     public float fov = 70F;
@@ -42,18 +42,18 @@ public class class555Mixin {
 
     @Unique
     public float getFovMultiplier(float partialTicks, boolean isHand) {
-        LivingEntity entity = this.field_2349.field_2807;
+        LivingEntity cameraEntity = this.client.camera;
         fov = ModOptions.getFovInDegrees();
 
         if (isHand) {
             fov = 70F;
         }
 
-        if (entity.isInFluid(Material.WATER)) {
+        if (cameraEntity.isInFluid(Material.WATER)) {
             fov *= 60.0F / 70.0F;
         }
 
-        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code) && field_2349.currentScreen == null) {
+        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code) && client.currentScreen == null) {
             if (!zoomedIn) {
                 ModOptions.zoomFovOffset = 0;
                 fovZoom = 0F;
@@ -79,8 +79,8 @@ public class class555Mixin {
             zoomedIn = false;
         }
 
-        if (entity.health <= 0) {
-            float deathTimeFov = (float) entity.deathTime + partialTicks;
+        if (cameraEntity.health <= 0) {
+            float deathTimeFov = (float) cameraEntity.deathTime + partialTicks;
             fov /= (1.0F - 500F / (deathTimeFov + 500F)) * 2.0F + 1.0F;
         }
 
@@ -92,7 +92,7 @@ public class class555Mixin {
         return fov;
     }
 
-    @ModifyExpressionValue(method = "method_1844", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;cinematicMode:Z"))
+    @ModifyExpressionValue(method = "onFrameUpdate", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;cinematicMode:Z"))
     public boolean smoothCameraWhenZooming(boolean original) {
         return original || Keyboard.isKeyDown(KeyBindingListener.zoom.code);
     }
@@ -102,16 +102,16 @@ public class class555Mixin {
         return getFovMultiplier(f, false);
     }
 
-    @Redirect(method = "method_1840", at = @At(value = "INVOKE", target = "Lnet/minecraft/class_555;method_1848(F)F"))
-    public float redirectToCustomFov(class_555 instance, float value) {
+    @Redirect(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
+    public float redirectToCustomFov(GameRenderer instance, float value) {
         return getFovMultiplier(value);
     }
 
-    @Inject(method = "method_1845", at = @At(value = "HEAD"))
+    @Inject(method = "renderFirstPersonHand", at = @At(value = "HEAD"))
     public void adjustHandFov(float f, int i, CallbackInfo ci) {
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GLU.gluPerspective(getFovMultiplier(f, true), (float) field_2349.displayWidth / (float) field_2349.displayHeight, 0.05F, field_2350 * 2.0F);
+        GLU.gluPerspective(getFovMultiplier(f, true), (float) client.displayWidth / (float) client.displayHeight, 0.05F, viewDistance * 2.0F);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
     }
 }

@@ -17,7 +17,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(world);
     }
 
-    @Inject(method = "method_932", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "isOnLadder", at = @At("HEAD"), cancellable = true)
     public void allowLadderGaps(CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.OLD_FEATURES_CONFIG.ladderGaps) {
             int x = MathHelper.floor(this.x);

@@ -16,16 +16,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class WorldRendererMixin {
 
     @Shadow
-    private int field_1782;
+    private int lastViewDistance;
 
     @Shadow
-    private int field_1810;
+    private int chunkCountX;
 
     @Shadow
-    private int field_1812;
+    private int chunkCountZ;
 
     @Redirect(
-            method = "method_1548",
+            method = "render",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.GETFIELD,
@@ -37,48 +37,48 @@ public class WorldRendererMixin {
         if (!Mouse.isButtonDown(0)) {
             return ModOptions.getRenderDistanceChunks();
         }
-        return this.field_1782;
+        return this.lastViewDistance;
     }
 
     @Inject(
-            method = "method_1537",
+            method = "reload",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,
-                    target = "Lnet/minecraft/client/render/WorldRenderer;field_1782:I",
+                    target = "Lnet/minecraft/client/render/WorldRenderer;lastViewDistance:I",
                     shift = At.Shift.AFTER,
                     ordinal = 0
             )
     )
     public void injectNewRenderDistance(CallbackInfo ci) {
-        this.field_1782 = ModOptions.getRenderDistanceChunks();
+        this.lastViewDistance = ModOptions.getRenderDistanceChunks();
     }
 
     @Inject(
-            method = "method_1537",
+            method = "reload",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,
-                    target = "Lnet/minecraft/client/render/WorldRenderer;field_1810:I",
+                    target = "Lnet/minecraft/client/render/WorldRenderer;chunkCountX:I",
                     shift = At.Shift.AFTER,
                     ordinal = 0
             )
     )
     public void overrideHorizontalRenderDistnace(CallbackInfo ci) {
-        this.field_1810 = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        this.chunkCountX = (ModOptions.getRenderDistanceChunks() * 2) + 1;
     }
 
     @Inject(
-            method = "method_1537",
+            method = "reload",
             at = @At(
                     value = "FIELD",
                     opcode = Opcodes.PUTFIELD,
-                    target = "Lnet/minecraft/client/render/WorldRenderer;field_1812:I",
+                    target = "Lnet/minecraft/client/render/WorldRenderer;chunkCountZ:I",
                     shift = At.Shift.AFTER,
                     ordinal = 0
             )
     )
     public void overrideDeepRenderDistnace(CallbackInfo ci) {
-        this.field_1812 = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        this.chunkCountZ = (ModOptions.getRenderDistanceChunks() * 2) + 1;
     }
 }
