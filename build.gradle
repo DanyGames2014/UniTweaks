@@ -1,6 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.7.2'
-    id 'babric-loom-extension' version '1.7.3'
+    id 'fabric-loom' version '1.8.10'
+    id 'babric-loom-extension' version '1.8.5'
     id 'maven-publish'
 }
 
@@ -16,37 +16,42 @@ loom {
 }
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
-
     // Used for the fabric toolchain in this project.
     maven {
         name = 'Babric'
         url = 'https://maven.glass-launcher.net/babric'
     }
+    
     // Used for mappings.
     maven {
         name = 'Glass Releases'
         url = 'https://maven.glass-launcher.net/releases'
     }
+    
     // Used for StationAPI and HowManyItems.
     maven {
         name = 'Glass Snapshots'
         url = 'https://maven.glass-launcher.net/snapshots'
     }
+
+    // NyaRepo
+    maven {
+        name = "nyarepo"
+        url = "https://maven.fildand.cz/releases"
+    }
+    
     // Used for a StationAPI dependency.
     maven {
         name = 'Froge'
         url 'https://maven.minecraftforge.net/'
     }
+    
     // Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
     maven {
         name = 'Jitpack'
         url = 'https://jitpack.io'
     }
+
     // Used for another StationAPI dependency
     exclusiveContent {
         forRepository {
@@ -59,6 +64,7 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
+    
     mavenCentral()
 }
 
@@ -76,12 +82,10 @@ dependencies {
     modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 
     // Optional, but convenient mods for mod creators and users alike.
-    modImplementation("com.github.DanyGames2014:spawneggs:55a2b88f20") {
-        transitive false
-    }
     modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
         transitive false
     }
+    
     modImplementation("net.glasslauncher.mods:glass-networking:${project.glass_networking_version}") {
         transitive false
     }
@@ -91,6 +95,14 @@ dependencies {
     }
 
     modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
+        transitive false
+    }
+
+    modImplementation("com.github.matthewperiut:retrocommands:${project.retrocommands_version}") {
+        transitive false
+    }
+
+    modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
         transitive false
     }
 }
