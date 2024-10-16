@@ -295,6 +295,9 @@ public class Config {
 
         @ConfigEntry(name = "Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
+        
+        @ConfigEntry(name = "Hotbar Rendering Fix", description = "Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics")
+        public Boolean hotbarRenderingFix = true;
     }
 
     public static class OldFeaturesConfig {

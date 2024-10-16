@@ -62,9 +62,9 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
         }
 
         // Clouds Toggle
-        if (isDisabled(mixinClassName, "tweaks.cloudstoggle.WorldRendererMixin", ui_config, "videoSettingsConfig.cloudsToggle")) {
-            return false;
-        }
+        //if (isDisabled(mixinClassName, "tweaks.cloudstoggle.WorldRendererMixin", ui_config, "videoSettingsConfig.cloudsToggle")) {
+        //    return false;
+        //}
 
         // FPS Limit Slider
         if (isDisabled(mixinClassName, "tweaks.fpslimitslider.class_555Mixin", ui_config, "videoSettingsConfig.fpsLimitSlider")) {
