@@ -44,14 +44,14 @@ public class MinecraftMixin {
         RawInputHandler.getMouse("Enter Main Menu");
     }
 
-    @Inject(method = "setWorld*", at = @At(value = "HEAD"))
+    @Inject(method = "setWorld(Lnet/minecraft/world/World;Ljava/lang/String;Lnet/minecraft/entity/player/PlayerEntity;)V", at = @At(value = "HEAD"))
     public void onLeaveWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world == null) {
             RawInputHandler.onLeaveWorld();
         }
     }
 
-    @Inject(method = "setWorld*", at = @At(value = "TAIL"))
+    @Inject(method = "setWorld(Lnet/minecraft/world/World;Ljava/lang/String;Lnet/minecraft/entity/player/PlayerEntity;)V", at = @At(value = "TAIL"))
     public void onJoinWorld(World world, String string, PlayerEntity playerEntity, CallbackInfo ci) {
         if (world != null) {
             RawInputHandler.onJoinWorld();
