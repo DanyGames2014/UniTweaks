@@ -1,11 +1,10 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
-import blue.endless.jankson.JsonObject;
-import blue.endless.jankson.JsonPrimitive;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.gcapi3.api.GCAPI;
+import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -270,11 +269,15 @@ public class ControlsScreen extends Screen {
 
         } else if (button.id == 1001) { // Step Assist
             UniTweaks.FEATURES_CONFIG.stepAssist = !UniTweaks.FEATURES_CONFIG.stepAssist;
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.FEATURES_CONFIG.stepAssist));
+//            JsonObject jsonObject = new JsonObject();
+//            jsonObject.put("stepAssist", new JsonPrimitive(UniTweaks.FEATURES_CONFIG.stepAssist));
+
+            GlassYamlFile yamlFile = new GlassYamlFile();
+            yamlFile.set("stepAssist", UniTweaks.FEATURES_CONFIG.stepAssist);
+            
             try {
-                GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:gameplay")), jsonObject.toJson());
-            } catch (IOException e) {
+                GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:features")), yamlFile);
+            } catch (Exception e) {
                 UniTweaks.logger.error("Failed to reload config", e);
             }
             refreshButtonLabels();
