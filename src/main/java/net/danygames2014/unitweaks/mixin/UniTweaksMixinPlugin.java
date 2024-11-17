@@ -77,6 +77,9 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
         }
 
         // Render Distance
+        if (mixinClassName.equals("net.danygames2014.unitweaks.mixin.tweaks.renderdistance.class555Mixin")) {
+            return !FabricLoader.getInstance().isModLoaded("ambientoverride");
+        }
         if (isDisabled(mixinClassName, "tweaks.renderdistance.class555Mixin", ui_config, "videoSettingsConfig.renderDistanceSlider")) {
             return false;
         }
