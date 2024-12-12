@@ -19,6 +19,8 @@ key.unitweaks.dismount=Dismount
 key.unitweaks.zoom=Zoom
 key.unitweaks.release_mouse=Release Mouse
 key.unitweaks.photo_mode=Photo Mode
+key.unitweaks.rescan=Rescan Mouse
+key.unitweaks.toggle_raw_input=Toggle Raw Input
 
 # FOV
 options.unitweaks.fov=FOV
