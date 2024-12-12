@@ -30,12 +30,13 @@ public class FenceBlockMixin extends Block {
         boolean connectPosZ;
         boolean connectNegZ;
         int fenceId = Block.FENCE.id;
+        int glowstoneId = Block.GLOWSTONE.id;
 
         if (UniTweaks.TWEAKS_CONFIG.fencesConnectBlocks) {
-            connectPosX = world.shouldSuffocate(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId;
-            connectNegX = world.shouldSuffocate(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId;
-            connectNegZ = world.shouldSuffocate(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId;
-            connectPosZ = world.shouldSuffocate(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId;
+            connectPosX = (world.shouldSuffocate(x + 1, y, z) || world.getBlockId(x + 1, y, z) == fenceId) && world.getBlockId(x + 1, y, z) != glowstoneId;
+            connectNegX = (world.shouldSuffocate(x - 1, y, z) || world.getBlockId(x - 1, y, z) == fenceId) && world.getBlockId(x - 1, y, z) != glowstoneId;
+            connectNegZ = (world.shouldSuffocate(x, y, z - 1) || world.getBlockId(x, y, z - 1) == fenceId) && world.getBlockId(x, y, z - 1) != glowstoneId;
+            connectPosZ = (world.shouldSuffocate(x, y, z + 1) || world.getBlockId(x, y, z + 1) == fenceId) && world.getBlockId(x, y, z + 1) != glowstoneId;
         } else {
             connectPosX = world.getBlockId(x + 1, y, z) == fenceId;
             connectNegX = world.getBlockId(x - 1, y, z) == fenceId;
