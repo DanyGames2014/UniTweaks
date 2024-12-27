@@ -38,7 +38,8 @@
       "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
       "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes",
       "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes"
+      "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes",
+      "net.danygames2014.unitweaks.bugfixes.slabminingfix.MiningListener"
     ],
     "stationapi:event_bus_client": [
       "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener",

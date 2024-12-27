@@ -298,6 +298,10 @@ public class Config {
         
         @ConfigEntry(name = "Hotbar Rendering Fix", description = "Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics")
         public Boolean hotbarRenderingFix = true;
+        
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
+        public Boolean woodenSlabMiningFix = true;
     }
 
     public static class OldFeaturesConfig {
