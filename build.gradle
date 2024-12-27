@@ -108,9 +108,9 @@ dependencies {
         transitive false
     }
 
-    modRuntimeOnly ("com.github.matthewperiut:stapi-fast-intro:17a7ed0") {
-        transitive false
-    }
+//    modRuntimeOnly ("com.github.matthewperiut:stapi-fast-intro:17a7ed0") {
+//        transitive false
+//    }
 }
 
 processResources {
