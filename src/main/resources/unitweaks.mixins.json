@@ -116,7 +116,8 @@
     "tweaks.renderdistance.class555Mixin",
     "tweaks.renderdistance.MinecraftMixin",
     "tweaks.renderdistance.WorldRendererMixin",
-    "tweaks.shiftplacing.InteractionManagerMixin"
+    "tweaks.shiftplacing.InteractionManagerMixin",
+    "tweaks.brightness.DimensionMixin"
   ],
   "injectors": {
     "defaultRequire": 1
