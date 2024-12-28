@@ -96,6 +96,7 @@
 
 * Shapeless Jack o' Lantern
 * Adjustable Stairs per Craft
+* Adjustable Trapdoors per Craft
 
 </details>
 

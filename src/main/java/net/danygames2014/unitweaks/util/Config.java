@@ -392,6 +392,8 @@ public class Config {
             public Boolean shapelessJackOLantern = true;
             @ConfigEntry(name = "Stairs per Craft")
             public Integer stairsPerCraft = 4;
+            @ConfigEntry(name = "Trapdoors per Craft")
+            public Integer trapdoorsPerCraft = 2;
         }
 
         public static class ObtainableRecipesConfig {

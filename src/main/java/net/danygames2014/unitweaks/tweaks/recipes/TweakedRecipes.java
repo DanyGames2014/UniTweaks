@@ -25,6 +25,12 @@ public class TweakedRecipes {
                         CraftingRegistry.addShapedRecipe(new ItemStack(Block.WOODEN_STAIRS, UniTweaks.RECIPES_CONFIG.tweaked.stairsPerCraft), "X  ", "XX ", "XXX", 'X', new ItemStack(Block.PLANKS, 1));
                         CraftingRegistry.addShapedRecipe(new ItemStack(Block.COBBLESTONE_STAIRS, UniTweaks.RECIPES_CONFIG.tweaked.stairsPerCraft), "X  ", "XX ", "XXX", 'X', new ItemStack(Block.COBBLESTONE, 1));
                     }
+                    
+                    // Custom Trapdoors per Craft
+                    if(UniTweaks.RECIPES_CONFIG.tweaked.trapdoorsPerCraft != 2) {
+                        CraftingHelper.removeRecipe(Block.TRAPDOOR.asItem(), true);
+                        CraftingRegistry.addShapedRecipe(new ItemStack(Block.TRAPDOOR, UniTweaks.RECIPES_CONFIG.tweaked.trapdoorsPerCraft),"XXX", "XXX", 'X', new ItemStack(Block.PLANKS, 1));
+                    }
                 }
 
                 case CRAFTING_SHAPELESS -> {
