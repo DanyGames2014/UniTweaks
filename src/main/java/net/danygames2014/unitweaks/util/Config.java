@@ -302,6 +302,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
+        
+        @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
+        public Boolean fenceLightingFix = true;
     }
 
     public static class OldFeaturesConfig {

@@ -77,6 +77,7 @@
     "bugfixes.deathscreenscorefix.DeathScreenMixin",
     "bugfixes.droppeditemfix.ArsenicItemRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
+    "bugfixes.fencelightingfix.BlockRenderManagerMixin",
     "bugfixes.fullscreencursorfix.MouseMixin",
     "bugfixes.hidpifix.MinecraftMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",

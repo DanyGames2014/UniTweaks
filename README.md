@@ -146,3 +146,4 @@
 * Breaking Animation Fix - Fixes the breaking animation sometimes not being visible from below
 * ItemStack Rendering Fix - Fixes itemstacks being render below text in containers
 * Hotbar Rendering Fix - Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics
+* Fence Lighting Fix - Fixes fence bottom face being dark when placed on a block
