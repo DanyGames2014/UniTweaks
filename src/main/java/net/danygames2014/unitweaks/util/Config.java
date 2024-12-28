@@ -16,7 +16,7 @@ public class Config {
         @ConfigEntry(name = "TCP NoDelay")
         public Boolean tcpNoDelay = true;
 
-        @ConfigEntry(name = "Raw Input")
+        @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
     }
     
@@ -132,7 +132,7 @@ public class Config {
         public static class FastLeafDecayConfig {
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
             @ConfigEntry(name = "Enable Fast Leaf Decay", multiplayerSynced = true)
-            public Boolean enableFastLeafDecay = true;
+            public Boolean enableFastLeafDecay = false;
 
             @ConfigEntry(name = "Minimum Decay Time", maxLength = 1200)
             public Integer minimumDecayTime = 10;
@@ -144,7 +144,7 @@ public class Config {
         public static class BetterBurningConfig {
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
             @ConfigEntry(name = "Enable Better Burning", description = "Master switch for all features here", multiplayerSynced = true)
-            public Boolean enableBetterBurning = true;
+            public Boolean enableBetterBurning = false;
 
             @ConfigEntry(name = "Skeletons on Fire shoot flaming arrows")
             public Boolean skeletonsBurningArrows = true;
