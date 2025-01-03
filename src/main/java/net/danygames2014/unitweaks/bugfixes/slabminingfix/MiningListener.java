@@ -4,6 +4,7 @@ import net.danygames2014.unitweaks.UniTweaks;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.PickaxeItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.modificationstation.stationapi.api.event.entity.player.IsPlayerUsingEffectiveToolEvent;
@@ -64,6 +65,8 @@ public class MiningListener {
         if(world.getBlockMeta(pos.x, pos.y, pos.z) == 2 && world.getBlockId(pos.x, pos.y, pos.z) == Block.SLAB.id){
             if(event.player.inventory.getSelectedItem().getItem() instanceof AxeItem axe){
                 event.resultProvider = () -> axe.miningSpeed;
+            } else if (event.player.inventory.getSelectedItem().getItem() instanceof PickaxeItem pickaxe) {
+                event.resultProvider = () -> 1.0F;
             }
         }
     }
