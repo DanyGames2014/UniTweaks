@@ -62,7 +62,10 @@ public class MiningListener {
         BlockView world = event.blockView;
 
         // If the ID and Meta matches, true
-        if(world.getBlockMeta(pos.x, pos.y, pos.z) == 2 && world.getBlockId(pos.x, pos.y, pos.z) == Block.SLAB.id){
+        if (  world.getBlockMeta(pos.x, pos.y, pos.z) == 2
+           && world.getBlockId(pos.x, pos.y, pos.z) == Block.SLAB.id
+           && null != event.player.inventory.getSelectedItem()
+        ) {
             if(event.player.inventory.getSelectedItem().getItem() instanceof AxeItem axe){
                 event.resultProvider = () -> axe.miningSpeed;
             } else if (event.player.inventory.getSelectedItem().getItem() instanceof PickaxeItem pickaxe) {
