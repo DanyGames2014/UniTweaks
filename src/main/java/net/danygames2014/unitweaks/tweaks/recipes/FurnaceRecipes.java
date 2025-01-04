@@ -32,6 +32,9 @@ public class FurnaceRecipes {
                 FuelRegistry.addFuelItem(Item.SIGN, 200);
                 FuelRegistry.addFuelItem(Item.WOODEN_DOOR, 200);
 
+                // 150t - 7.5s
+                FuelRegistry.addFuelItem(Block.SLAB.asItem(), 2, 150);
+
                 // 100t - 5s
                 FuelRegistry.addFuelItem(Item.BOWL, 100);
             }
