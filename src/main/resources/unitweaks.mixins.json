@@ -108,7 +108,7 @@
     "tweaks.nopauseonlostfocus.class_555Accessor",
     "tweaks.nopauseonlostfocus.class_555Mixin",
     "tweaks.nopauseonlostfocus.MinecraftMixin",
-    "tweaks.photomode.class_555Mixin",
+    "tweaks.photomode.GameRendererMixin",
     "tweaks.photomode.GameMenuScreenMixin",
     "tweaks.photomode.WorldRendererMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",

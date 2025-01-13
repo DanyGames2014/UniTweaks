@@ -23,6 +23,9 @@ public class Config {
     public static class UserInterfaceConfig {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
+        
+        @ConfigEntry(name = "Show Photo Mode Button")
+        public Boolean showPhotoModeButton = true;
 
         @ConfigEntry(name = "Improved Controls Menu")
         public Boolean improvedControlsMenu = true;

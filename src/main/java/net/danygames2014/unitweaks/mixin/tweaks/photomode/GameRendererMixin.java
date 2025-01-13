@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
-public class class_555Mixin {
+public class GameRendererMixin {
     @Shadow
     private Minecraft client;
 
