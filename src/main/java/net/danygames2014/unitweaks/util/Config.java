@@ -11,7 +11,7 @@ public class Config {
         public Boolean pauseOnLostFocus = true;
 
         @ConfigEntry(name = "Autosave Interval (seconds)", maxLength = 3600)
-        public Integer autosaveInterval = 1;
+        public Integer autosaveInterval = 30;
 
         @ConfigEntry(name = "TCP NoDelay")
         public Boolean tcpNoDelay = true;
