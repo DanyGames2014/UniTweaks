@@ -3,6 +3,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.photomode;
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
 import net.danygames2014.unitweaks.util.gui.CustomButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -18,6 +19,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GameMenuScreenMixin extends Screen {
     @Inject(at = @At("RETURN"), method = "init")
     public void drawMenuButton(CallbackInfo info) {
+        // :tf:
+        if (Minecraft.INSTANCE.session.username.equals("Slainlight")) {
+            return;
+        }
+
         if (FabricLoader.getInstance().isModLoaded("modmenu")) {
             this.buttons.add(new CustomButtonWidget(20, this.width / 2 + 104, this.height / 4 + 72 - 16, 20, 20, new ItemStack(Item.PAINTING)));
         } else {
