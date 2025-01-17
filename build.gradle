@@ -72,7 +72,6 @@ repositories {
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.glasslauncher:biny:${project.yarn_mappings}:v2"
     modImplementation "babric:fabric-loader:${project.loader_version}"
@@ -83,7 +82,6 @@ dependencies {
 
     modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 
-    // Optional, but convenient mods for mod creators and users alike.
     modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
         transitive false
     }
@@ -108,9 +106,9 @@ dependencies {
         transitive false
     }
 
-//    modRuntimeOnly ("com.github.matthewperiut:stapi-fast-intro:17a7ed0") {
-//        transitive false
-//    }
+    modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-fabric,b1.7.3") {
+        transitive false
+    }
 }
 
 processResources {
