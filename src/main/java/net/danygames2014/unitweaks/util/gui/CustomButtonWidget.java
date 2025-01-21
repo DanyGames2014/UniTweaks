@@ -1,6 +1,5 @@
 package net.danygames2014.unitweaks.util.gui;
 
-import net.glasslauncher.mods.alwaysmoreitems.gui.RenderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.ButtonWidget;

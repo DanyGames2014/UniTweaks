@@ -20,7 +20,7 @@ public class GameMenuScreenMixin extends Screen {
     @Inject(at = @At("RETURN"), method = "init")
     public void drawMenuButton(CallbackInfo info) {
         // :tf:
-        if (Minecraft.INSTANCE.session.username.equals("Slainlight")) {
+        if (Minecraft.INSTANCE.session != null && Minecraft.INSTANCE.session.username.equals("Slainlight")) {
             return;
         }
 
