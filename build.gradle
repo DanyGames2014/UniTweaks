@@ -106,6 +106,10 @@ dependencies {
         transitive false
     }
 
+    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-fabric,b1.7.3") {
+        transitive false
+    }
+    
     modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-fabric,b1.7.3") {
         transitive false
     }
