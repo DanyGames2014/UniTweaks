@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.tweaks.controls;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.gui.CallbackButtonWidget;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.gcapi3.api.GCAPI;
@@ -17,7 +18,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 @Environment(EnvType.CLIENT)
@@ -118,7 +118,7 @@ public class ControlsScreen extends Screen {
             // Init Buttons
             ButtonWidget keyButton = new ButtonWidget(i, -1, -1, 100, 20, Keyboard.getKeyName(keyBinding.code));
 
-            keybinds.add(new KeybindEntry(keyButton, keyBinding));
+            keybinds.add(new KeybindEntry(this, keyButton, keyBinding));
             this.keybindButtons.add(keyButton);
         }
     }
@@ -152,7 +152,7 @@ public class ControlsScreen extends Screen {
                     // Im sorry for this
                     
                     // Disable checking for dismount
-                    if (!options.allKeys[j].translationKey.equals("Dismount") && !keybindEntry.keyBinding.translationKey.equals("Dismount")) {
+                    if (!options.allKeys[j].translationKey.equals("key.unitweaks.dismount") && !keybindEntry.keyBinding.translationKey.equals("key.unitweaks.dismount")) {
                         // Disable checking for unbound keys
                         if(options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
                             formatting = Formatting.RED;
@@ -285,6 +285,8 @@ public class ControlsScreen extends Screen {
         } else if (keybindButtons.contains(button)) { // Keybind
             selectedButton = button;
             button.text = "> " + button.text + " <";
+        } else if (button instanceof CallbackButtonWidget callbackButton) {
+            callbackButton.doAction();
         }
     }
 
@@ -300,13 +302,31 @@ public class ControlsScreen extends Screen {
         stepAssist.render(minecraft, mouseX, mouseY);
     }
 
+    @SuppressWarnings("unchecked")
     public static class KeybindEntry {
         public final ButtonWidget keyButton;
         public KeyBinding keyBinding;
+        public ButtonWidget resetButton;
+        public final int defaultKeybind;
+        public final ControlsScreen parent;
 
-        public KeybindEntry(ButtonWidget keyButton, KeyBinding keyBinding) {
+        public KeybindEntry(ControlsScreen parent, ButtonWidget keyButton, KeyBinding keyBinding) {
+            this.parent = parent;
             this.keyButton = keyButton;
             this.keyBinding = keyBinding;
+            this.defaultKeybind = DefaultKeys.getDefaultKeybind(keyBinding);
+            this.init();
+        }
+        
+        public void init () {
+            this.resetButton = new CallbackButtonWidget(-1, -1, 50, 20, "Reset", this::resetToDefault);
+            this.parent.buttons.add(resetButton);
+        }
+
+        private void resetToDefault(Void unused) {
+            this.keyBinding.code = this.defaultKeybind;
+            this.parent.refreshKeyLabels();
+            this.parent.options.save();
         }
     }
 }

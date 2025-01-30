@@ -73,5 +73,11 @@ public class KeybindListWidget extends EntryListWidget {
         keyButton.x = x + 120;
         keyButton.y = y;
         keyButton.render(minecraft, mouseX, mouseY);
+        
+        ButtonWidget resetButton = keybindEntry.resetButton;
+        resetButton.x = keyButton.x + 105;
+        resetButton.y = keyButton.y;
+        resetButton.active = keybindEntry.keyBinding.code != keybindEntry.defaultKeybind;
+        resetButton.render(minecraft, mouseX, mouseY);
     }
 }
