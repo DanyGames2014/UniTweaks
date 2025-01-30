@@ -20,9 +20,9 @@ public class FoodItemMixin {
     @Inject(method = "use", at = @At(value = "HEAD"))
     public void burpOnEat(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir){
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
-            world.playSound(user, "random.eat", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            world.playSound(user, "unitweaks:random.eat", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
             if(random.nextInt(0,10) > 3){
-                world.playSound(user, "random.burp",0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+                world.playSound(user, "unitweaks:random.burp",0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
             }
         }
     }

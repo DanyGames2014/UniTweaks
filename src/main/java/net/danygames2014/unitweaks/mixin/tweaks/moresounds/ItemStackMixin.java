@@ -32,7 +32,7 @@ public abstract class ItemStackMixin {
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity) entity;
 
-            player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            player.world.playSound(player, "unitweaks:random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }
     }
 
@@ -45,7 +45,7 @@ public abstract class ItemStackMixin {
                 if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT){
                     Minecraft minecraft = (Minecraft)FabricLoader.getInstance().getGameInstance();
                     PlayerEntity player = minecraft.player;
-                    player.world.playSound(player, "random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+                    player.world.playSound(player, "unitweaks:random.break", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
                 }
             }
         }
