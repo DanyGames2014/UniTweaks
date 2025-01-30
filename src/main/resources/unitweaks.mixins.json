@@ -122,6 +122,7 @@
     "tweaks.renderdistance.class555Mixin",
     "tweaks.renderdistance.MinecraftMixin",
     "tweaks.renderdistance.WorldRendererMixin",
+    "tweaks.resourceurl.ResourceDownloadThreadMixin",
     "tweaks.shiftplacing.InteractionManagerMixin"
   ],
   "injectors": {

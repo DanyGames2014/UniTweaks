@@ -18,6 +18,9 @@ public class Config {
 
         @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
+        
+        @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default")
+        public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
     }
     
     public static class UserInterfaceConfig {
