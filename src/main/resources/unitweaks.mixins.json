@@ -80,6 +80,7 @@
     "bugfixes.fencelightingfix.BlockRenderManagerMixin",
     "bugfixes.fullscreencursorfix.MouseMixin",
     "bugfixes.hidpifix.MinecraftMixin",
+    "bugfixes.jitterfix.ChunkRendererMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
     "bugfixes.slabcrashfix.SlabBlockItemMixin",
@@ -90,6 +91,7 @@
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
     "tweaks.achievementbacktomenu.AchievementsScreenMixin",
+    "tweaks.brightness.DimensionMixin",
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
@@ -108,8 +110,8 @@
     "tweaks.nopauseonlostfocus.class_555Accessor",
     "tweaks.nopauseonlostfocus.class_555Mixin",
     "tweaks.nopauseonlostfocus.MinecraftMixin",
-    "tweaks.photomode.GameRendererMixin",
     "tweaks.photomode.GameMenuScreenMixin",
+    "tweaks.photomode.GameRendererMixin",
     "tweaks.photomode.WorldRendererMixin",
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
@@ -117,8 +119,7 @@
     "tweaks.renderdistance.class555Mixin",
     "tweaks.renderdistance.MinecraftMixin",
     "tweaks.renderdistance.WorldRendererMixin",
-    "tweaks.shiftplacing.InteractionManagerMixin",
-    "tweaks.brightness.DimensionMixin"
+    "tweaks.shiftplacing.InteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

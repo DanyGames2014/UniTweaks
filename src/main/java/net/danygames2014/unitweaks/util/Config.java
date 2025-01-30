@@ -229,9 +229,9 @@ public class Config {
         @ConfigEntry(name = "Bit Depth Fix", description = "Increases the buffer depth from 8 to 24 to fix graphical issues on AMD graphic cards")
         public Boolean bitDepthFix = true;
 
-        @ConfigEntry(name = "HiDPI Fix", description = "NOT RECOMMENDED! Fixes the canvas not adjusting properly on higher than 100% display scaling")
-        public Boolean hiDpiFix = false;
-
+        @ConfigEntry(name = "Far Lands Jitter Fix")
+        public Boolean farLandJitterFix = false;
+        
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
@@ -305,6 +305,9 @@ public class Config {
         
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
+
+        @ConfigEntry(name = "HiDPI Fix", description = "NOT RECOMMENDED! Fixes the canvas not adjusting properly on higher than 100% display scaling")
+        public Boolean hiDpiFix = false;
     }
 
     public static class OldFeaturesConfig {
