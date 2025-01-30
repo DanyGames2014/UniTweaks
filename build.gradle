@@ -94,15 +94,15 @@ dependencies {
         transitive false
     }
 
-    modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
+    modRuntimeOnly("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
         transitive false
     }
 
-    modImplementation("com.github.matthewperiut:retrocommands:${project.retrocommands_version}") {
+    modRuntimeOnly("com.github.matthewperiut:retrocommands:${project.retrocommands_version}") {
         transitive false
     }
 
-    modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
+    modRuntimeOnly("net.danygames2014:spawneggs:${project.spawneggs_version}") {
         transitive false
     }
 
