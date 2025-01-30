@@ -18,7 +18,7 @@ public class ClientPlayerEntityMixin {
     public void chestOpeningSound(Inventory inventory, CallbackInfo ci) {
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity.class.cast(this));
-            player.world.playSound(player, "random.chestopen", 0.3F, 1.0F);
+            player.world.playSound(player, "random.door_open", 0.3F, 1.0F);
         }
     }
 
@@ -27,7 +27,7 @@ public class ClientPlayerEntityMixin {
         if(UniTweaks.FEATURES_CONFIG.moreSounds){
             PlayerEntity player = (PlayerEntity.class.cast(this));
             if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
-                player.world.playSound(player, "random.chestclosed", 0.3F, 1.0F);
+                player.world.playSound(player, "random.door_close", 0.3F, 1.0F);
             }
         }
     }
