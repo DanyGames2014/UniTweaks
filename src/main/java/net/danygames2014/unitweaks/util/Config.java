@@ -69,6 +69,9 @@ public class Config {
 
             @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
             public Boolean renderDistanceSlider = true;
+            
+            @ConfigEntry(name = "Vanilla Far Values")
+            public Boolean vanillaFarValues = true;
         }
 
         public static class PanoramaConfig {

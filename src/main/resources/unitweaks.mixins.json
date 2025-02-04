@@ -119,7 +119,7 @@
     "tweaks.pickblockfrominventory.ClickSlotC2SPacketMixin",
     "tweaks.quitbutton.MinecraftAppletMixin",
     "tweaks.rawinput.MinecraftMixin",
-    "tweaks.renderdistance.class555Mixin",
+    "tweaks.renderdistance.GameRendererMixin",
     "tweaks.renderdistance.MinecraftMixin",
     "tweaks.renderdistance.WorldRendererMixin",
     "tweaks.resourceurl.ResourceDownloadThreadMixin",

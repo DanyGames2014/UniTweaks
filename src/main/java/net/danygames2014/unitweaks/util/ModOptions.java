@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.Option;
 import net.modificationstation.stationapi.api.util.math.MathHelper;
@@ -56,10 +57,20 @@ public class ModOptions {
     // Render Distance
     public static float renderDistance = 0.2F;
 
-    public static final int maxRenderDistance = 32;
+    private static final int maxRenderDistance = 32;
 
     public static int getRenderDistanceChunks() {
         return (int) (2 + Math.floor(renderDistance * (maxRenderDistance - 2)));
+    }
+    
+    public static int getGameRendererChunks() {
+        int chunks = getRenderDistanceChunks();
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.vanillaFarValues && chunks == 12) {
+            chunks = 16;
+        }
+        
+        return chunks;
     }
 
     public static void setRenderDistanceChunks(int chunks) {
