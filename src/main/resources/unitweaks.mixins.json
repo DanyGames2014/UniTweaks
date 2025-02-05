@@ -12,6 +12,7 @@
     "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.fishvelocityfix.FishingBobberEntityMixin",
+    "bugfixes.furnaceconsumebucketfix.FuelRegistryMixin",
     "bugfixes.furnaceconsumebucketfix.FurnaceBlockEntityMixin",
     "bugfixes.lavawithoutsourcefix.FlowingLiquidBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
