@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.mixin;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -85,6 +86,16 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
         }
         if (isDisabled(mixinClassName, "tweaks.renderdistance.WorldRendererMixin", ui_config, "videoSettingsConfig.renderDistanceSlider")) {
             return false;
+        }
+
+        if (mixinClassName.equals("net.danygames2014.unitweaks.mixin.bugfixes.furnaceconsumebucketfix.FuelRegistryMixin")) {
+            ModContainer stapiMod = FabricLoader.getInstance().getModContainer("stationapi").get();
+            if (stapiMod.getMetadata().getVersion().getFriendlyString().equals("2.0.0-alpha.3")) {
+                System.err.println("Stapi L Moment Detected, Fixing");
+                return true;
+            } else {
+                return false;
+            }
         }
 
         return true;
