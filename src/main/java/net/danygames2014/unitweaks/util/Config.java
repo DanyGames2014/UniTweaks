@@ -70,7 +70,7 @@ public class Config {
             @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
             public Boolean renderDistanceSlider = true;
             
-            @ConfigEntry(name = "Vanilla Far Values")
+            @ConfigEntry(name = "Vanilla Far Fog Values")
             public Boolean vanillaFarValues = true;
         }
 
