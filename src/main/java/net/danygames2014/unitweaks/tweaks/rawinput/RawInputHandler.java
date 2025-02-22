@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"StringConcatenationArgumentToLogCall", "BusyWait"})
 public class RawInputHandler {
-    private static final Logger logger = UniTweaks.logger;
+    private static final Logger logger = UniTweaks.LOGGER;
 
     public static Controller[] controllers;
     public static ArrayList<Mouse> mice = new ArrayList<>();
@@ -59,7 +59,7 @@ public class RawInputHandler {
 
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
-                    UniTweaks.logger.error(e.getStackTrace());
+                    UniTweaks.LOGGER.error(e.getStackTrace());
                 }
             }
         });

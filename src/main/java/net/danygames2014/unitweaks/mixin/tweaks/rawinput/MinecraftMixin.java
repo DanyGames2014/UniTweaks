@@ -31,7 +31,7 @@ public class MinecraftMixin {
     @Inject(method = "init", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/client/Minecraft;mouse:Lnet/minecraft/client/Mouse;", ordinal = 0, shift = At.Shift.AFTER))
     public void replaceMouseHelper(CallbackInfo ci) {
         if(UniTweaks.GENERAL_CONFIG.rawInput){
-            UniTweaks.logger.info("Enabling Raw Input");
+            UniTweaks.LOGGER.info("Enabling Raw Input");
             mouse = new RawMouseHelper(this.canvas);
             RawInputHandler.rawInputEnabled = true;
         }

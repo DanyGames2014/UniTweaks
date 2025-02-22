@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 
 public class Util {
     public static void notify(String message, boolean notifyInChat) {
-        UniTweaks.logger.info(message);
+        UniTweaks.LOGGER.info(message);
         if(Minecraft.INSTANCE.inGameHud != null && notifyInChat){
             Minecraft.INSTANCE.inGameHud.addChatMessage("[UniTweaks] " + message);
         }
