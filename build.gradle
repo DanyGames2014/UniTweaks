@@ -2,9 +2,9 @@
 //file:noinspection GroovyUnusedAssignment
 //file:noinspection ForeignDelegate
 plugins {
-    id 'fabric-loom' version '1.8.10'
-    id 'babric-loom-extension' version '1.8.6'
     id 'maven-publish'
+    id 'fabric-loom' version '1.10.1'
+    id 'babric-loom-extension' version '1.10.1'
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -19,19 +19,19 @@ loom {
 }
 
 repositories {
-    // Used for the fabric toolchain in this project.
+    // Used for Babric Loom Extensions
     maven {
         name = 'Babric'
         url = 'https://maven.glass-launcher.net/babric'
     }
-    
-    // Used for mappings.
+
+    // Used for many dependencies
     maven {
         name = 'Glass Releases'
         url = 'https://maven.glass-launcher.net/releases'
     }
-    
-    // Used for StationAPI and HowManyItems.
+
+    // Used for Snapshots
     maven {
         name = 'Glass Snapshots'
         url = 'https://maven.glass-launcher.net/snapshots'
@@ -42,20 +42,20 @@ repositories {
         name = "nyarepo"
         url = "https://maven.fildand.cz/releases"
     }
-    
+
     // Used for a StationAPI dependency.
     maven {
         name = 'Froge'
         url 'https://maven.minecraftforge.net/'
     }
-    
+
     // Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
     maven {
         name = 'Jitpack'
         url = 'https://jitpack.io'
     }
 
-    // Used for another StationAPI dependency
+    // Modrinth Maven
     exclusiveContent {
         forRepository {
             maven {
@@ -67,14 +67,14 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
-    
+
     mavenCentral()
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.glasslauncher:biny:${project.yarn_mappings}:v2"
-    modImplementation "babric:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     implementation "org.slf4j:slf4j-api:1.8.0-beta4"
     implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2'

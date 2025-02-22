@@ -278,7 +278,7 @@ public class ControlsScreen extends Screen {
             try {
                 GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:features")), yamlFile);
             } catch (Exception e) {
-                UniTweaks.logger.error("Failed to reload config", e);
+                UniTweaks.LOGGER.error("Failed to reload config", e);
             }
             refreshButtonLabels();
 

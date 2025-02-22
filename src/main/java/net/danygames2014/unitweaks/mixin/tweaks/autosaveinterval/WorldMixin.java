@@ -27,7 +27,7 @@ public class WorldMixin {
     )
     public void test(World instance, int value, Operation<Void> original) {
         this.saveInterval = GENERAL_CONFIG.autosaveInterval * 20;
-        UniTweaks.logger.info("Autosave Interval set to " + GENERAL_CONFIG.autosaveInterval + " seconds (" + GENERAL_CONFIG.autosaveInterval * 20 + " ticks)");
+        UniTweaks.LOGGER.info("Autosave Interval set to " + GENERAL_CONFIG.autosaveInterval + " seconds (" + GENERAL_CONFIG.autosaveInterval * 20 + " ticks)");
     }
 //
 //    @Inject(method = "method_195", at = @At(value = "HEAD"))
