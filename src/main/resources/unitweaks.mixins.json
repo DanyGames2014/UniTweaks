@@ -111,6 +111,7 @@
     "tweaks.mainmenupanorama.TitleScreenMixin",
     "tweaks.morekeybinds.MinecraftMixin",
     "tweaks.moresounds.ClientPlayerEntityMixin",
+    "bugfixes.miningdelayfix.MultiplayerInteractionManagerMixin",
     "tweaks.nopauseonlostfocus.class_555Accessor",
     "tweaks.nopauseonlostfocus.class_555Mixin",
     "tweaks.nopauseonlostfocus.MinecraftMixin",
