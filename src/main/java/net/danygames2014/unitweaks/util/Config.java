@@ -236,7 +236,7 @@ public class Config {
         public Boolean bitDepthFix = true;
 
         @ConfigEntry(name = "Far Lands Jitter Fix")
-        public Boolean farLandJitterFix = false;
+        public Boolean farLandsJitterFix = true;
         
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)

@@ -69,6 +69,7 @@ repositories {
     }
 
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -91,6 +92,10 @@ dependencies {
     }
 
     modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
+        transitive false
+    }
+
+    modImplementation("net.mine_diver:SmoothBeta:1.1.7") {
         transitive false
     }
 

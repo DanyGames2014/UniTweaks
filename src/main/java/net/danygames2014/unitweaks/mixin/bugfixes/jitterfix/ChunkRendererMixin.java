@@ -37,7 +37,7 @@ public class ChunkRendererMixin {
     
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", remap = false))
     public void useDoubleOffsets(float x, float y, float z, Operation<Void> original) {
-        if (UniTweaks.BUGFIXES_CONFIG.farLandJitterFix) {
+        if (UniTweaks.BUGFIXES_CONFIG.farLandsJitterFix) {
             GL11.glTranslated(this.x - fixedOffsetX, this.y - fixedOffsetY, this.z - fixedOffsetZ);
         } else {
             original.call(x, y, z);
