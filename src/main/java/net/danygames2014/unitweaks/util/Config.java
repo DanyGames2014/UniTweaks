@@ -71,7 +71,7 @@ public class Config {
             public Boolean renderDistanceSlider = true;
             
             @ConfigEntry(name = "Vanilla Far Fog Values")
-            public Boolean vanillaFarValues = true;
+            public Boolean vanillaFarValues = false;
         }
 
         public static class PanoramaConfig {
@@ -308,6 +308,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
+
+        @ConfigEntry(name = "Multiplayer Mining Delay Fix", description = "WARNING: This could be considered a hack on some servers")
+        public Boolean miningDelayFix = true;
         
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
