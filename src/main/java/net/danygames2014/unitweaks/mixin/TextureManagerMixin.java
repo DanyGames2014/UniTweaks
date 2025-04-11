@@ -40,7 +40,7 @@ public abstract class TextureManagerMixin {
 
     @Unique
     private ByteBuffer[] mipImageDatas;
-    
+
     @Unique
     int terrainAtlasTextureId = 0;
 
@@ -62,19 +62,19 @@ public abstract class TextureManagerMixin {
 
     // 1
     @WrapWithCondition(method = "load(Ljava/awt/image/BufferedImage;I)V", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTexParameteri(III)V", ordinal = 0, remap = false))
-    public boolean dontRunThisTwiceForTheFucksSake(int target, int pname, int param){
+    public boolean dontRunThisTwiceForTheFucksSake(int target, int pname, int param) {
         return false;
     }
 
     @WrapWithCondition(method = "load(Ljava/awt/image/BufferedImage;I)V", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTexParameteri(III)V", ordinal = 1, remap = false))
-    public boolean dontRunThisTwiceForTheFucksSakePart2ElectricBoogaloo(int target, int pname, int param){
+    public boolean dontRunThisTwiceForTheFucksSakePart2ElectricBoogaloo(int target, int pname, int param) {
         return false;
     }
-    
+
     @Inject(method = "load(Ljava/awt/image/BufferedImage;I)V", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glBindTexture(II)V", ordinal = 0, shift = At.Shift.AFTER, remap = false))
     public void aVoid(BufferedImage image, int id, CallbackInfo ci) {
         MIPMAP = isUseMipmaps();
-        
+
         if (MIPMAP && id == terrainAtlasTextureId) {
             int mipmapType = getMipmapType();
             GL11.glTexParameteri(3553, 10241, mipmapType);
@@ -198,13 +198,12 @@ public abstract class TextureManagerMixin {
 
     // 3.8
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTexSubImage2D(IIIIIIIILjava/nio/ByteBuffer;)V", ordinal = 0, remap = false))
-    public void useOurOwnInstead1point5 (
-            int target, int level, int internalformat, int width, int height, int border, int format, int type, ByteBuffer pixels, Operation<Void> original, 
+    public void useOurOwnInstead1point5(
+            int target, int level, int internalformat, int width, int height, int border, int format, int type, ByteBuffer pixels, Operation<Void> original,
             @Local(ordinal = 1) int var3, @Local(ordinal = 2) int var4
-        ) 
-    {
+    ) {
         original.call(target, level, internalformat, width, height, border, format, type, pixels);
-        
+
         if (MIPMAP && var3 == 0 && var4 == 0) {
             //this.generateMipMapsSub(xOffset, yOffset, tileWidth, tileHeight, this.imageBuffer, texturefx.tileSize, fastColor);
         }
@@ -293,7 +292,7 @@ public abstract class TextureManagerMixin {
             this.terrainAtlasTextureId = id;
             System.err.println(texturePath + " has been captured with id " + id);
         }
-        
+
         original.call(instance, image, id);
     }
 }

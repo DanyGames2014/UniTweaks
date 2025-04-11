@@ -18,11 +18,11 @@ public class Config {
 
         @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
-        
+
         @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxLength = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
     }
-    
+
     public static class UserInterfaceConfig {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
@@ -38,16 +38,16 @@ public class Config {
 
         @ConfigEntry(name = "Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
-        
+
         @ConfigCategory(name = "Video Settings")
         public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();
 
         @ConfigCategory(name = "Version Text")
         public VersionTextConfig versionTextConfig = new VersionTextConfig();
-        
+
         @ConfigCategory(name = "Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
-        
+
         public static class VideoSettingsConfig {
             @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
             public Boolean brightnessSlider = true;
@@ -69,7 +69,7 @@ public class Config {
 
             @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
             public Boolean renderDistanceSlider = true;
-            
+
             @ConfigEntry(name = "Vanilla Far Fog Values")
             public Boolean vanillaFarValues = false;
         }
@@ -237,11 +237,11 @@ public class Config {
 
         @ConfigEntry(name = "Far Lands Jitter Fix")
         public Boolean farLandsJitterFix = true;
-        
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
-        
+
         @ConfigEntry(name = "Multiplayer Entity Jitter Fix", description = "Fixes entities jittering in multiplayer")
         public Boolean multiplayerEntityJitterFix = true;
 
@@ -304,17 +304,17 @@ public class Config {
 
         @ConfigEntry(name = "Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
-        
+
         @ConfigEntry(name = "Hotbar Rendering Fix", description = "Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics")
         public Boolean hotbarRenderingFix = true;
-        
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
 
         @ConfigEntry(name = "Multiplayer Mining Delay Fix", description = "WARNING: This could be considered a hack on some servers")
         public Boolean miningDelayFix = true;
-        
+
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
 

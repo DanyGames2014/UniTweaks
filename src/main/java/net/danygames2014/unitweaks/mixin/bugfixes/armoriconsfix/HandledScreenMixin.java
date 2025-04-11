@@ -16,7 +16,7 @@ public class HandledScreenMixin extends Screen {
         // I cant do an instanceof checks because its anonymous
         // I cant do an check if its anonymous because some other mod might add a anonymous slot
         // Therefore i decided to plant this bomb :tf: Nyaaa!
-        if(slot.getBackgroundTextureId() == 7355608){
+        if (slot.getBackgroundTextureId() == 7355608) {
             this.minecraft.textureManager.bindTexture(this.minecraft.textureManager.getTextureId("/assets/unitweaks/textures/gui/armor_icons.png"));
             this.drawTexture(slot.x, slot.y, 0, (slot.id - 5) * 16, 16, 16);
             GL11.glEnable(2896);

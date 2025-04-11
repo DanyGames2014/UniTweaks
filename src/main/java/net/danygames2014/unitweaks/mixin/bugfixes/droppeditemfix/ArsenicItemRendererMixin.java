@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class ArsenicItemRendererMixin {
     @ModifyConstant(method = "renderVanilla", constant = @Constant(floatValue = 0.5F, ordinal = 0), require = 0)
     float fixDroppedItemSize(float constant) {
-        if(UniTweaks.BUGFIXES_CONFIG.droppedItemSizeFix){
+        if (UniTweaks.BUGFIXES_CONFIG.droppedItemSizeFix) {
             return 0.25F;
         }
         return constant;

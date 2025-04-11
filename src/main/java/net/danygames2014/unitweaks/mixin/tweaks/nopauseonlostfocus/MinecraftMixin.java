@@ -13,11 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
 
-    @Shadow public GameRenderer gameRenderer;
+    @Shadow
+    public GameRenderer gameRenderer;
 
     @Inject(method = "handleMouseClick", at = @At(value = "HEAD"))
-    public void test(int par1, CallbackInfo ci){
-        if(KeyPressedListener.releasedMouse){
+    public void test(int par1, CallbackInfo ci) {
+        if (KeyPressedListener.releasedMouse) {
             ((class_555Accessor) gameRenderer).setLastActiveTime(System.currentTimeMillis());
             KeyPressedListener.releasedMouse = false;
             Mouse.setGrabbed(true);

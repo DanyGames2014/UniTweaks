@@ -11,13 +11,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Dimension.class)
 public class DimensionMixin {
-    @Shadow public float[] lightLevelToLuminance;
+    @Shadow
+    public float[] lightLevelToLuminance;
 
-    @Shadow public boolean isNether;
+    @Shadow
+    public boolean isNether;
 
     @Inject(method = "initBrightnessTable", at = @At(value = "HEAD"), cancellable = true)
-    public void initAdjustedBrightnessTable(CallbackInfo ci){
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider){
+    public void initAdjustedBrightnessTable(CallbackInfo ci) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             // Calculate brightness
             float brightness = ModOptions.brightness;
             float[] lightLevels = new float[16];

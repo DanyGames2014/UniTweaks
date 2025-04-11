@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(net.minecraft.client.Mouse.class)
 public class MouseMixin {
     @Inject(method = "unlockCursor", at = @At("HEAD"), cancellable = true)
-    public void fixCursorPosition(CallbackInfo ci){
+    public void fixCursorPosition(CallbackInfo ci) {
         if (Display.isFullscreen()) {
             Mouse.setCursorPosition(Display.getDisplayMode().getWidth() / 2, Display.getDisplayMode().getHeight() / 2);
             Mouse.setGrabbed(false);

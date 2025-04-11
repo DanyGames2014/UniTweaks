@@ -10,7 +10,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3i;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BedBlock.class)
 public class BedBlockMixin {
@@ -23,6 +22,6 @@ public class BedBlockMixin {
                 return SleepAttemptResult.OK;
             }
         }
-        return original.call(player, x,y,z);
+        return original.call(player, x, y, z);
     }
 }

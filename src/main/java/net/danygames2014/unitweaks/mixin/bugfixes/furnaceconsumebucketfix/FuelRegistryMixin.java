@@ -14,7 +14,7 @@ public class FuelRegistryMixin {
         try {
             return original.call(instance, key, defaultValue);
         } catch (Exception ignored) {
-            
+
         }
 
         return defaultValue;

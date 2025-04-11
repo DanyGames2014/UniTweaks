@@ -7,7 +7,6 @@ import net.minecraft.block.FlowingLiquidBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = FlowingLiquidBlock.class, priority = 900)
 public class FlowingLiquidBlockMixin {

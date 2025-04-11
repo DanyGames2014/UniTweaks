@@ -15,7 +15,7 @@ public class FlintAndSteelItemMixin extends Item {
 
     @Override
     public void useOnEntity(ItemStack stack, LivingEntity entity) {
-        if(UniTweaks.TWEAKS_CONFIG.allowIgnitingEntities){
+        if (UniTweaks.TWEAKS_CONFIG.allowIgnitingEntities) {
             entity.fireTicks += 100;
             stack.damage(1, null);
         }

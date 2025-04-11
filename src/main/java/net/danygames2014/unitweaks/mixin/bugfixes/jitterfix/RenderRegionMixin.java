@@ -22,10 +22,16 @@ import java.util.List;
 
 @Mixin(RenderRegion.class)
 public abstract class RenderRegionMixin extends ChunkRenderer {
-    @Shadow(remap = false) @Final private ChunkRendererAccessor _super;
+    @Shadow(remap = false)
+    @Final
+    private ChunkRendererAccessor _super;
 
-    @Shadow @Final private List<VertexBuffer> buffers;
-    @Shadow @Final private SmoothWorldRenderer stationWorldRenderer;
+    @Shadow
+    @Final
+    private List<VertexBuffer> buffers;
+    @Shadow
+    @Final
+    private SmoothWorldRenderer stationWorldRenderer;
     @Unique
     private double fixedOffsetX;
     @Unique
@@ -34,7 +40,7 @@ public abstract class RenderRegionMixin extends ChunkRenderer {
     private double fixedOffsetZ;
 
     @Inject(method = "init", at = @At(value = "HEAD"), remap = false)
-    public void storeCorrectOffsets(int x, int y, int z, double offsetX, double offsetY, double offsetZ, CallbackInfo ci){
+    public void storeCorrectOffsets(int x, int y, int z, double offsetX, double offsetY, double offsetZ, CallbackInfo ci) {
         this.fixedOffsetX = offsetX;
         this.fixedOffsetY = offsetY;
         this.fixedOffsetZ = offsetZ;
@@ -45,12 +51,12 @@ public abstract class RenderRegionMixin extends ChunkRenderer {
         if (UniTweaks.BUGFIXES_CONFIG.farLandsJitterFix) {
             setChunkOffset(chunkOffset);
         } else {
-            original.call(instance,x,y,z);
+            original.call(instance, x, y, z);
         }
     }
 
     @Unique
     public void setChunkOffset(GlUniform chunkOffset) {
-        chunkOffset.set((float) (_super.smoothbeta_getX()  - this.fixedOffsetX), (float) (_super.smoothbeta_getY() - this.fixedOffsetY), (float) (_super.smoothbeta_getZ() - this.fixedOffsetZ));
+        chunkOffset.set((float) (_super.smoothbeta_getX() - this.fixedOffsetX), (float) (_super.smoothbeta_getY() - this.fixedOffsetY), (float) (_super.smoothbeta_getZ() - this.fixedOffsetZ));
     }
 }

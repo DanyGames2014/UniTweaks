@@ -11,7 +11,7 @@ public class UniTweaks {
 
     @ConfigRoot(value = "general", visibleName = "General", index = 0)
     public static final Config.GeneralConfig GENERAL_CONFIG = new Config.GeneralConfig();
-    
+
     @ConfigRoot(value = "userinterface", visibleName = "User Interface", index = 1)
     public static final Config.UserInterfaceConfig USER_INTERFACE_CONFIG = new Config.UserInterfaceConfig();
 
@@ -26,7 +26,7 @@ public class UniTweaks {
 
     @ConfigRoot(value = "bugfixes", visibleName = "Bugfixes", index = 5)
     public static final Config.BugfixesConfig BUGFIXES_CONFIG = new Config.BugfixesConfig();
-    
+
     @ConfigRoot(value = "oldfeatures", visibleName = "Old Features", index = 6)
     public static final Config.OldFeaturesConfig OLD_FEATURES_CONFIG = new Config.OldFeaturesConfig();
 

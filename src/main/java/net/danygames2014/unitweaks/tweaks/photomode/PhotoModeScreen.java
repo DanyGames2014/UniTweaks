@@ -41,7 +41,7 @@ public class PhotoModeScreen extends Screen {
         this.rotateLeftButton = new ButtonWidget(0, this.width / 2 - 49 - 2 - 20, this.height - 20, 20, 20, "<");
         this.rotateRightButton = new ButtonWidget(1, this.width / 2 + 49 + 2, this.height - 20, 20, 20, ">");
         this.screenshotButton = new ButtonWidget(4, this.width / 2 - 49, this.height - 20, 98, 20, "Take Screenshot");
-        this.tiltSlider = new SliderWidgetWithoutSaving(7, this.width - 151, 0,  "Tilt: Default", 0.33333334f);
+        this.tiltSlider = new SliderWidgetWithoutSaving(7, this.width - 151, 0, "Tilt: Default", 0.33333334f);
         this.timeSlider = new SliderWidgetWithoutSaving(2, this.width - 151, 20, "Time of Day: Current", 0.0f);
 
         this.buttons.add(this.tiltSlider);
@@ -98,7 +98,7 @@ public class PhotoModeScreen extends Screen {
         GL11.glClear(256);
         GL11.glMatrixMode(5889);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0.0,  scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), 0.0, 1000.0, 3000.0);
+        GL11.glOrtho(0.0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), 0.0, 1000.0, 3000.0);
         GL11.glMatrixMode(5888);
         GL11.glLoadIdentity();
         GL11.glTranslatef(0.0f, 0.0f, -2000.0f);
@@ -130,7 +130,7 @@ public class PhotoModeScreen extends Screen {
         this.scroll(Mouse.getDWheel());
 
         if (this.timeSlider.dragging) {
-            long var4 = (long)(this.timeSlider.value * 24000.0F);
+            long var4 = (long) (this.timeSlider.value * 24000.0F);
             if (this.timeSlider.value == 0.0F) {
                 this.desiredTOD = this.originalTOD % 24000L;
             } else {
@@ -145,7 +145,7 @@ public class PhotoModeScreen extends Screen {
         }
 
         if (this.tiltSlider.dragging) {
-            this.tiltGoal = (float)((int)(this.tiltSlider.value * 90.0F));
+            this.tiltGoal = (float) ((int) (this.tiltSlider.value * 90.0F));
             this.updateButtonsText();
         }
     }

@@ -27,10 +27,10 @@ public class KeyPressedListener {
 
     @EventListener
     public void keyPress(KeyStateChangedEvent event) {
-        if(Keyboard.getEventKey() == Keyboard.KEY_NONE){
+        if (Keyboard.getEventKey() == Keyboard.KEY_NONE) {
             return;
         }
-        
+
         if (minecraft == null) {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }

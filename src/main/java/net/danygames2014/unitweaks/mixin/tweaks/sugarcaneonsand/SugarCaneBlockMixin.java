@@ -8,7 +8,6 @@ import net.minecraft.block.SugarCaneBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(SugarCaneBlock.class)
 public class SugarCaneBlockMixin {
@@ -25,6 +24,6 @@ public class SugarCaneBlockMixin {
                 return Block.DIRT.id;
             }
         }
-        return original.call(world,x,y,z);
+        return original.call(world, x, y, z);
     }
 }

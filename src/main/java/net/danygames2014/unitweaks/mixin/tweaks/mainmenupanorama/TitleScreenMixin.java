@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
@@ -45,7 +44,7 @@ public class TitleScreenMixin extends Screen {
         if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
             textRenderer.drawWithShadow(text, x, this.height - 10, Color.white.getRGB());
         } else {
-            original.call(instance, textRenderer, text, x,y,color);
+            original.call(instance, textRenderer, text, x, y, color);
         }
     }
 
@@ -53,7 +52,7 @@ public class TitleScreenMixin extends Screen {
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
     public void cancelDefaultBackgroundRendering(TitleScreen instance, Operation<Void> original) {
         // Redirect to nothing
-        if(!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma){
+        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
             original.call(instance);
         }
     }

@@ -33,7 +33,7 @@ public class ClickSlotC2SPacketMixin {
 
     @Inject(method = "write", at = @At("HEAD"))
     private void debugPrint(DataOutputStream par1, CallbackInfo ci) {
-        if(FabricLoader.getInstance().isDevelopmentEnvironment()){
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             System.out.println("Slot : " + this.slot + " | Button : " + this.button + " | Shift : " + this.holdingShift + " | Stack : " + this.stack + " | SyncId : + " + this.syncId);
         }
     }

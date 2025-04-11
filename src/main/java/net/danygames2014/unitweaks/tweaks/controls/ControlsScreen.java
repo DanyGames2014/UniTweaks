@@ -87,7 +87,7 @@ public class ControlsScreen extends Screen {
 
         // Step Assist
         stepAssist = new ButtonWidget(1001, (this.width / 2) + 10, 10, 100, 20, "Step Assist: OFF");
-        if(this.minecraft.world == null){
+        if (this.minecraft.world == null) {
             stepAssist.active = false;
         }
         this.buttons.add(stepAssist);
@@ -150,11 +150,11 @@ public class ControlsScreen extends Screen {
             for (int j = 0; j < options.allKeys.length; j++) {
                 if (!(options.allKeys[j].translationKey.equals(keybindEntry.keyBinding.translationKey)) && (options.allKeys[j].code == keybindEntry.keyBinding.code)) {
                     // Im sorry for this
-                    
+
                     // Disable checking for dismount
                     if (!options.allKeys[j].translationKey.equals("key.unitweaks.dismount") && !keybindEntry.keyBinding.translationKey.equals("key.unitweaks.dismount")) {
                         // Disable checking for unbound keys
-                        if(options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
+                        if (options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
                             formatting = Formatting.RED;
                         }
                     }
@@ -274,7 +274,7 @@ public class ControlsScreen extends Screen {
 
             GlassYamlFile yamlFile = new GlassYamlFile();
             yamlFile.set("stepAssist", UniTweaks.FEATURES_CONFIG.stepAssist);
-            
+
             try {
                 GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:features")), yamlFile);
             } catch (Exception e) {
@@ -317,8 +317,8 @@ public class ControlsScreen extends Screen {
             this.defaultKeybind = DefaultKeys.getDefaultKeybind(keyBinding);
             this.init();
         }
-        
-        public void init () {
+
+        public void init() {
             this.resetButton = new CallbackButtonWidget(-1, -1, 50, 20, "Reset", this::resetToDefault);
             this.parent.buttons.add(resetButton);
         }

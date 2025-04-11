@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(DeathScreen.class)
 public class DeathScreenMixin {
     @ModifyConstant(method = "render", constant = @Constant(stringValue = "Score: &e"), require = 0)
-    public String fixFormattingCharacter(String constant){
-        if(UniTweaks.BUGFIXES_CONFIG.deathScreenFormattingFix){
+    public String fixFormattingCharacter(String constant) {
+        if (UniTweaks.BUGFIXES_CONFIG.deathScreenFormattingFix) {
             return constant.replace('&', Formatting.FORMATTING_CODE_PREFIX);
         }
         return constant;

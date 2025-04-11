@@ -13,7 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {
-    @Shadow private Minecraft client;
+    @Shadow
+    private Minecraft client;
 
     @Inject(method = "renderClouds", at = @At(value = "HEAD"), cancellable = true)
     public void toggleClouds(float par1, CallbackInfo ci) {

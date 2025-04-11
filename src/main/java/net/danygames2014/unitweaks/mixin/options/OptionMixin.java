@@ -48,19 +48,19 @@ public abstract class OptionMixin {
         options.add(CLOUD_HEIGHT);
 
         Option FPS_LIMIT;
-        ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal()+4, "options.fps_limit", true, false);
+        ModOptions.fpsLimitOption = FPS_LIMIT = OptionMixin.newOption("FPS_LIMIT", last.ordinal() + 4, "options.fps_limit", true, false);
         options.add(FPS_LIMIT);
 
         Option RENDER_DISTANCE;
-        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal()+5, "options.render_distance", true, false);
+        ModOptions.renderDistanceOption = RENDER_DISTANCE = OptionMixin.newOption("RENDER_DISTANCE", last.ordinal() + 5, "options.render_distance", true, false);
         options.add(RENDER_DISTANCE);
 
         Option BRIGHTNESS;
-        ModOptions.brightnessOption = BRIGHTNESS = OptionMixin.newOption("BRIGHTNESS", last.ordinal()+6, "options.brightness", true, false);
+        ModOptions.brightnessOption = BRIGHTNESS = OptionMixin.newOption("BRIGHTNESS", last.ordinal() + 6, "options.brightness", true, false);
         options.add(BRIGHTNESS);
 
         Option GUI_SCALE;
-        ModOptions.guiScaleOption = GUI_SCALE = OptionMixin.newOption("GUI_SCALE", last.ordinal()+7, "options.gui_scale", true, false);
+        ModOptions.guiScaleOption = GUI_SCALE = OptionMixin.newOption("GUI_SCALE", last.ordinal() + 7, "options.gui_scale", true, false);
         options.add(GUI_SCALE);
 
         field_1113 = options.toArray(new Option[0]);

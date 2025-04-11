@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
     @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;scrollInHotbar(I)V"))
-    public boolean disableScrollWhenZooming(PlayerInventory instance, int scroll){
-        if(Keyboard.isKeyDown(KeyBindingListener.zoom.code)){
+    public boolean disableScrollWhenZooming(PlayerInventory instance, int scroll) {
+        if (Keyboard.isKeyDown(KeyBindingListener.zoom.code)) {
             ModOptions.addZoomFovOffset(-MathHelper.clamp(scroll, -1, 1));
             return false;
         }
