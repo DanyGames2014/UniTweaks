@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.bedtweaks;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.BedBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BedBlock.class)
 public class BedBlockMixin {
-    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
-    public SleepAttemptResult useinject(PlayerEntity player, int x, int y, int z) {
+    @WrapOperation(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
+    public SleepAttemptResult useinject(PlayerEntity player, int x, int y, int z, Operation<SleepAttemptResult> original) {
         if (UniTweaks.TWEAKS_CONFIG.disableSleeping) {
             if (!player.world.isRemote) {
                 player.sendMessage("Respawn Point Set");
@@ -21,6 +23,6 @@ public class BedBlockMixin {
                 return SleepAttemptResult.OK;
             }
         }
-        return player.trySleep(x, y, z);
+        return original.call(player, x,y,z);
     }
 }

@@ -1,6 +1,8 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
@@ -102,8 +104,8 @@ public class GameRendererMixin {
         return getFovMultiplier(f, false);
     }
 
-    @Redirect(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
-    public float redirectToCustomFov(GameRenderer instance, float value) {
+    @WrapOperation(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
+    public float redirectToCustomFov(GameRenderer instance, float value, Operation<Float> original) {
         return getFovMultiplier(value);
     }
 

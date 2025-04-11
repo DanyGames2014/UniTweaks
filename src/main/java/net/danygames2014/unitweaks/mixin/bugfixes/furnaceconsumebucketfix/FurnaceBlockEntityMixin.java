@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.furnaceconsumebucketfix;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.item.Item;
@@ -11,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = FurnaceBlockEntity.class, priority = 1100)
 public class FurnaceBlockEntityMixin {
-    @Redirect(
+    @WrapOperation(
             method = "tick",
             at = @At(
                     value = "FIELD",
@@ -20,7 +22,7 @@ public class FurnaceBlockEntityMixin {
             ),
             require = 0
     )
-    public void iNotHasABucket(ItemStack stack, int value) {
+    public void iNotHasABucket(ItemStack stack, int value, Operation<Void> original) {
         if (UniTweaks.BUGFIXES_CONFIG.furnaceConsumeBucketFix) {
             if (stack.itemId == Item.LAVA_BUCKET.id) {
                 stack.itemId = Item.BUCKET.id;
@@ -29,7 +31,7 @@ public class FurnaceBlockEntityMixin {
                 stack.count = value;
             }
         } else {
-            stack.count = value;
+            original.call(stack, value);
         }
     }
 }

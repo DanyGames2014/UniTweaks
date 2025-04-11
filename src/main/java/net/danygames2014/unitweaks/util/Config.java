@@ -241,6 +241,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
+        
+        @ConfigEntry(name = "Multiplayer Entity Jitter Fix", description = "Fixes entities jittering in multiplayer")
+        public Boolean multiplayerEntityJitterFix = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)

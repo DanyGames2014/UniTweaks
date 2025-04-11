@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.trapdoorplacement;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.TrapdoorBlock;
@@ -24,11 +26,11 @@ public class TrapdoorBlockMixin extends Block {
         }
     }
 
-    @Redirect(method = "neighborUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;shouldSuffocate(III)Z"), require = 0)
-    public boolean bamboozlingTheTrapdoor(World world, int x, int y, int z) {
+    @WrapOperation(method = "neighborUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;shouldSuffocate(III)Z"), require = 0)
+    public boolean bamboozlingTheTrapdoor(World world, int x, int y, int z, Operation<Boolean> original) {
         if (UniTweaks.TWEAKS_CONFIG.allowTrapdoorsWithoutSupport) {
             return true;
         }
-        return world.shouldSuffocate(x, y, z);
+        return original.call(world, x, y, z);
     }
 }

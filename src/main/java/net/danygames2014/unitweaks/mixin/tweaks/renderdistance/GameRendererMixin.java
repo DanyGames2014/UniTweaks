@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.renderdistance;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.option.GameOptions;
@@ -32,9 +34,13 @@ public class GameRendererMixin {
         this.viewDistance = ModOptions.getGameRendererChunks() * 16;
     }
 
-    @Redirect(method = "renderFrame", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
-    public int skyFog(GameOptions instance) {
-        return ModOptions.getRenderDistanceChunks() > 7 ? 0 : 3;
+    @WrapOperation(method = "renderFrame", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
+    public int skyFog(GameOptions instance, Operation<Integer> original) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            return ModOptions.getRenderDistanceChunks() > 7 ? 0 : 3;
+        } else {
+            return original.call(instance);
+        }
     }
 
 
