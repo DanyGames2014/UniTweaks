@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.color.world.GrassColors;
 import net.modificationstation.stationapi.api.client.event.color.item.ItemColorsRegisterEvent;
 
-// TODO: add stapi-less variant
 public class ColorProviderListener {
 //    @EventListener
 //    public void registerColorProvider(ItemColorsRegisterEvent event) {

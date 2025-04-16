@@ -6,3 +6,5 @@ accessible field net/minecraft/client/gui/widget/EntryListWidget width I
 
 accessible field net/minecraft/item/ToolItem toolMaterial Lnet/minecraft/item/ToolMaterial;
 accessible field net/minecraft/item/ToolItem miningSpeed F
+
+accessible field net/minecraft/inventory/CraftingInventory stacks [Lnet/minecraft/item/ItemStack;
