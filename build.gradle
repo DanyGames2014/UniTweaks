@@ -95,9 +95,9 @@ dependencies {
         transitive false
     }
 
-    modImplementation("net.mine_diver:SmoothBeta:1.1.7") {
-        transitive false
-    }
+//    modImplementation("net.mine_diver:SmoothBeta:1.1.7") {
+//        transitive false
+//    }
 
     modRuntimeOnly("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
         transitive false
