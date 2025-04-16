@@ -52,6 +52,7 @@
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
+    "tweaks.recipes.FurnaceBlockEntityMixin",
     "tweaks.rightclickarmor.ArmorItemMixin",
     "tweaks.shearharvesting.CobwebBlockMixin",
     "tweaks.shearharvesting.ItemMixin",
