@@ -21,6 +21,9 @@ public class Config {
 
         @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxLength = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
+        
+        @ConfigEntry(name = "Disabled Dimensions (Server Only)", description = "Dimensions which wont be loaded on server boot")
+        public Integer[] disabledDimensions = new Integer[] {2};
     }
 
     public static class UserInterfaceConfig {
