@@ -33,10 +33,8 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "net.danygames2014.unitweaks.event.InitListener",
-      "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipes",
+      "net.danygames2014.unitweaks.tweaks.recipes.RecipeListener",
+      "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipeListener",
       "net.danygames2014.unitweaks.bugfixes.slabminingfix.MiningListener"
     ],
     "stationapi:event_bus_client": [

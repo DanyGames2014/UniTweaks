@@ -27,10 +27,10 @@ public class CraftingRecipeManagerMixin {
                     }
                 }
             }
-            
+
             if(stack1 != null && stack2 != null) {
                 Item item = stack1.getItem();
-                
+
                 int item1durability = item.getMaxDamage() - stack1.getDamage();
                 int item2durability = item.getMaxDamage() - stack2.getDamage();
                 int addedDurability = item1durability + item2durability + item.getMaxDamage() * 10 / 100;
@@ -38,7 +38,7 @@ public class CraftingRecipeManagerMixin {
                 if (resultDurability < 0) {
                     resultDurability = 0;
                 }
-                
+
                 cir.setReturnValue(new ItemStack(item, 1, resultDurability));
             }
         }

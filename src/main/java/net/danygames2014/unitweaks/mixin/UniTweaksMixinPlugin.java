@@ -100,11 +100,12 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
     }
     
     public static ArrayList<String> nonStationMixins = new ArrayList<>(){{
-        add("net.danygames2014.unitweaks.mixin.tweaks.recipes.FurnaceBlockEntityMixin");
         add("net.danygames2014.unitweaks.mixin.bugfixes.droppeditemfix.ItemRendererMixin");
         add("net.danygames2014.unitweaks.mixin.hooks.GameOptionsMixin");
         add("net.danygames2014.unitweaks.mixin.hooks.MinecraftMixin");
         add("net.danygames2014.unitweaks.mixin.tweaks.mipmap.TextureManagerMixin");
+        add("net.danygames2014.unitweaks.mixin.tweaks.recipes.FurnaceBlockEntityMixin");
+        add("net.danygames2014.unitweaks.mixin.tweaks.recipes.BlockMixin");
     }};
 
     public static boolean isDisabled(String mixinClassName, String mixinName, GlassYamlFile config, String configBool) {
