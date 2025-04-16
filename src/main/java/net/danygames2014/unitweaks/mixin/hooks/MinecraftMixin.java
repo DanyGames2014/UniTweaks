@@ -18,8 +18,6 @@ public class MinecraftMixin {
     
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lorg/lwjgl/input/Keyboard;getEventKey()I", ordinal = 2, remap = false))
     public void keyHook(CallbackInfo ci) {
-        if(!FabricLoader.getInstance().isModLoaded("stationapi")) {
-            KeyPressedListener.keyPress();
-        }
+        KeyPressedListener.keyPress();
     }
 }
