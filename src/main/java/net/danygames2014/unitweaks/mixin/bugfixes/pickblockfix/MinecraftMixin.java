@@ -1,7 +1,5 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.pickblockfix;
 
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -12,13 +10,14 @@ import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.util.Util;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+
+import java.util.HashMap;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
@@ -61,18 +60,18 @@ public class MinecraftMixin {
     }
 
     @Unique
-    private final Int2IntMap pickBlockLookupMap = Util.make(new Int2IntOpenHashMap(), map -> {
-        map.put(Block.REDSTONE_WIRE.id, Item.REDSTONE.id);
-        map.put(Block.REPEATER.id, Item.REPEATER.id);
-        map.put(Block.POWERED_REPEATER.id, Item.REPEATER.id);
-        map.put(Block.DOOR.id, Item.WOODEN_DOOR.id);
-        map.put(Block.IRON_DOOR.id, Item.IRON_DOOR.id);
-        map.put(Block.SIGN.id, Item.SIGN.id);
-        map.put(Block.WALL_SIGN.id, Item.SIGN.id);
-        map.put(Block.WHEAT.id, Item.SEEDS.id);
-        map.put(Block.BED.id, Item.BED.id);
-        map.put(Block.CAKE.id, Item.CAKE.id);
-    });
+    private final HashMap<Integer, Integer> pickBlockLookupMap = new HashMap<>() {{
+        put(Block.REDSTONE_WIRE.id, Item.REDSTONE.id);
+        put(Block.REPEATER.id, Item.REPEATER.id);
+        put(Block.POWERED_REPEATER.id, Item.REPEATER.id);
+        put(Block.DOOR.id, Item.WOODEN_DOOR.id);
+        put(Block.IRON_DOOR.id, Item.IRON_DOOR.id);
+        put(Block.SIGN.id, Item.SIGN.id);
+        put(Block.WALL_SIGN.id, Item.SIGN.id);
+        put(Block.WHEAT.id, Item.SEEDS.id);
+        put(Block.BED.id, Item.BED.id);
+        put(Block.CAKE.id, Item.CAKE.id);
+    }};
 
     @Unique
     public int getPickBlockId(int pickedBlockId, int blockId, int blockMeta) {

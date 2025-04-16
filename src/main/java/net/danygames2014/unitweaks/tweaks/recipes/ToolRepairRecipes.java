@@ -7,6 +7,7 @@ import net.modificationstation.stationapi.api.event.container.slot.ItemUsedInCra
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
+// TODO: de-stapi
 public class ToolRepairRecipes {
     @EventListener
     public void combineDurability(ItemUsedInCraftingEvent event) {

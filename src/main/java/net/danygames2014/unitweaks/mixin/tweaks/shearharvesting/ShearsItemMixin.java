@@ -19,9 +19,9 @@ public class ShearsItemMixin {
             ItemEntity itemEntity = null;
 
             if (blockId == Block.COBWEB.id) {
-                itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Block.COBWEB.asItem(), 1));
+                itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Block.COBWEB, 1));
             } else if (blockId == Block.GRASS.id) {
-                itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Block.GRASS.asItem(), 1, 1));
+                itemEntity = new ItemEntity(player.world, x, y, z, new ItemStack(Block.GRASS, 1, 1));
             }
 
             if (itemEntity != null) {

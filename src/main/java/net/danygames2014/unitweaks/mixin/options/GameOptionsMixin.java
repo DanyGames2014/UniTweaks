@@ -2,12 +2,12 @@ package net.danygames2014.unitweaks.mixin.options;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
 import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.client.util.ScreenScaler;
-import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -186,7 +186,7 @@ public abstract class GameOptionsMixin {
             } else if (ModOptions.brightness == 1F) {
                 brightnessValue = translations.get("options.unitweaks.brightness.max");
             } else {
-                brightnessValue = MathHelper.ceil(ModOptions.brightness * 100F) + "%";
+                brightnessValue = Util.ceil(ModOptions.brightness * 100F) + "%";
             }
             String optionName = translations.get("options.unitweaks.brightness") + ": " + brightnessValue;
             cir.setReturnValue(optionName);

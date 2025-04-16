@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 
+// TODO: de-stapi
 public class FurnaceRecipes {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {

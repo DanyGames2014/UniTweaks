@@ -54,7 +54,6 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
 
     }
 
-    @SuppressWarnings("RedundantIfStatement")
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // Cloud Height Slider

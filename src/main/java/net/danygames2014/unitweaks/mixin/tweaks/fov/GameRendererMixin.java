@@ -6,11 +6,11 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.LivingEntity;
-import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
@@ -67,7 +67,7 @@ public class GameRendererMixin {
                 fovZoom += ModOptions.zoomFovOffset * 5;
                 ModOptions.zoomFovOffset = 0;
 
-                fovZoom = MathHelper.clamp(fovZoom, 5F - fov, 130F - fov);
+                fovZoom = Util.clamp(fovZoom, 5F - fov, 130F - fov);
             } else {
                 fov -= (ModOptions.getFovInDegrees() - 50F);
             }

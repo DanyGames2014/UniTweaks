@@ -5,17 +5,18 @@ import net.minecraft.block.Block;
 import net.minecraft.client.color.world.GrassColors;
 import net.modificationstation.stationapi.api.client.event.color.item.ItemColorsRegisterEvent;
 
+// TODO: add stapi-less variant
 public class ColorProviderListener {
-    @EventListener
-    public void registerColorProvider(ItemColorsRegisterEvent event) {
-        event.itemColors.register(
-                (item, damage) -> GrassColors.getColor(0.5F, 0.5F),
-                Block.GRASS_BLOCK
-        );
-
-        event.itemColors.register(
-                (item, damage) -> GrassColors.getColor(0.5F, 0.5F),
-                Block.GRASS.asItem()
-        );
-    }
+//    @EventListener
+//    public void registerColorProvider(ItemColorsRegisterEvent event) {
+//        event.itemColors.register(
+//                (item, damage) -> GrassColors.getColor(0.5F, 0.5F),
+//                Block.GRASS_BLOCK
+//        );
+//
+//        event.itemColors.register(
+//                (item, damage) -> GrassColors.getColor(0.5F, 0.5F),
+//                Block.GRASS.asItem()
+//        );
+//    }
 }

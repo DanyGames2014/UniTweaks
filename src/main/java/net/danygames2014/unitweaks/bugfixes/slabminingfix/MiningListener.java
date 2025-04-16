@@ -10,6 +10,7 @@ import net.minecraft.world.BlockView;
 import net.modificationstation.stationapi.api.event.entity.player.IsPlayerUsingEffectiveToolEvent;
 import net.modificationstation.stationapi.api.event.entity.player.PlayerStrengthOnBlockEvent;
 
+// TODO: add-stapi less variant
 public class MiningListener {
     // Last tick value
     public int lastBlockId = 0;

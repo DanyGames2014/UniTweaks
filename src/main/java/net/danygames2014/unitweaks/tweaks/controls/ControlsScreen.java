@@ -12,8 +12,6 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.resource.language.TranslationStorage;
-import net.modificationstation.stationapi.api.util.Formatting;
-import net.modificationstation.stationapi.api.util.Identifier;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -144,7 +142,7 @@ public class ControlsScreen extends Screen {
      */
     public void refreshKeyLabels() {
         for (KeybindEntry keybindEntry : filteredKeybinds) {
-            Formatting formatting = Formatting.WHITE;
+            String formatting = "§f";
 
             // Look for conflicts
             for (int j = 0; j < options.allKeys.length; j++) {
@@ -155,13 +153,13 @@ public class ControlsScreen extends Screen {
                     if (!options.allKeys[j].translationKey.equals("key.unitweaks.dismount") && !keybindEntry.keyBinding.translationKey.equals("key.unitweaks.dismount")) {
                         // Disable checking for unbound keys
                         if (options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
-                            formatting = Formatting.RED;
+                            formatting = "§c";
                         }
                     }
                 }
             }
 
-            keybindEntry.keyButton.text = formatting + Keyboard.getKeyName(keybindEntry.keyBinding.code) + Formatting.WHITE;
+            keybindEntry.keyButton.text = formatting + Keyboard.getKeyName(keybindEntry.keyBinding.code) + "§f";
         }
     }
 
@@ -276,7 +274,7 @@ public class ControlsScreen extends Screen {
             yamlFile.set("stepAssist", UniTweaks.FEATURES_CONFIG.stepAssist);
 
             try {
-                GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:features")), yamlFile);
+                GCAPI.reloadConfig("unitweaks:features", yamlFile);
             } catch (Exception e) {
                 UniTweaks.LOGGER.error("Failed to reload config", e);
             }

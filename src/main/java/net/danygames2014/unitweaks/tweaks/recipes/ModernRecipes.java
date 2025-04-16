@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
-@SuppressWarnings("unused")
+// TODO: de-stapi
 public class ModernRecipes {
     @EventListener(priority = ListenerPriority.HIGH)
     public void registerRecipes(RecipeRegisterEvent event) {

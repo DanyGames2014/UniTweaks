@@ -1,6 +1,5 @@
 package net.danygames2014.unitweaks.mixin.tweaks.shearharvesting;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +16,7 @@ public class ItemMixin {
 
     @Inject(method = "getPlacementMetadata", at = @At(value = "HEAD"), cancellable = true)
     public void overridePlacedMeta(int meta, CallbackInfoReturnable<Integer> cir) {
-        if (this.id == Block.GRASS.asItem().id) {
+        if (this.id == 31) { // 31 = Grass Item ID
             cir.setReturnValue(1);
         }
     }

@@ -1,11 +1,11 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerInventory;
-import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +15,7 @@ public class MinecraftMixin {
     @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;scrollInHotbar(I)V"))
     public boolean disableScrollWhenZooming(PlayerInventory instance, int scroll) {
         if (Keyboard.isKeyDown(KeyBindingListener.zoom.code)) {
-            ModOptions.addZoomFovOffset(-MathHelper.clamp(scroll, -1, 1));
+            ModOptions.addZoomFovOffset(-Util.clamp(scroll, -1, 1));
             return false;
         }
         return true;

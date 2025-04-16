@@ -5,28 +5,26 @@ import net.danygames2014.unitweaks.tweaks.rawinput.RawInputHandler;
 import net.danygames2014.unitweaks.util.Util;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
-import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.client.event.keyboard.KeyStateChangedEvent;
 import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
-
 @SuppressWarnings({"unused", "deprecation"})
 public class KeyPressedListener {
 
-    Minecraft minecraft = null;
+    static Minecraft minecraft = null;
     public static boolean releasedMouse = false;
 
     @EventListener
-    public void keyPress(KeyStateChangedEvent event) {
+    public void stationKeyPress(KeyStateChangedEvent event){
+        keyPress();
+    }
+    
+    public static void keyPress() {
         if (Keyboard.getEventKey() == Keyboard.KEY_NONE) {
             return;
         }
@@ -48,47 +46,9 @@ public class KeyPressedListener {
         }
 
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
-            /// Dev Keybinds
-            if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-                if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
-                    if (minecraft.player != null && minecraft.world != null) {
-                        World world = minecraft.world;
-                        PlayerEntity player = minecraft.player;
-
-                        world.spawnEntity(new ItemEntity(world, player.x, player.y, player.z, new ItemStack(Block.SLAB, 16, 4)));
-                    }
-                }
-
-//                if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
-//                    if (minecraft.player != null) {
-//                        Block block = minecraft.world.getBlockState(new BlockPos((int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z))).getBlock();
-//                        System.out.println(block.getLuminance(minecraft.world, (int) Math.round(minecraft.player.x), (int) Math.round(minecraft.player.y), (int) Math.round(minecraft.player.z)));
-//                    }
-//                }
-//
-//                if (Keyboard.isKeyDown(Keyboard.KEY_N)) {
-//                    minecraft.world.setTime(9223372036854775700L);
-//                    minecraft.player.method_490(minecraft.world.getTime() + "");
-//                }
-//
-//                if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
-//                    minecraft.player.method_490(minecraft.world.getTime() + "");
-//                }
-//
-//                if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-//                    minecraft.world.setTime(minecraft.world.getTime() + 1000L);
-//                    minecraft.player.method_490(minecraft.world.getTime() + "");
-//                }
-//
-//                if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-//                    minecraft.world.setTime(minecraft.world.getTime() - 100L);
-//                    minecraft.player.method_490(minecraft.world.getTime() + "");
-//                }
-            }
-
             // Photo Mode
             if (Keyboard.isKeyDown(KeyBindingListener.photoMode.code)) {
-                this.minecraft.setScreen(new PhotoModeScreen(null));
+                minecraft.setScreen(new PhotoModeScreen(null));
             }
 
             // Panorama Screenshot
@@ -139,7 +99,7 @@ public class KeyPressedListener {
 
     }
 
-    public void dismount() {
+    public static void dismount() {
         if (minecraft.player == null) {
             return;
         }
@@ -155,7 +115,7 @@ public class KeyPressedListener {
         }
     }
 
-    public void panoramaScreenshot() {
+    public static void panoramaScreenshot() {
         // FOV 70 and 2560x1440 -> 2304x1440 scaling works well
         if (minecraft.player == null) {
             return;
@@ -174,7 +134,7 @@ public class KeyPressedListener {
         minecraft.options.hideHud = false;
     }
 
-    public void facePlayer(int direction) {
+    public static void facePlayer(int direction) {
         minecraft.player.x = Math.floor(minecraft.player.x) + 0.5;
         minecraft.player.z = Math.floor(minecraft.player.z) + 0.5;
         switch (direction) {

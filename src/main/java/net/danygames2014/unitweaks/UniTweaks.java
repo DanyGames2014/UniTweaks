@@ -2,12 +2,12 @@ package net.danygames2014.unitweaks;
 
 import net.danygames2014.unitweaks.util.Config;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
-import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+// TODO: de-stapi
 public class UniTweaks {
-    @Entrypoint.Logger
-    public static Logger LOGGER;
+    public static Logger LOGGER = LogManager.getLogger("UniTweaks");
 
     @ConfigRoot(value = "general", visibleName = "General", index = 0)
     public static final Config.GeneralConfig GENERAL_CONFIG = new Config.GeneralConfig();
