@@ -29,7 +29,9 @@ public class GameRendererMixin {
             )
     )
     public void overrideFarPlaneDistance(float i, int par2, CallbackInfo ci) {
-        this.viewDistance = ModOptions.getGameRendererChunks() * 16;
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            this.viewDistance = ModOptions.getGameRendererChunks() * 16;
+        }
     }
 
     @WrapOperation(method = "renderFrame", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"))
@@ -47,9 +49,8 @@ public class GameRendererMixin {
 
     @Inject(method = "applyFog", at = @At(value = "HEAD"))
     public void injectViewDistance(int tickDelta, float par2, CallbackInfo ci) {
-        originalViewDistance = this.viewDistance;
-
         if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
+            originalViewDistance = this.viewDistance;
             this.viewDistance = this.viewDistance * ModOptions.getFogMultiplier();
         }
     }
