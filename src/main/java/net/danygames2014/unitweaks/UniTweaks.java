@@ -5,7 +5,6 @@ import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// TODO: de-stapi
 public class UniTweaks {
     public static Logger LOGGER = LogManager.getLogger("UniTweaks");
 

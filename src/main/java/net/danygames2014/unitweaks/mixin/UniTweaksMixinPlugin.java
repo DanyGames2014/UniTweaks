@@ -1,7 +1,7 @@
 package net.danygames2014.unitweaks.mixin;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
 import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -87,18 +88,25 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
             return false;
         }
 
-        if (mixinClassName.equals("net.danygames2014.unitweaks.mixin.bugfixes.furnaceconsumebucketfix.FuelRegistryMixin")) {
-            ModContainer stapiMod = FabricLoader.getInstance().getModContainer("stationapi").get();
-            if (stapiMod.getMetadata().getVersion().getFriendlyString().equals("2.0.0-alpha.3")) {
-                System.err.println("Stapi L Moment Detected, Fixing");
-                return true;
-            } else {
-                return false;
+        if (FabricLoader.getInstance().isModLoaded("stationapi")) {
+            if(nonStationMixins.contains(mixinClassName)) {
+                UniTweaks.LOGGER.info("StationAPI Detected. Skipping mixin " + mixinClassName);
+                return false;       
             }
         }
 
+
         return true;
     }
+    
+    public static ArrayList<String> nonStationMixins = new ArrayList<>(){{
+        add("net.danygames2014.unitweaks.mixin.bugfixes.droppeditemfix.ItemRendererMixin");
+        add("net.danygames2014.unitweaks.mixin.hooks.GameOptionsMixin");
+        add("net.danygames2014.unitweaks.mixin.hooks.MinecraftMixin");
+        add("net.danygames2014.unitweaks.mixin.tweaks.mipmap.TextureManagerMixin");
+        add("net.danygames2014.unitweaks.mixin.tweaks.recipes.FurnaceBlockEntityMixin");
+        add("net.danygames2014.unitweaks.mixin.tweaks.recipes.BlockMixin");
+    }};
 
     public static boolean isDisabled(String mixinClassName, String mixinName, GlassYamlFile config, String configBool) {
         if (config.contains(configBool)) {

@@ -21,6 +21,9 @@ public class Config {
 
         @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxLength = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
+        
+        @ConfigEntry(name = "Disabled Dimensions (Server Only)", description = "Dimensions which wont be loaded on server boot")
+        public Integer[] disabledDimensions = new Integer[] {2};
     }
 
     public static class UserInterfaceConfig {
@@ -311,6 +314,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
+        
+        @ConfigEntry(name = "Grass Block Item Fix", description = "Fixes grass block top texture being wrong")
+        public Boolean grassBlockItemFix = true;
 
         @ConfigEntry(name = "Multiplayer Mining Delay Fix", description = "WARNING: This could be considered a hack on some servers")
         public Boolean miningDelayFix = true;

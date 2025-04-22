@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.danygames2014.unitweaks.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "plugin": "net.danygames2014.unitweaks.mixin.UniTweaksMixinPlugin",
   "mixins": [
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
@@ -51,6 +51,9 @@
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
+    "tweaks.recipes.BlockMixin",
+    "tweaks.recipes.FurnaceBlockEntityMixin",
+    "tweaks.recipes.CraftingRecipeManagerMixin",
     "tweaks.rightclickarmor.ArmorItemMixin",
     "tweaks.shearharvesting.CobwebBlockMixin",
     "tweaks.shearharvesting.ItemMixin",
@@ -62,6 +65,7 @@
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
+    "tweaks.disabledimensionload.MinecraftServerMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [

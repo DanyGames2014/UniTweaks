@@ -1,4 +1,4 @@
-package net.danygames2014.unitweaks.mixin;
+package net.danygames2014.unitweaks.mixin.tweaks.mipmap;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
