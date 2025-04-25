@@ -208,6 +208,10 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Expand Chicken Hitbox", description = "Expands chicken hitbox to it's modern size", multiplayerSynced = true)
         public Boolean expandChickenHitbox = true;
+        
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Stackable Chests", description = "Allows you to stack chests on top of each other", multiplayerSynced = true)
+        public Boolean stackableChests = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Don't Damage Flint And Steel on failed ignite", multiplayerSynced = true)
