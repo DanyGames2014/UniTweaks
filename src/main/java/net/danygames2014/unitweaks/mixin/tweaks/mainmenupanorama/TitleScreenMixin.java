@@ -41,7 +41,7 @@ public class TitleScreenMixin extends Screen {
 
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", ordinal = 0))
     public void moveVersionText(TitleScreen instance, TextRenderer textRenderer, String text, int x, int y, int color, Operation<Void> original) {
-        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma && FabricLoader.getInstance().isModLoaded("modmenu")) {
             textRenderer.drawWithShadow(text, x, this.height - 10, Color.white.getRGB());
         } else {
             original.call(instance, textRenderer, text, x, y, color);
@@ -52,7 +52,7 @@ public class TitleScreenMixin extends Screen {
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
     public void cancelDefaultBackgroundRendering(TitleScreen instance, Operation<Void> original) {
         // Redirect to nothing
-        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
+        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
             original.call(instance);
         }
     }
