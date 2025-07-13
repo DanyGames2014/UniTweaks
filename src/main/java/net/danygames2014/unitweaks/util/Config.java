@@ -198,10 +198,6 @@ public class Config {
         public Boolean pressurePlatesOnFences = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigEntry(name = "Better Boat handling (rn just quicker)", multiplayerSynced = true)
-        public Boolean betterBoats = false;
-
-        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Allow shears to harvest cobwebs and tall grass", multiplayerSynced = true)
         public Boolean shearHarvesting = true;
 
