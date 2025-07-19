@@ -181,7 +181,7 @@ public class TitleScreenMixin extends Screen {
             GL11.glColorMask(true, true, true, false);
         }
 
-        tessellator.translate(0.0D, 0.0D, 0.0D);
+        tessellator.translate(0.0f, 0.0f, 0.0f);
         GL11.glColorMask(true, true, true, true);
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glPopMatrix();
