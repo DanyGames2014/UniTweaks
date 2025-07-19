@@ -138,6 +138,9 @@ public class Config {
         @ConfigEntry(name = "More Sounds", description = "Adds sounds for various things (tool breaking, sheep shearing, eating etc.)")
         public Boolean moreSounds = true;
 
+        @ConfigEntry(name = "More Sounds (Chests)", description = "Adds sounds for chests (a few options are available)")
+        public ChestSoundsEnum moreSoundsChests = ChestSoundsEnum.DOOR;
+
         public static class FastLeafDecayConfig {
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
             @ConfigEntry(name = "Enable Fast Leaf Decay", multiplayerSynced = true)
