@@ -46,6 +46,9 @@
     ],
     "gcapi3":[
       "net.danygames2014.unitweaks.UniTweaks"
+    ],
+    "gcapi3:factory_provider": [
+      "net.danygames2014.unitweaks.util.ChestSoundsEnumFactory"
     ]
   },
   "mixins": [
