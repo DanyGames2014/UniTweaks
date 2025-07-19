@@ -1,22 +1,14 @@
-package net.danygames2014.unitweaks.util;
+package net.danygames2014.unitweaks.tweaks.moresounds;
 
 public enum ChestSoundsEnum {
 
     NONE("None", "", ""),
     MODERN("Modern", "unitweaks:random.chestopen", "unitweaks:random.chestclosed"),
-    DOOR("Door", "random.door_open", "random.door_close"),
-    BLOCK("Block", "step.wood", "step.wood"),
-    BUTTON("Button", "random.click", "random.click");
+    DOOR("Door", "random.door_open", "random.door_close");
 
     final String stringValue;
     final String openSound;
     final String closeSound;
-
-    ChestSoundsEnum() {
-        this.stringValue = "None";
-        this.openSound = "";
-        this.closeSound = "";
-    }
 
     ChestSoundsEnum(String stringValue, String openSound, String closeSound) {
         this.stringValue = stringValue;

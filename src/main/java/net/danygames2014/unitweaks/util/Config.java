@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
+import net.danygames2014.unitweaks.tweaks.moresounds.ChestSoundsEnum;
 import net.glasslauncher.mods.gcapi3.api.ConfigCategory;
 import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 import net.glasslauncher.mods.gcapi3.api.TriBoolean;
