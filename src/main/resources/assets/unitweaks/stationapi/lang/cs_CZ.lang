@@ -1,0 +1,60 @@
+# Keybinds
+key.unitweaks.panorama_screenshot=Panoramatický Snímek Obrazovky
+key.unitweaks.hotbar_1=Lišta 1
+key.unitweaks.hotbar_2=Lišta 2
+key.unitweaks.hotbar_3=Lišta 3
+key.unitweaks.hotbar_4=Lišta 4
+key.unitweaks.hotbar_5=Lišta 5
+key.unitweaks.hotbar_6=Lišta 6
+key.unitweaks.hotbar_7=Lišta 7
+key.unitweaks.hotbar_8=Lišta 8
+key.unitweaks.hotbar_9=Lišta 9
+key.unitweaks.hide_hud=Skrýt HUD
+key.unitweaks.take_screenshot=Pořídit Snímek Obrazovky
+key.unitweaks.debug_hud=Debug HUD
+key.unitweaks.third_person=Pohled z třetí osoby
+key.unitweaks.cinematic_camera=Filmová Kamera
+key.unitweaks.toggle_fullscreen=Celá Obrazovka
+key.unitweaks.dismount=Vystoupit z vozidla
+key.unitweaks.zoom=Příblížit
+key.unitweaks.release_mouse=Odemknout Kurzor
+key.unitweaks.photo_mode=Foto Režim
+key.unitweaks.rescan=Skenovat Myši
+key.unitweaks.toggle_raw_input=Přepnout Raw Input
+
+# FOV
+options.unitweaks.fov=Zorné Pole
+options.unitweaks.fov.normal=Normální
+options.unitweaks.fov.max=Quake Pro
+
+# Fog
+options.unitweaks.fog=Mlha
+options.unitweaks.fog.off=Vypnuto
+options.unitweaks.fog.normal=Normální
+options.unitweaks.fog.max=Maximální
+options.unitweaks.multiplier_symbol=x
+
+# Clouds
+options.unitweaks.clouds=Mraky
+options.unitweaks.cloud_height=Výška Mraků
+
+# FPS Limit
+options.unitweaks.fps_limit=Omezovač FPS
+options.unitweaks.fps_limit.max=Neomezené
+
+# Render Distance
+options.unitweaks.render_distance=Vykreslovací Vzdálenost
+options.unitweaks.render_distance.chunks=chunků
+options.unitweaks.render_distance.tiny=Malá
+options.unitweaks.render_distance.short=Krátká
+options.unitweaks.render_distance.normal=Normální
+options.unitweaks.render_distance.far=Vzdálená
+
+# Brightness
+options.unitweaks.brightness=Jas
+options.unitweaks.brightness.min=Normální
+options.unitweaks.brightness.max=Světlý
+
+# GUI Scale
+options.unitweaks.gui_scale=Velikost GUI
+options.unitweaks.gui_scale.auto=Automatická

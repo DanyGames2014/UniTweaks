@@ -32,20 +32,15 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.danygames2014.unitweaks.UniTweaks",
       "net.danygames2014.unitweaks.event.InitListener",
-      "net.danygames2014.unitweaks.tweaks.recipes.ModernRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.TweakedRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.ObtainableRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipes",
-      "net.danygames2014.unitweaks.tweaks.recipes.ToolRepairRecipes",
+      "net.danygames2014.unitweaks.tweaks.recipes.RecipeListener",
+      "net.danygames2014.unitweaks.tweaks.recipes.FurnaceRecipeListener",
       "net.danygames2014.unitweaks.bugfixes.slabminingfix.MiningListener"
     ],
     "stationapi:event_bus_client": [
       "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener",
       "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener",
-      "net.danygames2014.unitweaks.bugfixes.grassblockitemfix.ColorProviderListener",
-      "net.danygames2014.unitweaks.tweaks.rawinput.RawInputHandler"
+      "net.danygames2014.unitweaks.bugfixes.grassblockitemfix.ColorProviderListener"
     ],
     "stationapi:event_bus_server": [
     ],
@@ -62,17 +57,18 @@
   "accessWidener": "unitweaks.accesswidener",
   "depends": {
     "minecraft": "1.0.0-beta.7.3",
-    "gcapi3": "*",
-    "stationapi": "*"
+    "gcapi3": "*"
   },
 
   "recommends": {
-    "modmenu": "*"
+    "modmenu": "*",
+    "stationapi": "*"
   },
 
   "conflicts": {
     "smallcraftingtweaks": "*",
-    "nowobtainablerecipes": "*"
+    "nowobtainablerecipes": "*",
+    "extremeview": "*"
   },
 
   "breaks": {
@@ -80,7 +76,6 @@
     "mostlymodernrecipes": "*",
     "betatweaks": "*",
     "finalbeta": "*",
-    "extremeview": "*",
     "gameplayessentials": "*",
     "clientsideessentials": "*",
     "photomode": "*"

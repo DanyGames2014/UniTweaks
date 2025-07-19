@@ -7,8 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
-import net.modificationstation.stationapi.api.registry.BlockRegistry;
-import net.modificationstation.stationapi.api.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ShovelItem.class)
@@ -20,10 +18,14 @@ public class ShovelItemMixin extends ToolItem {
     @Override
     public float getMiningSpeedMultiplier(ItemStack stack, Block block) {
         if (UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
-            for (int i = 0; i < EffectiveBlocksLists.shovelEffectiveAgainst.length; i++) {
-                if (BlockRegistry.INSTANCE.get(Identifier.of(EffectiveBlocksLists.shovelEffectiveAgainst[i])) == block) {
-                    return this.miningSpeed;
-                }
+//            for (int i = 0; i < EffectiveBlocksLists.shovelEffectiveAgainst.length; i++) {
+//                if (BlockRegistry.INSTANCE.get(Identifier.of(EffectiveBlocksLists.shovelEffectiveAgainst[i])) == block) {
+//                    return this.miningSpeed;
+//                }
+//            }
+
+            if (EffectiveBlocksLists.shovelBlocks.contains(block)) {
+                return this.miningSpeed;
             }
         }
 

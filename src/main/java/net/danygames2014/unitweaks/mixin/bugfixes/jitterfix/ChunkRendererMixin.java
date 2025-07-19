@@ -29,15 +29,15 @@ public class ChunkRendererMixin {
     private double fixedOffsetZ;
 
     @Inject(method = "init", at = @At(value = "HEAD"))
-    public void storeCorrectOffsets(int x, int y, int z, double offsetX, double offsetY, double offsetZ, CallbackInfo ci){
+    public void storeCorrectOffsets(int x, int y, int z, double offsetX, double offsetY, double offsetZ, CallbackInfo ci) {
         this.fixedOffsetX = offsetX;
         this.fixedOffsetY = offsetY;
         this.fixedOffsetZ = offsetZ;
     }
-    
+
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", remap = false))
     public void useDoubleOffsets(float x, float y, float z, Operation<Void> original) {
-        if (UniTweaks.BUGFIXES_CONFIG.farLandJitterFix) {
+        if (UniTweaks.BUGFIXES_CONFIG.farLandsJitterFix) {
             GL11.glTranslated(this.x - fixedOffsetX, this.y - fixedOffsetY, this.z - fixedOffsetZ);
         } else {
             original.call(x, y, z);

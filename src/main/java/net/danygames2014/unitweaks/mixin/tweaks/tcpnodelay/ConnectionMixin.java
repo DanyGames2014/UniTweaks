@@ -15,7 +15,7 @@ import java.net.SocketException;
 public class ConnectionMixin {
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Ljava/net/Socket;setTrafficClass(I)V", shift = At.Shift.AFTER))
     public void enableTcpNodelay(Socket socket, String string, NetworkHandler networkHandler, CallbackInfo ci) throws SocketException {
-        if(UniTweaks.GENERAL_CONFIG.tcpNoDelay) {
+        if (UniTweaks.GENERAL_CONFIG.tcpNoDelay) {
             socket.setTcpNoDelay(true);
         }
     }

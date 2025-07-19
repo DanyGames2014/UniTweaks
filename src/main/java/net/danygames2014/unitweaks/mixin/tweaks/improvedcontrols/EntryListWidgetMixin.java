@@ -13,7 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(EntryListWidget.class)
 public class EntryListWidgetMixin {
     @Final
-    @Shadow public int width;
+    @Shadow
+    public int width;
 
 //    @ModifyConstant(method = "render", constant = @Constant(intValue = 124))
 //    public int l(int constant){
@@ -22,9 +23,9 @@ public class EntryListWidgetMixin {
 //        }
 //        return constant;
 //    }
-    
+
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lorg/lwjgl/input/Mouse;isButtonDown(I)Z", remap = false, ordinal = 0))
-    public void anInt(int mouseX, int mouseY, float f, CallbackInfo ci, @Local(ordinal = 3) LocalIntRef start, @Local(ordinal = 4) LocalIntRef end){
+    public void anInt(int mouseX, int mouseY, float f, CallbackInfo ci, @Local(ordinal = 3) LocalIntRef start, @Local(ordinal = 4) LocalIntRef end) {
 //        if(KeybindListWidget.class.isAssignableFrom(this.getClass())){
 //            start.set(this.width - 6);
 //            end.set(this.width);

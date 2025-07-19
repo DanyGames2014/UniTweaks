@@ -1,14 +1,16 @@
 package net.danygames2014.unitweaks.mixin.tweaks.fov;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.LivingEntity;
-import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
@@ -18,7 +20,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.BiFunction;
@@ -66,7 +67,7 @@ public class GameRendererMixin {
                 fovZoom += ModOptions.zoomFovOffset * 5;
                 ModOptions.zoomFovOffset = 0;
 
-                fovZoom = MathHelper.clamp(fovZoom, 5F - fov, 130F - fov);
+                fovZoom = Util.clamp(fovZoom, 5F - fov, 130F - fov);
             } else {
                 fov -= (ModOptions.getFovInDegrees() - 50F);
             }
@@ -102,8 +103,8 @@ public class GameRendererMixin {
         return getFovMultiplier(f, false);
     }
 
-    @Redirect(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
-    public float redirectToCustomFov(GameRenderer instance, float value) {
+    @WrapOperation(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
+    public float redirectToCustomFov(GameRenderer instance, float value, Operation<Float> original) {
         return getFovMultiplier(value);
     }
 

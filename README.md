@@ -25,6 +25,7 @@
 * The Done Button in Achievements will lead to ingame menu instead of unpausing
 * Disable pausing on lost focus
 * Keybind for releasing the mouse
+* Allow chaning the Resource URL (Defaults to Betacraft)
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
@@ -117,6 +118,7 @@
 ## Bugfixes
 * Bit Depth Fix - Fixes Z-Fighting on AMD graphic cards
 * HiDPI Fix - Fixes the game not scaling properly with display scaling
+* Far Lands Jitter Fix - Fixes jittering near farlands
 * Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
 * Stairs Drop Fix - Stairs now drop themselves
 * Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
@@ -148,3 +150,4 @@
 * Hotbar Rendering Fix - Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics
 * Wooden Slab Mining Fix - Fixes wooden slabs only being mineable with a pickaxe
 * Fence Lighting Fix - Fixes fence bottom face being dark when placed on a block
+* Multiplayer Block Mining Delay Fix - Fixes the inconsistent delay between mining blocks in multiplayer

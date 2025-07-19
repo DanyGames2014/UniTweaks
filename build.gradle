@@ -3,8 +3,9 @@
 //file:noinspection ForeignDelegate
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.10.1'
+    id 'fabric-loom' version '1.10.5'
     id 'babric-loom-extension' version '1.10.1'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -69,6 +70,7 @@ repositories {
     }
 
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -85,7 +87,7 @@ dependencies {
     modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
         transitive false
     }
-    
+
     modImplementation("net.glasslauncher.mods:glass-networking:${project.glass_networking_version}") {
         transitive false
     }
@@ -94,23 +96,27 @@ dependencies {
         transitive false
     }
 
-    modRuntimeOnly("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
+    modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
         transitive false
     }
 
-    modRuntimeOnly("com.github.matthewperiut:retrocommands:${project.retrocommands_version}") {
+    modImplementation("maven.modrinth:retrocommands:${project.retrocommands_version}-b1.7.3") {
         transitive false
     }
 
-    modRuntimeOnly("net.danygames2014:spawneggs:${project.spawneggs_version}") {
+    modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
         transitive false
     }
 
-    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-fabric,b1.7.3") {
+    modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
         transitive false
     }
-    
-    modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-fabric,b1.7.3") {
+
+    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-b1.7.3") {
+        transitive false
+    }
+
+    modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-b1.7.3") {
         transitive false
     }
 }
@@ -156,5 +162,22 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
         }
+    }
+}
+
+// Modrinth Publishing
+modrinth {
+    token = project.modrinth_publishing_cave
+    projectId = project.modrinth_slug
+    versionNumber = project.mod_version
+    versionName = "${project.modrinth_version_name} ${project.mod_version}"
+    changelog = rootProject.file("CHANGELOG.md").text
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = ["b1.7.3"]
+    loaders = ["fabric", "babric"]
+    dependencies {
+        required.project "stationapi"
+        required.project "glass-config-api"
     }
 }

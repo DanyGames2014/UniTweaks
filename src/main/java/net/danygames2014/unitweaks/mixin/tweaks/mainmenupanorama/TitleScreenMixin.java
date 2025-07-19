@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.mainmenupanorama;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.font.TextRenderer;
@@ -14,7 +16,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
@@ -38,26 +39,27 @@ public class TitleScreenMixin extends Screen {
     @Unique
     public int panoramaImageSize = 256;
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", ordinal = 0))
-    public void moveVersionText(TitleScreen instance, TextRenderer textRenderer, String text, int x, int y, int color) {
-        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma) {
+    @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V", ordinal = 0))
+    public void moveVersionText(TitleScreen instance, TextRenderer textRenderer, String text, int x, int y, int color, Operation<Void> original) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma && FabricLoader.getInstance().isModLoaded("modmenu")) {
             textRenderer.drawWithShadow(text, x, this.height - 10, Color.white.getRGB());
         } else {
-            textRenderer.drawWithShadow(text, x, y, color);
+            original.call(instance, textRenderer, text, x, y, color);
         }
     }
 
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
-    public void cancelDefaultBackgroundRendering(TitleScreen instance) {
+    @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V"))
+    public void cancelDefaultBackgroundRendering(TitleScreen instance, Operation<Void> original) {
         // Redirect to nothing
+        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
+            original.call(instance);
+        }
     }
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;renderBackground()V", shift = At.Shift.AFTER))
     public void redirectBackgroundRendering(int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        if (!UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma || !FabricLoader.getInstance().isModLoaded("modmenu")) {
-            this.renderBackground();
-        } else {
+        if (UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.enablePanorma && FabricLoader.getInstance().isModLoaded("modmenu")) {
             this.fwidth = (float) width;
             this.fheight = (float) height;
             if (!panoramaInit) {

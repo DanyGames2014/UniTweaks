@@ -42,7 +42,7 @@ public abstract class BlockRenderManagerMixin {
     float minZ;
     @Unique
     float maxZ;
-    
+
     // I know this is not good
     @Inject(method = "renderFence", at = @At(value = "HEAD"), cancellable = true)
     public void renderConnectedFence(Block block, int x, int y, int z, CallbackInfoReturnable<Boolean> cir) {
@@ -66,7 +66,7 @@ public abstract class BlockRenderManagerMixin {
             maxX = connectedPosX ? 1.0F : 0.5625F;
             minZ = connectedNegZ ? 0.0F : 0.4375F;
             maxZ = connectedPosZ ? 1.0F : 0.5625F;
-            
+
             if (connectedX) {
                 block.setBoundingBox(minX, 0.75F, 0.4375F, maxX, 0.9375F, 0.5625F);
                 this.renderBlock(block, x, y, z);

@@ -12,8 +12,6 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.resource.language.TranslationStorage;
-import net.modificationstation.stationapi.api.util.Formatting;
-import net.modificationstation.stationapi.api.util.Identifier;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -87,7 +85,7 @@ public class ControlsScreen extends Screen {
 
         // Step Assist
         stepAssist = new ButtonWidget(1001, (this.width / 2) + 10, 10, 100, 20, "Step Assist: OFF");
-        if(this.minecraft.world == null){
+        if (this.minecraft.world == null) {
             stepAssist.active = false;
         }
         this.buttons.add(stepAssist);
@@ -144,24 +142,24 @@ public class ControlsScreen extends Screen {
      */
     public void refreshKeyLabels() {
         for (KeybindEntry keybindEntry : filteredKeybinds) {
-            Formatting formatting = Formatting.WHITE;
+            String formatting = "§f";
 
             // Look for conflicts
             for (int j = 0; j < options.allKeys.length; j++) {
                 if (!(options.allKeys[j].translationKey.equals(keybindEntry.keyBinding.translationKey)) && (options.allKeys[j].code == keybindEntry.keyBinding.code)) {
                     // Im sorry for this
-                    
+
                     // Disable checking for dismount
                     if (!options.allKeys[j].translationKey.equals("key.unitweaks.dismount") && !keybindEntry.keyBinding.translationKey.equals("key.unitweaks.dismount")) {
                         // Disable checking for unbound keys
-                        if(options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
-                            formatting = Formatting.RED;
+                        if (options.allKeys[j].code != Keyboard.KEY_NONE || keybindEntry.keyBinding.code != Keyboard.KEY_NONE) {
+                            formatting = "§c";
                         }
                     }
                 }
             }
 
-            keybindEntry.keyButton.text = formatting + Keyboard.getKeyName(keybindEntry.keyBinding.code) + Formatting.WHITE;
+            keybindEntry.keyButton.text = formatting + Keyboard.getKeyName(keybindEntry.keyBinding.code) + "§f";
         }
     }
 
@@ -274,9 +272,9 @@ public class ControlsScreen extends Screen {
 
             GlassYamlFile yamlFile = new GlassYamlFile();
             yamlFile.set("stepAssist", UniTweaks.FEATURES_CONFIG.stepAssist);
-            
+
             try {
-                GCAPI.reloadConfig(String.valueOf(Identifier.of("unitweaks:features")), yamlFile);
+                GCAPI.reloadConfig("unitweaks:features", yamlFile);
             } catch (Exception e) {
                 UniTweaks.LOGGER.error("Failed to reload config", e);
             }
@@ -317,8 +315,8 @@ public class ControlsScreen extends Screen {
             this.defaultKeybind = DefaultKeys.getDefaultKeybind(keyBinding);
             this.init();
         }
-        
-        public void init () {
+
+        public void init() {
             this.resetButton = new CallbackButtonWidget(-1, -1, 50, 20, "Reset", this::resetToDefault);
             this.parent.buttons.add(resetButton);
         }

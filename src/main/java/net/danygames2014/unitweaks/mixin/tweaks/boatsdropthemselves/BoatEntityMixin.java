@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.boatsdropthemselves;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -10,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BoatEntity.class)
 public abstract class BoatEntityMixin extends Entity {
@@ -19,12 +20,12 @@ public abstract class BoatEntityMixin extends Entity {
         super(world);
     }
 
-    @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;dropItem(IIF)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), require = 0)
-    public ItemEntity changeItemId(BoatEntity instance, int id, int count, float offset) {
+    @WrapOperation(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/vehicle/BoatEntity;dropItem(IIF)Lnet/minecraft/entity/ItemEntity;", ordinal = 0), require = 0)
+    public ItemEntity changeItemId(BoatEntity instance, int id, int count, float offset, Operation<ItemEntity> original) {
         if (UniTweaks.TWEAKS_CONFIG.boatsDropThemselves) {
             return this.dropItem(Item.BOAT.id, 1, offset);
         } else {
-            return this.dropItem(id, count, offset);
+            return original.call(instance, id, count, offset);
         }
     }
 

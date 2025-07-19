@@ -1,8 +1,49 @@
 package net.danygames2014.unitweaks.util;
 
+import net.minecraft.block.Block;
+
+import java.util.ArrayList;
+
 public class EffectiveBlocksLists {
-    //This will be moved into config when config stops crashing rendering this list
-    //@ConfigName("Pickaxe Effective Blocks")
+    public static ArrayList<Block> pickaxeBlocks = new ArrayList<>();
+    
+    public static ArrayList<Block> axeBlocks = new ArrayList<>();
+
+    public static ArrayList<Block> shovelBlocks = new ArrayList<>();
+    
+    static {
+        pickaxeBlocks.add(Block.DISPENSER);
+        pickaxeBlocks.add(Block.BRICKS);
+        pickaxeBlocks.add(Block.POWERED_RAIL);
+        pickaxeBlocks.add(Block.DETECTOR_RAIL);
+        pickaxeBlocks.add(Block.RAIL);
+        pickaxeBlocks.add(Block.FURNACE);
+        pickaxeBlocks.add(Block.LIT_FURNACE);
+        pickaxeBlocks.add(Block.COBBLESTONE_STAIRS);
+        pickaxeBlocks.add(Block.STONE_PRESSURE_PLATE);
+        pickaxeBlocks.add(Block.IRON_DOOR);
+        pickaxeBlocks.add(Block.REDSTONE_ORE);
+        pickaxeBlocks.add(Block.LIT_REDSTONE_ORE);
+        pickaxeBlocks.add(Block.BUTTON);
+        pickaxeBlocks.add(Block.SPAWNER);
+
+        axeBlocks.add(Block.CRAFTING_TABLE);
+        axeBlocks.add(Block.WOODEN_STAIRS);
+        axeBlocks.add(Block.JUKEBOX);
+        axeBlocks.add(Block.SIGN);
+        axeBlocks.add(Block.WALL_SIGN);
+        axeBlocks.add(Block.WOODEN_PRESSURE_PLATE);
+        axeBlocks.add(Block.LADDER);
+        axeBlocks.add(Block.DOOR);
+        axeBlocks.add(Block.TRAPDOOR);
+        axeBlocks.add(Block.PUMPKIN);
+        axeBlocks.add(Block.JACK_O_LANTERN);
+        axeBlocks.add(Block.FENCE);
+        axeBlocks.add(Block.NOTE_BLOCK);
+        
+        shovelBlocks.add(Block.SOUL_SAND);
+    }
+
     public static String[] pickaxeEffectiveAgainst = new String[]{
             "minecraft:dispenser",
             "minecraft:bricks",

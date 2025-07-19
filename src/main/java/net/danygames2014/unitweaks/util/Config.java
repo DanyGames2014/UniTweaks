@@ -10,7 +10,7 @@ public class Config {
         @ConfigEntry(name = "Pause on Lost Focus")
         public Boolean pauseOnLostFocus = true;
 
-        @ConfigEntry(name = "Autosave Interval (seconds)", maxLength = 3600)
+        @ConfigEntry(name = "Autosave Interval (seconds)", maxValue = 3600)
         public Integer autosaveInterval = 30;
 
         @ConfigEntry(name = "TCP NoDelay")
@@ -18,11 +18,14 @@ public class Config {
 
         @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
-        
-        @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxLength = 128)
+
+        @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxValue = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
+        
+        @ConfigEntry(name = "Disabled Dimensions (Server Only)", description = "Dimensions which wont be loaded on server boot")
+        public Integer[] disabledDimensions = new Integer[] {2};
     }
-    
+
     public static class UserInterfaceConfig {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
@@ -38,16 +41,16 @@ public class Config {
 
         @ConfigEntry(name = "Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
-        
+
         @ConfigCategory(name = "Video Settings")
         public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();
 
         @ConfigCategory(name = "Version Text")
         public VersionTextConfig versionTextConfig = new VersionTextConfig();
-        
+
         @ConfigCategory(name = "Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
-        
+
         public static class VideoSettingsConfig {
             @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
             public Boolean brightnessSlider = true;
@@ -69,9 +72,9 @@ public class Config {
 
             @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
             public Boolean renderDistanceSlider = true;
-            
+
             @ConfigEntry(name = "Vanilla Far Fog Values")
-            public Boolean vanillaFarValues = true;
+            public Boolean vanillaFarValues = false;
         }
 
         public static class PanoramaConfig {
@@ -97,7 +100,7 @@ public class Config {
             @ConfigEntry(name = "Enable Custom Version Text")
             public Boolean enableCustomVersionText = false;
 
-            @ConfigEntry(name = "Custom Version Text", maxLength = 64, description = "Only has effect if custom version text is enabled")
+            @ConfigEntry(name = "Custom Version Text", maxValue = 64, description = "Only has effect if custom version text is enabled")
             public String customVersionText = "Minecraft Beta 1.7.3 (UniTweaks)";
         }
     }
@@ -143,10 +146,10 @@ public class Config {
             @ConfigEntry(name = "Enable Fast Leaf Decay", multiplayerSynced = true)
             public Boolean enableFastLeafDecay = false;
 
-            @ConfigEntry(name = "Minimum Decay Time", maxLength = 1200)
+            @ConfigEntry(name = "Minimum Decay Time", maxValue = 1200)
             public Integer minimumDecayTime = 10;
 
-            @ConfigEntry(name = "Maximum Decay Time", maxLength = 1200)
+            @ConfigEntry(name = "Maximum Decay Time", maxValue = 1200)
             public Integer maximumDecayTime = 25;
         }
 
@@ -158,7 +161,7 @@ public class Config {
             @ConfigEntry(name = "Skeletons on Fire shoot flaming arrows")
             public Boolean skeletonsBurningArrows = true;
 
-            @ConfigEntry(name = "Skeletons on Fire flaming arrow chance (0-100)", maxLength = 100)
+            @ConfigEntry(name = "Skeletons on Fire flaming arrow chance (0-100)", maxValue = 100)
             public Integer skeletonBurningArrowChance = 70;
 
             @ConfigEntry(name = "Burning arrows set entities on fire")
@@ -167,7 +170,7 @@ public class Config {
             @ConfigEntry(name = "Burning entities spread fire to others")
             public Boolean burningEntitySpread = true;
 
-            @ConfigEntry(name = "Burning entities spread fire chance (0-100)", maxLength = 100)
+            @ConfigEntry(name = "Burning entities spread fire chance (0-100)", maxValue = 100)
             public Integer burningEntitySpreadChance = 30;
         }
     }
@@ -198,16 +201,16 @@ public class Config {
         public Boolean pressurePlatesOnFences = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigEntry(name = "Better Boat handling (rn just quicker)", multiplayerSynced = true)
-        public Boolean betterBoats = false;
-
-        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Allow shears to harvest cobwebs and tall grass", multiplayerSynced = true)
         public Boolean shearHarvesting = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Expand Chicken Hitbox", description = "Expands chicken hitbox to it's modern size", multiplayerSynced = true)
         public Boolean expandChickenHitbox = true;
+        
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Stackable Chests", description = "Allows you to stack chests on top of each other", multiplayerSynced = true)
+        public Boolean stackableChests = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Don't Damage Flint And Steel on failed ignite", multiplayerSynced = true)
@@ -239,11 +242,14 @@ public class Config {
         public Boolean bitDepthFix = true;
 
         @ConfigEntry(name = "Far Lands Jitter Fix")
-        public Boolean farLandJitterFix = false;
-        
+        public Boolean farLandsJitterFix = true;
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
+
+        @ConfigEntry(name = "Multiplayer Entity Jitter Fix", description = "Fixes entities jittering in multiplayer")
+        public Boolean multiplayerEntityJitterFix = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)
@@ -304,14 +310,20 @@ public class Config {
 
         @ConfigEntry(name = "Death Screen Formatting Fix")
         public Boolean deathScreenFormattingFix = true;
-        
+
         @ConfigEntry(name = "Hotbar Rendering Fix", description = "Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics")
         public Boolean hotbarRenderingFix = true;
-        
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
         
+        @ConfigEntry(name = "Grass Block Item Fix", description = "Fixes grass block top texture being wrong")
+        public Boolean grassBlockItemFix = true;
+
+        @ConfigEntry(name = "Multiplayer Mining Delay Fix", description = "WARNING: This could be considered a hack on some servers")
+        public Boolean miningDelayFix = true;
+
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
 

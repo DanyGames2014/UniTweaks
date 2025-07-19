@@ -1,5 +1,8 @@
 package net.danygames2014.unitweaks.mixin.tweaks.renderdistance;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.render.WorldRenderer;
@@ -9,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldRenderer.class)
@@ -24,7 +26,7 @@ public class WorldRendererMixin {
     @Shadow
     private int chunkCountZ;
 
-    @Redirect(
+    @WrapOperation(
             method = "render",
             at = @At(
                     value = "FIELD",
@@ -32,12 +34,16 @@ public class WorldRendererMixin {
                     target = "Lnet/minecraft/client/option/GameOptions;viewDistance:I"
             )
     )
-    public int fixRebuildCheck(GameOptions instance) {
-        // This prevents the the rebuilding when the user is still dragging the slider
-        if (!Mouse.isButtonDown(0)) {
-            return ModOptions.getRenderDistanceChunks();
+    public int fixRebuildCheck(GameOptions instance, Operation<Integer> original) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            // This prevents the the rebuilding when the user is still dragging the slider
+            if (!Mouse.isButtonDown(0)) {
+                return ModOptions.getRenderDistanceChunks();
+            }
+            return this.lastViewDistance;
+        } else {
+            return original.call(instance);
         }
-        return this.lastViewDistance;
     }
 
     @Inject(
@@ -51,7 +57,9 @@ public class WorldRendererMixin {
             )
     )
     public void injectNewRenderDistance(CallbackInfo ci) {
-        this.lastViewDistance = ModOptions.getRenderDistanceChunks();
+        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            this.lastViewDistance = ModOptions.getRenderDistanceChunks();
+        }
     }
 
     @Inject(
@@ -65,7 +73,9 @@ public class WorldRendererMixin {
             )
     )
     public void overrideHorizontalRenderDistnace(CallbackInfo ci) {
-        this.chunkCountX = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            this.chunkCountX = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        }
     }
 
     @Inject(
@@ -79,6 +89,8 @@ public class WorldRendererMixin {
             )
     )
     public void overrideDeepRenderDistnace(CallbackInfo ci) {
-        this.chunkCountZ = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+            this.chunkCountZ = (ModOptions.getRenderDistanceChunks() * 2) + 1;
+        }
     }
 }

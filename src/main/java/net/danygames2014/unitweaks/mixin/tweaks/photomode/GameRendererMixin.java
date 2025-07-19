@@ -115,7 +115,7 @@ public class GameRendererMixin {
 
     // Hide HUD
     @WrapWithCondition(method = "onFrameUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;render(FZII)V"))
-    public boolean hideHudInPhotoMode(InGameHud instance, float eeny, boolean meeny, int miny, int moe){
+    public boolean hideHudInPhotoMode(InGameHud instance, float eeny, boolean meeny, int miny, int moe) {
         return !(this.client.currentScreen instanceof PhotoModeScreen);
     }
 

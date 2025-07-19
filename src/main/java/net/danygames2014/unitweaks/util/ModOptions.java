@@ -3,7 +3,6 @@ package net.danygames2014.unitweaks.util;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.Option;
-import net.modificationstation.stationapi.api.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 
 public class ModOptions {
@@ -62,14 +61,14 @@ public class ModOptions {
     public static int getRenderDistanceChunks() {
         return (int) (2 + Math.floor(renderDistance * (maxRenderDistance - 2)));
     }
-    
+
     public static int getGameRendererChunks() {
         int chunks = getRenderDistanceChunks();
 
         if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.vanillaFarValues && chunks == 12) {
             chunks = 16;
         }
-        
+
         return chunks;
     }
 
@@ -97,7 +96,7 @@ public class ModOptions {
                 setRenderDistanceChunks(inverted ? 8 : 2);
             }
         }
-        renderDistance = MathHelper.clamp(renderDistance, 0.0F, 1.0F);
+        renderDistance = Util.clamp(renderDistance, 0.0F, 1.0F);
     }
 
     // FPS Limit

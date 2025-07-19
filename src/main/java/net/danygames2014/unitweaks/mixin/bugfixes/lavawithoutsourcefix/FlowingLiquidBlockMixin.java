@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.lavawithoutsourcefix;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.FlowingLiquidBlock;
 import net.minecraft.block.LiquidBlock;
@@ -7,7 +9,6 @@ import net.minecraft.block.material.Material;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(FlowingLiquidBlock.class)
 public class FlowingLiquidBlockMixin extends LiquidBlock {
@@ -15,7 +16,7 @@ public class FlowingLiquidBlockMixin extends LiquidBlock {
         super(i, arg);
     }
 
-    @Redirect(
+    @WrapOperation(
             method = "onTick",
             at = @At(
                     value = "FIELD",
@@ -24,11 +25,11 @@ public class FlowingLiquidBlockMixin extends LiquidBlock {
                     ordinal = 3
             )
     )
-    private Material allowLavaToDissapear(FlowingLiquidBlock block) {
+    private Material allowLavaToDissapear(FlowingLiquidBlock block, Operation<Material> original) {
         if (UniTweaks.BUGFIXES_CONFIG.lavaWithoutSourceFix) {
             return Material.WATER;
         } else {
-            return block.material;
+            return original.call(block);
         }
     }
 }

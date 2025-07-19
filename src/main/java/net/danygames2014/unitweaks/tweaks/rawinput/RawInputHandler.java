@@ -6,10 +6,8 @@ import net.java.games.input.AbstractController;
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 import net.java.games.input.Mouse;
-import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
-import net.modificationstation.stationapi.api.event.tick.GameTickEvent;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -131,8 +129,7 @@ public class RawInputHandler {
         Util.notify("Raw Input Toggled OFF", notifyInChat);
     }
 
-    @EventListener
-    public static void timer(GameTickEvent.End event) {
+    public static void tick() {
         if (worldJoinTimer >= 0) {
             worldJoinTimer--;
         }

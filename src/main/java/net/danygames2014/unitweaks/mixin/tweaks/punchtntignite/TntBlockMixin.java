@@ -27,9 +27,9 @@ public class TntBlockMixin extends Block {
             }
         }
     }
-    
+
     @WrapWithCondition(method = "onMetadataChange", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/TntBlock;dropStack(Lnet/minecraft/world/World;IIILnet/minecraft/item/ItemStack;)V"))
-    public boolean cancelTntDrop(TntBlock instance, World world, int x, int y, int z, ItemStack itemStack){
+    public boolean cancelTntDrop(TntBlock instance, World world, int x, int y, int z, ItemStack itemStack) {
         return !UniTweaks.OLD_FEATURES_CONFIG.punchTntToIgnite;
     }
 }

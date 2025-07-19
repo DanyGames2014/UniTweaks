@@ -20,19 +20,19 @@ public class VideoOptionsScreenMixin {
     private static ArrayList<Option> addedOptions = new ArrayList<>();
 
     static {
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider){
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             addedOptions.add(ModOptions.fogDensityOption);
         }
-        
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle){
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudsToggle) {
             addedOptions.add(ModOptions.cloudsOption);
         }
-        
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider){
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.cloudHeightSlider) {
             addedOptions.add(ModOptions.cloudHeightOption);
         }
-        
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider){
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.brightnessSlider) {
             addedOptions.add(ModOptions.brightnessOption);
         }
 
@@ -41,15 +41,15 @@ public class VideoOptionsScreenMixin {
             VideoOptionsScreenMixin.VIDEO_OPTIONS[VideoOptionsScreenMixin.VIDEO_OPTIONS.length - (addedOptions.size() - i)] = addedOptions.get(i);
         }
 
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider){
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             VideoOptionsScreenMixin.VIDEO_OPTIONS[3] = ModOptions.fpsLimitOption;
         }
-        
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider){
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             VideoOptionsScreenMixin.VIDEO_OPTIONS[1] = ModOptions.renderDistanceOption;
         }
-        
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider){
+
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.guiScaleSlider) {
             VideoOptionsScreenMixin.VIDEO_OPTIONS[6] = ModOptions.guiScaleOption;
         }
     }

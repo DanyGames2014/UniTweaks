@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SlabBlockItemMixin {
 
     @Inject(method = "getTranslationKey", at = @At("HEAD"), cancellable = true)
-    public void preventCrash(ItemStack stack, CallbackInfoReturnable<String> cir){
-        if(stack.getDamage() >= SlabBlock.names.length){
+    public void preventCrash(ItemStack stack, CallbackInfoReturnable<String> cir) {
+        if (stack.getDamage() >= SlabBlock.names.length) {
             cir.setReturnValue(null);
         }
     }

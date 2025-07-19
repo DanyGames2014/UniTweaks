@@ -9,17 +9,15 @@ public class RawMouseHelper extends net.minecraft.client.Mouse {
     }
 
     @Override
-    public void poll()
-    {
+    public void poll() {
         this.deltaX = RawInputHandler.dx;
         RawInputHandler.dx = 0;
         this.deltaY = -RawInputHandler.dy;
         RawInputHandler.dy = 0;
     }
-    
+
     @Override
-    public void lockCursor()
-    {
+    public void lockCursor() {
         super.lockCursor();
         RawInputHandler.dx = 0;
         RawInputHandler.dy = 0;
