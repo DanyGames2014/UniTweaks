@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.util;
 
 import com.google.common.collect.ImmutableMap;
+import net.danygames2014.unitweaks.tweaks.frontviewthirdperson.FrontViewMode;
 import net.danygames2014.unitweaks.tweaks.moresounds.ChestSoundsEnum;
 import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 import net.glasslauncher.mods.gcapi3.api.ConfigFactoryProvider;
@@ -18,11 +19,13 @@ public class ConfigFactories implements ConfigFactoryProvider {
     @Override
     public void provideLoadFactories(ImmutableMap.Builder<Type, SeptFunction<String, ConfigEntry, Field, Object, Boolean, Object, Object, ConfigEntryHandler<?>>> immutableBuilder) {
         immutableBuilder.put(ChestSoundsEnum.class, ((id, configEntry, parentField, parentObject, isMultiplayerSynced, enumOrOrdinal, defaultEnum) -> new EnumConfigEntryHandler<ChestSoundsEnum>(id, configEntry, parentField, parentObject, isMultiplayerSynced, DefaultFactoryProvider.enumOrOrdinalToOrdinal(enumOrOrdinal), ((ChestSoundsEnum) defaultEnum).ordinal(), ChestSoundsEnum.class)));
+        immutableBuilder.put(FrontViewMode.class, ((id, configEntry, parentField, parentObject, isMultiplayerSynced, enumOrOrdinal, defaultEnum) -> new EnumConfigEntryHandler<FrontViewMode>(id, configEntry, parentField, parentObject, isMultiplayerSynced, DefaultFactoryProvider.enumOrOrdinalToOrdinal(enumOrOrdinal), ((FrontViewMode) defaultEnum).ordinal(), FrontViewMode.class)));
         
     }
 
     @Override
     public void provideSaveFactories(ImmutableMap.Builder<Type, Function<Object, Object>> immutableBuilder) {
         immutableBuilder.put(ChestSoundsEnum.class, object -> object);
+        immutableBuilder.put(FrontViewMode.class, object -> object);
     }
 }

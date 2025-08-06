@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.util;
 
+import net.danygames2014.unitweaks.tweaks.frontviewthirdperson.FrontViewMode;
 import net.danygames2014.unitweaks.tweaks.moresounds.ChestSoundsEnum;
 import net.glasslauncher.mods.gcapi3.api.ConfigCategory;
 import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
@@ -42,6 +43,9 @@ public class Config {
 
         @ConfigEntry(name = "Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
+        
+        @ConfigEntry(name = "Front View Third Person")
+        public FrontViewMode frontViewThirdPerson = FrontViewMode.NORMAL;
 
         @ConfigCategory(name = "Video Settings")
         public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();

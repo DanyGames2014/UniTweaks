@@ -15,6 +15,9 @@ public class ModOptions {
     public static Option brightnessOption;
     public static Option guiScaleOption;
 
+    // Front View Third Person
+    public static boolean frontView = false;
+    
     // GUI Scale
     public static float guiScale = 0.0F;
     public static float realGuiScale = 0.0F;

@@ -110,6 +110,8 @@
     "tweaks.fov.GameRendererMixin",
     "tweaks.fov.MinecraftMixin",
     "tweaks.fpslimitslider.class_555Mixin",
+    "tweaks.frontviewthirdperson.GameRendererMixin",
+    "tweaks.frontviewthirdperson.MinecraftMixin",
     "tweaks.guiscaleslider.ScreenScalerMixin",
     "tweaks.hideachievementtoast.AchievementToastMixin",
     "tweaks.improvedcontrols.EntryListWidgetAccessor",
