@@ -70,6 +70,7 @@
     "tweaks.shiftplacing.class_70Mixin"
   ],
   "client": [
+    "MinecraftMixin",
     "bugfixes.armoriconsfix.ArmorSlotMixin",
     "bugfixes.armoriconsfix.HandledScreenMixin",
     "bugfixes.bitdepthfix.MinecraftMixin",

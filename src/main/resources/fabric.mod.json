@@ -67,8 +67,8 @@
 
   "conflicts": {
     "smallcraftingtweaks": "*",
-    "nowobtainablerecipes": "*",
-    "extremeview": "*"
+    "extremeview": "*",
+    "nowobtainablerecipes": "*"
   },
 
   "breaks": {
@@ -78,6 +78,7 @@
     "finalbeta": "*",
     "gameplayessentials": "*",
     "clientsideessentials": "*",
-    "photomode": "*"
+    "photomode": "*",
+    "thirdpersonfix": "*"
   }
 }
