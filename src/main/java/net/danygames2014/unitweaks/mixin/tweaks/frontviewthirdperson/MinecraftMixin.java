@@ -30,8 +30,10 @@ public class MinecraftMixin {
                 gameOptions.thirdPerson = true;
                 ModOptions.frontView = false;
             }
+            return;
         }
-
+        
+        ModOptions.frontView = false;
         original.call(gameOptions, value);
     }
 }
