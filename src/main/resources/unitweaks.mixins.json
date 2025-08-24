@@ -51,6 +51,7 @@
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
+    "tweaks.punchtntdefuse.TntEntityMixin",
     "tweaks.recipes.BlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
     "tweaks.recipes.FurnaceBlockEntityMixin",
