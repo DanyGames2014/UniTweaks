@@ -354,6 +354,10 @@ public class Config {
         public Boolean punchTntToIgnite = false;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Punch Primed TNT to Defuse", multiplayerSynced = true)
+        public Boolean punchTntToDefuse = false;
+
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Hoe Grass for Seeds", multiplayerSynced = true)
         public Boolean hoeGrassForSeeds = false;
 
