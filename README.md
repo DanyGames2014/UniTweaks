@@ -64,6 +64,7 @@
 * Disable Dead Bush Generation
 * Disable Tall Grass Generation
 * Punch TNT to light it
+* Punch Primed TNT to defuse it
 * Punch Sheep for wool
 * Hoes Grass for Seeds
 * Boat Elevators
@@ -78,7 +79,7 @@
     <summary>Modern Recipes</summary>
 
 * Shapeless Flint and Steel
-* Shalepess Mushroom Stew
+* Shapeless Mushroom Stew
 * Shapeless Chest Minecart
 * Shapeless Furnace Minecart
 * Shapeless Sticky Piston
