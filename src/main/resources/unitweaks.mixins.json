@@ -105,6 +105,7 @@
     "options.VideoOptionsScreenMixin",
     "tweaks.achievementbacktomenu.AchievementsScreenMixin",
     "tweaks.brightness.DimensionMixin",
+    "tweaks.brightness.NetherDimensionMixin",
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
