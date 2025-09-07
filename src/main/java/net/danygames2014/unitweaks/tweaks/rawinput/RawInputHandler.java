@@ -26,14 +26,21 @@ public class RawInputHandler {
 
     private static boolean shouldGetMouse = false;
     public static boolean rawInputEnabled = false;
+    
+    public static Thread inputThread;
+    public static boolean runInputThread = false;
 
     public static void init() {
         startInputThread();
     }
 
     public static void startInputThread() {
-        Thread inputThread = new Thread(() -> {
-            while (true) {
+        if (inputThread != null && inputThread.isAlive()) {
+            return;
+        }
+        
+        inputThread = new Thread(() -> {
+            while (runInputThread) {
                 if (!mice.isEmpty() && Minecraft.INSTANCE.currentScreen == null) {
                     mice.forEach(mouse -> {
                         mouse.poll();
@@ -62,6 +69,7 @@ public class RawInputHandler {
             }
         });
 
+        runInputThread = true;
         inputThread.setName("inputThread");
         inputThread.start();
     }
@@ -118,6 +126,7 @@ public class RawInputHandler {
             Minecraft.INSTANCE.mouse.lockCursor();
         }
         rawInputEnabled = true;
+        startInputThread();
         getMouse("Enabled Raw Input");
     }
 
@@ -127,6 +136,7 @@ public class RawInputHandler {
             Minecraft.INSTANCE.mouse.lockCursor();
         }
         rawInputEnabled = false;
+        runInputThread = false;
         Util.notify("Raw Input Toggled OFF", notifyInChat);
     }
 

@@ -34,14 +34,15 @@ public class MinecraftMixin {
             UniTweaks.LOGGER.info("Enabling Raw Input");
             mouse = new RawMouseHelper(this.canvas);
             RawInputHandler.rawInputEnabled = true;
+            RawInputHandler.init();
         }
-
-        RawInputHandler.init();
     }
 
     @Inject(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;setScreen(Lnet/minecraft/client/gui/screen/Screen;)V", ordinal = 1, shift = At.Shift.AFTER))
     public void onEnterMainMenu(CallbackInfo ci) {
-        RawInputHandler.getMouse("Enter Main Menu");
+        if (UniTweaks.GENERAL_CONFIG.rawInput) {
+            RawInputHandler.getMouse("Enter Main Menu");
+        }
     }
 
     @Inject(method = "setWorld(Lnet/minecraft/world/World;Ljava/lang/String;Lnet/minecraft/entity/player/PlayerEntity;)V", at = @At(value = "HEAD"))
