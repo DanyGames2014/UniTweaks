@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.pickblockfix;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -42,7 +43,6 @@ public class MinecraftMixin {
                 case BLOCK -> {
                     return getPickBlockId(
                             pickedId,
-                            world.getBlockId(this.crosshairTarget.blockX, this.crosshairTarget.blockY, this.crosshairTarget.blockZ),
                             world.getBlockMeta(this.crosshairTarget.blockX, this.crosshairTarget.blockY, this.crosshairTarget.blockZ)
                     );
                 }
@@ -74,16 +74,35 @@ public class MinecraftMixin {
     }};
 
     @Unique
-    public int getPickBlockId(int pickedBlockId, int blockId, int blockMeta) {
+    public int getPickBlockId(int blockId, int blockMeta) {
+        int itemId;
+        
         if (blockId == Block.PISTON_HEAD.id) {
+            // Special handling for pistons
             if (blockMeta < 8) {
-                return Block.PISTON.id;
+                itemId = Block.PISTON.id;
             } else {
-                return Block.STICKY_PISTON.id;
+                itemId = Block.STICKY_PISTON.id;
+            }
+        } else if (pickBlockLookupMap.containsKey(blockId)){
+            // Other special cases
+            itemId = pickBlockLookupMap.get(blockId);
+        } else {
+            // If StationAPI is loaded, we need to convert the block id to an block item one
+            if (FabricLoader.getInstance().isModLoaded("stationapi")) {
+                itemId = convertBlockIdToItemId(blockId);
+            } else {
+                itemId = blockId;
             }
         }
-
-        return pickBlockLookupMap.getOrDefault(blockId, pickedBlockId);
+        
+        // Pack the blockId and blockMeta
+        return (itemId << 4) | (blockMeta & 0xF);
+    }
+    
+    @Unique
+    public int convertBlockIdToItemId(int blockId) {
+        return Block.BLOCKS[blockId].asItem().id;
     }
 
     @Unique

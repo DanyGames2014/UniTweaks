@@ -39,16 +39,29 @@ public class PlayerInventoryMixin {
 
     @Environment(EnvType.CLIENT)
     @Inject(method = "setHeldItem", at = @At("HEAD"), cancellable = true)
-    public void setSelectedItem(int itemId, boolean bl, CallbackInfo ci) {
+    public void setSelectedItem(int id, boolean bl, CallbackInfo ci) {
+        int itemMeta = id & 0xF;
+        int itemId = id >>> 4;
+        
         if (UniTweaks.GAMEPLAY_CONFIG.pickBlockFromInventory) {
             int slotWithItemIndex = -1;
             int hotbarSlotIndex;
 
-            // Find the item
+            // Find the item with meta matching
             for (int i = 0; i < main.length; i++) {
-                if (main[i] != null && main[i].itemId == itemId) {
+                if (main[i] != null && main[i].itemId == itemId && main[i].getDamage() == itemMeta) {
                     slotWithItemIndex = i;
                     break;
+                }
+            }
+            
+            // If no item was found with meta matching, try without it
+            if (slotWithItemIndex == -1) {
+                for (int i = 0; i < main.length; i++) {
+                    if (main[i] != null && main[i].itemId == itemId) {
+                        slotWithItemIndex = i;
+                        break;
+                    }
                 }
             }
 
