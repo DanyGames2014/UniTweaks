@@ -1,5 +1,3 @@
-* Front View
-* Mod Conflict Detector
-* Added punch to defuse tnt option (ralf2oo2)
-* Fix pick block fix
-* Fix the resource download url being truncated
+* Fix Raw Input getting initialized even when raw input is disabled
+* Do not run the input thread uneccesarily
+* Fix brightness table not being initialized correctly
