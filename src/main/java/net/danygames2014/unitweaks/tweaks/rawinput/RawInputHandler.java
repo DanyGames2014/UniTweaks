@@ -79,7 +79,7 @@ public class RawInputHandler {
 
         // Go thru controllers and find mice
         for (Controller controller : controllers) {
-            //logger.info("Found Controller " + controller.getName() + " of type " + controller.getType());
+            logger.info("Found Controller " + controller.getName() + " of type " + controller.getType());
             if (controller instanceof Mouse mouseController) {
                 mice.add(mouseController);
                 //logger.info("Adding Controller " + controller.getName() + " of type " + controller.getType());
@@ -91,8 +91,8 @@ public class RawInputHandler {
 
         // If none are found, fall back to Vanilla Mouse Helper
         if (mice.isEmpty()) {
-            logger.warn("No mouse controllers found, switching back to Vanilla Mouse Helper");
-            disableRawInput(false, false);
+            Util.notify("No mouse controllers found, switching back to Vanilla Mouse Helper", true);
+            disableRawInput(false, true);
         }
     }
 
@@ -112,12 +112,13 @@ public class RawInputHandler {
     }
 
     public static void enableRawInput(boolean lock, boolean notifyInChat) {
+        Util.notify("Raw Input Toggled ON", notifyInChat);
         Minecraft.INSTANCE.mouse = new RawMouseHelper(Minecraft.INSTANCE.canvas);
         if (lock) {
             Minecraft.INSTANCE.mouse.lockCursor();
         }
         rawInputEnabled = true;
-        Util.notify("Raw Input Toggled ON", notifyInChat);
+        getMouse("Enabled Raw Input");
     }
 
     public static void disableRawInput(boolean lock, boolean notifyInChat) {
