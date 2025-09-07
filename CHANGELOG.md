@@ -1,4 +1,5 @@
-* Fix pumpkin on head being offset with a bow in hand
-* Remove Better Boats
-* Make the chest opening sound more configurable (Telvarost)
-* Update to config annotations which wont be deprecated in GCAPI 4
+* Front View
+* Mod Conflict Detector
+* Added punch to defuse tnt option (ralf2oo2)
+* Fix pick block fix
+* Fix the resource download url being truncated
