@@ -165,7 +165,7 @@ public class TitleScreenMixin extends Screen {
 
                 GL11.glBindTexture(
                         GL11.GL_TEXTURE_2D,
-                        this.minecraft.textureManager.getTextureId("assets/unitweaks/textures/" + UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png")
+                        this.minecraft.textureManager.getTextureId("/assets/unitweaks/textures/" + UniTweaks.USER_INTERFACE_CONFIG.panoramaConfig.panoramaFolder + "/panorama" + rotation + ".png")
                 );
                 tessellator.startQuads();
                 tessellator.color(16777215, 255 / (var6 + 1));
