@@ -60,7 +60,7 @@ public class RecipeListener {
         }
 
         // Ladder craft 3 per craft
-        if (UniTweaks.RECIPES_CONFIG.modern.threeLadersPerCraft) {
+        if (UniTweaks.RECIPES_CONFIG.modern.threeLaddersPerCraft) {
             CraftingHelper.removeRecipe(Block.LADDER, true);
             CraftingHelper.addShapedRecipe(new ItemStack(Block.LADDER, 3), "S S", "SSS", "S S", 'S', new ItemStack(Item.STICK));
         }

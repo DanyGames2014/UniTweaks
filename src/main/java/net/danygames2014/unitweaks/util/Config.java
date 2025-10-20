@@ -419,8 +419,8 @@ public class Config {
             public Boolean modernFenceRecipe = false;
             @ConfigEntry(name = "Snow Layer Recipe")
             public Boolean snowLayerRecipe = true;
-            @ConfigEntry(name = "3 Laders per Craft")
-            public Boolean threeLadersPerCraft = false;
+            @ConfigEntry(name = "3 Ladders per Craft")
+            public Boolean threeLaddersPerCraft = false;
         }
 
         public static class TweakedRecipesConfig {
