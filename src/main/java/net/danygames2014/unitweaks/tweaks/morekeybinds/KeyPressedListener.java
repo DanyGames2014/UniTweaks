@@ -33,8 +33,9 @@ public class KeyPressedListener {
             minecraft = ((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
 
-        if (Keyboard.getEventKeyState()) {
-            if (Keyboard.isKeyDown(KeyBindingListener.releaseMouse.code)) {
+        if (!Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
+            // Release Mouse
+            if (Keyboard.getEventKey() == KeyBindingListener.releaseMouse.code) {
                 if (Mouse.isGrabbed()) {
                     Mouse.setGrabbed(false);
                     releasedMouse = true;
@@ -44,7 +45,7 @@ public class KeyPressedListener {
                 }
             }
         }
-
+        
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             // Photo Mode
             if (Keyboard.isKeyDown(KeyBindingListener.photoMode.code)) {
