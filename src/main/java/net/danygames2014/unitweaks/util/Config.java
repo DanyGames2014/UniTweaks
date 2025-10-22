@@ -329,6 +329,9 @@ public class Config {
         @ConfigEntry(name = "Multiplayer Mining Delay Fix", description = "WARNING: This could be considered a hack on some servers")
         public Boolean miningDelayFix = true;
 
+        @ConfigEntry(name = "Last Durability Fix", description = "Fixes blocks not dropping on the last durability point of a tool")
+        public Boolean lastDurabilityFix = true;
+        
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
 

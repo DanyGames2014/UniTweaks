@@ -50,8 +50,8 @@
     "tweaks.pickblockfrominventory.PlayerInventoryMixin",
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
-    "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.punchtntdefuse.TntEntityMixin",
+    "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.recipes.BlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
     "tweaks.recipes.FurnaceBlockEntityMixin",
@@ -67,6 +67,7 @@
     "tweaks.trapdoorplacement.TrapdoorBlockMixin"
   ],
   "server": [
+    "bugfixes.lastdurabilityfix.ServerPlayerInteractionManagerMixin",
     "tweaks.disabledimensionload.MinecraftServerMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
@@ -91,6 +92,7 @@
     "bugfixes.grassblockitemfix.GrassBlockMixin",
     "bugfixes.hidpifix.MinecraftMixin",
     "bugfixes.jitterfix.ChunkRendererMixin",
+    "bugfixes.lastdurabilityfix.SingleplayerInteractionManagerMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.miningdelayfix.MultiplayerInteractionManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
