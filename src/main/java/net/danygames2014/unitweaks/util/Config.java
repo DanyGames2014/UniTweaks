@@ -254,7 +254,7 @@ public class Config {
         public Boolean enableSlimeSplitFix = true;
         
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        @ConfigEntry(name = "Nightmare Pathfinding Fix", description = "Fixes the pathfinding calculation of nightmares")
+        @ConfigEntry(name = "Nightmare Pathfinding Fix", description = "Fixes the pathfinding calculation of nightmares", multiplayerSynced = true)
         public Boolean nightmarePathfindingFix = true;
 
         @ConfigEntry(name = "Multiplayer Entity Jitter Fix", description = "Fixes entities jittering in multiplayer")
@@ -263,6 +263,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)
         public Boolean boatDismountFix = true;
+        
+        @ConfigEntry(name = "Sleeping Camera Rotation Fix", description = "Fixes incorrectly rotated camera when sleeping and the ability to erronesously rotate it")
+        public Boolean sleepingCameraRotationFix = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Stairs Drop Fix", description = "Stairs will drop themselves instead of the base block", multiplayerSynced = true)

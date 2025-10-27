@@ -98,6 +98,7 @@
     "bugfixes.miningdelayfix.MultiplayerInteractionManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
     "bugfixes.slabcrashfix.SlabBlockItemMixin",
+    "bugfixes.sleepingheadturningfix.GameRendererMixin",
     "bugfixes.videosettingssliderfix.VideoOptionsScreenMixin",
     "hooks.GameOptionsMixin",
     "hooks.MinecraftMixin",
