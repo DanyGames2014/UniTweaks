@@ -252,6 +252,10 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
+        
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Nightmare Pathfinding Fix", description = "Fixes the pathfinding calculation of nightmares")
+        public Boolean nightmarePathfindingFix = true;
 
         @ConfigEntry(name = "Multiplayer Entity Jitter Fix", description = "Fixes entities jittering in multiplayer")
         public Boolean multiplayerEntityJitterFix = true;
