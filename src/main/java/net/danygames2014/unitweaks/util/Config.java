@@ -264,7 +264,7 @@ public class Config {
         @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)
         public Boolean boatDismountFix = true;
         
-        @ConfigEntry(name = "Sleeping Camera Rotation Fix", description = "Fixes incorrectly rotated camera when sleeping and the ability to erronesously rotate it")
+        @ConfigEntry(name = "Sleeping Camera Rotation Fix", description = "Fixes incorrectly rotated camera when sleeping and the ability to erroneously rotate it")
         public Boolean sleepingCameraRotationFix = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
