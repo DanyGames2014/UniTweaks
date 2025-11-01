@@ -145,6 +145,9 @@ public class Config {
 
         @ConfigEntry(name = "More Sounds (Chests)", description = "Adds sounds for chests (a few options are available)")
         public ChestSoundsEnum moreSoundsChests = ChestSoundsEnum.DOOR;
+        
+        @ConfigEntry(name = "More Sounds (Falling Pipe)", description = "Makes the tool break sound play a falling pipe sound")
+        public Boolean fallingPipe = false;
 
         public static class FastLeafDecayConfig {
             @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
