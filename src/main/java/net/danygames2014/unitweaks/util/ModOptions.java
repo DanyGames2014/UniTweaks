@@ -112,14 +112,6 @@ public class ModOptions {
         return (int) (Math.floor(fpsLimit * 59F) * 5) + 5;
     }
 
-    public static int getPerformanceLevel() {
-        if (getFpsLimitValue() >= 300) {
-            return 0;
-        } else {
-            return 2;
-        }
-    }
-
     // Clouds
     public static boolean clouds = true;
     public static float cloudHeight;
