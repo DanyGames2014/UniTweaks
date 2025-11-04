@@ -1,1 +1,1 @@
-* Make the falling pipe sound optional
+* Add spawn-protection and difficulty to server.properties

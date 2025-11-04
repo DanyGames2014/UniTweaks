@@ -69,6 +69,8 @@
   ],
   "server": [
     "bugfixes.lastdurabilityfix.ServerPlayerInteractionManagerMixin",
+    "tweaks.additionalproperties.MinecraftServerMixin",
+    "tweaks.additionalproperties.ServerPlayNetworkHandlerMixin",
     "tweaks.disabledimensionload.MinecraftServerMixin",
     "tweaks.shiftplacing.class_70Mixin"
   ],
