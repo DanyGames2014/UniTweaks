@@ -12,7 +12,7 @@ public class Config {
         @ConfigEntry(name = "Pause on Lost Focus")
         public Boolean pauseOnLostFocus = true;
 
-        @ConfigEntry(name = "Autosave Interval (seconds)", maxValue = 3600)
+        @ConfigEntry(name = "Autosave Interval (seconds)", maxValue = 3600, maxLength = 3600)
         public Integer autosaveInterval = 30;
 
         @ConfigEntry(name = "TCP NoDelay")
@@ -154,10 +154,10 @@ public class Config {
             @ConfigEntry(name = "Enable Fast Leaf Decay", multiplayerSynced = true)
             public Boolean enableFastLeafDecay = false;
 
-            @ConfigEntry(name = "Minimum Decay Time", maxValue = 1200)
+            @ConfigEntry(name = "Minimum Decay Time", maxValue = 1200, maxLength = 1200)
             public Integer minimumDecayTime = 10;
 
-            @ConfigEntry(name = "Maximum Decay Time", maxValue = 1200)
+            @ConfigEntry(name = "Maximum Decay Time", maxValue = 1200, maxLength = 1200)
             public Integer maximumDecayTime = 25;
         }
 
@@ -169,7 +169,7 @@ public class Config {
             @ConfigEntry(name = "Skeletons on Fire shoot flaming arrows")
             public Boolean skeletonsBurningArrows = true;
 
-            @ConfigEntry(name = "Skeletons on Fire flaming arrow chance (0-100)", maxValue = 100)
+            @ConfigEntry(name = "Skeletons on Fire flaming arrow chance (0-100)", maxValue = 100, maxLength = 100)
             public Integer skeletonBurningArrowChance = 70;
 
             @ConfigEntry(name = "Burning arrows set entities on fire")
@@ -178,7 +178,7 @@ public class Config {
             @ConfigEntry(name = "Burning entities spread fire to others")
             public Boolean burningEntitySpread = true;
 
-            @ConfigEntry(name = "Burning entities spread fire chance (0-100)", maxValue = 100)
+            @ConfigEntry(name = "Burning entities spread fire chance (0-100)", maxValue = 100, maxLength = 100)
             public Integer burningEntitySpreadChance = 30;
         }
     }
