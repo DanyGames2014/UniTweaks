@@ -193,6 +193,10 @@ public class Config {
         public Boolean boatsDropThemselves = true;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Pumpkins placeable like normal", multiplayerSynced = true)
+        public Boolean pumpkinsPlaceableLikeNormal = true;
+
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Fences placeable like normal", multiplayerSynced = true)
         public Boolean fencesPlaceableLikeNormal = true;
 
