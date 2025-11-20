@@ -23,8 +23,7 @@ public class PumpkinBlockMixin extends Block {
     )
     private void annoyanceFix_canPlaceAt(World world, int x, int y, int z, CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.TWEAKS_CONFIG.pumpkinsPlaceableLikeNormal) {
-            int blockId = world.getBlockId(x, y, z);
-            cir.setReturnValue(blockId == 0 || BLOCKS[blockId].material.isReplaceable());
+            cir.setReturnValue(super.canPlaceAt(world, x, y, z));
         }
     }
 }
