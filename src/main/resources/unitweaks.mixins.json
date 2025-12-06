@@ -50,6 +50,7 @@
     "tweaks.packetspeedup.Connection$4Mixin",
     "tweaks.pickblockfrominventory.PlayerInventoryMixin",
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
+    "tweaks.pumpkinplacement.PumpkinBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntdefuse.TntEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
