@@ -48,56 +48,60 @@ public class KeyPressedListener {
         
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             // Photo Mode
-            if (Keyboard.isKeyDown(KeyBindingListener.photoMode.code)) {
+            if (isKeyPressed(KeyBindingListener.photoMode.code)) {
                 minecraft.setScreen(new PhotoModeScreen(null));
             }
 
             // Panorama Screenshot
-            if (Keyboard.isKeyDown(KeyBindingListener.panoramaScreenshot.code)) {
+            if (isKeyPressed(KeyBindingListener.panoramaScreenshot.code)) {
                 panoramaScreenshot();
             }
 
             // Dismount
-            if (Keyboard.isKeyDown(KeyBindingListener.dismount.code)) {
+            if (isKeyPressed(KeyBindingListener.dismount.code)) {
                 dismount();
             }
 
             // Rescan Mouse
-            if (Keyboard.isKeyDown(KeyBindingListener.rescanMouse.code)) {
+            if (isKeyPressed(KeyBindingListener.rescanMouse.code)) {
                 RawInputHandler.getMouse("Player Triggered Rescan");
                 Util.notify("Rescanning for Mice", true);
             }
 
             // Toggle Raw Input
-            if (Keyboard.isKeyDown(KeyBindingListener.toggleRawInput.code)) {
+            if (isKeyPressed(KeyBindingListener.toggleRawInput.code)) {
                 RawInputHandler.toggleRawInput();
             }
 
             // Hotbar Slots
             if (minecraft.currentScreen == null) {
-                if (Keyboard.isKeyDown(KeyBindingListener.hotbar1.code)) {
+                if (isKeyPressed(KeyBindingListener.hotbar1.code)) {
                     minecraft.player.inventory.selectedSlot = 0;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar2.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar2.code)) {
                     minecraft.player.inventory.selectedSlot = 1;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar3.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar3.code)) {
                     minecraft.player.inventory.selectedSlot = 2;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar4.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar4.code)) {
                     minecraft.player.inventory.selectedSlot = 3;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar5.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar5.code)) {
                     minecraft.player.inventory.selectedSlot = 4;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar6.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar6.code)) {
                     minecraft.player.inventory.selectedSlot = 5;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar7.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar7.code)) {
                     minecraft.player.inventory.selectedSlot = 6;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar8.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar8.code)) {
                     minecraft.player.inventory.selectedSlot = 7;
-                } else if (Keyboard.isKeyDown(KeyBindingListener.hotbar9.code)) {
+                } else if (isKeyPressed(KeyBindingListener.hotbar9.code)) {
                     minecraft.player.inventory.selectedSlot = 8;
                 }
             }
         }
 
 
+    }
+
+    public static boolean isKeyPressed(int key) {
+        return key != 0 && Keyboard.isKeyDown(key);
     }
 
     public static void dismount() {
