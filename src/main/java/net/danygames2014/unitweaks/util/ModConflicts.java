@@ -12,14 +12,14 @@ public class ModConflicts {
     static {
         conflicts.put("annoyancefix", new ModConflictEntry("AnnoyanceFix", "Entirely Replaced"));
         conflicts.put("mostlymodernrecipes", new ModConflictEntry("Mostly Modern Recipes", "Entirely Replaced"));
-        conflicts.put("nowobtainablerecipes", new ModConflictEntry("Now Obtainable Recipes", "Entirely Replaced"));
         conflicts.put("betatweaks", new ModConflictEntry("Beta Tweaks", "Entirely Replaced"));
         conflicts.put("finalbeta", new ModConflictEntry("Final Beta", "Entirely Replaced"));
         conflicts.put("gameplayessentials", new ModConflictEntry("Gameplay Essentials", "Entirely Replaced"));
         conflicts.put("clientsideessentials", new ModConflictEntry("Clientside Essentials", "Entirely Replaced"));
         conflicts.put("photomode", new ModConflictEntry("Photo Mode", "Entirely Replaced"));
         conflicts.put("thirdpersonfix", new ModConflictEntry("Third Person Fix", "Entirely Replaced"));
-        
+
+        conflicts.put("nowobtainablerecipes", new ModConflictEntry("Now Obtainable Recipes", "Conflicting Features"));
         conflicts.put("extremeview", new ModConflictEntry("Extreme View", "Conflicting Feature"));
     }
 
