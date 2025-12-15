@@ -12,6 +12,7 @@ public class ModConflicts {
     static {
         conflicts.put("annoyancefix", new ModConflictEntry("AnnoyanceFix", "Entirely Replaced"));
         conflicts.put("mostlymodernrecipes", new ModConflictEntry("Mostly Modern Recipes", "Entirely Replaced"));
+        conflicts.put("nowobtainablerecipes", new ModConflictEntry("Now Obtainable Recipes", "Entirely Replaced"));
         conflicts.put("betatweaks", new ModConflictEntry("Beta Tweaks", "Entirely Replaced"));
         conflicts.put("finalbeta", new ModConflictEntry("Final Beta", "Entirely Replaced"));
         conflicts.put("gameplayessentials", new ModConflictEntry("Gameplay Essentials", "Entirely Replaced"));
