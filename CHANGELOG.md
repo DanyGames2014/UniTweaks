@@ -1,1 +1,2 @@
-* Fix non-wooden slabs being burnable
+* Fix crash without StationAPI
+* Fix translations not working without StationAPI
