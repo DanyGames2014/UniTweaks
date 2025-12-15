@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.morekeybinds;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,7 +16,9 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MinecraftMixin {
     @WrapOperation(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerInventory;selectedSlot:I", opcode = Opcodes.PUTFIELD))
     public void cancelSelectSlot(PlayerInventory instance, int value, Operation<Void> original) {
-        // Do Nothing
+        if(!UniTweaks.GENERAL_CONFIG.hotbarKeyRemapped) {
+            original.call(instance, value);
+        }
     }
 
     // F1

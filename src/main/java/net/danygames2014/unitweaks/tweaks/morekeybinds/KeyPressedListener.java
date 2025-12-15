@@ -1,7 +1,9 @@
 package net.danygames2014.unitweaks.tweaks.morekeybinds;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
 import net.danygames2014.unitweaks.tweaks.rawinput.RawInputHandler;
+import net.danygames2014.unitweaks.util.Config;
 import net.danygames2014.unitweaks.util.Util;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -74,7 +76,7 @@ public class KeyPressedListener {
             }
 
             // Hotbar Slots
-            if (minecraft.currentScreen == null) {
+            if (UniTweaks.GENERAL_CONFIG.hotbarKeyRemapped && minecraft.currentScreen == null) {
                 if (isKeyPressed(KeyBindingListener.hotbar1.code)) {
                     minecraft.player.inventory.selectedSlot = 0;
                 } else if (isKeyPressed(KeyBindingListener.hotbar2.code)) {
