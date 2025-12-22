@@ -18,7 +18,8 @@ public class ModConflicts {
         conflicts.put("clientsideessentials", new ModConflictEntry("Clientside Essentials", "Entirely Replaced"));
         conflicts.put("photomode", new ModConflictEntry("Photo Mode", "Entirely Replaced"));
         conflicts.put("thirdpersonfix", new ModConflictEntry("Third Person Fix", "Entirely Replaced"));
-        
+
+        conflicts.put("nowobtainablerecipes", new ModConflictEntry("Now Obtainable Recipes", "Conflicting Features"));
         conflicts.put("extremeview", new ModConflictEntry("Extreme View", "Conflicting Feature"));
     }
 

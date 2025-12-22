@@ -1,1 +1,2 @@
-* Add spawn-protection and difficulty to server.properties
+* Fix crash without StationAPI
+* Fix translations not working without StationAPI
