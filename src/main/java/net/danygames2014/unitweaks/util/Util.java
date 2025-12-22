@@ -4,6 +4,8 @@ import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.Minecraft;
 
 public class Util {
+    public static int atlasHeight = 256;
+    
     public static void notify(String message, boolean notifyInChat) {
         UniTweaks.LOGGER.info(message);
         if (Minecraft.INSTANCE.inGameHud != null && notifyInChat) {

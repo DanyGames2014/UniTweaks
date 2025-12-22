@@ -101,6 +101,7 @@
     "bugfixes.pickblockfix.MinecraftMixin",
     "bugfixes.slabcrashfix.SlabBlockItemMixin",
     "bugfixes.sleepingheadturningfix.GameRendererMixin",
+    "bugfixes.torchbottomfix.BlockRenderManagerMixin",
     "bugfixes.videosettingssliderfix.VideoOptionsScreenMixin",
     "hooks.GameOptionsMixin",
     "hooks.MinecraftMixin",
