@@ -1,6 +1,8 @@
 package net.danygames2014.unitweaks.event;
 
 import net.danygames2014.unitweaks.util.Util;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.mine_diver.unsafeevents.listener.ListenerPriority;
@@ -19,6 +21,7 @@ public class InitListener {
         StationAPI.EVENT_BUS.post(new RegisterUniTweaksCompatEvent());
     }
     
+    @Environment(EnvType.CLIENT)
     @EventListener
     public void postInit(InitFinishedEvent event) {
         Util.atlasHeight = StationRenderAPI.getBakedModelManager().getAtlas(Atlases.GAME_ATLAS_TEXTURE).getHeight();
