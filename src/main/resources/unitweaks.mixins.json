@@ -8,6 +8,7 @@
     "bugfixes.blockeffectivenessfix.AxeItemMixin",
     "bugfixes.blockeffectivenessfix.PickaxeItemMixin",
     "bugfixes.blockeffectivenessfix.ShovelItemMixin",
+    "bugfixes.blockentityloadfix.BlockEntityMixin",
     "bugfixes.boatdismountfix.BoatEntityMixin",
     "bugfixes.fenceboundingboxfix.FenceBlockMixin",
     "bugfixes.fishvelocityfix.FishingBobberEntityMixin",
