@@ -31,10 +31,10 @@ public class ClickSlotC2SPacketMixin {
     @Shadow
     public int syncId;
 
-    @Inject(method = "write", at = @At("HEAD"))
-    private void debugPrint(DataOutputStream par1, CallbackInfo ci) {
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            System.out.println("Slot : " + this.slot + " | Button : " + this.button + " | Shift : " + this.holdingShift + " | Stack : " + this.stack + " | SyncId : + " + this.syncId);
-        }
-    }
+//    @Inject(method = "write", at = @At("HEAD"))
+//    private void debugPrint(DataOutputStream par1, CallbackInfo ci) {
+//        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+//            System.out.println("Slot : " + this.slot + " | Button : " + this.button + " | Shift : " + this.holdingShift + " | Stack : " + this.stack + " | SyncId : + " + this.syncId);
+//        }
+//    }
 }
