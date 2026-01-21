@@ -1,6 +1,8 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.torchbottomfix;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.Config;
 import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.Tessellator;
@@ -21,11 +23,13 @@ public class BlockRenderManagerMixin {
                               @Local(ordinal = 7) double var24,
                               @Local(ordinal = 8) double var26
                               ) {
-        float shift = 2F / Util.atlasHeight;
-        
-        tessellator.vertex(x + var36 + xTilt, y, z - var36 + zTilt, var24, var22 + shift);
-        tessellator.vertex(x + var36 + xTilt, y, z + var36 + zTilt, var24, var26 + shift);
-        tessellator.vertex(x - var36 + xTilt, y, z + var36 + zTilt, var20, var26 + shift);
-        tessellator.vertex(x - var36 + xTilt, y, z - var36 + zTilt, var20, var22 + shift);
+        if (UniTweaks.BUGFIXES_CONFIG.torchBottomFaceFix) {
+            float shift = 2F / Util.atlasHeight;
+
+            tessellator.vertex(x + var36 + xTilt, y, z - var36 + zTilt, var24, var22 + shift);
+            tessellator.vertex(x + var36 + xTilt, y, z + var36 + zTilt, var24, var26 + shift);
+            tessellator.vertex(x - var36 + xTilt, y, z + var36 + zTilt, var20, var26 + shift);
+            tessellator.vertex(x - var36 + xTilt, y, z - var36 + zTilt, var20, var22 + shift);
+        }
     }
 }
