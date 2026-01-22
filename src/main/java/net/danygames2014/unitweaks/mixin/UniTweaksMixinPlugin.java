@@ -94,7 +94,13 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
                 return false;       
             }
         }
-
+        
+        if (FabricLoader.getInstance().isModLoaded("nitch")) {
+            if (mixinClassName.contains("net.danygames2014.unitweaks.mixin.bugfixes.torchbottomfix")) {
+                UniTweaks.LOGGER.info("Nitch Detected. Skipping mixin " + mixinClassName);
+                return false;
+            }
+        }
 
         return true;
     }

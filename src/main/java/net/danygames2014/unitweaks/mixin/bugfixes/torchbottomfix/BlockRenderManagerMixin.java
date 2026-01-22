@@ -2,7 +2,6 @@ package net.danygames2014.unitweaks.mixin.bugfixes.torchbottomfix;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.danygames2014.unitweaks.UniTweaks;
-import net.danygames2014.unitweaks.util.Config;
 import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.Tessellator;
