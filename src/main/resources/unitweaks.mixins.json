@@ -41,6 +41,7 @@
     "tweaks.igniteentities.FlintAndSteelItemMixin",
     "tweaks.itemsdontstopminecart.MinecartEntityMixin",
     "tweaks.laddergaps.LivingEntityMixin",
+    "tweaks.beta18leavesrender.BlockMixin",
     "tweaks.milkablediver.PlayerEntityMixin",
     "tweaks.minecartboosters.MinecartEntityMixin",
     "tweaks.modernflintandsteel.FlintAndSteelItemMixin",

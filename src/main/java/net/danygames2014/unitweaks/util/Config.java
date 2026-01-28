@@ -247,6 +247,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Allow placing trapdoors without support", multiplayerSynced = true)
         public Boolean allowTrapdoorsWithoutSupport = true;
+        
+        @ConfigEntry(name = "Beta 1.8 Leaves Rendering")
+        public Boolean beta18LeavesRendering = false;
     }
 
     public static class BugfixesConfig {
