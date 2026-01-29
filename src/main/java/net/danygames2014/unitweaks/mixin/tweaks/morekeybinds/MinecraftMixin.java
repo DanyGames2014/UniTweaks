@@ -3,13 +3,16 @@ package net.danygames2014.unitweaks.mixin.tweaks.morekeybinds;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
+import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerInventory;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
@@ -52,5 +55,10 @@ public class MinecraftMixin {
     @ModifyConstant(method = "tick", constant = @Constant(intValue = 87))
     public int modifyToggleFullscreenKeybind(int constant) {
         return KeyBindingListener.toggleFullscreen.code;
+    }
+
+    @Inject(method="tick", at = @At(value = "INVOKE", target = "Lorg/lwjgl/input/Keyboard;getEventKey()I", ordinal = 12))
+    public void handleHotbarKey(CallbackInfo ci) {
+        KeyPressedListener.handleHotbarKey();
     }
 }
