@@ -1,0 +1,60 @@
+# Keybinds
+key.unitweaks.panorama_screenshot=Зняти овид
+key.unitweaks.hotbar_1=1-й слот
+key.unitweaks.hotbar_2=2-й слот
+key.unitweaks.hotbar_3=3-й слот
+key.unitweaks.hotbar_4=4-й слот
+key.unitweaks.hotbar_5=5-й слот
+key.unitweaks.hotbar_6=6-й слот
+key.unitweaks.hotbar_7=7-й слот
+key.unitweaks.hotbar_8=8-й слот
+key.unitweaks.hotbar_9=9-й слот
+key.unitweaks.hide_hud=Сховати інтерфейс
+key.unitweaks.take_screenshot=Зробити зняток
+key.unitweaks.debug_hud=Інтерфейс зневадження
+key.unitweaks.third_person=Третя особа
+key.unitweaks.cinematic_camera=Кінокамера
+key.unitweaks.toggle_fullscreen=Повноекранний режим 
+key.unitweaks.dismount=Злазити
+key.unitweaks.zoom=Приближення
+key.unitweaks.release_mouse=Звільнити мишу
+key.unitweaks.photo_mode=Фоторежим
+key.unitweaks.rescan=Перепідключити мишу
+key.unitweaks.toggle_raw_input=Пряме керування мишею
+
+# FOV
+options.unitweaks.fov=Поле зору
+options.unitweaks.fov.normal=Нормальне
+options.unitweaks.fov.max=Quake Pro
+
+# Fog
+options.unitweaks.fog=Туман
+options.unitweaks.fog.off=Вимкнений
+options.unitweaks.fog.normal=Середній
+options.unitweaks.fog.max=Silent Hill
+options.unitweaks.multiplier_symbol=*
+
+# Clouds
+options.unitweaks.clouds=Хмари
+options.unitweaks.cloud_height=Висота хмар
+
+# FPS Limit
+options.unitweaks.fps_limit=Обмеження FPS
+options.unitweaks.fps_limit.max=Необмеженний
+
+# Render Distance
+options.unitweaks.render_distance=Дальність відмальовки
+options.unitweaks.render_distance.chunks=чанки
+options.unitweaks.render_distance.tiny=Мала
+options.unitweaks.render_distance.short=Коротка
+options.unitweaks.render_distance.normal=Середня
+options.unitweaks.render_distance.far=Далеко
+
+# Brightness
+options.unitweaks.brightness=Яскравість
+options.unitweaks.brightness.min=Середня
+options.unitweaks.brightness.max=Яскраво
+
+# GUI Scale
+options.unitweaks.gui_scale=Розмір інтерфейсу
+options.unitweaks.gui_scale.auto=Авто
