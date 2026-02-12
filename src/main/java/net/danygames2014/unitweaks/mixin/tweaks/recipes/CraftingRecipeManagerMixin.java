@@ -2,8 +2,7 @@ package net.danygames2014.unitweaks.mixin.tweaks.recipes;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.recipe.CraftingRecipeManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,11 +18,20 @@ public class CraftingRecipeManagerMixin {
             ItemStack stack2 = null;
 
             for (ItemStack stack : inventory.stacks) {
-                if (stack != null && stack.getItem().isDamageable()) {
-                    if (stack1 != null && stack1.getItem() == stack.getItem()) {
-                        stack2 = stack;
+                if (stack != null) {
+                    Item item = stack.getItem();
+                    if ((item instanceof ToolItem || item instanceof ShearsItem || item instanceof HoeItem || item instanceof SwordItem) && item.isDamageable()) {
+                        if (stack1 != null) {
+                            if (stack1.getItem() == item) {
+                                stack2 = stack;
+                            } else {
+                                return;
+                            }
+                        } else {
+                            stack1 = stack;
+                        }
                     } else {
-                        stack1 = stack;
+                        return;
                     }
                 }
             }
