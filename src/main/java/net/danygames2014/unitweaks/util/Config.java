@@ -20,6 +20,9 @@ public class Config {
 
         @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
+        
+        @ConfigEntry(name = "Disable Controller Init", description = "Disables the initialization of LWJGL Controllers as it only causes issues anyway")
+        public Boolean disableControllerInit = true;
 
         @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxValue = 128, maxLength = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";

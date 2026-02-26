@@ -120,6 +120,7 @@
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
+    "tweaks.disablecontrollerinit.MinecraftMixin",
     "tweaks.disablef3entityids.LivingEntityRendererMixin",
     "tweaks.fov.GameRendererMixin",
     "tweaks.fov.MinecraftMixin",
