@@ -39,8 +39,7 @@
     ],
     "stationapi:event_bus_client": [
       "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyPressedListener",
-      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener",
-      "net.danygames2014.unitweaks.bugfixes.grassblockitemfix.ColorProviderListener"
+      "net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener"
     ],
     "stationapi:event_bus_server": [
     ],
