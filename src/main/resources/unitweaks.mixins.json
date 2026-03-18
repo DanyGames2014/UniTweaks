@@ -95,7 +95,6 @@
     "bugfixes.fullscreencursorfix.MouseMixin",
     "bugfixes.grassblockitemfix.BlockRenderManagerMixin",
     "bugfixes.grassblockitemfix.GrassBlockMixin",
-    "bugfixes.hidpifix.MinecraftMixin",
     "bugfixes.jitterfix.ChunkRendererMixin",
     "bugfixes.lastdurabilityfix.SingleplayerInteractionManagerMixin",
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",

@@ -354,9 +354,6 @@ public class Config {
         
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
-
-        @ConfigEntry(name = "HiDPI Fix", description = "NOT RECOMMENDED! Fixes the canvas not adjusting properly on higher than 100% display scaling")
-        public Boolean hiDpiFix = false;
         
         @ConfigEntry(name = "Torch Bottom Face Fix", description = "Fixes torches not having bottom faces rendered")
         public Boolean torchBottomFaceFix = true;
