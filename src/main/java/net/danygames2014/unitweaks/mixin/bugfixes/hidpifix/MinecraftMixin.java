@@ -31,6 +31,7 @@ public class MinecraftMixin {
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getWidth() * transform.getScaleX());
         }
+        
         return original.call(instance);
     }
 
@@ -40,6 +41,7 @@ public class MinecraftMixin {
             AffineTransform transform = canvas.getGraphicsConfiguration().getDefaultTransform();
             return (int) Math.ceil(canvas.getParent().getHeight() * transform.getScaleY());
         }
+        
         return original.call(instance);
     }
 

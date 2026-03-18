@@ -93,7 +93,6 @@
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.fencelightingfix.BlockRenderManagerMixin",
     "bugfixes.fullscreencursorfix.MouseMixin",
-    "bugfixes.grassblockitemfix.BlockItemMixin",
     "bugfixes.grassblockitemfix.BlockRenderManagerMixin",
     "bugfixes.grassblockitemfix.GrassBlockMixin",
     "bugfixes.hidpifix.MinecraftMixin",

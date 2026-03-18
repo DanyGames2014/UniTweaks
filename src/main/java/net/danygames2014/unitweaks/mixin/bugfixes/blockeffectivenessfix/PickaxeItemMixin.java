@@ -18,12 +18,6 @@ public class PickaxeItemMixin extends ToolItem {
     @Override
     public float getMiningSpeedMultiplier(ItemStack stack, Block block) {
         if (UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
-//            for (int i = 0; i < EffectiveBlocksLists.pickaxeEffectiveAgainst.length; i++) {
-//                if (BlockRegistry.INSTANCE.get(Identifier.of(EffectiveBlocksLists.pickaxeEffectiveAgainst[i])) == block) {
-//                    return this.miningSpeed;
-//                }
-//            }
-
             if (EffectiveBlocksLists.pickaxeBlocks.contains(block)) {
                 return this.miningSpeed;
             }

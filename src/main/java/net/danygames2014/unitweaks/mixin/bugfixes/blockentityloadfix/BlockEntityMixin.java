@@ -2,6 +2,7 @@ package net.danygames2014.unitweaks.mixin.bugfixes.blockentityloadfix;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,8 +15,7 @@ public class BlockEntityMixin {
         try {
             original.call(instance, nbtCompound);
         } catch (Exception e) {
-            System.err.println("Error while loading block entity");
-            e.printStackTrace();
+            UniTweaks.LOGGER.error("Caught error while loading block entity", e);
         }
     }
 }

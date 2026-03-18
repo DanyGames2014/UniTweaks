@@ -19,12 +19,6 @@ public class AxeItemMixin extends ToolItem {
     @Override
     public float getMiningSpeedMultiplier(ItemStack stack, Block block) {
         if (UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
-//            for (int i = 0; i < EffectiveBlocksLists.axeEffectiveAgainst.length; i++) {
-//                if (BlockRegistry.INSTANCE.get(Identifier.of(EffectiveBlocksLists.axeEffectiveAgainst[i])) == block) {
-//                    return this.miningSpeed;
-//                }
-//            }
-
             if (EffectiveBlocksLists.axeBlocks.contains(block)) {
                 return this.miningSpeed;
             }

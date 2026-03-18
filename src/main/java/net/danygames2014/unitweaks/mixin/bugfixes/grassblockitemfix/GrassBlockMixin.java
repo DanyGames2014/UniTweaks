@@ -14,7 +14,7 @@ public class GrassBlockMixin extends Block {
 
     @Override
     public int getTexture(int side) {
-        if(UniTweaks.BUGFIXES_CONFIG.grassBlockItemFix){
+        if (UniTweaks.BUGFIXES_CONFIG.grassBlockItemFix) {
             if (side == 1) {
                 return 0;
             } else if (side == 0) {
@@ -23,6 +23,7 @@ public class GrassBlockMixin extends Block {
                 return 3;
             }
         }
+        
         return super.getTexture(side);
     }
 }
