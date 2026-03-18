@@ -20,7 +20,7 @@ public class InitListener {
 
         StationAPI.EVENT_BUS.post(new RegisterUniTweaksCompatEvent());
     }
-    
+
     @Environment(EnvType.CLIENT)
     @EventListener
     public void postInit(InitFinishedEvent event) {

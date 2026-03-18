@@ -29,7 +29,7 @@ public class NetherDimensionMixin extends Dimension {
                 float var3 = 1.0F - (float) level / 15.0f;
                 lightLevels[level] = (1.0F - var3) / (var3 * k + 1.0F) * (1.0F - minimumLevel) + minimumLevel;
             }
-            
+
             // Write the light table
             this.lightLevelToLuminance = lightLevels;
 

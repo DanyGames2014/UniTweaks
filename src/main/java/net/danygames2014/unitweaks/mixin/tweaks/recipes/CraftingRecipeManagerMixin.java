@@ -36,7 +36,7 @@ public class CraftingRecipeManagerMixin {
                 }
             }
 
-            if(stack1 != null && stack2 != null) {
+            if (stack1 != null && stack2 != null) {
                 Item item = stack1.getItem();
 
                 int item1durability = item.getMaxDamage() - stack1.getDamage();

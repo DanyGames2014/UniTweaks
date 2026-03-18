@@ -24,7 +24,7 @@ public class CraftingHelper {
             if (recipe.getOutput() == null) {
                 continue;
             }
-            
+
             if (recipe.getOutput().itemId == item.id) {
                 //noinspection SimplifiableConditionalExpression
                 if ((meta == -1) ? true : (recipe.getOutput().getDamage() == meta)) {

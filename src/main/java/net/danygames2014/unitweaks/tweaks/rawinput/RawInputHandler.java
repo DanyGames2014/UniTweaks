@@ -26,7 +26,7 @@ public class RawInputHandler {
 
     private static boolean shouldGetMouse = false;
     public static boolean rawInputEnabled = false;
-    
+
     public static Thread inputThread;
     public static boolean runInputThread = false;
 
@@ -38,7 +38,7 @@ public class RawInputHandler {
         if (inputThread != null && inputThread.isAlive()) {
             return;
         }
-        
+
         inputThread = new Thread(() -> {
             while (runInputThread) {
                 if (!mice.isEmpty() && Minecraft.INSTANCE.currentScreen == null) {

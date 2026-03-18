@@ -23,7 +23,7 @@ public class GrassBlockMixin extends Block {
                 return 3;
             }
         }
-        
+
         return super.getTexture(side);
     }
 }

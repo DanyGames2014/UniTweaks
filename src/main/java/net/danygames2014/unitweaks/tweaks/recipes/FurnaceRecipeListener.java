@@ -15,7 +15,7 @@ public class FurnaceRecipeListener {
             RecipeRegisterEvent.Vanilla type = RecipeRegisterEvent.Vanilla.fromType(event.recipeId);
 
             if (type == RecipeRegisterEvent.Vanilla.SMELTING) {
-                for (Map.Entry<Item, FuelLookup.FuelLookupEntry> entry : FuelLookup.lookup.entrySet()){
+                for (Map.Entry<Item, FuelLookup.FuelLookupEntry> entry : FuelLookup.lookup.entrySet()) {
                     FuelRegistry.addFuelItem(entry.getKey(), entry.getValue().meta(), entry.getValue().fuelTime());
                 }
             }

@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
     @WrapOperation(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;thirdPerson:Z", opcode = Opcodes.PUTFIELD))
-    public void aVoid(GameOptions gameOptions, boolean value, Operation<Void> original){
-        if (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson ==  FrontViewMode.NORMAL) {
+    public void aVoid(GameOptions gameOptions, boolean value, Operation<Void> original) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson == FrontViewMode.NORMAL) {
             if (gameOptions.thirdPerson) {
                 if (ModOptions.frontView) {
                     // Front View -> First Person
@@ -32,7 +32,7 @@ public class MinecraftMixin {
             }
             return;
         }
-        
+
         ModOptions.frontView = false;
         original.call(gameOptions, value);
     }

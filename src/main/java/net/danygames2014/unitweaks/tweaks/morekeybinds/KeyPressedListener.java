@@ -20,13 +20,13 @@ public class KeyPressedListener {
     public static boolean releasedMouse = false;
 
     @EventListener
-    public void stationKeyPress(KeyStateChangedEvent event){
+    public void stationKeyPress(KeyStateChangedEvent event) {
         keyPress();
     }
-    
+
     public static void keyPress() {
         int keyCode = Keyboard.getEventKey();
-        
+
         if (keyCode == Keyboard.KEY_NONE) {
             return;
         }
@@ -47,7 +47,7 @@ public class KeyPressedListener {
                 }
             }
         }
-        
+
         if (Keyboard.getEventKeyState() && minecraft.currentScreen == null) {
             // Photo Mode
             if (keyCode == KeyBindingListener.photoMode.code) {

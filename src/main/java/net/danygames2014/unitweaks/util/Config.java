@@ -20,15 +20,15 @@ public class Config {
 
         @ConfigEntry(name = "Raw Input", description = "You probably don't want this")
         public Boolean rawInput = false;
-        
+
         @ConfigEntry(name = "Disable Controller Init", description = "Disables the initialization of LWJGL Controllers as it only causes issues anyway")
         public Boolean disableControllerInit = true;
 
         @ConfigEntry(name = "Resource Download URL", description = "BetaCraft Resource Proxy by Default", maxValue = 128, maxLength = 128)
         public String resourceDownloadUrl = "http://s3.betacraft.uk:11705/MinecraftResources/";
-        
+
         @ConfigEntry(name = "Disabled Dimensions (Server Only)", description = "Dimensions which wont be loaded on server boot")
-        public Integer[] disabledDimensions = new Integer[] {2};
+        public Integer[] disabledDimensions = new Integer[]{2};
     }
 
     public static class UserInterfaceConfig {
@@ -46,7 +46,7 @@ public class Config {
 
         @ConfigEntry(name = "Disable F3 Entity ID Tags")
         public Boolean disableDebugEntityIdTags = true;
-        
+
         @ConfigEntry(name = "Front View Third Person")
         public FrontViewMode frontViewThirdPerson = FrontViewMode.NORMAL;
 
@@ -148,7 +148,7 @@ public class Config {
 
         @ConfigEntry(name = "More Sounds (Chests)", description = "Adds sounds for chests (a few options are available)")
         public ChestSoundsEnum moreSoundsChests = ChestSoundsEnum.DOOR;
-        
+
         @ConfigEntry(name = "More Sounds (Falling Pipe)", description = "Makes the tool break sound play a falling pipe sound")
         public Boolean fallingPipe = false;
 
@@ -222,7 +222,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Expand Chicken Hitbox", description = "Expands chicken hitbox to it's modern size", multiplayerSynced = true)
         public Boolean expandChickenHitbox = true;
-        
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Stackable Chests", description = "Allows you to stack chests on top of each other", multiplayerSynced = true)
         public Boolean stackableChests = true;
@@ -250,7 +250,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Allow placing trapdoors without support", multiplayerSynced = true)
         public Boolean allowTrapdoorsWithoutSupport = true;
-        
+
         @ConfigEntry(name = "Beta 1.8 Leaves Rendering")
         public Boolean beta18LeavesRendering = false;
     }
@@ -265,7 +265,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Slime Split Fix", description = "Fixes slimes not splitting when their health is below zero after dying", multiplayerSynced = true)
         public Boolean enableSlimeSplitFix = true;
-        
+
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Nightmare Pathfinding Fix", description = "Fixes the pathfinding calculation of nightmares", multiplayerSynced = true)
         public Boolean nightmarePathfindingFix = true;
@@ -276,7 +276,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Boat Dismount Fix", description = "Fixes sometimes falling through the boat when dismounting it", multiplayerSynced = true)
         public Boolean boatDismountFix = true;
-        
+
         @ConfigEntry(name = "Sleeping Camera Rotation Fix", description = "Fixes incorrectly rotated camera when sleeping and the ability to erroneously rotate it")
         public Boolean sleepingCameraRotationFix = true;
 
@@ -342,7 +342,7 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Wooden Slab Mining Fix", description = "Fixes wooden slab not being mineable by hand and axe", multiplayerSynced = true)
         public Boolean woodenSlabMiningFix = true;
-        
+
         @ConfigEntry(name = "Grass Block Item Fix", description = "Fixes grass block top texture being wrong")
         public Boolean grassBlockItemFix = true;
 
@@ -351,10 +351,10 @@ public class Config {
 
         @ConfigEntry(name = "Last Durability Fix", description = "Fixes blocks not dropping on the last durability point of a tool")
         public Boolean lastDurabilityFix = true;
-        
+
         @ConfigEntry(name = "Fence Lighting Fix", description = "Fixes the bottom face of a fence being dark when placed on block")
         public Boolean fenceLightingFix = true;
-        
+
         @ConfigEntry(name = "Torch Bottom Face Fix", description = "Fixes torches not having bottom faces rendered")
         public Boolean torchBottomFaceFix = true;
     }

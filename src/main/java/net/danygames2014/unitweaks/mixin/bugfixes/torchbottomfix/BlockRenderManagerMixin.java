@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BlockRenderManagerMixin {
     @Inject(method = "renderTiltedTorch", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Tessellator;vertex(DDDDD)V", ordinal = 3, shift = At.Shift.AFTER))
     public void addBottomFace(Block block, double x, double y, double z, double xTilt, double zTilt, CallbackInfo ci,
-                              @Local Tessellator tessellator, 
+                              @Local Tessellator tessellator,
                               @Local(ordinal = 13) double var36,
                               @Local(ordinal = 5) double var20,
                               @Local(ordinal = 6) double var22,
                               @Local(ordinal = 7) double var24,
                               @Local(ordinal = 8) double var26
-                              ) {
+    ) {
         if (UniTweaks.BUGFIXES_CONFIG.torchBottomFaceFix) {
             float shift = 2F / Util.atlasHeight;
 

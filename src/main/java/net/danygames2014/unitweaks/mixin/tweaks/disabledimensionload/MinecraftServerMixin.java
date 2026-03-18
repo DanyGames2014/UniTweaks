@@ -18,7 +18,7 @@ public class MinecraftServerMixin {
                 return false;
             }
         }
-        
+
         return original.call(server);
     }
 }

@@ -17,14 +17,14 @@ public class ModOptions {
 
     // Spawn Protection
     public static int spawnProtection = 16;
-    
+
     // Front View Third Person
     public static boolean frontView = false;
-    
+
     // GUI Scale
     public static float guiScale = 0.0F;
     public static float realGuiScale = 0.0F;
-    
+
     public static int getGuiScale() {
         return (int) Math.floor(realGuiScale * 8);
     }

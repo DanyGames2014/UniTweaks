@@ -20,7 +20,7 @@ public class ConfigFactories implements ConfigFactoryProvider {
     public void provideLoadFactories(ImmutableMap.Builder<Type, SeptFunction<String, ConfigEntry, Field, Object, Boolean, Object, Object, ConfigEntryHandler<?>>> immutableBuilder) {
         immutableBuilder.put(ChestSoundsEnum.class, ((id, configEntry, parentField, parentObject, isMultiplayerSynced, enumOrOrdinal, defaultEnum) -> new EnumConfigEntryHandler<ChestSoundsEnum>(id, configEntry, parentField, parentObject, isMultiplayerSynced, DefaultFactoryProvider.enumOrOrdinalToOrdinal(enumOrOrdinal), ((ChestSoundsEnum) defaultEnum).ordinal(), ChestSoundsEnum.class)));
         immutableBuilder.put(FrontViewMode.class, ((id, configEntry, parentField, parentObject, isMultiplayerSynced, enumOrOrdinal, defaultEnum) -> new EnumConfigEntryHandler<FrontViewMode>(id, configEntry, parentField, parentObject, isMultiplayerSynced, DefaultFactoryProvider.enumOrOrdinalToOrdinal(enumOrOrdinal), ((FrontViewMode) defaultEnum).ordinal(), FrontViewMode.class)));
-        
+
     }
 
     @Override

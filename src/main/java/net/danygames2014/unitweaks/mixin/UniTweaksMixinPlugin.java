@@ -89,12 +89,12 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
         }
 
         if (FabricLoader.getInstance().isModLoaded("stationapi")) {
-            if(nonStationMixins.contains(mixinClassName)) {
+            if (nonStationMixins.contains(mixinClassName)) {
                 UniTweaks.LOGGER.info("StationAPI Detected. Skipping mixin " + mixinClassName);
-                return false;       
+                return false;
             }
         }
-        
+
         if (FabricLoader.getInstance().isModLoaded("nitch")) {
             if (mixinClassName.contains("net.danygames2014.unitweaks.mixin.bugfixes.torchbottomfix")) {
                 UniTweaks.LOGGER.info("Nitch Detected. Skipping mixin " + mixinClassName);
@@ -104,8 +104,8 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
 
         return true;
     }
-    
-    public static ArrayList<String> nonStationMixins = new ArrayList<>(){{
+
+    public static ArrayList<String> nonStationMixins = new ArrayList<>() {{
         add("net.danygames2014.unitweaks.mixin.bugfixes.droppeditemfix.ItemRendererMixin");
         add("net.danygames2014.unitweaks.mixin.hooks.GameOptionsMixin");
         add("net.danygames2014.unitweaks.mixin.hooks.MinecraftMixin");

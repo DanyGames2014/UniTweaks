@@ -22,8 +22,8 @@ public class MinecraftServerMixin {
     public void addSpawnProtectionProp(CallbackInfoReturnable<Boolean> cir) {
         ModOptions.spawnProtection = this.properties.getProperty("spawn-protection", 16);
     }
-    
-    @WrapOperation(method = "loadWorld", at = @At(value = "FIELD",opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/world/ServerWorld;difficulty:I"))
+
+    @WrapOperation(method = "loadWorld", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lnet/minecraft/world/ServerWorld;difficulty:I"))
     public void addDifficultyProp(ServerWorld world, int value, Operation<Void> original) {
         original.call(world, this.properties.getProperty("difficulty", 1));
     }

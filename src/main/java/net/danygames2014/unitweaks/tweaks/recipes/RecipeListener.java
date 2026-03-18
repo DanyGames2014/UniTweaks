@@ -30,7 +30,7 @@ public class RecipeListener {
             }
         }
     }
-    
+
     public static void registerShapedRecipes() {
         /* Modern Recipes */
         // Slabs Craft 6 per Craft
@@ -95,7 +95,7 @@ public class RecipeListener {
         if (UniTweaks.RECIPES_CONFIG.obtainable.craftableLapisOre) {
             CraftingHelper.addShapedRecipe(new ItemStack(Block.LAPIS_ORE, 1), "RRR", "RSR", "RRR", 'R', new ItemStack(Item.DYE, 1, 4), 'S', new ItemStack(Block.STONE));
         }
-        
+
         /* Tweaked Recipes */
         // Custom Stairs per Craft
         if (UniTweaks.RECIPES_CONFIG.tweaked.stairsPerCraft != 4) {
@@ -111,7 +111,7 @@ public class RecipeListener {
             CraftingHelper.addShapedRecipe(new ItemStack(Block.TRAPDOOR, UniTweaks.RECIPES_CONFIG.tweaked.trapdoorsPerCraft), "XXX", "XXX", 'X', new ItemStack(Block.PLANKS, 1));
         }
     }
-    
+
     public static void registerShapelessRecipes() {
         /* Modern Recipes */
         // Shapeless Flint and Steel Recipe
@@ -158,7 +158,7 @@ public class RecipeListener {
                 CraftingHelper.addShapelessRecipe(new ItemStack(Block.WOOL, 1, i), new ItemStack(Block.WOOL, 1, -1), new ItemStack(Item.DYE, 1, 15 - i));
             }
         }
-        
+
         /* Obtainable Recipes */
         // Craftable Grass Block
         if (UniTweaks.RECIPES_CONFIG.obtainable.craftableGrassBlocks) {
@@ -169,7 +169,7 @@ public class RecipeListener {
         if (UniTweaks.RECIPES_CONFIG.obtainable.craftableFire) {
             CraftingHelper.addShapelessRecipe(new ItemStack(Block.FIRE, 3), new ItemStack(Item.FLINT_AND_STEEL, 1));
         }
-        
+
         /* Tweaked Recipes */
         // Shapeless Jack o' Lantern
         if (UniTweaks.RECIPES_CONFIG.tweaked.shapelessJackOLantern) {

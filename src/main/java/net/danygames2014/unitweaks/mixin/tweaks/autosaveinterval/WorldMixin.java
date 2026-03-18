@@ -2,7 +2,6 @@ package net.danygames2014.unitweaks.mixin.tweaks.autosaveinterval;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.world.World;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

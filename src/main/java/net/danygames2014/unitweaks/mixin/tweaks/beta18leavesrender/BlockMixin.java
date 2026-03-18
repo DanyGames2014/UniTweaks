@@ -28,6 +28,6 @@ public class BlockMixin {
                 float luminance = blockView.getNaturalBrightness(x, y, z, BLOCKS_LIGHT_LUMINANCE[this.id]);
                 cir.setReturnValue(Math.min(luminance, 0.2F));
             }
-        }        
+        }
     }
 }

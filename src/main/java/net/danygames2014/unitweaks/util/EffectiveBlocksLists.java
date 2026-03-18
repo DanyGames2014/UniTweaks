@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class EffectiveBlocksLists {
     public static ArrayList<Block> pickaxeBlocks = new ArrayList<>();
-    
+
     public static ArrayList<Block> axeBlocks = new ArrayList<>();
 
     public static ArrayList<Block> shovelBlocks = new ArrayList<>();
-    
+
     static {
         pickaxeBlocks.add(Block.DISPENSER);
         pickaxeBlocks.add(Block.BRICKS);
@@ -40,7 +40,7 @@ public class EffectiveBlocksLists {
         axeBlocks.add(Block.JACK_O_LANTERN);
         axeBlocks.add(Block.FENCE);
         axeBlocks.add(Block.NOTE_BLOCK);
-        
+
         shovelBlocks.add(Block.SOUL_SAND);
     }
 

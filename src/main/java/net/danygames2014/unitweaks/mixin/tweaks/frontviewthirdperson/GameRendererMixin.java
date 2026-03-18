@@ -15,18 +15,19 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
-    @Shadow private Minecraft client;
+    @Shadow
+    private Minecraft client;
 
     @WrapOperation(method = "applyCameraTransform", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/LivingEntity;pitch:F", ordinal = 1))
     public float aVoid(LivingEntity instance, Operation<Float> original) {
         if (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson == FrontViewMode.DISABLED) {
             return original.call(instance);
         }
-        
+
         if (ModOptions.frontView || (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson == FrontViewMode.HIDE_HUD && (client.options.thirdPerson && client.options.hideHud))) {
             return original.call(instance) + 180F;
         }
-        
+
         return original.call(instance);
     }
 

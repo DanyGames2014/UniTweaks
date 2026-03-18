@@ -18,10 +18,10 @@ public abstract class TntEntityMixin extends Entity {
 
     @Override
     public boolean damage(Entity damageSource, int amount) {
-        if(!world.isRemote){
-            if(UniTweaks.OLD_FEATURES_CONFIG.punchTntToDefuse && !dead){
+        if (!world.isRemote) {
+            if (UniTweaks.OLD_FEATURES_CONFIG.punchTntToDefuse && !dead) {
                 super.damage(damageSource, amount);
-                if(damageSource instanceof PlayerEntity){
+                if (damageSource instanceof PlayerEntity) {
                     markDead();
                     world.spawnEntity(new ItemEntity(this.world, this.x, this.y, this.z, new ItemStack(Block.TNT)));
                     return true;

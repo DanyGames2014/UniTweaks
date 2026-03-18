@@ -30,13 +30,13 @@ public abstract class BlockRenderManagerMixin {
                 float r = 0.4862745F;
                 float g = 0.7411765F;
                 float b = 0.41960785F;
-                
-                if (grassColor != -8602261){
+
+                if (grassColor != -8602261) {
                     r = (float) (grassColor >> 16 & 255) / 255.0F;
                     g = (float) (grassColor >> 8 & 255) / 255.0F;
                     b = (float) (grassColor & 255) / 255.0F;
                 }
-                
+
                 GL11.glColor4f(r * brightness, g * brightness, b * brightness, 1.0F);
             } else {
                 GL11.glColor3f(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F);

@@ -18,24 +18,25 @@ import java.util.List;
 
 @Mixin(GameOptions.class)
 public class GameOptionsMixin {
-    @Shadow public KeyBinding[] allKeys;
+    @Shadow
+    public KeyBinding[] allKeys;
 
     @Inject(method = "<init>()V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;difficulty:I", ordinal = 0, opcode = Opcodes.PUTFIELD))
-    public void initKeybinds(CallbackInfo ci){
+    public void initKeybinds(CallbackInfo ci) {
         initKeybinds();
     }
 
     @Inject(method = "<init>(Lnet/minecraft/client/Minecraft;Ljava/io/File;)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;difficulty:I", ordinal = 0, opcode = Opcodes.PUTFIELD))
-    public void initKeybinds2(CallbackInfo ci){
+    public void initKeybinds2(CallbackInfo ci) {
         initKeybinds();
     }
 
     @Unique
     private void initKeybinds() {
-        if(FabricLoader.getInstance().isModLoaded("stationapi")){
+        if (FabricLoader.getInstance().isModLoaded("stationapi")) {
             return;
         }
-        
+
         List<KeyBinding> keyBindingList = new ArrayList<>(Arrays.asList(allKeys));
         KeyBindingListener.registerKeyBindings(keyBindingList);
         allKeys = keyBindingList.toArray(new KeyBinding[0]);

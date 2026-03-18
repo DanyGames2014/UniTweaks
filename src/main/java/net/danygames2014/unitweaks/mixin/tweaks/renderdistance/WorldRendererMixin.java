@@ -57,7 +57,7 @@ public class WorldRendererMixin {
             )
     )
     public void injectNewRenderDistance(CallbackInfo ci) {
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             this.lastViewDistance = ModOptions.getRenderDistanceChunks();
         }
     }
@@ -73,7 +73,7 @@ public class WorldRendererMixin {
             )
     )
     public void overrideHorizontalRenderDistnace(CallbackInfo ci) {
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             this.chunkCountX = (ModOptions.getRenderDistanceChunks() * 2) + 1;
         }
     }
@@ -89,7 +89,7 @@ public class WorldRendererMixin {
             )
     )
     public void overrideDeepRenderDistnace(CallbackInfo ci) {
-        if(UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.renderDistanceSlider) {
             this.chunkCountZ = (ModOptions.getRenderDistanceChunks() * 2) + 1;
         }
     }

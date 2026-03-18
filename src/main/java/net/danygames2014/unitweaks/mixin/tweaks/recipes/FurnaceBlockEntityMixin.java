@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FurnaceBlockEntity.class)
 public class FurnaceBlockEntityMixin extends BlockEntity {
     @Inject(method = "getFuelTime", at = @At(value = "HEAD"), cancellable = true)
-    public void injectFuelValues(ItemStack stack, CallbackInfoReturnable<Integer> cir){
-        if(UniTweaks.RECIPES_CONFIG.furnaceFuels) {
+    public void injectFuelValues(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+        if (UniTweaks.RECIPES_CONFIG.furnaceFuels) {
             if (stack != null) {
                 FuelLookup.FuelLookupEntry entry = FuelLookup.lookup.get(stack.getItem());
 
-                if(entry != null){
-                    if(entry.meta() == -1 || entry.meta() == stack.getDamage()) {
+                if (entry != null) {
+                    if (entry.meta() == -1 || entry.meta() == stack.getDamage()) {
                         cir.setReturnValue(entry.fuelTime());
                     }
                 }

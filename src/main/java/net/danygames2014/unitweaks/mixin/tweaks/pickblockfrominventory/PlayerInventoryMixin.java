@@ -42,7 +42,7 @@ public class PlayerInventoryMixin {
     public void setSelectedItem(int id, boolean bl, CallbackInfo ci) {
         int itemMeta = id & 0xF;
         int itemId = id >>> 4;
-        
+
         if (UniTweaks.GAMEPLAY_CONFIG.pickBlockFromInventory) {
             int slotWithItemIndex = -1;
             int hotbarSlotIndex;
@@ -54,7 +54,7 @@ public class PlayerInventoryMixin {
                     break;
                 }
             }
-            
+
             // If no item was found with meta matching, try without it
             if (slotWithItemIndex == -1) {
                 for (int i = 0; i < main.length; i++) {

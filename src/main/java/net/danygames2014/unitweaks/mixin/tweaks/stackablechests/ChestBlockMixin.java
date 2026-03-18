@@ -19,7 +19,7 @@ public class ChestBlockMixin {
                 return false;
             }
         }
-        
+
         return original.call(world, x, y, z);
     }
 

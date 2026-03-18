@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Block.class)
 public class BlockMixin {
     @Inject(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/stat/Stats;initializeItemStats()V", shift = At.Shift.AFTER))
-    private static void injectRecipes(CallbackInfo ci){
+    private static void injectRecipes(CallbackInfo ci) {
         RecipeListener.registerShapedRecipes();
         RecipeListener.registerShapelessRecipes();
     }

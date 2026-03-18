@@ -13,20 +13,20 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(NaturalSpawner.class)
 public class NaturalSpawnerMixin {
     @WrapOperation(method = "spawnMonstersAndWakePlayers", at = @At(value = "INVOKE", target = "Ljava/lang/Math;abs(D)D", ordinal = 0))
-    private static double fixXOffset(double a, Operation<Double> original, @Local(ordinal = 0)PathNode var19, @Local(ordinal = 0)PlayerEntity var5) {
+    private static double fixXOffset(double a, Operation<Double> original, @Local(ordinal = 0) PathNode var19, @Local(ordinal = 0) PlayerEntity var5) {
         if (!UniTweaks.BUGFIXES_CONFIG.nightmarePathfindingFix) {
             return original.call(a);
         }
-        
-        return Math.abs(((double)var19.x + 0.5D) - var5.x);
+
+        return Math.abs(((double) var19.x + 0.5D) - var5.x);
     }
 
     @WrapOperation(method = "spawnMonstersAndWakePlayers", at = @At(value = "INVOKE", target = "Ljava/lang/Math;abs(D)D", ordinal = 1))
-    private static double fixZOffset(double a, Operation<Double> original, @Local(ordinal = 0)PathNode var19, @Local(ordinal = 0)PlayerEntity var5) {
+    private static double fixZOffset(double a, Operation<Double> original, @Local(ordinal = 0) PathNode var19, @Local(ordinal = 0) PlayerEntity var5) {
         if (!UniTweaks.BUGFIXES_CONFIG.nightmarePathfindingFix) {
             return original.call(a);
         }
 
-        return Math.abs(((double)var19.z + 0.5D) - var5.z);
+        return Math.abs(((double) var19.z + 0.5D) - var5.z);
     }
 }

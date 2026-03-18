@@ -28,28 +28,28 @@ public class SingleplayerInteractionManagerMixin extends InteractionManager {
     }
 
     @Inject(method = "breakBlock", at = @At(value = "HEAD"))
-    public void resetFlag(int x, int y, int z, int direction, CallbackInfoReturnable<Boolean> cir){
+    public void resetFlag(int x, int y, int z, int direction, CallbackInfoReturnable<Boolean> cir) {
         afterBreakHandled = false;
     }
-    
+
     @Inject(method = "breakBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;onRemoved(Lnet/minecraft/entity/player/PlayerEntity;)V", shift = At.Shift.BEFORE))
     public void callAfterBreak(int x, int y, int z, int direction, CallbackInfoReturnable<Boolean> cir, @Local(ordinal = 4) int var5, @Local(ordinal = 5) int var6, @Local(ordinal = 6) int var7, @Local(ordinal = 7) int var9) {
         if (!UniTweaks.BUGFIXES_CONFIG.lastDurabilityFix) {
             return;
         }
-        
+
         if (var7 == 1 && var9 == 1) {
             Block.BLOCKS[var5].afterBreak(this.minecraft.world, this.minecraft.player, x, y, z, var6);
             afterBreakHandled = true;
         }
     }
-    
+
     @WrapWithCondition(method = "breakBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;afterBreak(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;IIII)V"))
     public boolean cancelAfterBreak(Block instance, World world, PlayerEntity player, int x, int y, int z, int meta) {
         if (!UniTweaks.BUGFIXES_CONFIG.lastDurabilityFix) {
             return true;
         }
-        
+
         return !afterBreakHandled;
     }
 }

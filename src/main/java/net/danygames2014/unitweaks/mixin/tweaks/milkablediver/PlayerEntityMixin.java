@@ -15,18 +15,18 @@ public class PlayerEntityMixin extends LivingEntity {
 
     @Override
     public boolean interact(PlayerEntity player) {
-        if(this.world.isRemote) {
+        if (this.world.isRemote) {
             return false;
         }
-        
+
         ItemStack hand = player.inventory.getSelectedItem();
         if (hand != null && hand.itemId == Item.BUCKET.id) {
-            if (PlayerEntity.class.cast(this).name.equals("mine_diver")){
+            if (PlayerEntity.class.cast(this).name.equals("mine_diver")) {
                 player.inventory.setStack(player.inventory.selectedSlot, new ItemStack(Item.MILK_BUCKET));
                 return true;
             }
         }
-        
+
         return false;
     }
 }

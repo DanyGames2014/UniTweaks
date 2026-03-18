@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(BlockEntity.class)
 public class BlockEntityMixin {
     @WrapOperation(method = "createFromNbt", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/entity/BlockEntity;readNbt(Lnet/minecraft/nbt/NbtCompound;)V"))
-    private static void aVoid(BlockEntity instance, NbtCompound nbtCompound, Operation<Void> original){
+    private static void aVoid(BlockEntity instance, NbtCompound nbtCompound, Operation<Void> original) {
         try {
             original.call(instance, nbtCompound);
         } catch (Exception e) {

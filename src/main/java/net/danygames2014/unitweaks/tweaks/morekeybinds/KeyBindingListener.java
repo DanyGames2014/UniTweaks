@@ -32,10 +32,10 @@ public class KeyBindingListener {
     public static KeyBinding toggleRawInput;
 
     @EventListener
-    public void stationRegisterKeybindings(KeyBindingRegisterEvent event){
+    public void stationRegisterKeybindings(KeyBindingRegisterEvent event) {
         registerKeyBindings(event.keyBindings);
     }
-    
+
     public static void registerKeyBindings(List<KeyBinding> keyBindings) {
         keyBindings.add(dismount = new KeyBinding("key.unitweaks.dismount", Keyboard.KEY_LSHIFT));
         keyBindings.add(zoom = new KeyBinding("key.unitweaks.zoom", Keyboard.KEY_C));

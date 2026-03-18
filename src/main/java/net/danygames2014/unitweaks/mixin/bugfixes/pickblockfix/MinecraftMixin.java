@@ -76,7 +76,7 @@ public class MinecraftMixin {
     @Unique
     public int getPickBlockId(int blockId, int blockMeta) {
         int itemId;
-        
+
         if (blockId == Block.PISTON_HEAD.id) {
             // Special handling for pistons
             if (blockMeta < 8) {
@@ -84,7 +84,7 @@ public class MinecraftMixin {
             } else {
                 itemId = Block.STICKY_PISTON.id;
             }
-        } else if (pickBlockLookupMap.containsKey(blockId)){
+        } else if (pickBlockLookupMap.containsKey(blockId)) {
             // Other special cases
             itemId = pickBlockLookupMap.get(blockId);
         } else {
@@ -95,11 +95,11 @@ public class MinecraftMixin {
                 itemId = blockId;
             }
         }
-        
+
         // Pack the blockId and blockMeta
         return (itemId << 4) | (blockMeta & 0xF);
     }
-    
+
     @Unique
     public int convertBlockIdToItemId(int blockId) {
         return Block.BLOCKS[blockId].asItem().id;

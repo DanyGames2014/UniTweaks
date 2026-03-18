@@ -6,7 +6,7 @@ public enum FrontViewMode {
     HIDE_HUD("Hide HUD");
 
     final String displayName;
-    
+
     FrontViewMode(String displayName) {
         this.displayName = displayName;
     }

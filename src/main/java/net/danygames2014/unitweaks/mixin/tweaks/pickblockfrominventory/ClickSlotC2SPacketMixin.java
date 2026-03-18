@@ -1,15 +1,9 @@
 package net.danygames2014.unitweaks.mixin.tweaks.pickblockfrominventory;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.io.DataOutputStream;
 
 @Mixin(ClickSlotC2SPacket.class)
 public class ClickSlotC2SPacketMixin {
