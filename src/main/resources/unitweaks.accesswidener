@@ -1,4 +1,4 @@
-accessWidener v2 named
+classTweaker v1 named
 
 accessible field net/minecraft/client/Minecraft INSTANCE Lnet/minecraft/client/Minecraft;
 
