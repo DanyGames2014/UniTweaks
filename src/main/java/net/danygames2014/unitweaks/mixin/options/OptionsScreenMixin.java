@@ -26,8 +26,10 @@ public abstract class OptionsScreenMixin extends Screen {
     private GameOptions options;
 
     static {
-        RENDER_OPTIONS = Arrays.copyOf(RENDER_OPTIONS, RENDER_OPTIONS.length + 1);
-        OptionsScreenMixin.RENDER_OPTIONS[OptionsScreenMixin.RENDER_OPTIONS.length - 1] = ModOptions.fovOption;
+        if (UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
+            RENDER_OPTIONS = Arrays.copyOf(RENDER_OPTIONS, RENDER_OPTIONS.length + 1);
+            OptionsScreenMixin.RENDER_OPTIONS[OptionsScreenMixin.RENDER_OPTIONS.length - 1] = ModOptions.fovOption;
+        }
     }
 
     @Inject(method = "buttonClicked", at = @At("HEAD"), cancellable = true)

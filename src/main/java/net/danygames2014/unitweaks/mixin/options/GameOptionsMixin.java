@@ -30,7 +30,7 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "setFloat", at = @At(value = "HEAD"))
     public void setFloat(Option option, float value, CallbackInfo ci) {
-        if (option == ModOptions.fovOption) {
+        if (option == ModOptions.fovOption && UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
             ModOptions.fov = value;
         }
 
@@ -81,7 +81,7 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "getFloat", at = @At(value = "HEAD"), cancellable = true)
     public void getFloat(Option option, CallbackInfoReturnable<Float> cir) {
-        if (option == ModOptions.fovOption) {
+        if (option == ModOptions.fovOption && UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
             cir.setReturnValue(ModOptions.fov);
         }
 
@@ -203,7 +203,7 @@ public abstract class GameOptionsMixin {
     private void load(CallbackInfo ci, BufferedReader bufferedReader, String string) {
         String[] stringArray = string.split(":");
 
-        if (stringArray[0].equals("fov")) {
+        if (stringArray[0].equals("fov") && UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
             ModOptions.fov = this.parseFloat(stringArray[1]);
         }
 
@@ -240,7 +240,9 @@ public abstract class GameOptionsMixin {
 
     @Inject(method = "save", at = @At(value = "INVOKE", target = "Ljava/io/PrintWriter;close()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void saveOptions(CallbackInfo ci, PrintWriter printWriter) {
-        printWriter.println("fov:" + ModOptions.fov);
+        if (UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
+            printWriter.println("fov:" + ModOptions.fov);
+        }
 
         if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {
             printWriter.println("fog_density:" + ModOptions.fogDensity);

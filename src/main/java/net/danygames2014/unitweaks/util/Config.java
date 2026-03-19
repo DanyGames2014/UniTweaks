@@ -53,6 +53,9 @@ public class Config {
         @ConfigEntry(name = "Clear Text Field With Right Click", description = "Right clicking on a text field will clear it")
         public Boolean clearTextFieldWithRightClick = true;
 
+        @ConfigEntry(name = "FOV Slider")
+        public Boolean fovSlider = true;
+
         @ConfigCategory(name = "Video Settings")
         public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();
 
@@ -63,25 +66,25 @@ public class Config {
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
 
         public static class VideoSettingsConfig {
-            @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean brightnessSlider = true;
 
-            @ConfigEntry(name = "Cloud Height Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "Cloud Height Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean cloudHeightSlider = true;
 
-            @ConfigEntry(name = "Clouds Toggle", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "Clouds Toggle", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean cloudsToggle = true;
 
-            @ConfigEntry(name = "Fog Density Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "Fog Density Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean fogDensitySlider = true;
 
-            @ConfigEntry(name = "GUI Scale Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "GUI Scale Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean guiScaleSlider = true;
 
-            @ConfigEntry(name = "FPS Limit Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "FPS Limit Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean fpsLimitSlider = true;
 
-            @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect")
+            @ConfigEntry(name = "Render Distance Slider", description = "Requires a restart to take effect", requiresRestart = true)
             public Boolean renderDistanceSlider = true;
 
             @ConfigEntry(name = "Vanilla Far Fog Values")

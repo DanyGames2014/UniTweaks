@@ -17,7 +17,7 @@ public class VideoOptionsScreenMixin {
     private static Option[] VIDEO_OPTIONS;
 
     @Unique
-    private static ArrayList<Option> addedOptions = new ArrayList<>();
+    private static final ArrayList<Option> addedOptions = new ArrayList<>();
 
     static {
         if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fogDensitySlider) {

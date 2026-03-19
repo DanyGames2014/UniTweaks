@@ -3,14 +3,13 @@ package net.danygames2014.unitweaks.mixin.tweaks.fov;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.tweaks.morekeybinds.KeyBindingListener;
 import net.danygames2014.unitweaks.util.CompatHelper;
 import net.danygames2014.unitweaks.util.ModOptions;
 import net.danygames2014.unitweaks.util.Util;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.entity.LivingEntity;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
@@ -25,12 +24,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.BiFunction;
 
 @Mixin(GameRenderer.class)
-public class GameRendererMixin {
+public abstract class GameRendererMixin {
     @Shadow
     private Minecraft client;
 
     @Shadow
     private float viewDistance;
+
+    @Shadow
+    protected abstract float getFov(float tickDelta);
 
     @Unique
     public float fov = 70F;
@@ -42,17 +44,8 @@ public class GameRendererMixin {
     boolean zoomedIn = false;
 
     @Unique
-    public float getFovMultiplier(float partialTicks, boolean isHand) {
-        LivingEntity cameraEntity = this.client.camera;
-        fov = ModOptions.getFovInDegrees();
-
-        if (isHand) {
-            fov = 70F;
-        }
-
-        if (cameraEntity.isInFluid(Material.WATER)) {
-            fov *= 60.0F / 70.0F;
-        }
+    public float getFovMultiplier(float partialTicks, boolean isHand, float originalValue) {
+        fov = isHand ? originalValue : originalValue + ModOptions.getFovOffsetInDegrees();
 
         if (Keyboard.isKeyDown(KeyBindingListener.zoom.code) && client.currentScreen == null) {
             if (!zoomedIn) {
@@ -69,20 +62,12 @@ public class GameRendererMixin {
 
                 fovZoom = Util.clamp(fovZoom, 5F - fov, 130F - fov);
             } else {
-                fov -= (ModOptions.getFovInDegrees() - 50F);
+                fov -= 50F;
             }
 
             fov += fovZoom;
-
-//            System.out.println("isHand = " + isHand + " | fov = " + fov + " | fovZoom = " + fovZoom + " | 5f-fov = " + (5f - fov) + " | 130f-fov = " + (130f - fov));
-
         } else {
             zoomedIn = false;
-        }
-
-        if (cameraEntity.health <= 0) {
-            float deathTimeFov = (float) cameraEntity.deathTime + partialTicks;
-            fov /= (1.0F - 500F / (deathTimeFov + 500F)) * 2.0F + 1.0F;
         }
 
         // Mod Compat
@@ -95,24 +80,31 @@ public class GameRendererMixin {
 
     @ModifyExpressionValue(method = "onFrameUpdate", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;cinematicMode:Z"))
     public boolean smoothCameraWhenZooming(boolean original) {
+        if (!UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
+            return original;
+        }
+        
         return original || Keyboard.isKeyDown(KeyBindingListener.zoom.code);
     }
 
-    @Unique
-    public float getFovMultiplier(float f) {
-        return getFovMultiplier(f, false);
-    }
-
     @WrapOperation(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;getFov(F)F"))
-    public float redirectToCustomFov(GameRenderer instance, float value, Operation<Float> original) {
-        return getFovMultiplier(value);
+    public float redirectToCustomFov(GameRenderer instance, float value, Operation<Float> originalOperation) {
+        float original = originalOperation.call(instance, value);
+        
+        if (UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
+            return getFovMultiplier(value, false, original);
+        }
+        
+        return original;
     }
 
     @Inject(method = "renderFirstPersonHand", at = @At(value = "HEAD"))
     public void adjustHandFov(float f, int i, CallbackInfo ci) {
-        GL11.glMatrixMode(GL11.GL_PROJECTION);
-        GL11.glLoadIdentity();
-        GLU.gluPerspective(getFovMultiplier(f, true), (float) client.displayWidth / (float) client.displayHeight, 0.05F, viewDistance * 2.0F);
-        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        if (UniTweaks.USER_INTERFACE_CONFIG.fovSlider) {
+            GL11.glMatrixMode(GL11.GL_PROJECTION);
+            GL11.glLoadIdentity();
+            GLU.gluPerspective(getFovMultiplier(f, true, this.getFov(f)), (float) client.displayWidth / (float) client.displayHeight, 0.05F, viewDistance * 2.0F);
+            GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        }
     }
 }

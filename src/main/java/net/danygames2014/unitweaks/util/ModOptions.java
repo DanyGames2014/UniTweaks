@@ -130,6 +130,10 @@ public class ModOptions {
     public static int getFovInDegrees() {
         return Math.round(70.0f + fov * 40.0f);
     }
+    
+    public static int getFovOffsetInDegrees() {
+        return Math.round(fov * 40.0f);
+    }
 
     // Zoom
     public static float zoomFovOffset = 0;
