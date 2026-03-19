@@ -194,6 +194,10 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Boats drop themselves when broken by a player", multiplayerSynced = true)
         public Boolean boatsDropThemselves = true;
+        
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Boats don't break on impact", multiplayerSynced = true)
+        public Boolean boatsDontBreak = false;
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Pumpkins placeable like normal", multiplayerSynced = true)

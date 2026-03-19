@@ -30,6 +30,7 @@
     "tweaks.betterburning.SkeletonEntityMixin",
     "tweaks.biggerchickenhitbox.ChickenEntityMixin",
     "tweaks.boatelevators.BoatEntityMixin",
+    "tweaks.boatsdontbreak.BoatEntityMixin",
     "tweaks.boatsdropthemselves.BoatEntityMixin",
     "tweaks.bookshelvesdropbooks.BookshelfBlockMixin",
     "tweaks.disabledeadbush.DeadbushFeatureMixin",
