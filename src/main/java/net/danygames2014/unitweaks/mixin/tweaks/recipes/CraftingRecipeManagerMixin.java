@@ -20,7 +20,7 @@ public class CraftingRecipeManagerMixin {
             for (ItemStack stack : inventory.stacks) {
                 if (stack != null) {
                     Item item = stack.getItem();
-                    if ((item instanceof ToolItem || item instanceof ShearsItem || item instanceof HoeItem || item instanceof SwordItem) && item.isDamageable()) {
+                    if ((item instanceof ToolItem || item instanceof ShearsItem || item instanceof HoeItem || item instanceof SwordItem || item instanceof ArmorItem) && item.isDamageable()) {
                         if (stack1 != null) {
                             if (stack1.getItem() == item) {
                                 stack2 = stack;
