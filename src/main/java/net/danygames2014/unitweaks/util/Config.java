@@ -49,6 +49,9 @@ public class Config {
 
         @ConfigEntry(name = "Front View Third Person")
         public FrontViewMode frontViewThirdPerson = FrontViewMode.NORMAL;
+        
+        @ConfigEntry(name = "Clear Text Field With Right Click", description = "Right clicking on a text field will clear it")
+        public Boolean clearTextFieldWithRightClick = true;
 
         @ConfigCategory(name = "Video Settings")
         public VideoSettingsConfig videoSettingsConfig = new VideoSettingsConfig();

@@ -19,6 +19,7 @@ public class FlintAndSteelItemMixin extends Item {
             entity.fireTicks += 100;
             stack.damage(1, null);
         }
+        
         super.useOnEntity(stack, entity);
     }
 }

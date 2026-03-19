@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.cleartextfield;
 
+import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.Config;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,9 +36,12 @@ public class TextFieldWidgetMixin {
 
     @Inject(method = "mouseClicked", at = @At("HEAD"))
     public void clearTextOnRightClick(int mouseX, int mouseY, int button, CallbackInfo ci) {
+        if (!UniTweaks.USER_INTERFACE_CONFIG.clearTextFieldWithRightClick) {
+            return;
+        }
+        
         if (enabled && mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height && button == 1) {
             text = "";
         }
-
     }
 }

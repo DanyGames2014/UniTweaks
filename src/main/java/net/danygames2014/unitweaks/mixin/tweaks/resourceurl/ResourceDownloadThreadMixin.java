@@ -9,7 +9,11 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(value = ResourceDownloadThread.class, priority = 1500)
 public class ResourceDownloadThreadMixin {
     @ModifyConstant(method = "run", constant = @Constant(stringValue = "http://s3.amazonaws.com/MinecraftResources/"), remap = false)
-    private String getResourcesUrl(String def) {
+    private String getResourcesUrl(String original) {
+        if (UniTweaks.GENERAL_CONFIG.resourceDownloadUrl.isEmpty()) {
+            return original;
+        }
+        
         return UniTweaks.GENERAL_CONFIG.resourceDownloadUrl;
     }
 }
