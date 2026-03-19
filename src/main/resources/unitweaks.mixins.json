@@ -108,7 +108,6 @@
     "hooks.GameOptionsMixin",
     "hooks.MinecraftMixin",
     "options.GameOptionsMixin",
-    "options.OpenExperimentalControls",
     "options.OptionMixin",
     "options.OptionsScreenMixin",
     "options.VideoOptionsScreenMixin",
