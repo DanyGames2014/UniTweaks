@@ -1,7 +1,7 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.11.7'
-    id 'babric-loom-extension' version '1.10.2'
+    id 'fabric-loom' version '1.15.3'
+    id 'babric-loom-extension' version '1.15.3'
     id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -16,6 +16,7 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+    withSourcesJar()
 }
 
 loom {
@@ -95,7 +96,7 @@ dependencies {
     }
 
     if (project.hasProperty("modmenu_version")) {
-        modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
+        modImplementation("net.danygames2014:modmenu:${project.modmenu_version}") {
             transitive = false
         }
     }
@@ -158,6 +159,10 @@ dependencies {
         }
     }
 
+    if (project.hasProperty("debugutilities_version")) {
+        modImplementation("net.danygames2014:DebugUtilities:${project.debugutilities_version}")
+    }
+
     if (project.hasProperty("retroauth_version")) {
         modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-b1.7.3") {
             transitive = false
@@ -195,10 +200,6 @@ tasks.withType(GenerateModuleMetadata).configureEach {
 // Gradle 9 fails the build if there are no tests, but we are using the test package for a test mod
 tasks.withType(Test).configureEach {
     failOnNoDiscoveredTests = false
-}
-
-java {
-    withSourcesJar()
 }
 
 jar {
@@ -287,16 +288,17 @@ tasks.register("update") {
         updateDependency(lines, "Glass Networking", "glass_networking_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/glass-networking")
         updateDependency(lines, "Glass Config API", "gcapi_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/GlassConfigAPI")
         updateDependency(lines, "Always More Items", "alwaysmoreitems_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/AlwaysMoreItems")
-        updateDependency(lines, "ModMenu", "modmenu_version", "https://maven.glass-launcher.net/releases/net/glasslauncher/mods/ModMenu")
+        updateDependency(lines, "ModMenu", "modmenu_version", "https://maven.glass-launcher.net/releases/net/danygames2014/modmenu")
         updateDependency(lines, "BH Creative", "bhcreative_version", "https://api.modrinth.com/maven/maven/modrinth/bh-creative")
         updateDependency(lines, "Spawn Eggs", "spawneggs_version", "https://maven.glass-launcher.net/releases/net/danygames2014/spawneggs")
         updateDependency(lines, "Retro Commands", "retrocommands_version", "https://api.modrinth.com/maven/maven/modrinth/retrocommands")
         updateDependency(lines, "Accessory API", "accessoryapi_version", "https://api.modrinth.com/maven/maven/modrinth/accessory-api")
         updateDependency(lines, "RetroAuth", "retroauth_version", "https://api.modrinth.com/maven/maven/modrinth/retroauth")
         updateDependency(lines, "UniTweaks", "unitweaks_version", "https://api.modrinth.com/maven/maven/modrinth/unitweaks")
-        updateDependency(lines, "Whats This", "whatsthis_version", "https://maven.fildand.cz/releases/net/danygames2014/WhatsThis")
-        updateDependency(lines, "NyaLib", "nyalib_version", "https://maven.fildand.cz/releases/net/danygames2014/NyaLib")
-        updateDependency(lines, "UniWrench", "uniwrench_version", "https://maven.fildand.cz/releases/net/danygames2014/UniWrench")
+        updateDependency(lines, "Whats This", "whatsthis_version", "https://maven.glass-launcher.net/releases/net/danygames2014/WhatsThis")
+        updateDependency(lines, "NyaLib", "nyalib_version", "https://maven.glass-launcher.net/releases/net/danygames2014/NyaLib")
+        updateDependency(lines, "UniWrench", "uniwrench_version", "https://maven.glass-launcher.net/releases/net/danygames2014/UniWrench")
+        updateDependency(lines, "DebugUtilities", "debugutilities_version", "https://maven.glass-launcher.net/releases/net/danygames2014/DebugUtilities")
 
         propsFile.text = lines.join(System.lineSeparator())
         println("Finished updating dependencies, please reload your Gradle Project")
