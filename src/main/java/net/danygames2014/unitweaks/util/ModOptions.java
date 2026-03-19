@@ -111,6 +111,10 @@ public class ModOptions {
     public static int getFpsLimitValue() {
         return (int) (Math.floor(fpsLimit * 59F) * 5) + 5;
     }
+    
+    public static boolean isFramerateLimited() {
+        return fpsLimit < 1.0F;
+    }
 
     // Clouds
     public static boolean clouds = true;
