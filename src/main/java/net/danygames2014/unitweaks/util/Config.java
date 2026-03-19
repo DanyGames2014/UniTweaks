@@ -129,6 +129,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Shift Placing", description = "Ignores block actions allowing you to place blocks when crouching", multiplayerSynced = true)
         public Boolean shiftPlacing = true;
+        
+        @ConfigEntry(name = "Shift Placing Blacklist", description = "Identifiers of blocks that won't have their block action skipped. (Requires StationAPI)", requiresRestart = true)
+        public String[] shiftPlacingBlacklist = new String[0];
 
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Equip armor using right-click", multiplayerSynced = true)

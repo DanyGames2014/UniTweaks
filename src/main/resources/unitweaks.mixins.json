@@ -76,7 +76,7 @@
     "tweaks.additionalproperties.MinecraftServerMixin",
     "tweaks.additionalproperties.ServerPlayNetworkHandlerMixin",
     "tweaks.disabledimensionload.MinecraftServerMixin",
-    "tweaks.shiftplacing.class_70Mixin"
+    "tweaks.shiftplacing.ServerPlayerInteractionManagerMixin"
   ],
   "client": [
     "MinecraftMixin",
