@@ -6,60 +6,80 @@
 ![fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg)
 ![risugamis-modloader](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/risugamis-modloader_vector.svg)
 
+### Note: Nearly all of the listed tweaks and bugfixes are toggleable
+
 ## Tweaks
 ### General
-* Show Quit Button on the Main Menu
-* FOV Slider with proper hand adjustment
-* Fog Density Slider
-* Brightness Slider
-* Photo Mode
-* Render Distance slider that goes up to 32 chunks
-* Improved Controls Menu
+* Disable pausing on lost focus
+* Allow for changing the autosave interval (defaults to 30s)
+* Enable the TCPNoDelay flag on the network socket
 * Packet Speedup Patch - Removes an artificial delay when processing packets (upto 392ms for sending an action and
   receiving a response)
-* Text field clearing with Right Mouse Button
-* Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
-* Dismount Key
-* FPS Limit slider
-* Armor Outlines in Player Inventory
+* Raw Input
+* Disables the non-functional controller initialization code
+* Allow changing the Resource URL (Defaults to Betacraft)
+* Allow disabling loading certain dimensions on server
+
+### User Interface
+* Photo Mode for taking isometric screenshots of your world
+* Show quit button on the main menu
+* Improved controls menu
+* Hide the achievement toast
 * The Done Button in Achievements will lead to ingame menu instead of unpausing
-* Disable pausing on lost focus
-* Keybind for releasing the mouse
-* Allow chaning the Resource URL (Defaults to Betacraft)
+* Disable the entity id nametags when debug menu is open
+* Front View Third Person
+* Clear text fields using the right mouse button
+* FOV Slider with proper hand adjustment
+* Brightness Slider
+* Cloud Height Slider
+* Clouds Toggle
+* Fog Density Slider
+* GUI Scale Slider
+* FPS Limit slider
+* Render Distance slider that goes up to 32 chunks
+* Main Menu Panorama like in Beta 1.8 with a customizable background (default to the Glacier background)
+* Show the version text in game and allow its customization
+* Rebindable Hotbar Keys and Function Keys (F1,F2,F3,F5,F6,F11)
+* Dismount Keybind
+* Keybind for releasing the mouse from the game window
+* Armor Outlines in Player Inventory
 
 ### Gameplay
 * No Food Wastage - Prevents you from eating when your health is already full
-* Step Assist - Allows you to step up one block
-* Pick Block from Inventory -- Allow picking blocks from inventory
-* Shift Placing - Bypassing use actions on blocks when crouching
+* Pick Block from Inventory - Allow picking blocks from inventory
+* Shift Placing - Bypassing block's use actions on blocks when crouching
 * Right Click Armor Equip - Equip/Swap armor by right-clicking it
 * Fence Jumping - Allows you to jump on fences
 
 ### Features
 * Fast Leaf Decay
 * Better Burning
-    * Burning Skeletons have a 70% chance of shooting a burning arrow
-    * Burning Arrows ignite entities
-    * Mobs on fire attacking player have a 30% chance to spread that fire onto the player
+      * Burning Skeletons have a 70% chance of shooting a burning arrow
+      * Burning Arrows ignite entities
+      * Mobs on fire attacking player have a 30% chance to spread that fire onto the player
+* Step Assist - Allows you to step up one block
 * Zoom Key
+* Sounds for Chest, Item Breaking, Sheep Shearing and Eating
 
 ### Tweaks
-* Sugar Cane can be placed on sand (from Beta 1.8)
+* Make sugar cane placeable on sand
 * Boats drop themselves when broken by a player
+* Boats don't break on impact
 * Pumpkins and Jack'o'Lanterns placeable like normal - lifted restrictions on the block below having to be solid
 * Fences placeable like normal - lifted restrictions on the block below having to be solid or fence
 * Fences connect to blocks
 * Bookshelves drop 3 books
 * Allow placing pressure plates on fences
-* [WIP] Better boat handling
 * Harvestable Cobwebs and Tall Grass using Shears
+* Expand the chicken hitbox to modern size
+* Stackable Chests
 * Prevent damaging Flint and Steel on failed ignite
 * Ability to disable sleeping but still allow setting spawnpoints at beds
 * Ability to disable spawning mobs when going to sleep (Nightmares)
-* Ability to prevent Items and Arrows from stopping Minecarts
-* Ignite Entities using Flint and Steel
+* Prevent items and arrows from stopping minecarts
+* Allow igniting entities using Flint and Steel
 * Ability to place trapdoors without supporting block
-* Sounds for Chest, Item Breaking, Sheep Shearing and Eating
+* Beta 1.8 Leaves Shading
 
 ### Old Features
 * Disable Dead Bush Generation
@@ -73,7 +93,7 @@
 * Minecart Boosters
 
 ### Recipes
-* Tool Repair recipes
+* Tool & Armor Repair recipes
 * More Furnace Fuels
 
 <details>
@@ -119,37 +139,40 @@
 
 ## Bugfixes
 * Bit Depth Fix - Fixes Z-Fighting on AMD graphic cards
-* HiDPI Fix - Fixes the game not scaling properly with display scaling
 * Far Lands Jitter Fix - Fixes jittering near farlands
 * Slime Split Fix - Fixes slimes not splitting when their health is below zero after dying
-* Stairs Drop Fix - Stairs now drop themselves
-* Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
-* Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
-    * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern,
-      Wooden Pressure Plate, Jukebox and Noteblock
-    * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates
-      and Spawner
-* Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
+* Nightmare Pathfinding Fix - Fixes the nightmares being able to path and wake up player thru walls
 * Multiplayer Entity Physics Fix - Fixes jittering caused by client interpolation
+* Boat Dismount Fix - Fixes sometimes falling through the boat when dismounting it
+* Sleeping Camera Rotation Fix - Fixes the sleeping camera being rotated the wrong way
+* Stairs Drop Fix - Stairs now drop themselves
+* Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
+  * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern,
+  Wooden Pressure Plate, Jukebox and Noteblock
+  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates
+  and Spawner
+* Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
 * Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape
 * Pick Block Fix - Fixes some blocks not being pickable using Pick Block
 * Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
 * Lava Without Source Fix - Flowing lava now correctly dissapears when source block is removed
 * Bow Held Fix - Bows are now being held correctly and not as only items
 * Leggings Riding Fix - Fix leggings not adjusting while riding
-* Video Settings Slider Fix - Fixes sliders not being slidable in the video settings screen
-* Fullscreen Cursor Fix - Fixes cursor not being centered when opening inventories in fullscreen
-* Furnace Consume Bucket Fix - Fixes furnace consuming bucket when fueled with lava
-* Fish Velocity Fix - Fix fish flying way behind the player when caught
-* Torch Bottom Texture Fix - Fixes torches not having a bottom textures
-* Grass Block Item Fix - Fixes Grass Block item not rendering properly
-* Slab Crash Fix - Fixes slabs with no name crashing the game
-* Dropped Item Size Fix - Fixes some blocks being too large when dropped
-* Armor Icon Fix - Fixes armor icons not being displayed
-* Death Screen Formatting Fix - Fixes the score color on death screen
-* Breaking Animation Fix - Fixes the breaking animation sometimes not being visible from below
 * ItemStack Rendering Fix - Fixes itemstacks being render below text in containers
+* Fish Velocity Fix - Fix fish flying way behind the player when caught
+* Furnace Consume Bucket Fix - Fixes furnace consuming bucket when fueled with lava
+* Armor Icon Fix - Fixes armor icons not being displayed
+* Dropped Item Size Fix - Fixes some blocks being too large when dropped
+* Breaking Animation Fix - Fixes the breaking animation sometimes not being visible from below
+* Death Screen Formatting Fix - Fixes the score color on death screen
 * Hotbar Rendering Fix - Fixes hotbar turning white when looking at entity with no clouds rendering on Fast graphics
 * Wooden Slab Mining Fix - Fixes wooden slabs only being mineable with a pickaxe
-* Fence Lighting Fix - Fixes fence bottom face being dark when placed on a block
+* Grass Block Item Fix - Fixes Grass Block item not rendering properly
 * Multiplayer Block Mining Delay Fix - Fixes the inconsistent delay between mining blocks in multiplayer
+* Last Durability Fix - Fixes blocks not dropping when mined with the last durability point of the tool
+* Fence Lighting Fix - Fixes fence bottom face being dark when placed on a block
+* Video Settings Slider Fix - Fixes sliders not being slidable in the video settings screen
+* Fullscreen Cursor Fix - Fixes cursor not being centered when opening inventories in fullscreen
+* Torch Bottom Texture Fix - Fixes torches not having a bottom textures
+* Slab Crash Fix - Fixes slabs with no name crashing the game
+* Block Entity Loading Fix - Stops the game from erasing an entire chunk when block entity fails to load
