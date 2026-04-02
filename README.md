@@ -147,15 +147,17 @@
 * Sleeping Camera Rotation Fix - Fixes the sleeping camera being rotated the wrong way
 * Stairs Drop Fix - Stairs now drop themselves
 * Block Effectiveness Fix - Fixes axes and pickaxes not being effective on various blocks
-  * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Latern,
-  Wooden Pressure Plate, Jukebox and Noteblock
-  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plates
-  and Spawner
+  * Axe : Crafting Table, Wooden Slab, Wooden Stairs, Fence, Wooden Door, Ladder, Sign, Pumpkin, Jack o' Lantern,
+  Wooden Pressure Plate, Jukebox, Noteblock, Trapdoor
+  * Pickaxe : Furnace, Cobblestone Stairs, Bricks, Redstone Ore, Iron Door, Rails, Dispenser, Stone Pressure Plate, 
+  Spawner, Buttons
+  * Shovel : Soul Sand
 * Pig Drop Saddle Fix - Fixes saddled pig not dropping saddle on death
 * Fence Bounding Box Fix - Fence's bounding box now better reflect its current shape
 * Pick Block Fix - Fixes some blocks not being pickable using Pick Block
 * Spring Propagation Fix - Fixes water source blocks not forming when a block below is water
-* Lava Without Source Fix - Flowing lava now correctly dissapears when source block is removed
+* Lava Without Source Fix - Flowing lava now correctly disappears when source block is removed
+* Liquid Block Drop Fix - Fixes liquid flowing down from above not dropping items such as torches and rails when broken
 * Bow Held Fix - Bows are now being held correctly and not as only items
 * Leggings Riding Fix - Fix leggings not adjusting while riding
 * ItemStack Rendering Fix - Fixes itemstacks being render below text in containers

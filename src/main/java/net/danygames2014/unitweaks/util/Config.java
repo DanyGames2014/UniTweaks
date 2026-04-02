@@ -320,6 +320,10 @@ public class Config {
         @ConfigEntry(name = "Lava Without Source Fix", description = "Fixes lava not dissapearing without a source block", multiplayerSynced = true)
         public Boolean lavaWithoutSourceFix = true;
 
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        @ConfigEntry(name = "Liquid Block Drop Fix", description = "Fixes liquid flowing down from above not dropping items such as torches and rails when broken", multiplayerSynced = true)
+        public Boolean liquidBlockDropFix = true;
+
         @ConfigEntry(name = "Bow Held Fix", description = "Skeletons and Players now hold bows properly")
         public Boolean bowHeldFix = true;
 
