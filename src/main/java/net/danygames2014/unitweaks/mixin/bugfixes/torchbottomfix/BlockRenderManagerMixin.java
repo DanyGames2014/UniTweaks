@@ -23,7 +23,7 @@ public class BlockRenderManagerMixin {
                               @Local(ordinal = 8) double var26
     ) {
         if (UniTweaks.BUGFIXES_CONFIG.torchBottomFaceFix) {
-            float shift = 2F / Util.atlasHeight;
+            float shift = 4F / Util.atlasHeight;
 
             tessellator.vertex(x + var36 + xTilt, y, z - var36 + zTilt, var24, var22 + shift);
             tessellator.vertex(x + var36 + xTilt, y, z + var36 + zTilt, var24, var26 + shift);
