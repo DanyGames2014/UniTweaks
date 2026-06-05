@@ -126,6 +126,7 @@
     "tweaks.fpslimitslider.GameRendererMixin",
     "tweaks.fpslimitslider.MinecraftMixin",
     "tweaks.frontviewthirdperson.GameRendererMixin",
+    "tweaks.frontviewthirdperson.InGameHudMixin",
     "tweaks.frontviewthirdperson.MinecraftMixin",
     "tweaks.guiscaleslider.ScreenScalerMixin",
     "tweaks.hideachievementtoast.AchievementToastMixin",
