@@ -18,7 +18,7 @@ public class FoodItemMixin {
     @Unique
     private static final Random random = new Random();
 
-    @Inject(method = "use", at = @At(value = "HEAD"))
+    @Inject(method = "use", at = @At(value = "RETURN"))
     public void burpOnEat(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir) {
         if (UniTweaks.FEATURES_CONFIG.moreSounds) {
             world.playSound(user, "unitweaks:random.eat", 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
