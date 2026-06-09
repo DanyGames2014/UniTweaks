@@ -5,24 +5,17 @@ import net.danygames2014.unitweaks.util.EffectiveBlocksLists;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolItem;
-import net.minecraft.item.ToolMaterial;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PickaxeItem.class)
-public class PickaxeItemMixin extends ToolItem {
-    public PickaxeItemMixin(int id, int damageBoost, ToolMaterial toolMaterial, Block[] effectiveOn) {
-        super(id, damageBoost, toolMaterial, effectiveOn);
-    }
-
+public class PickaxeItemMixin extends ToolItemMixin {
     @Override
-    public float getMiningSpeedMultiplier(ItemStack stack, Block block) {
+    protected void unitweaks$getMiningSpeedMultiplier(ItemStack stack, Block block, CallbackInfoReturnable<Float> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
             if (EffectiveBlocksLists.pickaxeBlocks.contains(block)) {
-                return this.miningSpeed;
+                cir.setReturnValue(this.miningSpeed);
             }
         }
-
-        return super.getMiningSpeedMultiplier(stack, block);
     }
 }

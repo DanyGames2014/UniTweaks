@@ -5,24 +5,17 @@ import net.danygames2014.unitweaks.util.EffectiveBlocksLists;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
-import net.minecraft.item.ToolItem;
-import net.minecraft.item.ToolMaterial;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ShovelItem.class)
-public class ShovelItemMixin extends ToolItem {
-    public ShovelItemMixin(int id, int damageBoost, ToolMaterial toolMaterial, Block[] effectiveOn) {
-        super(id, damageBoost, toolMaterial, effectiveOn);
-    }
-
+public class ShovelItemMixin extends ToolItemMixin {
     @Override
-    public float getMiningSpeedMultiplier(ItemStack stack, Block block) {
+    protected void unitweaks$getMiningSpeedMultiplier(ItemStack stack, Block block, CallbackInfoReturnable<Float> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.blockEffectivenessFix) {
             if (EffectiveBlocksLists.shovelBlocks.contains(block)) {
-                return this.miningSpeed;
+                cir.setReturnValue(this.miningSpeed);
             }
         }
-
-        return super.getMiningSpeedMultiplier(stack, block);
     }
 }
