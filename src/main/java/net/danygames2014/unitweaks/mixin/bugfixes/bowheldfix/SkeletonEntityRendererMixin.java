@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(UndeadEntityRenderer.class)
 public abstract class SkeletonEntityRendererMixin extends EntityRenderer {
     @Inject(method = "renderMore", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/HeldItemRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.BEFORE))
-    public void changeBowRendering(LivingEntity entity, float f, CallbackInfo ci) {
+    protected void changeBowRendering(LivingEntity entity, float f, CallbackInfo ci) {
         if (UniTweaks.BUGFIXES_CONFIG.bowHeldFix) {
             ItemStack itemStack = entity.getHeldItem();
             if (itemStack != null && itemStack.getItem() instanceof BowItem) {

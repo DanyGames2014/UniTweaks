@@ -2,20 +2,15 @@ package net.danygames2014.unitweaks.mixin.bugfixes.bowheldfix;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.item.BowItem;
-import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BowItem.class)
-public class BowItemMixin extends Item {
-    public BowItemMixin(int id) {
-        super(id);
-    }
-
+public class BowItemMixin extends ItemMixin {
     @Override
-    public boolean isHandheld() {
+    protected void unitweaks$isHandheld(CallbackInfoReturnable<Boolean> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.bowHeldFix) {
-            return true;
+            cir.setReturnValue(true);
         }
-        return super.isHandheld();
     }
 }
