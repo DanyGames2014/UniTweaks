@@ -1,29 +1,20 @@
 package net.danygames2014.unitweaks.mixin.bugfixes.grassblockitemfix;
 
 import net.danygames2014.unitweaks.UniTweaks;
-import net.minecraft.block.Block;
 import net.minecraft.block.GrassBlock;
-import net.minecraft.block.material.Material;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(GrassBlock.class)
-public class GrassBlockMixin extends Block {
-    public GrassBlockMixin(int id, Material material) {
-        super(id, material);
-    }
-
+public class GrassBlockMixin extends BlockMixin {
     @Override
-    public int getTexture(int side) {
+    public void injectGetTextureId(int side, int meta, CallbackInfoReturnable<Integer> cir) {
         if (UniTweaks.BUGFIXES_CONFIG.grassBlockItemFix) {
-            if (side == 1) {
-                return 0;
-            } else if (side == 0) {
-                return 2;
-            } else {
-                return 3;
+            switch (side) {
+                case 0 -> cir.setReturnValue(2);
+                case 1 -> cir.setReturnValue(0);
+                default -> cir.setReturnValue(3);
             }
         }
-
-        return super.getTexture(side);
     }
 }
