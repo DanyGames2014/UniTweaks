@@ -76,6 +76,7 @@ public class FenceBlockMixin extends Block {
         }
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public Box getBoundingBox(World world, int x, int y, int z) {
         if (UniTweaks.BUGFIXES_CONFIG.fenceBoundingBoxFix) {
@@ -86,6 +87,7 @@ public class FenceBlockMixin extends Block {
         }
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public void updateBoundingBox(BlockView blockView, int x, int y, int z) {
         if (UniTweaks.BUGFIXES_CONFIG.fenceBoundingBoxFix) {

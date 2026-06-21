@@ -25,6 +25,7 @@ public class BookshelfBlockMixin extends Block {
         }
     }
 
+    // TODO: Convert to mixin inheritance and add the master toggle from config like method above
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
         return Item.BOOK.id;

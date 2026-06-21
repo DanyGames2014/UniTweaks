@@ -11,6 +11,7 @@ public class ArmorSlotMixin extends Slot {
         super(inventory, index, x, y);
     }
 
+    // TODO: Convert to Mixin Inheritance
     @Override
     public int getBackgroundTextureId() {
         if (UniTweaks.BUGFIXES_CONFIG.armorIconsFix) {

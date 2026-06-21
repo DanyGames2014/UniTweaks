@@ -20,6 +20,7 @@ public class ArmorItemMixin extends Item {
         super(id);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity user) {
         if (UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor) {

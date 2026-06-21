@@ -14,6 +14,7 @@ public class CobwebBlockMixin extends Block {
         super(id, material);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public int getDroppedItemCount(Random random) {
         if (UniTweaks.TWEAKS_CONFIG.shearHarvesting) {

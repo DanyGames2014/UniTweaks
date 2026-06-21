@@ -17,6 +17,7 @@ public class TntBlockMixin extends Block {
         super(id, material);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public void onBreak(World world, int x, int y, int z) {
         if (!world.isRemote) {
@@ -28,6 +29,7 @@ public class TntBlockMixin extends Block {
         }
     }
 
+    // TODO: convert to v2
     @WrapWithCondition(method = "onMetadataChange", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/TntBlock;dropStack(Lnet/minecraft/world/World;IIILnet/minecraft/item/ItemStack;)V"))
     public boolean cancelTntDrop(TntBlock instance, World world, int x, int y, int z, ItemStack itemStack) {
         return !UniTweaks.OLD_FEATURES_CONFIG.punchTntToIgnite;

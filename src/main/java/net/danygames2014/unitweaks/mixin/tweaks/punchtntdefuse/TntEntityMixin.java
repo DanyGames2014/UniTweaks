@@ -16,6 +16,7 @@ public abstract class TntEntityMixin extends Entity {
         super(world);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public boolean damage(Entity damageSource, int amount) {
         if (!world.isRemote) {

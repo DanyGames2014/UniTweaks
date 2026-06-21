@@ -17,6 +17,7 @@ public abstract class PigEntityMixin extends AnimalEntity {
         super(arg);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     protected void dropItems() {
         if (UniTweaks.BUGFIXES_CONFIG.pigSaddleDropFix) {

@@ -13,6 +13,7 @@ public class FlintAndSteelItemMixin extends Item {
         super(id);
     }
 
+    // TODO: Convert to mixin inheritance
     @Override
     public void useOnEntity(ItemStack stack, LivingEntity entity) {
         if (UniTweaks.TWEAKS_CONFIG.allowIgnitingEntities) {
