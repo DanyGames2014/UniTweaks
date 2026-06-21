@@ -260,7 +260,6 @@ modrinth {
     gameVersions = ["b1.7.3"]
     loaders = ["fabric", "babric"]
     dependencies {
-        required.project "stationapi"
         required.project "glass-config-api"
     }
 }
