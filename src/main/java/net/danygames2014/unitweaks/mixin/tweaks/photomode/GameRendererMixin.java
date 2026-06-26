@@ -47,6 +47,9 @@ public class GameRendererMixin {
     @Inject(method = "applyCameraTransform", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", shift = At.Shift.BEFORE, ordinal = 4, remap = false))
     public void test5(float par1, CallbackInfo ci) {
         if (this.client.currentScreen instanceof PhotoModeScreen) {
+            if (ModOptions.isFrontViewEnabled()) {
+                GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
+            }
             GL11.glRotatef(((PhotoModeScreen) this.client.currentScreen).tilt, 1.0F, 0.0F, 0.0F);
             GL11.glRotatef(45.0F + 90.0F * ((PhotoModeScreen) this.client.currentScreen).rotation, 0.0F, 1.0F, 0.0F);
         }
