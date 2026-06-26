@@ -106,24 +106,9 @@ public class GameRendererMixin {
 
             GL11.glRotatef(photoScreen.tilt, 1.0F, 0.0F, 0.0F);
 
-            GL11.glTranslated(xTranslation, yTranslation, 0.0D);
+//            GL11.glTranslated(xTranslation, -yTranslation, 0.0D);
             GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
-            GL11.glTranslated(-xTranslation, -yTranslation, 0.0D);
-        }
-    }
-    
-    @Inject(method = "renderFrame", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/platform/Lighting;turnOff()V", ordinal = 0))
-    public void aaa(float time, long par2, CallbackInfo ci) {
-        if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
-            int width = this.client.displayWidth;
-            int height = this.client.displayHeight;
-            
-            double xTranslation = -(photoScreen.cameraX * width);
-            double yTranslation = -(photoScreen.cameraY * height);
-            
-//            GL11.glTranslated(xTranslation, yTranslation, 0.0D);
-//            GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
-//            GL11.glTranslated(-xTranslation, -yTranslation, 0.0D);
+//            GL11.glTranslated(-xTranslation, yTranslation, 0.0D);
         }
     }
 
