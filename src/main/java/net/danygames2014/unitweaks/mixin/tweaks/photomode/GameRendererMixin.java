@@ -47,10 +47,8 @@ public class GameRendererMixin {
     // 5/13
     @Inject(method = "applyCameraTransform", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", ordinal = 4, remap = false))
     public void test5(float tickDelta, CallbackInfo ci) {
-        if (this.client.currentScreen instanceof PhotoModeScreen) {
-            GL11.glLoadIdentity();
-            GL11.glRotatef(((PhotoModeScreen) this.client.currentScreen).tilt, 1.0F, 0.0F, 0.0F);
-            GL11.glRotatef(45.0F + 90.0F * ((PhotoModeScreen) this.client.currentScreen).rotation, 0.0F, 1.0F, 0.0F);
+        if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
+            
         }
     }
 
@@ -88,8 +86,10 @@ public class GameRendererMixin {
             double yTranslation = -(photoScreen.cameraY * height);
             
             double zoomFactor = Math.pow(2.0, photoScreen.zoom);
-            
+
+            GL11.glLoadIdentity();
             GL11.glTranslatef(photoScreen.cameraX + 1.0F, photoScreen.cameraY + 1.0F, 0.0F);
+            
             GL11.glOrtho(
                     0.0 + xTranslation,
                     (this.client.displayWidth / zoomFactor) + xTranslation,
@@ -98,6 +98,15 @@ public class GameRendererMixin {
                     (double) this.viewDistance * -2.0,
                     (double) this.viewDistance * 2.0
             );
+
+            // panX and panY I have no clue what to set to
+            double panX = -(photoScreen.cameraX * width);
+            double panY = -(photoScreen.cameraY * height);
+
+            GL11.glTranslated(-panX, -panY, 0.0D);
+            GL11.glRotatef(photoScreen.tilt, 1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
+            GL11.glTranslated(panX, panY, 0.0D);
         }
     }
 
