@@ -178,6 +178,13 @@ public class PhotoModeScreen extends Screen {
         // Movement via mouse
         boolean hoveringButton = false;
         for (Object buttonO : buttons) {
+            if (buttonO instanceof SliderWidget slider) {
+                if (slider.dragging) {
+                    hoveringButton = true;
+                    break;
+                }
+            }
+            
             if (buttonO instanceof ButtonWidget button) {
                 if (isMouseInBounds(mouseX, mouseY, button)) {
                     hoveringButton = true;
