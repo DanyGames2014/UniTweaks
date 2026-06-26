@@ -41,6 +41,7 @@ public class PhotoModeScreen extends Screen {
     public float cameraY = 0.0f;
 
     public Screen previousScreen;
+    private long lastTickTime = System.nanoTime();
 
     public PhotoModeScreen(Screen previousScreen) {
         this.previousScreen = previousScreen;
@@ -173,17 +174,16 @@ public class PhotoModeScreen extends Screen {
 
         // Movement via keyboard
         boolean shift = shiftHeld();
-        float cameraVelocity = (float) (0.005f / Math.pow(2, this.zoom));
-        float mouseCameraVelocity = (float) (0.001f / Math.pow(2, this.zoom));
+        float deltaTime = (System.nanoTime() - lastTickTime) / 100000000F;
+        float cameraVelocity = (float) (0.075f / Math.pow(2, this.zoom)) * deltaTime;
         if (shift) cameraVelocity *= 2;
-        if (shift) mouseCameraVelocity *= 2;
 
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            this.cameraY -= cameraVelocity;
+            this.cameraY -= cameraVelocity * ((float) width / height);
         }
 
         if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-            this.cameraY += cameraVelocity;
+            this.cameraY += cameraVelocity * ((float) width / height);
         }
 
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
@@ -214,14 +214,16 @@ public class PhotoModeScreen extends Screen {
         
         if (!hoveringButton) {
             if (Mouse.isButtonDown(0)) {
+                float mouseCameraVelocity = (float) (0.0005f / Math.pow(2, this.zoom));
+                if (shift) mouseCameraVelocity *= 2;
                 this.cameraX += Mouse.getDX() * mouseCameraVelocity;
-                this.cameraY += Mouse.getDY() * mouseCameraVelocity;
+                this.cameraY += Mouse.getDY() * mouseCameraVelocity * ((float) width / height);
             } else if (Mouse.isButtonDown(1) || Mouse.isButtonDown(2)) {
-                this.tiltSlider.value -= Mouse.getDY() * 0.0025f;
+                this.tiltSlider.value -= Mouse.getDY() * 0.0020f;
                 this.tiltGoal = (float) ((int) (this.tiltSlider.value * 90.0F));
                 this.tiltSlider.value = Util.clamp(this.tiltSlider.value, 0.0f, 1.0f);
                 
-                this.rotationGoal += Mouse.getDX() * 0.0025f;
+                this.rotationGoal += Mouse.getDX() * 0.0020f;
             }
         }
         
@@ -303,5 +305,7 @@ public class PhotoModeScreen extends Screen {
             this.tiltGoal = (float) ((int) (this.tiltSlider.value * 90.0F));
             this.updateButtonsText();
         }
+
+        this.lastTickTime = System.nanoTime();
     }
 }

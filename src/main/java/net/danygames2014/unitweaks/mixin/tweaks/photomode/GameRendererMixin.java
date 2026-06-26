@@ -95,8 +95,8 @@ public class GameRendererMixin {
                     (this.client.displayWidth / zoomFactor) + xTranslation,
                     0.0 + yTranslation,
                     (this.client.displayHeight / zoomFactor) + yTranslation,
-                    (double) this.viewDistance * -2.0,
-                    (double) this.viewDistance * 2.0
+                    (double) this.viewDistance * -4.0,
+                    (double) this.viewDistance * 4.0
             );
 
             // panX and panY I have no clue what to set to
