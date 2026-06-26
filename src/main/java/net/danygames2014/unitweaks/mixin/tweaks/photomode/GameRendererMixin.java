@@ -1,11 +1,10 @@
 package net.danygames2014.unitweaks.mixin.tweaks.photomode;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
-import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.option.GameOptions;
@@ -20,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("NameDoesntMatchTargetClass")
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
     @Shadow
@@ -45,19 +45,17 @@ public class GameRendererMixin {
     }
 
     // 5/13
-    @Inject(method = "applyCameraTransform", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", shift = At.Shift.BEFORE, ordinal = 4, remap = false))
-    public void test5(float par1, CallbackInfo ci) {
+    @Inject(method = "applyCameraTransform", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V", ordinal = 4, remap = false))
+    public void test5(float tickDelta, CallbackInfo ci) {
         if (this.client.currentScreen instanceof PhotoModeScreen) {
-            if (ModOptions.isFrontViewEnabled()) {
-                GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
-            }
+            GL11.glLoadIdentity();
             GL11.glRotatef(((PhotoModeScreen) this.client.currentScreen).tilt, 1.0F, 0.0F, 0.0F);
             GL11.glRotatef(45.0F + 90.0F * ((PhotoModeScreen) this.client.currentScreen).rotation, 0.0F, 1.0F, 0.0F);
         }
     }
 
     // 8/13
-    @ModifyExpressionValue(method = "renderWorld", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/GameRenderer;zoom:D", ordinal = 0))
+    @ModifyExpressionValue(method = "renderWorld", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/GameRenderer;zoom:D", ordinal = 0, opcode = Opcodes.GETFIELD))
     public double test8_forceif(double original) {
         if (this.client.currentScreen instanceof PhotoModeScreen) {
             return 0.99D;
@@ -80,8 +78,8 @@ public class GameRendererMixin {
         return !(this.client.currentScreen instanceof PhotoModeScreen);
     }
 
-    @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE, remap = false))
-    public void test8(float i, int par2, CallbackInfo ci) {
+    @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, remap = false))
+    public void test8(float tickDelta, int eye, CallbackInfo ci) {
         if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
             int width = this.client.displayWidth;
             int height = this.client.displayHeight;
@@ -105,13 +103,13 @@ public class GameRendererMixin {
 
     // 10/13
     @WrapWithCondition(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;applyViewBobbing(F)V"))
-    public boolean test10(GameRenderer instance, float v) {
+    public boolean test10(GameRenderer instance, float tickDelta) {
         return !(this.client.currentScreen instanceof PhotoModeScreen);
     }
 
     // 11/13
     @WrapWithCondition(method = "renderFirstPersonHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/HeldItemRenderer;render(F)V"))
-    public boolean test11(HeldItemRenderer instance, float v) {
+    public boolean test11(HeldItemRenderer instance, float tickDelta) {
         return !(this.client.currentScreen instanceof PhotoModeScreen);
     }
 
@@ -126,7 +124,7 @@ public class GameRendererMixin {
 
     // Hide HUD
     @WrapWithCondition(method = "onFrameUpdate", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;render(FZII)V"))
-    public boolean hideHudInPhotoMode(InGameHud instance, float eeny, boolean meeny, int miny, int moe) {
+    public boolean hideHudInPhotoMode(InGameHud instance, float tickDelta, boolean screenOpen, int mouseX, int mouseY) {
         return !(this.client.currentScreen instanceof PhotoModeScreen);
     }
 
