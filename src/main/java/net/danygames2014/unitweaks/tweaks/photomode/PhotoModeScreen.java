@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.tweaks.photomode;
 
 import net.danygames2014.unitweaks.util.ModOptions;
+import net.danygames2014.unitweaks.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screen.Screen;
@@ -17,6 +18,7 @@ public class PhotoModeScreen extends Screen {
     private SliderWidget tiltSlider;
     private SliderWidget timeSlider;
 
+    private ButtonWidget centerButton;
     private ButtonWidget rotateLeftButton;
     private ButtonWidget rotateRightButton;
     private ButtonWidget screenshotButton;
@@ -28,7 +30,6 @@ public class PhotoModeScreen extends Screen {
 
     boolean shouldScreenshot = false;
     public boolean renderPlayer = true;
-    private boolean canKeyRotate;
 
     public float rotation = 0.0f;
     public float rotationGoal = 0.0f;
@@ -36,8 +37,8 @@ public class PhotoModeScreen extends Screen {
     public float zoomGoal = 1.0f;
     public float tilt = 30.0f;
     public float tiltGoal = 30.0f;
-    public float cameraY = 0.0f;
     public float cameraX = 0.0f;
+    public float cameraY = 0.0f;
 
     public Screen previousScreen;
 
@@ -53,6 +54,7 @@ public class PhotoModeScreen extends Screen {
         this.exitButton = new ButtonWidget(id++, 0, 0, 20, 20, "X");
         this.tiltSlider = new SliderWidgetWithoutSaving(id++, this.width - 150, 0, "Tilt: Default", 0.33333334f);
         this.timeSlider = new SliderWidgetWithoutSaving(id++, this.width - 150, 20, "Time of Day: Current", 0.0f);
+        this.centerButton = new ButtonWidget(id++, 0, this.height - 20, 98, 20, "Center");
         this.rotateLeftButton = new ButtonWidget(id++, this.width / 2 - 49 - 2 - 20, this.height - 20, 20, 20, "<");
         this.rotateRightButton = new ButtonWidget(id++, this.width / 2 + 49 + 2, this.height - 20, 20, 20, ">");
         this.screenshotButton = new ButtonWidget(id++, this.width / 2 - 49, this.height - 20, 98, 20, "Take Screenshot");
@@ -60,6 +62,7 @@ public class PhotoModeScreen extends Screen {
 
         this.buttons.add(this.exitButton);
         this.buttons.add(this.tiltSlider);
+        this.buttons.add(this.centerButton);
         this.buttons.add(this.rotateLeftButton);
         this.buttons.add(this.rotateRightButton);
         this.buttons.add(this.screenshotButton);
@@ -92,15 +95,17 @@ public class PhotoModeScreen extends Screen {
     @Override
     protected void buttonClicked(ButtonWidget button) {
         if (button == this.rotateLeftButton) {
-            rotateLeft();
+            this.rotateLeft();
         } else if (button == this.rotateRightButton) {
-            rotateRight();
+            this.rotateRight();
         } else if (button == this.screenshotButton) {
             this.shouldScreenshot = true;
         } else if (button == this.exitButton) {
             this.minecraft.setScreen(this.previousScreen);
         } else if (button == this.renderPlayerButton) {
             this.renderPlayer = !this.renderPlayer;
+        } else if (button == this.centerButton) {
+            this.center();
         }
         this.updateButtonsText();
     }
@@ -118,10 +123,19 @@ public class PhotoModeScreen extends Screen {
             this.rotationGoal = -200;
         }
     }
-
-    @Override
-    public void onMouseEvent() {
-        super.onMouseEvent();
+    
+    private void center() {
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+            this.rotation = 0;
+            this.rotationGoal = 0;
+            this.zoom = 1.0f;
+            this.zoomGoal = 1.0f;
+            this.tilt = 30.0f;
+            this.tiltGoal = 30.0f;
+        }
+        
+        this.cameraX = 0;
+        this.cameraY = 0;
     }
 
     @Override
@@ -132,13 +146,18 @@ public class PhotoModeScreen extends Screen {
             this.minecraft.lockMouse();
         }
 
-        // Rotation via keyboard
+        // Controls via keyboard
         if (Keyboard.getEventKeyState()) {
             switch (keyCode) {
                 case Keyboard.KEY_Q -> this.rotateLeft();
                 case Keyboard.KEY_E -> this.rotateRight();
+                case Keyboard.KEY_SPACE -> this.center();
             }
         }
+    }
+    
+    private boolean shiftHeld() {
+        return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
     }
 
     public void handleInput(int mouseX, int mouseY, float delta) {
@@ -153,7 +172,7 @@ public class PhotoModeScreen extends Screen {
         }
 
         // Movement via keyboard
-        boolean shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+        boolean shift = shiftHeld();
         float cameraVelocity = (float) (0.005f / Math.pow(2, this.zoom));
         float mouseCameraVelocity = (float) (0.001f / Math.pow(2, this.zoom));
         if (shift) cameraVelocity *= 2;
@@ -193,10 +212,20 @@ public class PhotoModeScreen extends Screen {
             }
         }
         
-        if (Mouse.isButtonDown(0) && !hoveringButton) {
-            this.cameraX += Mouse.getDX() * mouseCameraVelocity;
-            this.cameraY += Mouse.getDY() * mouseCameraVelocity;
+        if (!hoveringButton) {
+            if (Mouse.isButtonDown(0)) {
+                this.cameraX += Mouse.getDX() * mouseCameraVelocity;
+                this.cameraY += Mouse.getDY() * mouseCameraVelocity;
+            } else if (Mouse.isButtonDown(1) || Mouse.isButtonDown(2)) {
+                this.tiltSlider.value -= Mouse.getDY() * 0.0025f;
+                this.tiltGoal = (float) ((int) (this.tiltSlider.value * 90.0F));
+                this.tiltSlider.value = Util.clamp(this.tiltSlider.value, 0.0f, 1.0f);
+                
+                this.rotationGoal += Mouse.getDX() * 0.0025f;
+            }
         }
+        
+        updateButtonsText();
     }
     
     private boolean isMouseInBounds(int mouseX, int mouseY, ButtonWidget button) {
@@ -208,6 +237,7 @@ public class PhotoModeScreen extends Screen {
         this.timeSlider.text = this.timeSlider.value == 0.0f ? "Time of Day: Default" : "Time of Day: " + (long) (this.timeSlider.value * 24000.0f);
         this.tiltSlider.text = (int) (this.tiltSlider.value * 90.0f) == 30 ? "Tilt: Default" : "Tilt: " + (Math.floor(this.tiltSlider.value * 90.0f)) + " degrees";
         this.renderPlayerButton.text = this.renderPlayer ? "Render Player: On" : "Render Player: Off";
+        this.centerButton.text = shiftHeld() ? "Full Reset" : "Center";
     }
 
     // Rendering
