@@ -4,6 +4,9 @@ accessible field net/minecraft/client/Minecraft INSTANCE Lnet/minecraft/client/M
 
 accessible field net/minecraft/client/gui/widget/EntryListWidget width I
 
+accessible field net/minecraft/client/gui/widget/ButtonWidget width I
+accessible field net/minecraft/client/gui/widget/ButtonWidget height I
+
 accessible field net/minecraft/item/ToolItem toolMaterial Lnet/minecraft/item/ToolMaterial;
 accessible field net/minecraft/item/ToolItem miningSpeed F
 

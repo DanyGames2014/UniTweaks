@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
+import net.danygames2014.unitweaks.util.ModOptions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.option.GameOptions;
@@ -81,14 +82,21 @@ public class GameRendererMixin {
 
     @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V", ordinal = 0, shift = At.Shift.BEFORE, remap = false))
     public void test8(float i, int par2, CallbackInfo ci) {
-        if (this.client.currentScreen instanceof PhotoModeScreen) {
-            double var3 = Math.pow(2.0, ((PhotoModeScreen) this.client.currentScreen).zoom);
-            GL11.glTranslatef(1.0F, 1.0F, 0.0F);
+        if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
+            int width = this.client.displayWidth;
+            int height = this.client.displayHeight;
+            
+            double xTranslation = -(photoScreen.cameraX * width);
+            double yTranslation = -(photoScreen.cameraY * height);
+            
+            double zoomFactor = Math.pow(2.0, photoScreen.zoom);
+            
+            GL11.glTranslatef(photoScreen.cameraX + 1.0F, photoScreen.cameraY + 1.0F, 0.0F);
             GL11.glOrtho(
-                    0.0,
-                    (double) this.client.displayWidth / var3,
-                    0.0,
-                    (double) this.client.displayHeight / var3,
+                    0.0 + xTranslation,
+                    (this.client.displayWidth / zoomFactor) + xTranslation,
+                    0.0 + yTranslation,
+                    (this.client.displayHeight / zoomFactor) + yTranslation,
                     (double) this.viewDistance * -2.0,
                     (double) this.viewDistance * 2.0
             );

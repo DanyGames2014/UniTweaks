@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.util;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.tweaks.frontviewthirdperson.FrontViewMode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.Option;
 import org.lwjgl.input.Keyboard;
@@ -20,6 +21,10 @@ public class ModOptions {
 
     // Front View Third Person
     public static boolean frontView = false;
+
+    public static boolean isFrontViewEnabled() {
+        return ModOptions.frontView || (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson == FrontViewMode.HIDE_HUD && (Minecraft.INSTANCE.options.thirdPerson && Minecraft.INSTANCE.options.hideHud));
+    }
 
     // GUI Scale
     public static float guiScale = 0.0F;

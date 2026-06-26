@@ -17,7 +17,11 @@ public class WorldRendererMixin {
 
     @ModifyExpressionValue(method = "renderEntities", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;thirdPerson:Z"))
     public boolean renderPlayerInPhotoMode(boolean original) {
-        return original || this.client.currentScreen instanceof PhotoModeScreen;
+        if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
+            return photoScreen.renderPlayer;
+        }
+        
+        return original;
     }
 
     @Inject(method = "renderClouds", at = @At(value = "HEAD"), cancellable = true)
