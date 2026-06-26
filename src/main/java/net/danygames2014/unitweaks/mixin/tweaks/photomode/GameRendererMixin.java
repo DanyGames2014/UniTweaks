@@ -81,32 +81,49 @@ public class GameRendererMixin {
         if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
             int width = this.client.displayWidth;
             int height = this.client.displayHeight;
-            
+
+            double zoomFactor = Math.pow(2.0, photoScreen.zoom);
+
+            // The visible window's size in world units after zooming
+            double viewWidth = width / zoomFactor;
+            double viewHeight = height / zoomFactor;
+
+            // Pan: shift the visible window over the scene
             double xTranslation = -(photoScreen.cameraX * width);
             double yTranslation = -(photoScreen.cameraY * height);
-            
-            double zoomFactor = Math.pow(2.0, photoScreen.zoom);
 
             GL11.glLoadIdentity();
             GL11.glTranslatef(photoScreen.cameraX + 1.0F, photoScreen.cameraY + 1.0F, 0.0F);
-            
+
             GL11.glOrtho(
-                    0.0 + xTranslation,
-                    (this.client.displayWidth / zoomFactor) + xTranslation,
-                    0.0 + yTranslation,
-                    (this.client.displayHeight / zoomFactor) + yTranslation,
+                    xTranslation,
+                    viewWidth + xTranslation,
+                    yTranslation,
+                    viewHeight + yTranslation,
                     (double) this.viewDistance * -4.0,
                     (double) this.viewDistance * 4.0
             );
 
-            // panX and panY I have no clue what to set to
-            double panX = -(photoScreen.cameraX * width);
-            double panY = -(photoScreen.cameraY * height);
-
-            GL11.glTranslated(-panX, -panY, 0.0D);
             GL11.glRotatef(photoScreen.tilt, 1.0F, 0.0F, 0.0F);
+
+            GL11.glTranslated(xTranslation, yTranslation, 0.0D);
             GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
-            GL11.glTranslated(panX, panY, 0.0D);
+            GL11.glTranslated(-xTranslation, -yTranslation, 0.0D);
+        }
+    }
+    
+    @Inject(method = "renderFrame", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/platform/Lighting;turnOff()V", ordinal = 0))
+    public void aaa(float time, long par2, CallbackInfo ci) {
+        if (this.client.currentScreen instanceof PhotoModeScreen photoScreen) {
+            int width = this.client.displayWidth;
+            int height = this.client.displayHeight;
+            
+            double xTranslation = -(photoScreen.cameraX * width);
+            double yTranslation = -(photoScreen.cameraY * height);
+            
+//            GL11.glTranslated(xTranslation, yTranslation, 0.0D);
+//            GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
+//            GL11.glTranslated(-xTranslation, -yTranslation, 0.0D);
         }
     }
 
