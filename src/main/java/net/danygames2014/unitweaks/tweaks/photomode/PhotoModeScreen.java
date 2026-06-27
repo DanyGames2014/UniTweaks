@@ -112,14 +112,18 @@ public class PhotoModeScreen extends Screen {
     }
 
     private void rotateLeft() {
-        this.rotationGoal += 0.5f;
+        float target = this.rotationGoal + 0.05f;
+        this.rotationGoal = (float) Math.ceil(target * 2f) / 2f;
+        
         if (this.rotationGoal > 200) {
             this.rotationGoal = 200;
         }
     }
 
     private void rotateRight() {
-        this.rotationGoal -= 0.5f;
+        float target = this.rotationGoal - 0.05f;
+        this.rotationGoal = (float) Math.floor(target * 2f) / 2f;
+        
         if (this.rotationGoal < -200) {
             this.rotationGoal = -200;
         }
