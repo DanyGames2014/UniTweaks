@@ -104,12 +104,9 @@ public class GameRendererMixin {
                     (double) this.viewDistance * 4.0
             );
 
-
-
             GL11.glRotatef(photoScreen.tilt, 1.0F, 0.0F, 0.0F);
 
 //            GL11.glTranslated(xTranslation, -yTranslation, 0.0D);
-
             GL11.glRotatef(45.0F + 90.0F * photoScreen.rotation, 0.0F, 1.0F, 0.0F);
 //            GL11.glTranslated(-xTranslation, yTranslation, 0.0D);
         }
