@@ -276,6 +276,12 @@ public class PhotoModeScreen extends Screen {
                 this.rotation = this.rotationGoal;
             }
         }
+
+        //Makes rotation and rotationGoal wrap around back to 0 smoothly, so the 200 limit is never hit
+        if (Math.abs(this.rotation) >= 4.0f) {
+            this.rotation = this.rotation % 4;
+            this.rotationGoal = this.rotationGoal % 4;
+        }
         if (this.tilt != this.tiltGoal) {
             this.tilt += (this.tiltGoal - this.tilt) * 0.02f + (this.tiltGoal - this.tilt) * 0.02f * delta;
             if (Math.abs(this.tilt - this.tiltGoal) < 0.01f) {
