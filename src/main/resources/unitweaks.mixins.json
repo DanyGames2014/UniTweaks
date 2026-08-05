@@ -69,6 +69,7 @@
     "tweaks.recipes.BlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
     "tweaks.recipes.FurnaceBlockEntityMixin",
+    "tweaks.rightclickarmor.ArmorItemMixin",
     "tweaks.rightclickarmor.ItemMixin",
     "tweaks.shearharvesting.CobwebBlockMixin",
     "tweaks.shearharvesting.ItemMixin",
