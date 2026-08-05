@@ -64,6 +64,7 @@
     "tweaks.pumpkinplacement.PumpkinBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
     "tweaks.punchtntdefuse.EntityMixin",
+    "tweaks.punchtntdefuse.TntEntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.recipes.BlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
