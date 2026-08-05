@@ -18,7 +18,7 @@
     "bugfixes.liquidblockdropfix.FlowingLiquidBlockMixin",
     "bugfixes.mpentityphysicsfix.EntityMixin",
     "bugfixes.nightmarepathfindingfix.NaturalSpawnerMixin",
-    "bugfixes.pigdropsaddlefix.PigEntityMixin",
+    "bugfixes.pigdropsaddlefix.LivingEntityMixin",
     "bugfixes.slimefix.SlimeEntityMixin",
     "bugfixes.springpropagationfix.FlowingLiquidBlockMixin",
     "bugfixes.stairsdropfix.StairsBlockMixin",
