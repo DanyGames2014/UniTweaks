@@ -35,9 +35,6 @@ public class Config {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
 
-        @ConfigEntry(name = "Show Photo Mode Button", description = "Shows Photo Mode Button in the Game Menu")
-        public Boolean showPhotoMode = true;
-
         @ConfigEntry(name = "Show Armor Slot Icons", description = "Shows Armor Slot Icons in the Inventory")
         public Boolean showArmorSlotIcons = true;
 

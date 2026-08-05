@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.armoricons;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.interfaces.ArmorSlotDuck;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -18,6 +19,8 @@ public class HandledScreenMixin extends Screen {
         // Therefore i decided to plant this bomb :tf: Nyaaa!
 
         // ^ *Bomb has been defused. Counterterrorists win*
+
+        if (!UniTweaks.USER_INTERFACE_CONFIG.showArmorSlotIcons) return;
 
         if (((ArmorSlotDuck) slot).uniTweaks$isArmorSlot() && !slot.hasStack()) {
             int textureId = this.minecraft.textureManager.getTextureId("/assets/unitweaks/textures/gui/armor_icons.png");
