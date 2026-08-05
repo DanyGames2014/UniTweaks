@@ -62,7 +62,7 @@
     "tweaks.pressureplatesonfences.PressurePlateBlockMixin",
     "tweaks.pumpkinplacement.PumpkinBlockMixin",
     "tweaks.punchsheepforwool.SheepEntityMixin",
-    "tweaks.punchtntdefuse.TntEntityMixin",
+    "tweaks.punchtntdefuse.EntityMixin",
     "tweaks.punchtntignite.TntBlockMixin",
     "tweaks.recipes.BlockMixin",
     "tweaks.recipes.CraftingRecipeManagerMixin",
