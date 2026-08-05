@@ -35,9 +35,6 @@ public class Config {
         @ConfigEntry(name = "Show Quit Button", description = "Shows Quit Button on the Main Menu")
         public Boolean showQuitButton = true;
 
-        @ConfigEntry(name = "Show Armor Slot Icons", description = "Shows Armor Slot Icons in the Inventory")
-        public Boolean showArmorSlotIcons = true;
-
         @ConfigEntry(name = "Improved Controls Menu")
         public Boolean improvedControlsMenu = true;
 
@@ -343,6 +340,9 @@ public class Config {
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         @ConfigEntry(name = "Furnace Consume Bucket Fix", description = "Fixes furnace consuming lava bucket as fuel", multiplayerSynced = true)
         public Boolean furnaceConsumeBucketFix = true;
+
+        @ConfigEntry(name = "Armor Icon Fix")
+        public Boolean armorIconsFix = true;
 
         @ConfigEntry(name = "Dropped Item Size Fix")
         public Boolean droppedItemSizeFix = true;

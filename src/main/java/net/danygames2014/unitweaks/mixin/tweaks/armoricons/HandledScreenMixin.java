@@ -20,7 +20,7 @@ public class HandledScreenMixin extends Screen {
 
         // ^ *Bomb has been defused. Counterterrorists win*
 
-        if (!UniTweaks.USER_INTERFACE_CONFIG.showArmorSlotIcons) return;
+        if (!UniTweaks.BUGFIXES_CONFIG.armorIconsFix) return;
 
         if (((ArmorSlotDuck) slot).uniTweaks$isArmorSlot() && !slot.hasStack()) {
             int textureId = this.minecraft.textureManager.getTextureId("/assets/unitweaks/textures/gui/armor_icons.png");
