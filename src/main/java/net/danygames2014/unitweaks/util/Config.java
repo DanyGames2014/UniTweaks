@@ -374,9 +374,6 @@ public class Config {
 
         @ConfigEntry(name = "Torch Bottom Face Fix", description = "Fixes torches not having bottom faces rendered")
         public Boolean torchBottomFaceFix = true;
-
-        @ConfigEntry(name = "First Person Riding Hand Fix", description = "Fixes the first-person hand model staying in the riding pose when riding entities")
-        public Boolean firstPersonRidingHandFix = true;
     }
 
     public static class OldFeaturesConfig {
