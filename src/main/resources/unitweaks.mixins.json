@@ -108,6 +108,7 @@
     "bugfixes.leggingsridingfix.PlayerEntityRendererMixin",
     "bugfixes.miningdelayfix.MultiplayerInteractionManagerMixin",
     "bugfixes.pickblockfix.MinecraftMixin",
+    "bugfixes.firstpersonridinghandfix.PlayerEntityRendererMixin",
     "bugfixes.slabcrashfix.SlabBlockItemMixin",
     "bugfixes.sleepingheadturningfix.GameRendererMixin",
     "bugfixes.torchbottomfix.BlockRenderManagerMixin",
