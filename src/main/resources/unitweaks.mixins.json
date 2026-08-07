@@ -102,7 +102,6 @@
     "bugfixes.droppeditemfix.ItemRendererMixin",
     "bugfixes.fenceboundingboxfix.BlockRenderManagerMixin",
     "bugfixes.fencelightingfix.BlockRenderManagerMixin",
-    "bugfixes.firstpersonridinghandfix.PlayerEntityRendererMixin",
     "bugfixes.fullscreencursorfix.MouseMixin",
     "bugfixes.grassblockitemfix.BlockMixin",
     "bugfixes.grassblockitemfix.BlockRenderManagerMixin",
