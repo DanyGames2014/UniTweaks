@@ -1,5 +1,6 @@
 package net.danygames2014.unitweaks.mixin.tweaks.photomode;
 
+import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.tweaks.photomode.PhotoModeScreen;
 import net.danygames2014.unitweaks.util.gui.CustomButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
@@ -21,6 +22,10 @@ public class GameMenuScreenMixin extends Screen {
     public void drawMenuButton(CallbackInfo info) {
         // :tf:
         if (Minecraft.INSTANCE.session != null && Minecraft.INSTANCE.session.username.equals("Slainlight")) {
+            return;
+        }
+        
+        if (!UniTweaks.USER_INTERFACE_CONFIG.photoModeConfig.enablePhotoModeButton) {
             return;
         }
 

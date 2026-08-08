@@ -64,6 +64,9 @@ public class Config {
 
         @ConfigCategory(name = "Main Menu Panorama")
         public PanoramaConfig panoramaConfig = new PanoramaConfig();
+        
+        @ConfigCategory(name = "Photo Mode")
+        public PhotoModeConfig photoModeConfig = new PhotoModeConfig();
 
         public static class VideoSettingsConfig {
             @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect", requiresRestart = true)
@@ -116,6 +119,11 @@ public class Config {
 
             @ConfigEntry(name = "Custom Version Text", maxValue = 64, description = "Only has effect if custom version text is enabled")
             public String customVersionText = "Minecraft Beta 1.7.3 (UniTweaks)";
+        }
+        
+        public static class PhotoModeConfig {
+            @ConfigEntry(name = "Enable Photo Mode Button", description = "Enables the Photo Mode button in game menu")
+            public Boolean enablePhotoModeButton = true;
         }
     }
 
