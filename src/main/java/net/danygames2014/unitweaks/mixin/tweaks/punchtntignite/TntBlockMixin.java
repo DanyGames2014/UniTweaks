@@ -22,6 +22,7 @@ public class TntBlockMixin extends Block {
     public void cancelTntDrop(TntBlock instance, World world, int x, int y, int z, ItemStack stack, Operation<Void> original) {
         if (!UniTweaks.OLD_FEATURES_CONFIG.punchTntToIgnite) {
             original.call(instance, world, x, y, z, stack);
+            return;
         }
 
         TntEntity tntEntity = new TntEntity(world, (float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
