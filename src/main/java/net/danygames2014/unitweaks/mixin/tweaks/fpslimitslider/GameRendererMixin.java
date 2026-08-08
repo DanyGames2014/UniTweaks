@@ -37,7 +37,7 @@ public class GameRendererMixin {
         }
     }
 
-    @ModifyExpressionValue(method = "onFrameUpdate", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;fpsLimit:I", ordinal = 1))
+    @ModifyExpressionValue(method = "onFrameUpdate", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/option/GameOptions;fpsLimit:I", ordinal = 2))
     public int overridePerformanceLevel0(int original) {
         if (UniTweaks.USER_INTERFACE_CONFIG.videoSettingsConfig.fpsLimitSlider) {
             return ModOptions.isFramerateLimited() ? 2 : 0;
