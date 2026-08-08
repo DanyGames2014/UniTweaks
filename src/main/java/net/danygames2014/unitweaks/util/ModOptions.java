@@ -88,7 +88,7 @@ public class ModOptions {
     }
 
     public static void cycleRenderDistance() {
-        boolean inverted = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+        boolean inverted = !(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
 
         switch (getRenderDistanceChunks()) {
             case 2, 3 -> { // Tiny
