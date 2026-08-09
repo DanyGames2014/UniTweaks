@@ -7,28 +7,24 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TntEntity.class)
-public abstract class TntEntityMixin extends Entity {
-    public TntEntityMixin(World world) {
-        super(world);
-    }
+public abstract class TntEntityMixin extends EntityMixin {
 
-    // TODO: Convert to mixin inheritance
     @Override
-    public boolean damage(Entity damageSource, int amount) {
-        if (!world.isRemote) {
-            if (UniTweaks.OLD_FEATURES_CONFIG.punchTntToDefuse && !dead) {
-                super.damage(damageSource, amount);
-                if (damageSource instanceof PlayerEntity) {
-                    markDead();
-                    world.spawnEntity(new ItemEntity(this.world, this.x, this.y, this.z, new ItemStack(Block.TNT)));
-                    return true;
-                }
-            }
-        }
-        return false;
+    protected void damage(Entity damageSource, int amount, CallbackInfoReturnable<Boolean> cir) {
+        if (world.isRemote) return;
+
+        TntEntity tntEntity = (TntEntity) (Object) this;
+        if (!UniTweaks.OLD_FEATURES_CONFIG.punchTntToDefuse) return;
+
+        if (dead) return;
+        if (!(damageSource instanceof PlayerEntity)) return;
+
+        markDead();
+        world.spawnEntity(new ItemEntity(this.world, tntEntity.x, tntEntity.y, tntEntity.z, new ItemStack(Block.TNT)));
+        cir.setReturnValue(true);
     }
 }
