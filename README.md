@@ -178,3 +178,4 @@
 * Torch Bottom Texture Fix - Fixes torches not having a bottom textures
 * Slab Crash Fix - Fixes slabs with no name crashing the game
 * Block Entity Loading Fix - Stops the game from erasing an entire chunk when block entity fails to load
+* First Person Riding Hand Fix - Fixes the player's hand being misplaced when riding and using F5
