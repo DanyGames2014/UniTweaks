@@ -5,6 +5,7 @@ import net.danygames2014.unitweaks.interfaces.ArmorSlotDuck;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.screen.slot.Slot;
+import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,6 +29,7 @@ public class HandledScreenMixin extends Screen {
 
             int iconIndex = (slot.id - 5);
             this.drawTexture(slot.x, slot.y, 0, iconIndex * 16, 16, 16);
+            GL11.glEnable(GL11.GL_LIGHTING);
 
             ci.cancel();
         }
