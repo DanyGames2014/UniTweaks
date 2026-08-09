@@ -383,7 +383,7 @@ public class Config {
         @ConfigEntry(name = "Torch Bottom Face Fix", description = "Fixes torches not having bottom faces rendered")
         public Boolean torchBottomFaceFix = true;
 
-        @ConfigEntry(name = "First Person Riding Hand Fix", description = "Fixes the first-person hand model staying in the riding pose when riding entities")
+        @ConfigEntry(name = "First Person Riding Hand Fix", description = "Fixes the player's hand being misplaced when riding and using F5")
         public Boolean firstPersonRidingHandFix = true;
     }
 
