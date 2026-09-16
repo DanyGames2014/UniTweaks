@@ -434,8 +434,11 @@ public class Config {
         @ConfigEntry(name = "Make more wooden items burnable")
         public Boolean furnaceFuels = true;
 
-        @ConfigEntry(name = "Allow tool repair in crafting grid")
+        @ConfigEntry(name = "Allow tool repair in crafting grid", multiplayerSynced = true)
         public Boolean toolRepair = true;
+
+        @ConfigEntry(name = "Allow armor repair in crafting grid", multiplayerSynced = true)
+        public Boolean armorRepair = true;
 
         @ConfigCategory(name = "Modern", description = "Options here require restart to take effect")
         public ModernRecipesConfig modern = new ModernRecipesConfig();
