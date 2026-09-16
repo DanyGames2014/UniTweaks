@@ -70,6 +70,7 @@
     "tweaks.shearharvesting.ShearsItemMixin",
     "tweaks.shearharvesting.SwordItemMixin",
     "tweaks.stackablechests.ChestBlockMixin",
+    "tweaks.stepassist.EntityMixin",
     "tweaks.stepassist.PlayerEntityMixin",
     "tweaks.sugarcaneonsand.SugarCaneBlockMixin",
     "tweaks.tcpnodelay.ConnectionMixin",
