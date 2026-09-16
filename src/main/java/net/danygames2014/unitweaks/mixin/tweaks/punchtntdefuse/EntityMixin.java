@@ -10,17 +10,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
+    @Shadow
+    public World world;
 
-    @Shadow public World world;
-    @Shadow public double x;
-    @Shadow public double y;
-    @Shadow public double z;
+    @Shadow
+    public double x;
+    @Shadow
+    public double y;
+    @Shadow
+    public double z;
 
-    @Shadow public boolean dead;
+    @Shadow
+    public boolean dead;
 
     @Shadow
     public abstract void markDead();
 
+    @SuppressWarnings("CancellableInjectionUsage")
     @Inject(method = "damage(Lnet/minecraft/entity/Entity;I)Z", at = @At("HEAD"), cancellable = true)
-    protected void damage(Entity damageSource, int amount, CallbackInfoReturnable<Boolean> cir) {}
+    protected void damage(Entity damageSource, int amount, CallbackInfoReturnable<Boolean> cir) {
+        
+    }
 }

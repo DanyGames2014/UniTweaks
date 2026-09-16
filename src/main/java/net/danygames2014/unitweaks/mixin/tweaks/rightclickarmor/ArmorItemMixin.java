@@ -12,14 +12,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ArmorItem.class)
 public abstract class ArmorItemMixin extends ItemMixin {
-
     @Shadow
     @Final
     public int equipmentSlot;
 
     @Override
     protected void use(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir) {
-        if (!UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor) return;
+        if (!UniTweaks.GAMEPLAY_CONFIG.rightClickEquipArmor) {
+            return;
+        }
 
         // Get armor index
         int offset = 3;

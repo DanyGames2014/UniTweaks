@@ -11,7 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
 public abstract class ItemMixin {
-
+    @SuppressWarnings("CancellableInjectionUsage")
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
-    protected void use(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir) {}
+    protected void use(ItemStack stack, World world, PlayerEntity user, CallbackInfoReturnable<ItemStack> cir) {
+        
+    }
 }
