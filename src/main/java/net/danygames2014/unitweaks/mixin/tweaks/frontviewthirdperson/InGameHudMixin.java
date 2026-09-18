@@ -26,6 +26,7 @@ public class InGameHudMixin {
     public void re(InGameHud instance, int x, int y, int u, int v, int width, int height, Operation<Void> original) {
         if (UniTweaks.USER_INTERFACE_CONFIG.frontViewThirdPerson == FrontViewMode.DISABLED) {
             original.call(instance, x, y, u, v, width, height);
+            return;
         }
         
         if (!isFrontViewEnabled()) {
