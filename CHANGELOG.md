@@ -1,6 +1,2 @@
-* Rewrote Armor Icons Fix (JustJabka)
-* Rewrote Pig Saddle Drop Fix (JustJabka)
-* Rewrote Punch TNT To Deuse (JustJabka)
-* Rewrote Right Click Armor (JustJabka)
-* First Person Riding Hand Fix (JustJabka)
-* Rewrote Step Assist to be more compatible with other mods
+* Fix crosshair getting hidden when third person mode is disabled
+* Change default resource download url to Modification Station proxy which uses HTTPS
