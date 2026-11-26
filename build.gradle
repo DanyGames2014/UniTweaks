@@ -258,7 +258,7 @@ modrinth {
     versionType = "release"
     uploadFile = remapJar
     gameVersions = ["b1.7.3"]
-    loaders = ["fabric", "babric"]
+    loaders = ["babric"]
     dependencies {
         required.project "glass-config-api"
     }
