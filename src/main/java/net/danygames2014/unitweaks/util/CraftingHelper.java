@@ -11,6 +11,7 @@ import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import java.util.List;
 
 public class CraftingHelper {
+    public static Boolean isFarnNameTagLoaded = false;
 
     public static void removeRecipe(Block block, int meta, boolean onlyRemoveFirst) {
         removeRecipe(Item.ITEMS[block.id], meta, onlyRemoveFirst);

@@ -163,6 +163,18 @@ dependencies {
         modImplementation("net.danygames2014:DebugUtilities:${project.debugutilities_version}")
     }
 
+    if (project.hasProperty("farnutil_version")) {
+        modImplementation("maven.modrinth:farnutil:${project.farnutil_version}") {
+            transitive false
+        }
+    }
+
+    if (project.hasProperty("farnsnametag_version")) {
+        modImplementation("maven.modrinth:farns-name-tag:${project.farnsnametag_version}") {
+            transitive false
+        }
+    }
+
     if (project.hasProperty("retroauth_version")) {
         modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-b1.7.3") {
             transitive = false

@@ -1,6 +1,7 @@
 package net.danygames2014.unitweaks.mixin;
 
 import net.danygames2014.unitweaks.UniTweaks;
+import net.danygames2014.unitweaks.util.CraftingHelper;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.gcapi3.impl.GlassYamlFile;
 import org.objectweb.asm.tree.ClassNode;
@@ -19,6 +20,7 @@ public class UniTweaksMixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
         File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "unitweaks/userinterface.yml");
+        CraftingHelper.isFarnNameTagLoaded = FabricLoader.getInstance().isModLoaded("farnnametag");
 
         ui_config = new GlassYamlFile();
         try {
