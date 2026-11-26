@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Random;
 
 @Mixin(StairsBlock.class)
 public class StairsBlockMixin extends Block {
@@ -17,17 +20,35 @@ public class StairsBlockMixin extends Block {
         super(id, material);
     }
 
-    @Inject(method = "dropStacks", at = @At("HEAD"), cancellable = true)
-    public void dropStacks(World world, int x, int y, int z, int meta, float f, CallbackInfo ci) {
-        if (UniTweaks.BUGFIXES_CONFIG.stairsDropFix) {
-            if (!world.isRemote) {
-                int droppedItemCount = this.getDroppedItemCount(world.random);
-
-                for (int i = 0; i < droppedItemCount; ++i) {
-                    this.dropStack(world, x, y, z, new ItemStack(id, 1, this.getDroppedItemMeta(meta)));
-                }
-                ci.cancel();
-            }
+    @Inject(method = "getDroppedItemId", at = @At("HEAD"), cancellable = true)
+    public void overrideDroppedItemId(int blockMeta, Random random, CallbackInfoReturnable<Integer> cir) {
+        if (!UniTweaks.BUGFIXES_CONFIG.stairsDropFix) {
+            return;
         }
+        
+        cir.setReturnValue(super.getDroppedItemId(blockMeta, random));
+    }
+    
+    @Inject(method = "getDroppedItemCount", at = @At("HEAD"), cancellable = true)
+    public void overrideDroppedItemCount(Random random, CallbackInfoReturnable<Integer> cir) {
+        if (!UniTweaks.BUGFIXES_CONFIG.stairsDropFix) {
+            return;
+        }
+
+        cir.setReturnValue(super.getDroppedItemCount(random));
+    }
+    
+    @Inject(method = "dropStacks", at = @At("HEAD"), cancellable = true)
+    public void overrideDropStacks(World world, int x, int y, int z, int meta, float f, CallbackInfo ci) {
+        if (!UniTweaks.BUGFIXES_CONFIG.stairsDropFix) {
+            return;
+        }
+
+        if (world.isRemote) {
+            return;
+        }
+        
+        super.dropStacks(world, x, y, z, meta, f);
+        ci.cancel();
     }
 }
